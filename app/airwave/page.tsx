@@ -937,7 +937,7 @@ export default function LandingPage() {
                   <div style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Include Telecomando + App</div>
                 </div>
               </div>
-              <ul style={{ space: 'y-2', color: '#cbd5e1' }}>
+              <ul style={{ color: '#cbd5e1', listStyle: 'none', padding: 0, margin: 0 }}>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   <span>Prezzo Listino</span> <span style={{ textDecoration: 'line-through' }}>€174,98</span>
                 </li>
