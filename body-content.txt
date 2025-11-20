@@ -1,0 +1,1270 @@
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">Air Wave Smart™</a>
+            <div class="header-trust">
+                <div class="header-trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                    </svg>
+                    <span>Spedizione Gratuita</span>
+                </div>
+                <div class="header-trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Pagamento alla Consegna</span>
+                </div>
+                <div class="header-trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span>Acquisto Sicuro</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Section -->
+    <section class="product-section" id="productSection">
+        <div class="product-container">
+            <!-- Product Images -->
+            <div class="product-images" id="productImages">
+                <div class="product-image-main">
+                    <!-- Black Friday Ribbon -->
+                    <div class="black-friday-ribbon">
+                        <span>BLACK</span>
+                        <span>FRIDAY</span>
+                    </div>
+                    
+                    <!-- Slider Container -->
+                    <div class="slider-container">
+                        <div class="slider-images" id="mainSlider">
+                            <!-- Slide 1 -->
+                            <div class="slider-image">
+                                <img src="img/caldo-freddo.webp" alt="Caldo e Freddo" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="slider-image">
+                                <img src="img/installazione.webp" alt="Installazione" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="slider-image">
+                                <img src="img/riscaldamento.webp" alt="Riscaldamento" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="slider-image">
+                                <img src="img/risparmio.webp" alt="Risparmio" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <!-- Slide 5 -->
+                            <div class="slider-image">
+                                <img src="img/silenzioso.webp" alt="Silenzioso" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <!-- Slide 6 -->
+                            <div class="slider-image">
+                                <img src="img/specifiche.webp" alt="Specifiche" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button id="prevSlide">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#111827" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </button>
+                        <button id="nextSlide">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#111827" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="thumbnails">
+                    <div class="thumbnail active" onclick="changeSlide(0)">
+                        <img src="img/caldo-freddo.webp" alt="Thumbnail 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnail" onclick="changeSlide(1)">
+                        <img src="img/installazione.webp" alt="Thumbnail 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnail" onclick="changeSlide(2)">
+                        <img src="img/riscaldamento.webp" alt="Thumbnail 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnail" onclick="changeSlide(3)">
+                        <img src="img/risparmio.webp" alt="Thumbnail 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnail" onclick="changeSlide(4)">
+                        <img src="img/silenzioso.webp" alt="Thumbnail 5" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnail" onclick="changeSlide(5)">
+                        <img src="img/specifiche.webp" alt="Thumbnail 6" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <!-- Header -->
+                <div class="product-header">
+                    <h1 class="product-title">Climatizzatore 3 in 1 Air Wave Smart™ - Riscalda, Raffredda e Deumidifica</h1>
+                    <p class="product-subtitle">Riscalda, Raffredda e Deumidifica • Tecnologia ThermoPanel con Eliminazione CO2 • Senza Unità Esterna • 12.000 BTU • Ultrasilenzioso</p>
+                </div>
+
+                <!-- Rating -->
+                <div class="product-rating">
+                    <div class="stars">
+                        <span>⭐</span>
+                        <span>⭐</span>
+                        <span>⭐</span>
+                        <span>⭐</span>
+                        <span>⭐</span>
+                    </div>
+                    <span class="rating-text">4.8 (247 recensioni)</span>
+                </div>
+
+                <!-- Price -->
+                <div class="product-price">
+                    <div class="price-row">
+                        <span class="price-current">69,99 €</span>
+                        <span class="price-original">174,98 €</span>
+                        <span class="price-save">-60%</span>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="product-description">
+                    <h3>Caratteristiche Principali</h3>
+                    <ul>
+                       
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>12.000 BTU di potenza</strong> – Scalda, Rinfresca e Deumidifica rapidamente ambienti fino a 60 m²</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>3 funzioni in 1</strong> – Riscaldamento d'inverno, raffrescamento d'estate e deumidificazione</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>Controllo temperatura preciso 16-32°C</strong> – Termostato digitale per il massimo comfort</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>Classe energetica A+++</strong> – Risparmi il 60% in bolletta rispetto agli impianti tradizionali</span>
+                        </li>
+                       
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>Tecnologia ThermoPanel senza unità esterna</strong> – Ricicla l'aria interna eliminando CO2, nessun motore esterno</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>Controllo da smartphone</strong> – App dedicata per iOS e Android, accendi il riscaldamento ovunque</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>Controllo dell'umidità</strong> – Riduce artrite e muffe, ambiente salubre</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>Installazione semplice</strong> – Fissaggio a parete o appoggio, nessun tecnico necessario</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span><strong>Ultra-silenzioso</strong> – Perfetto anche per camera da letto</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="product-cta">
+                    <button class="btn-add-to-cart" onclick="scrollToForm()">
+                        Ordina Ora - Pagamento alla Consegna
+                    </button>
+                </div>
+
+                <!-- Trust Section -->
+                <div class="trust-section">
+                    <h3 class="trust-title">Garanzie e Servizi</h3>
+                    <div class="trust-items">
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                </svg>
+                            </div>
+                            <div class="trust-content">
+                                <h4>Spedizione GRATUITA in 48 Ore</h4>
+                                <p>Consegna veloce con corriere espresso tracciabile. Nessun costo di spedizione.</p>
+                            </div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="trust-content">
+                                <h4>Pagamento alla Consegna</h4>
+                                <p>Nessun pagamento anticipato. Paghi solo quando ricevi il prodotto direttamente al corriere</p>
+                            </div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                                </svg>
+                            </div>
+                            <div class="trust-content">
+                                <h4>Resi Gratuiti entro 30 Giorni</h4>
+                                <p>Non sei soddisfatto? Puoi restituire il prodotto entro 30 giorni per un rimborso completo</p>
+                            </div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div class="trust-content">
+                                <h4>Garanzia 2 Anni</h4>
+                                <p>Copertura completa su difetti di fabbricazione per 24 mesi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Boxes -->
+                <div class="info-boxes">
+                    <div class="info-box">
+                        <span class="icon">⚡</span>
+                        <div class="info-box-content">
+                            <p>Solo 0,80€ al giorno</p>
+                            <span>Uso medio 4-5 ore in modalità Eco</span>
+                        </div>
+                    </div>
+                    <div class="info-box green">
+                        <span class="icon">🏠</span>
+                        <div class="info-box-content">
+                            <p>Nessun Permesso Richiesto</p>
+                            <span>Installazione senza vincoli condominiali</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perché ThermoPanel funziona Section - 3 box orizzontali -->
+    <section id="whyItWorks" style="background: white; padding: 4rem 1rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 1.5rem; font-weight: 700; text-align: center; margin-bottom: 0.375rem; color: #111827;">
+                Perché <span style="color: #FFB800;">Air Wave Smart™</span> funziona
+            </h2>
+            <p style="text-align: center; color: #6b7280; max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.8125rem; line-height: 1.4;">
+                La tecnologia che ti fa risparmiare mantenendo il comfort perfetto tutto l'anno
+            </p>
+
+            <!-- Timeline verticale con cerchi alternati -->
+            <div class="timeline-container" style="position: relative; max-width: 800px; margin: 0 auto; padding: 2rem 0;">
+                <!-- Linea verticale centrale -->
+                <div class="timeline-line" style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, #FFB800, #FF8C00); transform: translateX(-50%);"></div>
+
+                <!-- Item 1 - Sinistra desktop, destra mobile -->
+                <div class="timeline-item timeline-item-left" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; margin-bottom: 3rem; position: relative;">
+                    <div class="timeline-content timeline-content-left" style="text-align: right;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #CC6600; margin-bottom: 0.5rem;">Tecnologia ThermoPanel</h3>
+                        <p style="font-size: 0.9375rem; color: #995200; line-height: 1.6;">
+                            Niente <strong style="color: #663300;">motore esterno</strong>, niente permessi. Ricicla e purifica l'aria eliminando CO2 e impurità.
+                        </p>
+                    </div>
+                    <div class="timeline-circle" style="border-radius: 50%; background: linear-gradient(135deg, #FFB800, #FF8C00); box-shadow: 0 4px 16px rgba(255, 140, 0, 0.4); z-index: 1; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <img src="img/1.jpg" alt="Tecnologia" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" class="timeline-circle-img">
+                    </div>
+                    <div class="timeline-spacer"></div>
+                </div>
+
+                <!-- Item 2 - Destra desktop, sinistra mobile -->
+                <div class="timeline-item timeline-item-right" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; margin-bottom: 3rem; position: relative;">
+                    <div class="timeline-spacer"></div>
+                    <div class="timeline-circle" style="border-radius: 50%; background: linear-gradient(135deg, #FFB800, #FF8C00); box-shadow: 0 4px 16px rgba(255, 140, 0, 0.4); z-index: 1; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <img src="img/2.jpg" alt="Risparmio" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" class="timeline-circle-img">
+                    </div>
+                    <div class="timeline-content timeline-content-right" style="text-align: left;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #CC6600; margin-bottom: 0.5rem;">Risparmio Energetico Reale</h3>
+                        <p style="font-size: 0.9375rem; color: #995200; line-height: 1.6;">
+                            <strong style="color: #663300;">Termostato intelligente</strong> che regola la temperatura. <strong style="color: #663300;">Risparmio fino al 60%</strong> in bolletta.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 - Sinistra desktop, destra mobile -->
+                <div class="timeline-item timeline-item-left timeline-item-last" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; position: relative;">
+                    <div class="timeline-content timeline-content-left" style="text-align: right;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #CC6600; margin-bottom: 0.5rem;">3 Funzioni in Un Solo Dispositivo</h3>
+                        <p style="font-size: 0.9375rem; color: #995200; line-height: 1.6;">
+                            <strong style="color: #663300;">Riscalda</strong> d'inverno, <strong style="color: #663300;">raffredda</strong> d'estate e <strong style="color: #663300;">deumidifica</strong>. Comfort perfetto tutto l'anno.
+                        </p>
+                    </div>
+                    <div class="timeline-circle" style="border-radius: 50%; background: linear-gradient(135deg, #FFB800, #FF8C00); box-shadow: 0 4px 16px rgba(255, 140, 0, 0.4); z-index: 1; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <img src="img/3.jpg" alt="3 in 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" class="timeline-circle-img">
+                    </div>
+                    <div class="timeline-spacer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Why Choose Section - Slider -->
+    <section style="background: white; padding: 4rem 1rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 1rem; color: #111827;">
+                Perché Scegliere Air Wave Smart™
+            </h2>
+            <p style="text-align: center; color: #6b7280; max-width: 800px; margin: 0 auto 3rem; font-size: 1rem;">
+                Scalda casa tua in modo efficiente senza i problemi dei climatizzatori tradizionali
+            </p>
+
+            <!-- Slider Container -->
+            <div class="slider-container-why-choose" style="position: relative; max-width: 1400px; margin: 0 auto 1rem; padding: 0 70px;">
+
+                <!-- Slider Track -->
+                <div class="why-choose-slider-track" style="border-radius: 16px;">
+                    <div id="whyChooseSlider" style="display: flex; transition: transform 0.5s ease;">
+
+                        <!-- Slide 1 -->
+                        <div class="why-choose-slide">
+                            <div class="why-choose-slide-content">
+                                <div class="why-choose-slide-text">
+                                    <h3>Riscaldamento Potente ed Efficiente</h3>
+                                    <p>Tecnologia ThermoPanel che <strong>scalda rapidamente</strong> casa tua senza motore esterno. <strong>Calore costante</strong>, niente dispersioni, <strong>risparmio garantito</strong> in bolletta.</p>
+                                </div>
+                                <div class="why-choose-slide-image">
+                                    <img src="img/riscaldamento.webp" alt="Riscaldamento">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="why-choose-slide">
+                            <div class="why-choose-slide-content">
+                                <div class="why-choose-slide-text">
+                                    <h3>Con e Senza Installazione</h3>
+                                    <p><strong>Montaggio semplice</strong> a parete o appoggio. <strong>Nessun tecnico</strong> specializzato richiesto, <strong>plug and play</strong>. Inizia a utilizzarlo in pochi minuti.</p>
+                                </div>
+                                <div class="why-choose-slide-image">
+                                    <img src="img/installazione.webp" alt="Installazione">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="why-choose-slide">
+                            <div class="why-choose-slide-content">
+                                <div class="why-choose-slide-text">
+                                    <h3>Raffredda d'Estate, Scalda d'Inverno</h3>
+                                    <p><strong>3 funzioni in 1</strong>: riscaldamento potente per l'inverno, raffrescamento per l'estate, deumidificazione tutto l'anno. <strong>Nessun permesso</strong> condominiale richiesto.</p>
+                                </div>
+                                <div class="why-choose-slide-image">
+                                    <img src="img/caldo-freddo.webp" alt="3 in 1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="why-choose-slide">
+                            <div class="why-choose-slide-content">
+                                <div class="why-choose-slide-text">
+                                    <h3>Risparmio fino al 60% in Bolletta</h3>
+                                    <p><strong>Efficienza A+++</strong> e termostato intelligente: consumi solo quello che serve. <strong>Nessuno spreco</strong>, <strong>massimo risparmio</strong> rispetto agli impianti a gas.</p>
+                                </div>
+                                <div class="why-choose-slide-image">
+                                    <img src="img/risparmio.webp" alt="Risparmio">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="why-choose-slide">
+                            <div class="why-choose-slide-content">
+                                <div class="why-choose-slide-text">
+                                    <h3>Ultra-Silenzioso: dormi sogni tranquilli</h3>
+                                    <p>Perfetto per <strong>camera da letto</strong>. Funzionamento <strong>estremamente silenzioso</strong>, nessun motore esterno rumoroso. Goditi il <strong>massimo comfort</strong> senza disturbi.</p>
+                                </div>
+                                <div class="why-choose-slide-image">
+                                    <img src="img/silenzioso.webp" alt="Silenzioso">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button id="prevWhyChoose" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #FFB800, #FF8C00); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4); z-index: 10; transition: all 0.3s;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button id="nextWhyChoose" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #FFB800, #FF8C00); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4); z-index: 10; transition: all 0.3s;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+            </div>
+
+            <!-- Slide Indicator -->
+            <div id="whyChooseIndicator" style="text-align: center; margin-top:0px; font-size: 1rem; font-weight: 600; color: #6b7280;">
+                <span id="currentSlideNumber">1</span>/<span id="totalSlideNumber">5</span>
+            </div>
+        </div>
+    </section>
+
+  <!-- Technical Specs Section -->
+    <section style="background: white; padding: 4rem 1rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; color: #111827;">
+                Specifiche Tecniche
+            </h2>
+
+            <div class="tech-specs-container">
+                <!-- Colonna Sinistra: Specifiche DESKTOP -->
+                <div class="tech-specs-desktop" style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                    <!-- Riga 1: 3 box allineati -->
+                    <div class="tech-specs-row-3">
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📏</div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: #FF8C00; margin-bottom: 0.25rem;">60 m²</div>
+                            <div style="font-size: 0.875rem; color: #6b7280;">Copertura massima</div>
+                        </div>
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: #FF8C00; margin-bottom: 0.25rem;">12.000</div>
+                            <div style="font-size: 0.875rem; color: #6b7280;">BTU potenza</div>
+                        </div>
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌡️</div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: #FF8C00; margin-bottom: 0.25rem;">16-32°C</div>
+                            <div style="font-size: 0.875rem; color: #6b7280;">Range temperatura</div>
+                        </div>
+                    </div>
+
+                    <!-- Riga 2: 2 box (2/3 + 1/3) -->
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <h3 style="font-size: 1.125rem; font-weight: 600; color: #FF8C00;">Risparmio Energetico</h3>
+                            </div>
+                            <p style="color: #555555; font-size: 0.9375rem; line-height: 1.6;">
+                                <strong>Fino al 60% di bollette più basse</strong> rispetto agli altri condizionatori e impianti a gas grazie alla tecnologia ThermoPanel e alla classe energetica A+++.
+                            </p>
+                        </div>
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); display: flex; flex-direction: column; justify-content: center; position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⭐</div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: #FF8C00; margin-bottom: 0.25rem;">A+++</div>
+                            <div style="font-size: 0.875rem; color: #6b7280;">Classe energetica</div>
+                        </div>
+                    </div>
+
+                    <!-- Riga 3: 1 box lungo -->
+                    <div class="tech-cost-box" style="background: #F5F5F5; border-radius: 12px; padding: 1.5rem; border: 2px solid transparent; background-clip: padding-box; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                        <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #FF8C00;">€0,80 al giorno</div>
+                            <div style="height: 30px; width: 1px; background: #cccccc;"></div>
+                            <div style="font-size: 0.875rem; color: #6b7280;">Con uso medio di 4-5 ore in modalità Eco</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonna Sinistra: Specifiche MOBILE -->
+                <div class="tech-specs-mobile" style="display: none; grid-template-columns: 1fr; gap: 1rem;">
+                    <!-- Riga 1: 2 box -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">📏</div>
+                            <div style="font-size: 25px; font-weight: 700; color: #FF8C00; margin-bottom: 0.125rem;">60 m²</div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">Copertura massima</div>
+                        </div>
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">⚡</div>
+                            <div style="font-size: 25px; font-weight: 700; color: #FF8C00; margin-bottom: 0.125rem;">12.000</div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">BTU potenza</div>
+                        </div>
+                    </div>
+
+                    <!-- Riga 2: 2 box -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🌡️</div>
+                            <div style="font-size: 25px; font-weight: 700; color: #FF8C00; margin-bottom: 0.125rem;">16-32°C</div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">Range temperatura</div>
+                        </div>
+                        <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); display: flex; flex-direction: column; justify-content: center; position: relative;">
+                            <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">⭐</div>
+                            <div style="font-size: 25px; font-weight: 700; color: #FF8C00; margin-bottom: 0.125rem;">A+++</div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">Classe energetica</div>
+                        </div>
+                    </div>
+
+                    <!-- Riga 3: Box unito Risparmio + €0,80 -->
+                    <div style="background: #F5F5F5; border: 2px solid transparent; background-clip: padding-box; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); position: relative;">
+                        <div style="position: absolute; inset: 0; border-radius: 12px; padding: 2px; background: linear-gradient(135deg, #FFB800, #FF8C00); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;"></div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#FFB800" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h3 style="font-size: 1.125rem; font-weight: 600; color: #FF8C00;">Risparmio Energetico</h3>
+                        </div>
+                        <p style="color: #555555; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 1rem;">
+                            <strong>Fino al 60% di bollette più basse</strong> rispetto agli altri condizionatori e impianti a gas grazie alla tecnologia ThermoPanel e alla classe energetica A+++.
+                        </p>
+                        <div style="border-top: 1px solid #cccccc; padding-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #FF8C00;">€0,80 al giorno</div>
+                            <div style="height: 30px; width: 1px; background: #cccccc;"></div>
+                            <div style="font-size: 0.875rem; color: #6b7280;">Con uso medio di 4-5 ore in modalità Eco</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonna Destra: Immagine -->
+                <div class="tech-specs-image" style="background: linear-gradient(135deg, #FFF8F0, #FFE8CC); border: 2px solid #FFD966; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 400px;">
+                    <img src="img/specifiche.webp" alt="Specifiche Tecniche" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- What's Included Section -->
+    <section style="background: white; padding: 4rem 1rem;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; color: #111827;">
+                Cosa Include
+            </h2>
+
+            <div style="background: linear-gradient(135deg, #FFF4E6, #FFE8CC); border-radius: 16px; padding: 2rem; border: 1px solid #FFDAA3;">
+                <div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;">
+                    <div style="display: grid; gap: 1rem; order: 1;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="color: #CC7A00; font-size: 1.25rem;">✓</div>
+                            <span style="color: #B86800; font-size: 0.9375rem; font-weight: 700;">1× climatizzatore Air Wave Smart™ 12.000 BTU</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="color: #CC7A00; font-size: 1.25rem;">✓</div>
+                            <span style="color: #B86800; font-size: 0.9375rem; font-weight: 700;">1× Telecomando con batterie incluse</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="color: #CC7A00; font-size: 1.25rem;">✓</div>
+                            <span style="color: #B86800; font-size: 0.9375rem; font-weight: 700;">1× Kit di montaggio a parete</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="color: #CC7A00; font-size: 1.25rem;">✓</div>
+                            <span style="color: #B86800; font-size: 0.9375rem; font-weight: 700;">2× Filtri HEPA di ricambio (scorta per 2 anni)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="color: #CC7A00; font-size: 1.25rem;">✓</div>
+                            <span style="color: #B86800; font-size: 0.9375rem; font-weight: 700;">Manuale utente + Garanzia 2 anni</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="color: #CC7A00; font-size: 1.25rem;">✓</div>
+                            <span style="color: #B86800; font-size: 0.9375rem; font-weight: 700;">Accesso gratuito all'App di controllo (iOS e Android)</span>
+                        </div>
+                    </div>
+                    <img src="img/include.webp" alt="Cosa include" style="width: 300px; height: 300px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); order: 2;">
+                </div>
+            </div>
+            <style>
+                @media (max-width: 768px) {
+                    section div[style*="grid-template-columns: 1fr auto"] {
+                        grid-template-columns: 1fr !important;
+                        gap: 1.5rem !important;
+                    }
+                    section div[style*="grid-template-columns: 1fr auto"] > div[style*="order: 1"] {
+                        order: 2 !important;
+                    }
+                    section div[style*="grid-template-columns: 1fr auto"] > img[style*="order: 2"] {
+                        order: 1 !important;
+                        margin: 0 auto !important;
+                    }
+                }
+            </style>
+
+            <div style="margin-top: 2rem; text-align: center;">
+                <button onclick="scrollToForm()" style="background: #16a34a; color: white; padding: 1rem 2.5rem; border: none; border-radius: 12px; font-size: 1.125rem; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(22,163,74,0.3); transition: all 0.3s;">
+                    Ordina Ora - €69,99
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section style="background: linear-gradient(to bottom, #ffffff 0%, #FFFCF5 10%, #FFFCF5 90%, #ffffff 100%); padding: 4rem 1rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; color: #111827;">
+                Recensioni Verificate
+            </h2>
+
+            <!-- Slider Container -->
+            <div style="position: relative; max-width: 900px; margin: 0 auto 2rem;">
+                <div id="reviewsSlider" style="overflow: hidden; border-radius: 12px;">
+                    <div id="reviewsTrack" style="display: flex; transition: transform 0.5s ease;">
+                        
+                        <!-- Review 1 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Bollette molto più basse e casa più calda"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                Ho sostituito il mio vecchio riscaldamento elettrico con questo pannello. Prima la bolletta elettrica era alle stelle a fine mese, ora con questo pannello la casa è calda e i consumi sono molto più bassi.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Michael S.</p>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Air Wave Smart geniale, aria sempre fresca"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                Nel nostro condominio non volevano farci installare un climatizzatore tradizionale. Questo si appende come un pannello e basta. La tecnologia ThermoPanel è fantastica, l'aria è sempre fresca senza aprire finestre. D'estate raffredda bene e d'inverno lo usiamo al posto del termosifone.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Sophie L.</p>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Perfetto contro l'umidità"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                La nostra casa è umida, soprattutto al piano terra. Con la funzione deumidificatore si sente davvero la differenza. In più scalda e raffredda, tre in uno. Miglior acquisto di quest'anno.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">David P.</p>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Silenzioso ed efficiente"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                L'ho installato in camera da letto e non si sente per niente. A differenza del vecchio climatizzatore che faceva rumore tutta la notte. Ora dormo meglio e risparmio.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Emma K.</p>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Installazione facile, nessun tecnico"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                Io e mio marito l'abbiamo installato da soli in meno di 30 minuti. Basta fissarlo alla parete con la staffa inclusa. Nessun tecnico costoso necessario.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Lisa M.</p>
+                        </div>
+
+                        <!-- Review 6 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Ottimo per la mia artrite"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                La funzione deumidificatore mi ha davvero aiutato con i dolori articolari. La casa si sente più asciutta e confortevole. Avrei voluto comprarlo prima.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Robert H.</p>
+                        </div>
+
+                        <!-- Review 7 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Calore immediato e costante"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                Lo uso principalmente d'inverno per riscaldare. Si scalda in pochi minuti e mantiene la temperatura perfetta. Non torno più ai vecchi termosifoni che ci mettevano ore.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Marco T.</p>
+                        </div>
+
+                        <!-- Review 8 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Perfetto per appartamento piccolo"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                Ho un monolocale di 45 m² e questo climatizzatore è perfetto. Lo uso sia per il caldo che per il freddo. Consuma poco e non fa rumore. Consigliato!
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Anna G.</p>
+                        </div>
+
+                        <!-- Review 9 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"App fantastica, lo controllo ovunque"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                La cosa che mi piace di più è l'app. Posso accendere il riscaldamento prima di tornare a casa e trovo sempre la casa calda. Comodissimo!
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Thomas B.</p>
+                        </div>
+
+                        <!-- Review 10 -->
+                        <div class="review-slide" style="min-width: 100%; background: linear-gradient(135deg, #FFFEFA, #FFF9F0); padding: 1.5rem; box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1); border: 1px solid #FFE5D3; border-radius: 12px;">
+                            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.75rem; color: #fbbf24; font-size: 1rem;">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-weight: 600; color: #111827; margin-bottom: 0.5rem; font-size: 1rem;">"Risparmio reale sulla bolletta"</p>
+                            <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.75rem;">
+                                Dopo 3 mesi di utilizzo posso dire che il risparmio è reale. La bolletta è scesa del 40% circa rispetto all'anno scorso quando usavo il riscaldamento a gas. Ottimo investimento.
+                            </p>
+                            <p style="color: #9ca3af; font-size: 0.875rem; font-weight: 500;">Francesco R.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Slider Arrows -->
+                <button id="prevReview" style="position: absolute; left: 5px; top: 50%; transform: translateY(-50%); background: white; border: 1px solid #e5e7eb; width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: none; align-items: center; justify-content: center; z-index: 10;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#111827" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+                <button id="nextReview" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: white; border: 1px solid #e5e7eb; width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: none; align-items: center; justify-content: center; z-index: 10;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#111827" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+
+                <!-- Dots -->
+                <div id="reviewDots" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem;">
+                    <span class="review-dot active" data-index="0" style="width: 10px; height: 10px; border-radius: 50%; background: #FFB800; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="1" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="2" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="3" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="4" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="5" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="6" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="7" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="8" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                    <span class="review-dot" data-index="9" style="width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s;"></span>
+                </div>
+            </div>
+
+            <!-- Testo Feedaty -->
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p style="color: #6b7280; font-size: 0.875rem;">
+                    Puoi leggere tutte le recensioni sul sito ufficiale di <strong style="color: #FFB800;">Feedaty</strong>.
+                </p>
+            </div>
+
+            <!-- Leave Review Button -->
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button onclick="openReviewModal()" style="background: white; color: #FFB800; padding: 0.875rem 2rem; border: 2px solid #FFB800; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                    Lascia una Recensione
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 16px; padding: 2rem; max-width: 500px; width: 90%; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative;">
+            <button onclick="closeReviewModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #9ca3af; line-height: 1;">×</button>
+            <div style="text-align: center;">
+                <div style="width: 60px; height: 60px; background: #fef3c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem;">
+                    ⚠️
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 1rem;">Solo Acquisti Verificati</h3>
+                <p style="color: #6b7280; font-size: 0.9375rem; line-height: 1.6;">
+                    Per prevenire recensioni false, solo i clienti che hanno acquistato questo prodotto possono lasciare una recensione.
+                </p>
+                <button onclick="closeReviewModal()" style="margin-top: 1.5rem; background: #16a34a; color: white; padding: 0.75rem 2rem; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer;">
+                    Ho capito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Form Section -->
+    <section id="ordina" style="background: white; padding: 4rem 1rem;">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="font-size: 2rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem;">
+                    Ordina Ora
+                </h2>
+                <p style="color: #6b7280; font-size: 1rem;">
+                    Compila il modulo e ricevi il tuo Air Wave Smart™ in 48 ore
+                </p>
+            </div>
+
+            <form onsubmit="handleFormSubmit(event)" style="background: linear-gradient(135deg, #FFF9F5, #FFF3E8); border-radius: 16px; padding: 2rem; border: 1px solid #e5e7eb;">
+                <div style="display: grid; gap: 1rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Nome *</label>
+                            <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;" placeholder="Mario">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Cognome *</label>
+                            <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;" placeholder="Rossi">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Telefono *</label>
+                        <input type="tel" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;" placeholder="+39 xxx xxx xxxx">
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Indirizzo *</label>
+                        <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;" placeholder="Via Roma 123">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                        <div>
+                            <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Città *</label>
+                            <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;" placeholder="Milano">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">CAP *</label>
+                            <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;" placeholder="20100">
+                        </div>
+                    </div>
+
+                    <button type="submit" style="width: 100%; background: #16a34a; color: white; padding: 1rem; border: none; border-radius: 12px; font-size: 1.125rem; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.5rem; box-shadow: 0 4px 12px rgba(22,163,74,0.3); transition: all 0.3s;">
+                        Conferma Ordine - €69,99
+                    </button>
+
+                    <p style="text-align: center; font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">
+                        💶 Pagamento alla consegna • 🚚 Spedizione gratuita in 48h
+                    </p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background: white; padding: 4rem 1rem;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; color: #111827;">
+                Domande Frequenti
+            </h2>
+
+            <div style="display: grid; gap: 1rem;">
+                <details style="background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid #e5e7eb;">
+                    <summary style="font-weight: 600; color: #111827; cursor: pointer; font-size: 1rem;">Quanto consuma realmente?</summary>
+                    <p style="color: #6b7280; margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.6;">Con un uso medio in modalità Eco di circa 4-5 ore al giorno, il costo operativo è di circa €0,80 al giorno. Grazie al termostato digitale e alla classe energetica A+++ puoi risparmiare fino al 60%.</p>
+                </details>
+
+                <details style="background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid #e5e7eb;">
+                    <summary style="font-weight: 600; color: #111827; cursor: pointer; font-size: 1rem;">Serve un tecnico per installarlo?</summary>
+                    <p style="color: #6b7280; margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.6;">No, l'installazione è semplice: lo fissi alla parete con la staffa inclusa oppure lo appoggi su una superficie piana.</p>
+                </details>
+
+                <details style="background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid #e5e7eb;">
+                    <summary style="font-weight: 600; color: #111827; cursor: pointer; font-size: 1rem;">Servono permessi condominiali?</summary>
+                    <p style="color: #6b7280; margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.6;">No, non c'è unità esterna. Non servono grandi fori nel muro né motori sul balcone.</p>
+                </details>
+
+                <details style="background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid #e5e7eb;">
+                    <summary style="font-weight: 600; color: #111827; cursor: pointer; font-size: 1rem;">Come funziona senza unità esterna? L'aria non si satura di CO2?</summary>
+                    <p style="color: #6b7280; margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.6;">La tecnologia Thermopanel brevettata ricicla continuamente l'aria interna, eliminando automaticamente la CO2 e mantenendo l'aria fresca e pulita. Non hai bisogno di aprire finestre o installare unità esterne. Il sistema garantisce un ambiente sempre salubre e ossigenato.</p>
+                </details>
+
+                <details style="background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid #e5e7eb;">
+                    <summary style="font-weight: 600; color: #111827; cursor: pointer; font-size: 1rem;">È rumoroso? Posso usarlo in camera da letto?</summary>
+                    <p style="color: #6b7280; margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.6;">È ultra-silenzioso grazie all'assenza del motore esterno. Perfetto per camera da letto, studio e ufficio.</p>
+                </details>
+
+                <details style="background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid #e5e7eb;">
+                    <summary style="font-weight: 600; color: #111827; cursor: pointer; font-size: 1rem;">Come funziona il controllo da smartphone?</summary>
+                    <p style="color: #6b7280; margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.6;">Scarichi l'app gratuita su iOS o Android, colleghi il dispositivo al WiFi di casa e puoi controllare temperatura, modalità e timer da qualsiasi luogo.</p>
+                </details>
+
+                <details style="background: white; border-radius: 12px; padding: 1.25rem; border: 1px solid #e5e7eb;">
+                    <summary style="font-weight: 600; color: #111827; cursor: pointer; font-size: 1rem;">E se non sono soddisfatto?</summary>
+                    <p style="color: #6b7280; margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.6;">Hai 30 giorni per restituirlo gratuitamente se non sei soddisfatto.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section style="background: linear-gradient(135deg, #16a34a, #15803d); color: white; padding: 3rem 1rem; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">
+                🔥 Scalda Casa Tua con l'Offerta Black Friday
+            </h2>
+            <p style="font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.95;">
+                Climatizzatore potente a prezzo speciale €69,99 invece di €174,98 • Spedizione gratuita
+            </p>
+            <button onclick="scrollToForm()" style="background: white; color: #16a34a; padding: 1.25rem 3rem; border: none; border-radius: 12px; font-size: 1.25rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: all 0.3s;">
+                Ordina Ora
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #111827; color: #9ca3af; padding: 2rem 1rem; text-align: center;">
+        <p style="font-size: 0.875rem;">© 2024 Air Wave Smart™ - Tutti i diritti riservati</p>
+    </footer>
+
+    <script>
+        // Image Slider
+        let currentSlide = 0;
+        const totalSlides = 6;
+        const slides = document.querySelectorAll('.slider-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const sliderImages = document.getElementById('mainSlider');
+        const prevSlideBtn = document.getElementById('prevSlide');
+        const nextSlideBtn = document.getElementById('nextSlide');
+
+        function changeSlide(index) {
+            currentSlide = index;
+            
+            if (sliderImages) {
+                sliderImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            changeSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            changeSlide(currentSlide);
+        }
+
+        if (prevSlideBtn) prevSlideBtn.addEventListener('click', prevSlide);
+        if (nextSlideBtn) nextSlideBtn.addEventListener('click', nextSlide);
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (sliderImages) {
+            sliderImages.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            sliderImages.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide();
+            }
+        }
+
+        let mouseStartX = 0;
+        let mouseEndX = 0;
+        let isDragging = false;
+
+        if (sliderImages) {
+            sliderImages.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                mouseStartX = e.clientX;
+                sliderImages.style.cursor = 'grabbing';
+            });
+
+            sliderImages.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            });
+
+            sliderImages.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                mouseEndX = e.clientX;
+                sliderImages.style.cursor = 'grab';
+                handleMouseDrag();
+            });
+
+            sliderImages.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    sliderImages.style.cursor = 'grab';
+                }
+            });
+
+            sliderImages.style.cursor = 'grab';
+        }
+
+        function handleMouseDrag() {
+            const dragThreshold = 50;
+            if (mouseEndX < mouseStartX - dragThreshold) {
+                nextSlide();
+            }
+            if (mouseEndX > mouseStartX + dragThreshold) {
+                prevSlide();
+            }
+        }
+
+        // Sticky Image Logic - Shopify Style con position: fixed
+        const productImages = document.getElementById('productImages');
+        const productSection = document.getElementById('productSection');
+
+        // Crea un placeholder per mantenere lo spazio quando fixed
+        let placeholder = null;
+
+        function handleStickyScroll() {
+            // Solo desktop
+            if (window.innerWidth < 1024) {
+                productImages.style.position = '';
+                productImages.style.top = '';
+                productImages.style.left = '';
+                productImages.style.width = '';
+                if (placeholder && placeholder.parentNode) {
+                    placeholder.parentNode.removeChild(placeholder);
+                    placeholder = null;
+                }
+                return;
+            }
+
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const sectionRect = productSection.getBoundingClientRect();
+            const sectionTop = productSection.offsetTop;
+            const sectionHeight = productSection.offsetHeight;
+            const imagesHeight = productImages.offsetHeight;
+            const headerOffset = 80;
+
+            // Calcola padding della sezione (3rem = 48px su desktop)
+            const sectionPaddingTop = 48; // 3rem
+
+            // Larghezza dell'immagine (metà del container)
+            const containerWidth = productSection.offsetWidth;
+            const imageWidth = (containerWidth - 64) / 2; // 64 = gap tra le colonne
+            const imageLeft = productSection.getBoundingClientRect().left + (window.pageXOffset || document.documentElement.scrollLeft);
+
+            // Calcola il limite inferiore
+            const sectionBottom = sectionTop + sectionHeight;
+            const limitBottom = sectionBottom - imagesHeight - sectionPaddingTop;
+
+            if (scrollTop >= sectionTop - headerOffset && scrollTop < limitBottom - headerOffset) {
+                // Fixed position
+                productImages.style.position = 'fixed';
+                productImages.style.top = (headerOffset + sectionPaddingTop) + 'px';
+                productImages.style.left = imageLeft + 'px';
+                productImages.style.width = imageWidth + 'px';
+
+                // Crea placeholder se non esiste
+                if (!placeholder) {
+                    placeholder = document.createElement('div');
+                    placeholder.style.height = imagesHeight + 'px';
+                    placeholder.style.width = '100%';
+                    productImages.parentNode.insertBefore(placeholder, productImages);
+                }
+            } else if (scrollTop >= limitBottom - headerOffset) {
+                // Absolute position alla fine
+                productImages.style.position = 'absolute';
+                productImages.style.top = (limitBottom - sectionTop) + 'px';
+                productImages.style.left = '0';
+                productImages.style.width = imageWidth + 'px';
+
+                // Mantieni placeholder anche qui
+                if (!placeholder) {
+                    placeholder = document.createElement('div');
+                    placeholder.style.height = imagesHeight + 'px';
+                    placeholder.style.width = '100%';
+                    productImages.parentNode.insertBefore(placeholder, productImages);
+                }
+            } else {
+                // Normale position
+                productImages.style.position = 'relative';
+                productImages.style.top = '';
+                productImages.style.left = '';
+                productImages.style.width = '';
+
+                // Rimuovi placeholder
+                if (placeholder && placeholder.parentNode) {
+                    placeholder.parentNode.removeChild(placeholder);
+                    placeholder = null;
+                }
+            }
+        }
+
+        // Esegui durante lo scroll
+        window.addEventListener('scroll', handleStickyScroll, { passive: true });
+
+        // Esegui al resize
+        window.addEventListener('resize', handleStickyScroll);
+
+        // Esegui al caricamento
+        handleStickyScroll();
+
+        // Reviews Slider
+        let currentReview = 0;
+        const totalReviews = 10;
+        const reviewsTrack = document.getElementById('reviewsTrack');
+        const prevReviewBtn = document.getElementById('prevReview');
+        const nextReviewBtn = document.getElementById('nextReview');
+        const reviewDots = document.querySelectorAll('.review-dot');
+
+        function updateReviewSlider() {
+            reviewsTrack.style.transform = `translateX(-${currentReview * 100}%)`;
+            
+            reviewDots.forEach((dot, index) => {
+                if (index === currentReview) {
+                    dot.style.background = '#FFB800';
+                } else {
+                    dot.style.background = '#d1d5db';
+                }
+            });
+        }
+
+        function nextReview() {
+            currentReview = (currentReview + 1) % totalReviews;
+            updateReviewSlider();
+        }
+
+        function prevReview() {
+            currentReview = (currentReview - 1 + totalReviews) % totalReviews;
+            updateReviewSlider();
+        }
+
+        nextReviewBtn.addEventListener('click', nextReview);
+        prevReviewBtn.addEventListener('click', prevReview);
+
+        reviewDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentReview = index;
+                updateReviewSlider();
+            });
+        });
+
+        setInterval(nextReview, 5000);
+
+        // Review Modal
+        function openReviewModal() {
+            document.getElementById('reviewModal').style.display = 'flex';
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').style.display = 'none';
+        }
+
+        document.getElementById('reviewModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReviewModal();
+            }
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Grazie per il tuo ordine! Ti contatteremo entro 24 ore per confermare la spedizione.');
+            event.target.reset();
+        }
+
+        function scrollToForm() {
+            const formSection = document.getElementById('ordina');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Why Choose Slider
+        let currentWhyChoose = 0;
+        const totalWhyChoose = 5;
+        const whyChooseSlider = document.getElementById('whyChooseSlider');
+        const prevWhyChooseBtn = document.getElementById('prevWhyChoose');
+        const nextWhyChooseBtn = document.getElementById('nextWhyChoose');
+        const currentSlideNumber = document.getElementById('currentSlideNumber');
+        let whyChooseAutoplay = null;
+        let isWhyChooseSliding = false;
+
+        function updateWhyChooseSlider() {
+            whyChooseSlider.style.transform = `translateX(-${currentWhyChoose * 100}%)`;
+            if (currentSlideNumber) {
+                currentSlideNumber.textContent = currentWhyChoose + 1;
+            }
+        }
+
+        function nextWhyChoose() {
+            if (isWhyChooseSliding) return;
+            isWhyChooseSliding = true;
+            currentWhyChoose = (currentWhyChoose + 1) % totalWhyChoose;
+            updateWhyChooseSlider();
+            setTimeout(() => {
+                isWhyChooseSliding = false;
+            }, 600);
+        }
+
+        function prevWhyChoose() {
+            if (isWhyChooseSliding) return;
+            isWhyChooseSliding = true;
+            currentWhyChoose = (currentWhyChoose - 1 + totalWhyChoose) % totalWhyChoose;
+            updateWhyChooseSlider();
+            setTimeout(() => {
+                isWhyChooseSliding = false;
+            }, 600);
+        }
+
+        function startWhyChooseAutoplay() {
+            whyChooseAutoplay = setInterval(nextWhyChoose, 5000);
+        }
+
+        function stopWhyChooseAutoplay() {
+            if (whyChooseAutoplay) {
+                clearInterval(whyChooseAutoplay);
+                whyChooseAutoplay = null;
+            }
+        }
+
+        if (prevWhyChooseBtn && nextWhyChooseBtn) {
+            prevWhyChooseBtn.addEventListener('click', () => {
+                stopWhyChooseAutoplay();
+                prevWhyChoose();
+            });
+
+            nextWhyChooseBtn.addEventListener('click', () => {
+                stopWhyChooseAutoplay();
+                nextWhyChoose();
+            });
+        }
+
+        // Avvia autoscorrimento
+        startWhyChooseAutoplay();
+    </script>

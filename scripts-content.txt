@@ -1,0 +1,332 @@
+
+        // Image Slider
+        let currentSlide = 0;
+        const totalSlides = 6;
+        const slides = document.querySelectorAll('.slider-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const sliderImages = document.getElementById('mainSlider');
+        const prevSlideBtn = document.getElementById('prevSlide');
+        const nextSlideBtn = document.getElementById('nextSlide');
+
+        function changeSlide(index) {
+            currentSlide = index;
+            
+            if (sliderImages) {
+                sliderImages.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            changeSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            changeSlide(currentSlide);
+        }
+
+        if (prevSlideBtn) prevSlideBtn.addEventListener('click', prevSlide);
+        if (nextSlideBtn) nextSlideBtn.addEventListener('click', nextSlide);
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (sliderImages) {
+            sliderImages.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            sliderImages.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide();
+            }
+        }
+
+        let mouseStartX = 0;
+        let mouseEndX = 0;
+        let isDragging = false;
+
+        if (sliderImages) {
+            sliderImages.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                mouseStartX = e.clientX;
+                sliderImages.style.cursor = 'grabbing';
+            });
+
+            sliderImages.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            });
+
+            sliderImages.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                mouseEndX = e.clientX;
+                sliderImages.style.cursor = 'grab';
+                handleMouseDrag();
+            });
+
+            sliderImages.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    sliderImages.style.cursor = 'grab';
+                }
+            });
+
+            sliderImages.style.cursor = 'grab';
+        }
+
+        function handleMouseDrag() {
+            const dragThreshold = 50;
+            if (mouseEndX < mouseStartX - dragThreshold) {
+                nextSlide();
+            }
+            if (mouseEndX > mouseStartX + dragThreshold) {
+                prevSlide();
+            }
+        }
+
+        // Sticky Image Logic - Shopify Style con position: fixed
+        const productImages = document.getElementById('productImages');
+        const productSection = document.getElementById('productSection');
+
+        // Crea un placeholder per mantenere lo spazio quando fixed
+        let placeholder = null;
+
+        function handleStickyScroll() {
+            // Solo desktop
+            if (window.innerWidth < 1024) {
+                productImages.style.position = '';
+                productImages.style.top = '';
+                productImages.style.left = '';
+                productImages.style.width = '';
+                if (placeholder && placeholder.parentNode) {
+                    placeholder.parentNode.removeChild(placeholder);
+                    placeholder = null;
+                }
+                return;
+            }
+
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const sectionRect = productSection.getBoundingClientRect();
+            const sectionTop = productSection.offsetTop;
+            const sectionHeight = productSection.offsetHeight;
+            const imagesHeight = productImages.offsetHeight;
+            const headerOffset = 80;
+
+            // Calcola padding della sezione (3rem = 48px su desktop)
+            const sectionPaddingTop = 48; // 3rem
+
+            // Larghezza dell'immagine (metà del container)
+            const containerWidth = productSection.offsetWidth;
+            const imageWidth = (containerWidth - 64) / 2; // 64 = gap tra le colonne
+            const imageLeft = productSection.getBoundingClientRect().left + (window.pageXOffset || document.documentElement.scrollLeft);
+
+            // Calcola il limite inferiore
+            const sectionBottom = sectionTop + sectionHeight;
+            const limitBottom = sectionBottom - imagesHeight - sectionPaddingTop;
+
+            if (scrollTop >= sectionTop - headerOffset && scrollTop < limitBottom - headerOffset) {
+                // Fixed position
+                productImages.style.position = 'fixed';
+                productImages.style.top = (headerOffset + sectionPaddingTop) + 'px';
+                productImages.style.left = imageLeft + 'px';
+                productImages.style.width = imageWidth + 'px';
+
+                // Crea placeholder se non esiste
+                if (!placeholder) {
+                    placeholder = document.createElement('div');
+                    placeholder.style.height = imagesHeight + 'px';
+                    placeholder.style.width = '100%';
+                    productImages.parentNode.insertBefore(placeholder, productImages);
+                }
+            } else if (scrollTop >= limitBottom - headerOffset) {
+                // Absolute position alla fine
+                productImages.style.position = 'absolute';
+                productImages.style.top = (limitBottom - sectionTop) + 'px';
+                productImages.style.left = '0';
+                productImages.style.width = imageWidth + 'px';
+
+                // Mantieni placeholder anche qui
+                if (!placeholder) {
+                    placeholder = document.createElement('div');
+                    placeholder.style.height = imagesHeight + 'px';
+                    placeholder.style.width = '100%';
+                    productImages.parentNode.insertBefore(placeholder, productImages);
+                }
+            } else {
+                // Normale position
+                productImages.style.position = 'relative';
+                productImages.style.top = '';
+                productImages.style.left = '';
+                productImages.style.width = '';
+
+                // Rimuovi placeholder
+                if (placeholder && placeholder.parentNode) {
+                    placeholder.parentNode.removeChild(placeholder);
+                    placeholder = null;
+                }
+            }
+        }
+
+        // Esegui durante lo scroll
+        window.addEventListener('scroll', handleStickyScroll, { passive: true });
+
+        // Esegui al resize
+        window.addEventListener('resize', handleStickyScroll);
+
+        // Esegui al caricamento
+        handleStickyScroll();
+
+        // Reviews Slider
+        let currentReview = 0;
+        const totalReviews = 10;
+        const reviewsTrack = document.getElementById('reviewsTrack');
+        const prevReviewBtn = document.getElementById('prevReview');
+        const nextReviewBtn = document.getElementById('nextReview');
+        const reviewDots = document.querySelectorAll('.review-dot');
+
+        function updateReviewSlider() {
+            reviewsTrack.style.transform = `translateX(-${currentReview * 100}%)`;
+            
+            reviewDots.forEach((dot, index) => {
+                if (index === currentReview) {
+                    dot.style.background = '#FFB800';
+                } else {
+                    dot.style.background = '#d1d5db';
+                }
+            });
+        }
+
+        function nextReview() {
+            currentReview = (currentReview + 1) % totalReviews;
+            updateReviewSlider();
+        }
+
+        function prevReview() {
+            currentReview = (currentReview - 1 + totalReviews) % totalReviews;
+            updateReviewSlider();
+        }
+
+        nextReviewBtn.addEventListener('click', nextReview);
+        prevReviewBtn.addEventListener('click', prevReview);
+
+        reviewDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentReview = index;
+                updateReviewSlider();
+            });
+        });
+
+        setInterval(nextReview, 5000);
+
+        // Review Modal
+        function openReviewModal() {
+            document.getElementById('reviewModal').style.display = 'flex';
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').style.display = 'none';
+        }
+
+        document.getElementById('reviewModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReviewModal();
+            }
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Grazie per il tuo ordine! Ti contatteremo entro 24 ore per confermare la spedizione.');
+            event.target.reset();
+        }
+
+        function scrollToForm() {
+            const formSection = document.getElementById('ordina');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Why Choose Slider
+        let currentWhyChoose = 0;
+        const totalWhyChoose = 5;
+        const whyChooseSlider = document.getElementById('whyChooseSlider');
+        const prevWhyChooseBtn = document.getElementById('prevWhyChoose');
+        const nextWhyChooseBtn = document.getElementById('nextWhyChoose');
+        const currentSlideNumber = document.getElementById('currentSlideNumber');
+        let whyChooseAutoplay = null;
+        let isWhyChooseSliding = false;
+
+        function updateWhyChooseSlider() {
+            whyChooseSlider.style.transform = `translateX(-${currentWhyChoose * 100}%)`;
+            if (currentSlideNumber) {
+                currentSlideNumber.textContent = currentWhyChoose + 1;
+            }
+        }
+
+        function nextWhyChoose() {
+            if (isWhyChooseSliding) return;
+            isWhyChooseSliding = true;
+            currentWhyChoose = (currentWhyChoose + 1) % totalWhyChoose;
+            updateWhyChooseSlider();
+            setTimeout(() => {
+                isWhyChooseSliding = false;
+            }, 600);
+        }
+
+        function prevWhyChoose() {
+            if (isWhyChooseSliding) return;
+            isWhyChooseSliding = true;
+            currentWhyChoose = (currentWhyChoose - 1 + totalWhyChoose) % totalWhyChoose;
+            updateWhyChooseSlider();
+            setTimeout(() => {
+                isWhyChooseSliding = false;
+            }, 600);
+        }
+
+        function startWhyChooseAutoplay() {
+            whyChooseAutoplay = setInterval(nextWhyChoose, 5000);
+        }
+
+        function stopWhyChooseAutoplay() {
+            if (whyChooseAutoplay) {
+                clearInterval(whyChooseAutoplay);
+                whyChooseAutoplay = null;
+            }
+        }
+
+        if (prevWhyChooseBtn && nextWhyChooseBtn) {
+            prevWhyChooseBtn.addEventListener('click', () => {
+                stopWhyChooseAutoplay();
+                prevWhyChoose();
+            });
+
+            nextWhyChooseBtn.addEventListener('click', () => {
+                stopWhyChooseAutoplay();
+                nextWhyChoose();
+            });
+        }
+
+        // Avvia autoscorrimento
+        startWhyChooseAutoplay();
+    
