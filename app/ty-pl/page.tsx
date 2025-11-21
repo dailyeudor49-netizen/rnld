@@ -6,13 +6,21 @@ export default function ThankYouPage() {
   const [orderCode, setOrderCode] = useState('');
 
   useEffect(() => {
-    const stored = sessionStorage.getItem('orderCode');
-    if (stored) {
-      setOrderCode(stored);
-    } else {
-      const newCode = 'ATV-' + Math.floor(100000 + Math.random() * 900000).toString();
-      sessionStorage.setItem('orderCode', newCode);
-      setOrderCode(newCode);
+    let code = sessionStorage.getItem('orderCode');
+    if (!code) {
+      code = 'ATV-' + Math.floor(100000 + Math.random() * 900000).toString();
+      sessionStorage.setItem('orderCode', code);
+    }
+    setOrderCode(code);
+
+    // Google Ads Conversion Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-17746256753/H1fTCJyYsMQbEPHGiY5C',
+        'value': 209.0,
+        'currency': 'PLN',
+        'transaction_id': code
+      });
     }
   }, []);
 
@@ -57,7 +65,7 @@ export default function ThankYouPage() {
           color: '#111827',
           marginBottom: '0.5rem'
         }}>
-          Ordine Confermato!
+          Zamówienie Potwierdzone!
         </h1>
 
         <p style={{
@@ -66,7 +74,7 @@ export default function ThankYouPage() {
           marginBottom: '1.5rem',
           lineHeight: 1.5
         }}>
-          La tua Antenna Smart TV Premium è in preparazione e sarà spedita a breve.
+          Twoja Antena Smart TV Premium jest przygotowywana i wkrótce zostanie wysłana.
         </p>
 
         {/* Order code */}
@@ -77,7 +85,7 @@ export default function ThankYouPage() {
           marginBottom: '1.5rem',
           border: '2px solid #16a34a'
         }}>
-          <div style={{ fontSize: '0.8rem', color: '#166534', fontWeight: 600, marginBottom: '0.25rem' }}>NUMERO ORDINE</div>
+          <div style={{ fontSize: '0.8rem', color: '#166534', fontWeight: 600, marginBottom: '0.25rem' }}>NUMER ZAMÓWIENIA</div>
           <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#16a34a', letterSpacing: '1px', fontFamily: 'monospace' }}>{orderCode}</div>
         </div>
 
@@ -89,29 +97,29 @@ export default function ThankYouPage() {
           marginBottom: '1.5rem',
           textAlign: 'left'
         }}>
-          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1E293B', marginBottom: '1rem' }}>📦 Prossimi passi:</div>
+          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1E293B', marginBottom: '1rem' }}>📦 Kolejne kroki:</div>
 
           <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ width: '24px', height: '24px', background: '#16a34a', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>1</div>
             <div>
-              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Preparazione ordine</div>
-              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>Oggi</div>
+              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Przygotowanie zamówienia</div>
+              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>Dziś</div>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ width: '24px', height: '24px', background: '#94a3b8', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>2</div>
             <div>
-              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Spedizione</div>
-              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>Entro 24 ore</div>
+              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Wysyłka</div>
+              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>W ciągu 24 godzin</div>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: '0.75rem' }}>
             <div style={{ width: '24px', height: '24px', background: '#94a3b8', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>3</div>
             <div>
-              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Consegna</div>
-              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>2-3 giorni lavorativi</div>
+              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Dostawa</div>
+              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>2-3 dni robocze</div>
             </div>
           </div>
         </div>
@@ -129,8 +137,8 @@ export default function ThankYouPage() {
         }}>
           <span style={{ fontSize: '1.5rem' }}>💰</span>
           <div>
-            <div style={{ fontWeight: 600, color: '#92400e', fontSize: '0.9rem' }}>Pagamento alla consegna</div>
-            <div style={{ color: '#a16207', fontSize: '0.8rem' }}>Prepara l'importo esatto per il corriere</div>
+            <div style={{ fontWeight: 600, color: '#92400e', fontSize: '0.9rem' }}>Płatność przy odbiorze</div>
+            <div style={{ color: '#a16207', fontSize: '0.8rem' }}>Przygotuj dokładną kwotę dla kuriera</div>
           </div>
         </div>
 
@@ -140,7 +148,7 @@ export default function ThankYouPage() {
           color: '#64748b',
           marginBottom: '1.5rem'
         }}>
-          Domande? Contattaci a <a href="mailto:info@ketronica.com" style={{ color: '#16a34a', fontWeight: 600, textDecoration: 'none' }}>info@ketronica.com</a>
+          Pytania? Skontaktuj się z nami: <a href="mailto:info@ketronica.com" style={{ color: '#16a34a', fontWeight: 600, textDecoration: 'none' }}>info@ketronica.com</a>
         </div>
 
         <a href="/" style={{
@@ -153,7 +161,7 @@ export default function ThankYouPage() {
           fontWeight: 600,
           textDecoration: 'none'
         }}>
-          Torna alla Home
+          Wróć do strony głównej
         </a>
       </div>
     </div>
