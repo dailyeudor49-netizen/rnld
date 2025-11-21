@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Antenna Smart TV Premium - TV Gratis Senza Abbonamenti | Ketronica",
-  description: "Guarda la TV gratis in 4K/HD senza abbonamenti. Antenna Smart TV con ricezione 360°, installazione facile. Spedizione gratuita, pagamento alla consegna.",
+  title: "Antena Smart TV Premium - Darmowa TV Bez Abonamentu | Ketronica",
+  description: "Oglądaj TV za darmo w 4K/HD bez abonamentu. Antena Smart TV z odbiorem 360°, łatwa instalacja. Darmowa wysyłka, płatność przy odbiorze.",
 };
 
 export default function DongleLayout({

@@ -187,7 +187,7 @@ export default function AntennaLandingPage() {
               <div className="w-full h-full rounded-lg overflow-hidden bg-slate-100">
                 <img
                   src={productImages[currentSlide]}
-                  alt="Antenna TV"
+                  alt="Antena TV"
                   className="w-full h-full object-cover"
                 />
                 </div>
@@ -207,7 +207,7 @@ export default function AntennaLandingPage() {
                       currentSlide === idx ? 'border-blue-500' : 'border-slate-200'
                     } bg-white`}
                   >
-                    <img src={src} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                    <img src={src} alt={`Miniatura ${idx + 1}`} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -789,7 +789,7 @@ export default function AntennaLandingPage() {
 
             <div style={{ background: 'rgba(255,255,255,0.05)', padding: '1.25rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)' }}>
               <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', alignItems: 'center' }}>
-                <img src="/images/dongle/1.jpg" alt="Prod" style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover' }} />
+                <img src="/images/dongle/1.jpg" alt="Produkt" style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover' }} />
                 <div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>Antena Smart TV Premium</div>
                   <div style={{ color: '#94a3b8', fontSize: '0.9rem' }}>W zestawie Kabel Premium + Zestaw Montażowy</div>
