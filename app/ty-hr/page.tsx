@@ -25,7 +25,7 @@ export default function ThankYouPage() {
     // Google Ads Conversion Tracking
     const alreadyTracked = sessionStorage.getItem('conversionTracked');
     if (typeof window !== 'undefined' && !alreadyTracked) {
-      const transactionId = sessionStorage.getItem('orderCode') || newCode;
+      const transactionId = sessionStorage.getItem('orderCode') || Math.floor(100000 + Math.random() * 900000).toString();
 
       // Load gtag script
       const script = document.createElement('script');
