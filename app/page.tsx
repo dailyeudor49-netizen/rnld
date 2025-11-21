@@ -4,228 +4,243 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[600px] bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200')] bg-cover bg-center opacity-20" />
-        <div className="relative container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Home Appliances & Essentials
-            </h1>
-            <p className="text-xl text-white/95 mb-8">
-              From air conditioners to kitchen appliances. Quality products for modern living, delivered across Europe.
-            </p>
+      <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200')] bg-cover bg-center opacity-15" />
+        <div className="relative max-w-[1600px] mx-auto px-4 md:px-6 py-24 md:py-32">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block px-4 py-1 bg-white/20 text-white text-sm font-medium rounded-full mb-6">
+                Trusted by thousands across Europe
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Smart Home Solutions for Modern Living
+              </h1>
+              <p className="text-lg md:text-xl text-white/90 mb-8">
+                Premium appliances delivered to your door. From climate control to kitchen essentials.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  Get in Touch
+                </Link>
+                <Link
+                  href="/shipping"
+                  className="px-6 py-3 bg-transparent text-white font-semibold border-2 border-white/50 rounded-lg hover:bg-white/10 transition-colors"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/20 rounded-xl p-4 text-center">
+                    <div className="text-3xl font-bold text-white">24-48h</div>
+                    <div className="text-white/80 text-sm">Fast Delivery</div>
+                  </div>
+                  <div className="bg-white/20 rounded-xl p-4 text-center">
+                    <div className="text-3xl font-bold text-white">30</div>
+                    <div className="text-white/80 text-sm">Days Return</div>
+                  </div>
+                  <div className="bg-white/20 rounded-xl p-4 text-center">
+                    <div className="text-3xl font-bold text-white">COD</div>
+                    <div className="text-white/80 text-sm">Pay on Delivery</div>
+                  </div>
+                  <div className="bg-white/20 rounded-xl p-4 text-center">
+                    <div className="text-3xl font-bold text-white">2yr</div>
+                    <div className="text-white/80 text-sm">Warranty</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Welcome to Ionizi</h2>
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-            Your trusted destination for home appliances and everyday essentials. We offer a carefully selected range of air conditioners, heaters, kitchen appliances, and small household devices that make your life easier.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            From cooling solutions to practical utilities, we bring quality and convenience to your doorstep with fast delivery across Europe.
-          </p>
+      {/* Features Bar */}
+      <section className="bg-gray-900 text-white">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="flex items-center justify-center gap-3">
+              <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span className="text-sm font-medium">Free Shipping</span>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span className="text-sm font-medium">Quality Guarantee</span>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <span className="text-sm font-medium">Cash on Delivery</span>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <span className="text-sm font-medium">Easy Returns</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Product Categories */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What We Offer</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Product Range</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover our range of quality appliances and home essentials
+              Everything you need for a comfortable home, all in one place
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-40 bg-[url('https://www.asterservice.it/images/2020/08/31/clima-3.jpg')] bg-cover bg-center"></div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Air Conditioners</h3>
-                <p className="text-gray-600 text-sm">
-                  Portable and wall-mounted AC units for every room size. Stay cool all summer long.
-                </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 h-64">
+              <div className="absolute inset-0 bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9UC2jnDXxVaulW9JTuY7xQ98Vx_bgElaWhw&s')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity" />
+              <div className="relative z-10 h-full flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white mb-2">Air Conditioners</h3>
+                <p className="text-white/80 text-sm">Portable & wall-mounted units</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-40 bg-[url('https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRTpmVDRoD16G-ylTgk0-Ca4KJ_aDCZ5S8DC2lYLlQjNbHdlzEUhY96IsiDSVygUIoHkNh9bIL7FuKYW242S-VCeha4X_RigGt4Uhuso7HUdEwAGpf92fpj')] bg-cover bg-center"></div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Heaters & Fans</h3>
-                <p className="text-gray-600 text-sm">
-                  Electric heaters, fan heaters, and ventilation solutions for optimal comfort.
-                </p>
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-600 p-6 h-64">
+              <div className="absolute inset-0 bg-[url('https://www.gruppomade.com/wp-content/uploads/2022/04/termosifoni-elettrici.jpg')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity" />
+              <div className="relative z-10 h-full flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white mb-2">Heaters & Fans</h3>
+                <p className="text-white/80 text-sm">Year-round climate control</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-40 bg-[url('https://images.unsplash.com/photo-1585515320310-259814833e62?w=300')] bg-cover bg-center"></div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Kitchen Appliances</h3>
-                <p className="text-gray-600 text-sm">
-                  Blenders, toasters, coffee makers, and essential kitchen gadgets for your home.
-                </p>
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-6 h-64">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity" />
+              <div className="relative z-10 h-full flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white mb-2">Kitchen Appliances</h3>
+                <p className="text-white/80 text-sm">Blenders, mixers & more</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-40 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300')] bg-cover bg-center"></div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Small Appliances</h3>
-                <p className="text-gray-600 text-sm">
-                  Vacuum cleaners, humidifiers, dehumidifiers, and more practical devices.
-                </p>
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-600 to-slate-800 p-6 h-64">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558317374-067fb5f30001?w=400')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity" />
+              <div className="relative z-10 h-full flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white mb-2">Home Devices</h3>
+                <p className="text-white/80 text-sm">Vacuums, humidifiers & more</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Products Banner */}
-      <section className="py-20 bg-gradient-to-r from-orange-600 to-amber-500">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <span className="text-sm font-semibold tracking-wide uppercase opacity-90">Popular This Season</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-              Air Conditioning Solutions
-            </h2>
-            <p className="text-lg mb-8 opacity-95">
-              Beat the heat with our selection of portable and fixed air conditioners. Energy-efficient models suitable for any room size, from compact units to powerful cooling systems.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm font-medium">
-              <span className="px-4 py-2 bg-white/20 rounded-full backdrop-blur">Portable AC Units</span>
-              <span className="px-4 py-2 bg-white/20 rounded-full backdrop-blur">Split Systems</span>
-              <span className="px-4 py-2 bg-white/20 rounded-full backdrop-blur">Energy Efficient</span>
-              <span className="px-4 py-2 bg-white/20 rounded-full backdrop-blur">Easy Installation</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Examples */}
-      <section className="py-20 container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popular Products</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Browse our most sought-after appliances and home essentials
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-full h-48 bg-[url('https://www.asterservice.it/images/2020/08/31/clima-3.jpg')] bg-cover bg-center"></div>
-            <div className="p-6 text-center">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Portable Air Conditioners</h3>
-              <p className="text-sm text-gray-600 mb-3">7000-12000 BTU units, perfect for any room</p>
-              <span className="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">Bestseller</span>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-full h-48 bg-[url('https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRTpmVDRoD16G-ylTgk0-Ca4KJ_aDCZ5S8DC2lYLlQjNbHdlzEUhY96IsiDSVygUIoHkNh9bIL7FuKYW242S-VCeha4X_RigGt4Uhuso7HUdEwAGpf92fpj')] bg-cover bg-center"></div>
-            <div className="p-6 text-center">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Electric Heaters</h3>
-              <p className="text-sm text-gray-600 mb-3">Ceramic and oil-filled radiator heaters</p>
-              <span className="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">Winter Ready</span>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-full h-48 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400')] bg-cover bg-center"></div>
-            <div className="p-6 text-center">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Kitchen Essentials</h3>
-              <p className="text-sm text-gray-600 mb-3">Blenders, mixers, and food processors</p>
-              <span className="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">Top Rated</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Ionizi</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              We make appliance shopping simple, reliable, and convenient
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+      {/* About / Welcome */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Welcome to Ketronica</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Your trusted partner for home appliances and everyday essentials. We carefully select quality products that combine performance, durability, and value.
+              </p>
+              <p className="text-gray-600 mb-8">
+                With fast delivery across Europe and hassle-free cash on delivery, shopping for your home has never been easier.
+              </p>
+              <div className="flex flex-wrap gap-6">
+                <div>
+                  <div className="text-3xl font-bold text-blue-600">10k+</div>
+                  <div className="text-gray-500 text-sm">Happy Customers</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-blue-600">25+</div>
+                  <div className="text-gray-500 text-sm">Countries Served</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-blue-600">98%</div>
+                  <div className="text-gray-500 text-sm">Satisfaction Rate</div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Europe-Wide Delivery</h3>
-              <p className="text-gray-600">Fast and reliable shipping to all European countries</p>
             </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-1">Fast Delivery</h3>
+                <p className="text-sm text-gray-500">24-48h across Europe</p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Cash on Delivery</h3>
-              <p className="text-gray-600">Pay conveniently when you receive your order</p>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white mb-4">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-1">2 Year Warranty</h3>
+                <p className="text-sm text-gray-500">On all products</p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Quality Guarantee</h3>
-              <p className="text-gray-600">Certified appliances with warranty and support</p>
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-1">Pay on Delivery</h3>
+                <p className="text-sm text-gray-500">Cash or card</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-1">30 Day Returns</h3>
+                <p className="text-sm text-gray-500">No questions asked</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Upgrade Your Home?
+      <section className="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-cyan-500">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Ready to Get Started?
           </h2>
-          <p className="text-xl text-white/95 mb-8 max-w-2xl mx-auto">
-            Explore our range of quality appliances. From air conditioners to kitchen essentials, we have everything you need.
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Browse our products or get in touch with our team for personalized recommendations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-full hover:bg-gray-50 transition-colors inline-block"
+              className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               Contact Us
             </Link>
             <Link
               href="/shipping"
-              className="px-8 py-4 bg-transparent text-white font-semibold border-2 border-white rounded-full hover:bg-white hover:text-orange-600 transition-colors inline-block"
+              className="px-8 py-4 bg-transparent text-white font-semibold border-2 border-white rounded-lg hover:bg-white/10 transition-colors"
             >
-              Shipping Information
+              Shipping Info
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Info Banner */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-gray-700 mb-4">
-              Have questions? Visit our <Link href="/contact" className="text-orange-600 font-semibold underline hover:no-underline">Contact page</Link> or check our <Link href="/shipping" className="text-orange-600 font-semibold underline hover:no-underline">Shipping & Returns policy</Link>.
-            </p>
-            <p className="text-sm text-gray-600">
-              For more information, please review our <Link href="/terms" className="underline hover:text-orange-600">Terms of Service</Link> and <Link href="/privacy" className="underline hover:text-orange-600">Privacy Policy</Link>.
-            </p>
-          </div>
+      {/* Footer Links */}
+      <section className="py-8 bg-gray-100">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 text-center">
+          <p className="text-gray-600 text-sm">
+            Need help? Visit our <Link href="/contact" className="text-blue-600 font-medium hover:underline">Contact page</Link> ·
+            <Link href="/shipping" className="text-blue-600 font-medium hover:underline ml-1">Shipping & Returns</Link> ·
+            <Link href="/terms" className="text-blue-600 font-medium hover:underline ml-1">Terms</Link> ·
+            <Link href="/privacy" className="text-blue-600 font-medium hover:underline ml-1">Privacy</Link>
+          </p>
         </div>
       </section>
     </main>

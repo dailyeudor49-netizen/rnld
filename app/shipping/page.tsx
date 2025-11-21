@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Shipping & Returns - Ionizi',
+  title: 'Shipping & Returns - Ketronica',
   description: 'Learn about our European shipping methods, delivery times, and return policy',
 };
 
@@ -34,9 +34,9 @@ export default function ShippingPage() {
 
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-black mb-4">Shipping Methods & Delivery Times</h3>
-              <div className="bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-200 rounded-lg p-6 mb-4">
+              <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-lg p-6 mb-4">
                 <div className="flex items-center justify-center mb-4">
-                  <svg className="w-12 h-12 text-orange-600 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   <div>
@@ -128,7 +128,7 @@ export default function ShippingPage() {
               <h3 className="text-2xl font-bold text-black mb-4">How to Return an Item</h3>
               <ol className="list-decimal pl-6 mb-4 text-gray-700 space-y-3">
                 <li>
-                  <strong>Contact Us:</strong> Email us at returns@ionizi.com or use our <Link href="/contact" className="text-black underline hover:no-underline">Contact form</Link> with your order number and reason for return.
+                  <strong>Contact Us:</strong> Email us at returns@ketronica.com or use our <Link href="/contact" className="text-black underline hover:no-underline">Contact form</Link> with your order number and reason for return.
                 </li>
                 <li>
                   <strong>Return Authorization:</strong> We will provide you with return instructions and, if applicable, a return authorization number.
@@ -242,7 +242,7 @@ export default function ShippingPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-block px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 text-white font-semibold rounded-full hover:from-orange-700 hover:to-amber-600 transition-colors"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-full hover:from-orange-700 hover:to-amber-600 transition-colors"
             >
               Contact Us
             </Link>

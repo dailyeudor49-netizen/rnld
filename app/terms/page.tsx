@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms of Service - Ionizi',
-  description: 'Read our terms of service and conditions for using Ionizi',
+  title: 'Terms of Service - Ketronica',
+  description: 'Read our terms of service and conditions for using Ketronica',
 };
 
 export default function TermsPage() {
@@ -24,19 +24,19 @@ export default function TermsPage() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-black mb-4">1. Agreement to Terms</h2>
             <p className="text-gray-700 mb-4">
-              By accessing and using Ionizi, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the terms of this agreement, you are not authorized to access or use Ionizi.
+              By accessing and using Ketronica, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the terms of this agreement, you are not authorized to access or use Ketronica.
             </p>
           </section>
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-black mb-4">2. Use License</h2>
             <p className="text-gray-700 mb-4">
-              Permission is granted to temporarily access the materials on Ionizi for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+              Permission is granted to temporarily access the materials on Ketronica for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-2">
               <li>Modify or copy the materials</li>
               <li>Use the materials for any commercial purpose or for any public display</li>
-              <li>Attempt to reverse engineer any software contained on Ionizi</li>
+              <li>Attempt to reverse engineer any software contained on Ketronica</li>
               <li>Remove any copyright or other proprietary notations from the materials</li>
               <li>Transfer the materials to another person or mirror the materials on any other server</li>
             </ul>
@@ -89,14 +89,14 @@ export default function TermsPage() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-black mb-4">8. Limitation of Liability</h2>
             <p className="text-gray-700 mb-4">
-              In no event shall Ionizi or its suppliers be liable for any damages arising out of the use or inability to use the materials on Ionizi, even if Ionizi or an authorized representative has been notified of the possibility of such damage.
+              In no event shall Ketronica or its suppliers be liable for any damages arising out of the use or inability to use the materials on Ketronica, even if Ketronica or an authorized representative has been notified of the possibility of such damage.
             </p>
           </section>
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-black mb-4">9. Modifications to Terms</h2>
             <p className="text-gray-700 mb-4">
-              Ionizi may revise these terms of service at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.
+              Ketronica may revise these terms of service at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.
             </p>
           </section>
 

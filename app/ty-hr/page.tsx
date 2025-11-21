@@ -114,7 +114,7 @@ export default function ThankYouPage() {
           border: '1px solid #FFDAA3'
         }}>
           <div style={{ fontSize: '0.875rem', color: '#92400e', marginBottom: '0.25rem' }}>Broj narudžbe</div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 800, color: '#FF8C00', letterSpacing: '2px' }}>{orderCode}</div>
+          <div style={{ fontSize: '1.75rem', fontWeight: 800, color: '#3B82F6', letterSpacing: '2px' }}>{orderCode}</div>
         </div>
 
         <div style={{
@@ -161,13 +161,13 @@ export default function ThankYouPage() {
           marginBottom: '2rem'
         }}>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.25rem' }}>Trebate pomoć ili želite zatražiti povrat?</div>
-          <a href="mailto:info@ionizi.com" style={{ color: '#FF8C00', fontWeight: 600, textDecoration: 'none', fontSize: '0.95rem' }}>info@ionizi.com</a>
+          <a href="mailto:info@ketronica.com" style={{ color: '#3B82F6', fontWeight: 600, textDecoration: 'none', fontSize: '0.95rem' }}>info@ketronica.com</a>
           <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.5rem' }}>Možete zatražiti povrat u roku od 30 dana ako niste zadovoljni proizvodom</div>
         </div>
 
         <a href="/" style={{
           display: 'inline-block',
-          background: 'linear-gradient(135deg, #FFB800 0%, #FF7A00 100%)',
+          background: 'linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%)',
           color: 'white',
           padding: '1rem 2rem',
           borderRadius: '12px',

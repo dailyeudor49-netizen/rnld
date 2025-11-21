@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy - Ionizi',
-  description: 'Learn how Ionizi collects, uses, and protects your personal information',
+  title: 'Privacy Policy - Ketronica',
+  description: 'Learn how Ketronica collects, uses, and protects your personal information',
 };
 
 export default function PrivacyPage() {
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-black mb-4">1. Introduction</h2>
             <p className="text-gray-700 mb-4">
-              At Ionizi, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make a purchase from us.
+              At Ketronica, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make a purchase from us.
             </p>
             <p className="text-gray-700 mb-4">
               Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.

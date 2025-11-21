@@ -1,4 +1,4 @@
-# Ionizi - E-commerce Website
+# Ketronica - E-commerce Website
 
 A modern, responsive e-commerce website for home, garden, and everyday essentials. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS.
 

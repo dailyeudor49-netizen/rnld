@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ionizi - Home, Garden & Everyday Essentials",
+  title: "Ketronica - Home, Garden & Everyday Essentials",
   description: "Quality products for your home, garden, and daily needs. Fast delivery across Europe with cash on delivery option.",
 };
 

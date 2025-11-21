@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperVision Hub - Oferta Świąteczna 4-w-1</title>
+    <meta name="description" content="Pierwsze urządzenie 4-w-1, które zmienia Twój telewizor w Smart TV, Konsolę i Kino Domowe. Netflix, Futbol i Gry w jednym miejscu. Płatność przy odbiorze.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN for standalone HTML) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#dc2626', 
+                            dark: '#0f172a', 
+                            blue: '#1e40af', 
+                            gold: '#fbbf24', 
+                            green: '#10b981', 
+                            greenDark: '#059669', 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        /* Scroll Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom Utilities */
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem; 
+            padding-right: 2rem;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "next/": "https://aistudiocdn.com/next@^16.0.3/",
+    "next": "https://aistudiocdn.com/next@^16.0.3"
+  }
+}
+</script>
+</head>
+<body class="bg-white text-slate-800 overflow-x-hidden">
+
+    <!-- TOP BAR -->
+    <div class="bg-brand-red text-white py-3 overflow-hidden sticky top-0 z-50 shadow-md border-b border-red-800 flex">
+        <!-- Marquee content duplicated for infinite loop -->
+        <div id="marquee-container" class="flex animate-marquee whitespace-nowrap">
+            <!-- Content will be injected via JS 10 times -->
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden pb-12 fade-in-section">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-3xl rounded-full pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 pt-6 md:pt-16">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                
+                <!-- Hero Image -->
+                <div class="w-full lg:w-1/2 z-10 relative order-1 lg:order-2">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl border-4 border-slate-700/50 bg-white group">
+                        <!-- SVG PRODUCT MOCKUP -->
+                        <div class="p-4 md:p-8 bg-white flex items-center justify-center">
+                            <svg viewBox="0 0 800 600" class="w-full h-full drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#1e293b" />
+                                        <stop offset="100%" stopColor="#0f172a" />
+                                    </linearGradient>
+                                    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stopColor="#334155" />
+                                        <stop offset="100%" stopColor="#1e293b" />
+                                    </linearGradient>
+                                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feGaussianBlur stdDeviation="10" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                </defs>
+                                <rect x="50" y="50" width="700" height="400" rx="10" fill="#0f172a" stroke="#334155" strokeWidth="4" />
+                                <rect x="60" y="60" width="680" height="380" fill="url(#screenGrad)" />
+                                <rect x="90" y="100" width="180" height="100" rx="4" fill="#E50914" opacity="0.9" />
+                                <rect x="290" y="100" width="180" height="100" rx="4" fill="#003087" opacity="0.9" />
+                                <rect x="490" y="100" width="180" height="100" rx="4" fill="#9333EA" opacity="0.9" />
+                                <rect x="90" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <rect x="230" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <rect x="370" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <rect x="510" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <path d="M 350 450 L 450 450 L 470 480 L 330 480 Z" fill="#334155" />
+                                <g transform="translate(480, 380)">
+                                    <rect x="0" y="0" width="160" height="60" rx="4" fill="url(#boxGrad)" stroke="#475569" strokeWidth="2" />
+                                    <circle cx="20" cy="30" r="4" fill="#10b981" filter="url(#glow)" />
+                                    <text x="40" y="35" fill="white" fontFamily="sans-serif" fontSize="14" fontWeight="bold" letterSpacing="1">SUPERVISION</text>
+                                    <line x1="140" y1="0" x2="140" y2="-40" stroke="#475569" strokeWidth="3" />
+                                </g>
+                                <g transform="translate(100, 400) rotate(-10)">
+                                    <path d="M 0 40 Q 10 0 50 10 L 130 10 Q 170 0 180 40 L 180 80 Q 170 110 140 100 L 130 80 L 50 80 L 40 100 Q 10 110 0 80 Z" fill="#1e293b" stroke="#475569" strokeWidth="2" />
+                                    <circle cx="140" cy="45" r="6" fill="#dc2626" />
+                                    <circle cx="155" cy="35" r="6" fill="#2563eb" />
+                                    <circle cx="125" cy="35" r="6" fill="#16a34a" />
+                                    <circle cx="140" cy="25" r="6" fill="#fbbf24" />
+                                    <rect x="35" y="35" width="10" height="30" fill="#475569" />
+                                    <rect x="25" y="45" width="30" height="10" fill="#475569" />
+                                    <circle cx="60" cy="65" r="12" fill="#0f172a" stroke="#334155" />
+                                    <circle cx="120" cy="65" r="12" fill="#0f172a" stroke="#334155" />
+                                </g>
+                                <path d="M 560 380 Q 560 300 400 250" stroke="#fbbf24" strokeWidth="2" strokeDasharray="5,5" fill="none" opacity="0.6" />
+                                <path d="M 190 400 Q 250 350 400 250" stroke="#fbbf24" strokeWidth="2" strokeDasharray="5,5" fill="none" opacity="0.6" />
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-3 md:p-4 rounded-lg border border-brand-gold/30 shadow-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="text-left">
+                                    <p class="text-white font-bold text-xs md:text-sm uppercase tracking-wider">W zestawie Pad Bezprzewodowy</p>
+                                    <p class="text-brand-gold text-[10px] md:text-xs font-bold">WARTOŚĆ 169 zł - <span class="animate-pulse">GRATIS</span></p>
+                                </div>
+                                <div class="h-10 w-10 bg-slate-800 rounded flex items-center justify-center overflow-hidden">
+                                    <i data-lucide="gamepad-2" class="text-white w-6 h-6"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -inset-4 bg-brand-blue/20 blur-2xl -z-10 rounded-full"></div>
+                </div>
+
+                <!-- Hero Text -->
+                <div class="w-full lg:w-1/2 z-10 text-center lg:text-left order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 bg-brand-gold text-slate-900 border border-brand-gold/50 rounded-full px-4 py-1 text-sm font-extrabold mb-4 uppercase tracking-wider shadow-lg shadow-brand-gold/20">
+                        <i data-lucide="star" class="w-4 h-4 fill-slate-900"></i> Pierwsze urządzenie 4-w-1
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                        Zmień swój TV w <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-orange-400 font-black">Netflix, Konsolę Next-Gen</span> i <span class="text-white">Wielki Futbol</span>.
+                    </h1>
+                    <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                        Dzięki <strong>SuperVision Hub</strong> podłączasz telewizor, który już masz, i zyskujesz dostęp do <span class="text-white font-bold">filmów, seriali, Ekstraklasy i gier w streamingu</span>. Zero nowego TV, zero konsoli za 2000 zł. Wszystko w <span class="text-brand-gold font-bold underline decoration-brand-gold/50 underline-offset-4">jednym urządzeniu 4-w-1</span>.
+                    </p>
+
+                    <!-- Price -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+                        <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-600 backdrop-blur-sm shadow-inner w-full sm:w-auto text-center sm:text-left hover:scale-[1.02] transition-transform duration-300">
+                            <div class="text-slate-400 line-through text-sm">Cena regularna 419 zł</div>
+                            <div class="flex items-center justify-center sm:justify-start gap-3">
+                                <span class="text-5xl font-black text-white tracking-tight">209 zł</span>
+                                <div class="flex flex-col items-start">
+                                    <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase animate-pulse">Oferta Błyskawiczna</span>
+                                    <span class="text-green-400 text-xs font-bold">-50% Zniżki</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+                        <button onclick="scrollToForm()" class="bg-brand-green hover:bg-brand-greenDark text-white text-xl font-black py-4 px-10 rounded-full shadow-lg shadow-green-900/50 transform transition hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl flex items-center justify-center gap-2 uppercase tracking-wide w-full sm:w-auto cursor-pointer">
+                            ZAMÓW TERAZ
+                        </button>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="mt-6 pt-2">
+                        <div class="bg-slate-800/40 backdrop-blur-md border border-slate-700/50 rounded-xl grid grid-cols-3 divide-x divide-slate-700/50 overflow-hidden">
+                            <div class="p-3 md:p-4 flex flex-col items-center justify-center text-center group hover:bg-slate-700/30 transition-colors cursor-default">
+                                <i data-lucide="truck" class="w-6 h-6 text-slate-200 mb-1.5 group-hover:text-brand-gold transition-colors"></i>
+                                <span class="text-white font-bold text-[10px] md:text-xs uppercase tracking-wide mb-0.5">Wysyłka</span>
+                                <span class="text-slate-400 text-[9px] md:text-[11px]">Szybka 24/48h</span>
+                            </div>
+                            <div class="p-3 md:p-4 flex flex-col items-center justify-center text-center group hover:bg-slate-700/30 transition-colors cursor-default">
+                                <i data-lucide="banknote" class="w-6 h-6 text-slate-200 mb-1.5 group-hover:text-brand-gold transition-colors"></i>
+                                <span class="text-white font-bold text-[10px] md:text-xs uppercase tracking-wide mb-0.5">Płatność</span>
+                                <span class="text-slate-400 text-[9px] md:text-[11px]">Przy Odbiorze</span>
+                            </div>
+                            <div class="p-3 md:p-4 flex flex-col items-center justify-center text-center group hover:bg-slate-700/30 transition-colors cursor-default">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-slate-200 mb-1.5 group-hover:text-brand-gold transition-colors"></i>
+                                <span class="text-white font-bold text-[10px] md:text-xs uppercase tracking-wide mb-0.5">Gwarancja</span>
+                                <span class="text-slate-400 text-[9px] md:text-[11px]">2 Lata</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="py-12 bg-white fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Item 1 -->
+                <div class="flex flex-col items-center text-center p-6 border border-slate-100 rounded-xl shadow-lg hover:shadow-xl transition bg-white hover:border-brand-red/20 group">
+                    <div class="mb-4 p-4 bg-red-50 rounded-full group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="signal" class="w-8 h-8 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Odbiór 4K Ultra HD</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Krystalicznie czysty obraz, żywe kolory i stabilność sygnału. <span class="font-bold text-slate-900">Koniec z zacinaniem</span>, witaj w świecie 4K.</p>
+                </div>
+                <!-- Item 2 -->
+                <div class="flex flex-col items-center text-center p-6 border border-slate-100 rounded-xl shadow-lg hover:shadow-xl transition bg-white hover:border-brand-red/20 group">
+                    <div class="mb-4 p-4 bg-red-50 rounded-full group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="tv" class="w-8 h-8 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Kino i Stadion w Twoim domu</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Ciesz się wolnością oglądania <span class="font-bold text-slate-900">Wielkiego Futbolu, Seriali i Premier</span> bez limitów i w wysokiej rozdzielczości.</p>
+                </div>
+                <!-- Item 3 -->
+                <div class="flex flex-col items-center text-center p-6 border border-slate-100 rounded-xl shadow-lg hover:shadow-xl transition bg-white hover:border-brand-red/20 group">
+                    <div class="mb-4 p-4 bg-red-50 rounded-full group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="gamepad-2" class="w-8 h-8 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Konsola Gamingowa 4-w-1</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Urządzenie zmienia TV w potężną konsolę. Grasz w <span class="font-bold text-slate-900">Fortnite, GTA 5, FC 26</span> bezpośrednio z huba (Pad w zestawie).</p>
+                </div>
+                <!-- Item 4 -->
+                <div class="flex flex-col items-center text-center p-6 border border-slate-100 rounded-xl shadow-lg hover:shadow-xl transition bg-white hover:border-brand-red/20 group">
+                    <div class="mb-4 p-4 bg-red-50 rounded-full group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="lock" class="w-8 h-8 text-brand-red"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Kontrola Rodzicielska</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Ustaw limit czasu i blokuj treści, aby zapewnić <span class="font-bold text-slate-900">bezpieczeństwo dzieciom</span> podczas zabawy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="py-16 bg-slate-50 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+                    W praktyce, co możesz robić <span class="text-brand-red">każdego dnia</span>?
+                </h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                    To nie jest gadżet, którego użyjesz trzy razy. To Twoje codzienne <span class="font-bold text-slate-900">centrum rozrywki</span>.
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Case 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 hover:scale-[1.01] transition duration-500">
+                    <div class="md:w-1/2 order-2 md:order-1">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-brand-red h-full hover:shadow-xl transition">
+                            <h3 class="text-2xl font-bold mb-4 flex items-center gap-3 text-slate-900">
+                                <i data-lucide="clapperboard" class="w-8 h-8 text-brand-red"></i>
+                                Filmy i Seriale
+                            </h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                Otwórz <span class="font-bold text-slate-900 bg-yellow-100 px-1">Netflix, Max, Disney+, Player</span> i inne platformy na tym samym ekranie. 
+                                Rób maratony seriali, oglądaj najnowsze premiery filmowe, 
+                                włączaj bajki dzieciom… wszystko na telewizorze w salonie.
+                            </p>
+                            <p class="font-medium text-brand-red">Nie oglądaj już filmów na małym ekranie telefonu.</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 order-1 md:order-2">
+                        <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Netflix+MAX+Disney" alt="Netflix" class="rounded-2xl shadow-xl w-full">
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 hover:scale-[1.01] transition duration-500">
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/1e293b/ffffff?text=Mecz+CANAL+plus" alt="Futbol" class="rounded-2xl shadow-xl w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-brand-blue h-full hover:shadow-xl transition">
+                            <h3 class="text-2xl font-bold mb-4 flex items-center gap-3 text-slate-900">
+                                <i data-lucide="trophy" class="w-8 h-8 text-brand-blue"></i>
+                                Wielki Futbol i Sport
+                            </h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                Przeżyj <span class="font-bold text-slate-900 bg-blue-100 px-1">Ekstraklasę, Ligę Mistrzów i KSW</span> jakbyś był na stadionie. 
+                                Dzięki aplikacjom takim jak <span className="font-bold text-slate-900">CANAL+, Viaplay czy Polsat Box Go</span> śledź najważniejsze wydarzenia bez przełączania urządzeń.
+                            </p>
+                            <p className="font-medium text-brand-blue">Obraz 4K Ultra HD stabilny dzięki technologii SuperVision.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 hover:scale-[1.01] transition duration-500">
+                    <div class="md:w-1/2 order-2 md:order-1">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-purple-600 h-full hover:shadow-xl transition">
+                            <h3 class="text-2xl font-bold mb-4 flex items-center gap-3 text-slate-900">
+                                <i data-lucide="gamepad-2" class="w-8 h-8 text-purple-600"></i>
+                                Gaming ze znanymi tytułami
+                            </h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                Podłączasz pada, otwierasz platformę w chmurze i grasz w <span class="font-bold text-slate-900 bg-purple-100 px-1">Fortnite, GTA 5, FC 26</span>.
+                                Bez fizycznej konsoli, bez głośnego komputera. Siadasz i grasz.
+                            </p>
+                            <p className="font-medium text-purple-600">Pad bezprzewodowy w zestawie gratis!</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 order-1 md:order-2">
+                        <img src="https://placehold.co/600x400/581c87/ffffff?text=Fortnite+GTA5+FC26" alt="Gaming" class="rounded-2xl shadow-xl w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-20 bg-slate-900 text-white overflow-hidden fade-in-section">
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-16">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-2 block">Absolutna Prostota</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Instalacja w 3 minuty zegarowe</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto italic mt-2 font-medium">
+                    "Jeśli potrafisz podłączyć kabel HDMI, potrafisz zainstalować SuperVision Hub."
+                </p>
+            </div>
+
+            <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Line -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-gradient-to-r from-slate-700 via-brand-gold/50 to-slate-700 rounded-full"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center group hover:transform hover:scale-105 transition duration-300">
+                    <div class="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-700 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.3)] group-hover:border-brand-gold group-hover:shadow-[0_0_30px_rgba(251,191,36,0.3)] transition-all duration-500">
+                        <i data-lucide="plug" class="w-10 h-10 text-slate-300 group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-gold transition-colors">Podłącz do TV</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">Włóż kabel HDMI (w zestawie) i zasilacz. Działa na Smart TV i starszych modelach.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col items-center text-center group hover:transform hover:scale-105 transition duration-300">
+                    <div class="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-700 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.3)] group-hover:border-brand-gold group-hover:shadow-[0_0_30px_rgba(251,191,36,0.3)] transition-all duration-500">
+                        <i data-lucide="wifi" class="w-10 h-10 text-slate-300 group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-gold transition-colors">Połącz z Wi-Fi</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">Włącz i wybierz swoją sieć domową. Wpisz hasło tylko raz i jesteś online.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col items-center text-center group hover:transform hover:scale-105 transition duration-300">
+                    <div class="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-700 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.3)] group-hover:border-brand-gold group-hover:shadow-[0_0_30px_rgba(251,191,36,0.3)] transition-all duration-500">
+                        <i data-lucide="play-circle" class="w-10 h-10 text-slate-300 group-hover:text-brand-gold transition-colors duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-gold transition-colors">Wciśnij Play</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">Gotowe! Wybierz film, mecz lub uruchom grę padem. Wszystko jednym kliknięciem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES GRID -->
+    <section class="py-16 bg-white fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2">To nie zwykły dekoder. To <span class="text-brand-red underline decoration-2 decoration-brand-red/50">Urządzenie 4-w-1</span>.</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feat 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-xl hover:scale-[1.03] transition-all duration-300 border border-gray-100 text-center sm:text-left group">
+                    <div class="mb-4 inline-block p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition">
+                        <i data-lucide="radio" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Odbiór <span class="text-blue-700">4K PRO</span></h3>
+                    <p class="text-sm text-slate-600"><span class="font-bold text-slate-800">Absolutna stabilność</span> w 4K Ultra HD.</p>
+                </div>
+                <!-- Feat 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-xl hover:scale-[1.03] transition-all duration-300 border border-gray-100 text-center sm:text-left group">
+                    <div class="mb-4 inline-block p-3 bg-red-100 rounded-lg group-hover:bg-red-200 transition">
+                        <i data-lucide="tv" class="w-8 h-8 text-brand-red"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Smart TV <span class="text-brand-red">Hub</span></h3>
+                    <p class="text-sm text-slate-600"><span class="font-bold text-slate-800">Netflix, Max, CANAL+, Player</span> w jednym menu.</p>
+                </div>
+                <!-- Feat 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-xl hover:scale-[1.03] transition-all duration-300 border border-gray-100 text-center sm:text-left group">
+                    <div class="mb-4 inline-block p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition">
+                        <i data-lucide="gamepad-2" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Gaming <span class="text-purple-700">"next-gen"</span></h3>
+                    <p class="text-sm text-slate-600">Graj w <span class="font-bold text-slate-800">hity AAA w chmurze</span> padem w zestawie.</p>
+                </div>
+                <!-- Feat 4 -->
+                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-xl hover:scale-[1.03] transition-all duration-300 border border-gray-100 text-center sm:text-left group">
+                    <div class="mb-4 inline-block p-3 bg-green-100 rounded-lg group-hover:bg-green-200 transition">
+                        <i data-lucide="globe" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Biblioteka <span class="text-green-700">Ogromna</span></h3>
+                    <p class="text-sm text-slate-600">Dostęp do <span class="font-bold text-slate-800">tysięcy treści</span> przez Twoje platformy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOX CONTENT -->
+    <section class="py-12 bg-slate-900 text-white fade-in-section">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2 bg-white p-4 rounded-xl shadow-2xl border-2 border-slate-700 flex items-center justify-center h-80 md:h-96">
+                <!-- SVG MOCKUP COPY -->
+                 <svg viewBox="0 0 800 600" class="w-full h-full drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="screenGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#1e293b" />
+                                        <stop offset="100%" stopColor="#0f172a" />
+                                    </linearGradient>
+                                    <linearGradient id="boxGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stopColor="#334155" />
+                                        <stop offset="100%" stopColor="#1e293b" />
+                                    </linearGradient>
+                                    <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feGaussianBlur stdDeviation="10" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                </defs>
+                                <rect x="50" y="50" width="700" height="400" rx="10" fill="#0f172a" stroke="#334155" strokeWidth="4" />
+                                <rect x="60" y="60" width="680" height="380" fill="url(#screenGrad2)" />
+                                <rect x="90" y="100" width="180" height="100" rx="4" fill="#E50914" opacity="0.9" />
+                                <rect x="290" y="100" width="180" height="100" rx="4" fill="#003087" opacity="0.9" />
+                                <rect x="490" y="100" width="180" height="100" rx="4" fill="#9333EA" opacity="0.9" />
+                                <rect x="90" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <rect x="230" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <rect x="370" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <rect x="510" y="220" width="120" height="160" rx="4" fill="#334155" opacity="0.5" />
+                                <path d="M 350 450 L 450 450 L 470 480 L 330 480 Z" fill="#334155" />
+                                <g transform="translate(480, 380)">
+                                    <rect x="0" y="0" width="160" height="60" rx="4" fill="url(#boxGrad2)" stroke="#475569" strokeWidth="2" />
+                                    <circle cx="20" cy="30" r="4" fill="#10b981" filter="url(#glow2)" />
+                                    <text x="40" y="35" fill="white" fontFamily="sans-serif" fontSize="14" fontWeight="bold" letterSpacing="1">SUPERVISION</text>
+                                    <line x1="140" y1="0" x2="140" y2="-40" stroke="#475569" strokeWidth="3" />
+                                </g>
+                                <g transform="translate(100, 400) rotate(-10)">
+                                    <path d="M 0 40 Q 10 0 50 10 L 130 10 Q 170 0 180 40 L 180 80 Q 170 110 140 100 L 130 80 L 50 80 L 40 100 Q 10 110 0 80 Z" fill="#1e293b" stroke="#475569" strokeWidth="2" />
+                                    <circle cx="140" cy="45" r="6" fill="#dc2626" />
+                                    <circle cx="155" cy="35" r="6" fill="#2563eb" />
+                                    <circle cx="125" cy="35" r="6" fill="#16a34a" />
+                                    <circle cx="140" cy="25" r="6" fill="#fbbf24" />
+                                    <rect x="35" y="35" width="10" height="30" fill="#475569" />
+                                    <rect x="25" y="45" width="30" height="10" fill="#475569" />
+                                    <circle cx="60" cy="65" r="12" fill="#0f172a" stroke="#334155" />
+                                    <circle cx="120" cy="65" r="12" fill="#0f172a" stroke="#334155" />
+                                </g>
+                                <path d="M 560 380 Q 560 300 400 250" stroke="#fbbf24" strokeWidth="2" strokeDasharray="5,5" fill="none" opacity="0.6" />
+                                <path d="M 190 400 Q 250 350 400 250" stroke="#fbbf24" strokeWidth="2" strokeDasharray="5,5" fill="none" opacity="0.6" />
+                            </svg>
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">Otwierasz pudełko i masz wszystko</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-white"></i></span> Główna jednostka SuperVision Hub 4-w-1</li>
+                    <li class="flex items-center gap-3 font-bold text-brand-gold"><span class="w-6 h-6 rounded-full bg-brand-gold flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-black"></i></span> Pad Bezprzewodowy GRATIS</li>
+                    <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-white"></i></span> Kabel HDMI 4K Ultra Speed</li>
+                    <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-white"></i></span> Zasilacz + Instrukcja</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY BUY NOW -->
+    <section class="py-12 bg-red-700 text-white fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-extrabold mb-8">Dlaczego warto kupić <span class="underline decoration-white/30 underline-offset-4">TERAZ</span>?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-lg hover:bg-white/15 transition-colors">
+                    <i data-lucide="gift" class="mb-3 w-8 h-8 text-brand-gold"></i>
+                    <h3 class="font-bold text-xl mb-2">Inteligentny Prezent</h3>
+                    <p class="text-sm text-white/90">Nie kolejny prezent, który trafi do szafy. Użyją go wszyscy: dzieci do gier, Ty do meczów.</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-lg hover:bg-white/15 transition-colors">
+                    <i data-lucide="trending-down" class="mb-3 w-8 h-8 text-brand-gold"></i>
+                    <h3 class="font-bold text-xl mb-2">Oszczędzasz setki Złotych</h3>
+                    <p class="text-sm text-white/90">Smart TV + Konsola kosztują majątek. Tutaj masz główne funkcje za ułamek ceny.</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-lg hover:bg-white/15 transition-colors">
+                    <i data-lucide="clock" class="mb-3 w-8 h-8 text-brand-gold"></i>
+                    <h3 class="font-bold text-xl mb-2">Oferta Limitowana</h3>
+                    <p class="text-sm text-white/90">Rabat i Pad gratis tylko dla sztuk w promocji. Gdy się skończą, cena wzrośnie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-16 bg-slate-50 fade-in-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10 text-slate-900">Co mówią rodziny, które już go używają</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:shadow-xl transition">
+                    <div class="flex gap-1 text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-slate-600 mb-4 italic">"Zmieniliśmy stary telewizor w centrum rozrywki. Dzieci grają, my oglądamy seriale. Świetny zakup."</p>
+                    <div class="font-bold text-slate-900">Marek, <span class="font-normal text-slate-500">38 lat</span></div>
+                </div>
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:shadow-xl transition">
+                    <div class="flex gap-1 text-yellow-400 mb-4">
+                         <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-slate-600 mb-4 italic">"Zaoszczędziłam na zakupie konsoli. Syn gra w streamingu, ja oglądam mecze. Instalacja prosta."</p>
+                    <div class="font-bold text-slate-900">Anna, <span class="font-normal text-slate-500">41 lat</span></div>
+                </div>
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:shadow-xl transition">
+                    <div class="flex gap-1 text-yellow-400 mb-4">
+                         <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-slate-600 mb-4 italic">"Nie znam się na technologii, ale instrukcja jest jasna. Podłączyłam kable i działa."</p>
+                    <div class="font-bold text-slate-900">Katarzyna, <span class="font-normal text-slate-500">56 lat</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section class="py-10 bg-white border-t border-b border-slate-100 fade-in-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-8">Zero ryzyka: płacisz dopiero przy odbiorze</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-3"><i data-lucide="shield-check"></i></div>
+                    <h4 class="font-bold">2 Lata Gwarancji</h4>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-3"><i data-lucide="truck"></i></div>
+                    <h4 class="font-bold">Płatność przy Odbiorze</h4>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-3"><i data-lucide="headphones"></i></div>
+                    <h4 class="font-bold">Wsparcie Dedykowane</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORDER FORM -->
+    <div id="order-form" class="fade-in-section">
+        <!-- Success Message (Hidden by default) -->
+        <section id="success-message" class="hidden py-20 bg-slate-900 text-white text-center">
+            <div class="container mx-auto px-4">
+                <div class="bg-brand-green w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="check" class="w-10 h-10"></i>
+                </div>
+                <h2 class="text-4xl font-bold mb-4">Dziękujemy!</h2>
+                <p class="text-xl">Twoje zamówienie zostało przyjęte. Skontaktujemy się wkrótce w celu potwierdzenia.</p>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section id="form-section" class="py-16 bg-slate-900 text-white relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full bg-brand-blue/5 z-0"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">Zmień swój TV DZISIAJ</h2>
+                <p class="text-center text-slate-300 mb-10">Wypełnij formularz, aby zablokować ofertę promocyjną.</p>
+
+                <div class="flex flex-col lg:flex-row gap-10 max-w-5xl mx-auto">
+                    <!-- Summary -->
+                    <div class="lg:w-1/2 bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-2xl">
+                        <h3 class="text-xl font-bold mb-6 border-b border-slate-600 pb-4 text-brand-gold uppercase tracking-wide">Podsumowanie Zamówienia</h3>
+                        <div class="bg-slate-700/50 p-4 rounded-xl border border-slate-600 mb-6">
+                            <h4 class="font-bold text-lg text-white mb-3 flex items-start gap-3"><i data-lucide="zap" class="text-brand-gold w-5 h-5"></i> 1x SuperVision Hub 4-w-1</h4>
+                            <ul class="space-y-3 text-slate-300 text-sm pl-1">
+                                <li>• Funkcja <strong class="text-white">Odbiornik PRO</strong> (Ready 4K)</li>
+                                <li>• Funkcja <strong class="text-white">Smart TV</strong> (App Streaming)</li>
+                                <li>• Funkcja <strong class="text-white">Konsola Gaming</strong> (Cloud)</li>
+                                <li>• <strong class="text-white">Tryb dla Dzieci</strong> Bezpieczny</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-900/30 p-4 rounded-xl border border-green-700/50 mb-6 relative overflow-hidden">
+                            <div class="absolute top-2 right-2 bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase shadow-sm">Gratis</div>
+                            <h4 class="font-bold text-lg text-white mb-1 flex items-center gap-2"><i data-lucide="gift" class="text-green-400 w-5 h-5"></i> Pad Bezprzewodowy</h4>
+                            <p class="text-xs text-green-300 pl-7">Wartość 169 zł - DZIŚ ZA DARMO</p>
+                        </div>
+                        <div class="bg-slate-900 p-5 rounded-lg text-center border-2 border-dashed border-brand-gold/30">
+                            <p class="text-slate-400 text-sm line-through mb-1">Cena regularna: 419 zł</p>
+                            <p class="text-4xl font-black text-white tracking-tight">209 zł</p>
+                            <p class="text-xs text-green-400 font-bold mt-2 bg-green-900/50 inline-block px-3 py-1 rounded-full">OSZCZĘDZASZ 50% OD RĘKI</p>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="lg:w-1/2 bg-white text-slate-900 p-8 rounded-2xl shadow-2xl border-t-4 border-brand-green">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Wysyłka i Płatność</h3>
+                        <form id="actual-form" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-1 uppercase">Imię</label>
+                                    <input required type="text" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-brand-green outline-none" placeholder="Jan">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-1 uppercase">Nazwisko</label>
+                                    <input required type="text" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-brand-green outline-none" placeholder="Kowalski">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 mb-1 uppercase">Telefon</label>
+                                <input required type="tel" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-brand-green outline-none" placeholder="123 456 789">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 mb-1 uppercase">Ulica i Numer</label>
+                                <input required type="text" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-brand-green outline-none" placeholder="ul. Prosta 10/5">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-1 uppercase">Miasto</label>
+                                    <input required type="text" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-brand-green outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-1 uppercase">Kod Pocztowy</label>
+                                    <input required type="text" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-brand-green outline-none" placeholder="00-000">
+                                </div>
+                            </div>
+                            <div class="bg-green-50 border border-green-200 p-4 rounded-lg flex items-start gap-3 mt-4 shadow-sm">
+                                <div class="mt-0.5"><input type="radio" checked readonly class="w-5 h-5 text-brand-green accent-brand-green"></div>
+                                <div>
+                                    <p class="font-bold text-sm text-slate-900">Płatność przy Odbiorze</p>
+                                    <p class="text-xs text-slate-600 mt-1">Płacisz kurierowi gotówką. <span class="font-bold text-green-700">Zero ryzyka.</span></p>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-green hover:bg-brand-greenDark text-white font-black text-xl py-5 rounded-xl shadow-lg transform transition hover:-translate-y-1 mt-2 uppercase tracking-wide">ZAMÓW TERAZ</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-slate-50 fade-in-section">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-8 text-center">Częste Pytania</h2>
+            <div class="space-y-4">
+                <!-- FAQ ITEM Template -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left hover:bg-slate-50">
+                        <span class="font-bold text-slate-800 text-lg pr-4">Czy działa ze starym telewizorem?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 text-brand-blue transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 pt-0 text-slate-600">Tak, wystarczy port HDMI.</div>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left hover:bg-slate-50">
+                        <span class="font-bold text-slate-800 text-lg pr-4">Czy są Netflix, Max, CANAL+?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 text-brand-blue transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 pt-0 text-slate-600">Tak, urządzenie obsługuje te i wiele innych aplikacji.</div>
+                    </div>
+                </div>
+                 <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex justify-between items-center p-5 text-left hover:bg-slate-50">
+                        <span class="font-bold text-slate-800 text-lg pr-4">Czy potrzebuję technika?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 text-brand-blue transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 pt-0 text-slate-600">Nie, instalacja zajmuje 3 minuty i jest bardzo prosta.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center text-sm border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <p class="mb-4 font-bold text-slate-300">&copy; 2024 SuperVision Hub. Wszelkie prawa zastrzeżone.</p>
+            <div class="max-w-3xl mx-auto text-xs text-slate-500 leading-relaxed mb-6 space-y-2">
+                <p>Netflix, Max (HBO), Disney+, CANAL+, Viaplay, Player.pl, Polsat Box Go, Fortnite, GTA 5, FC 26 oraz wszystkie inne znaki towarowe należą do ich właścicieli. Użyte w celach informacyjnych.</p>
+                <p>SuperVision Hub to urządzenie sprzętowe kompatybilne z usługami. Dostęp do płatnych treści wymaga subskrypcji.</p>
+            </div>
+            <div class="flex justify-center gap-6 text-slate-400 font-medium">
+                <a href="#" class="hover:text-white">Polityka Prywatności</a> | <a href="#" class="hover:text-white">Regulamin</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-3 shadow-[0_-5px_20px_rgba(0,0,0,0.15)] z-50 flex items-center justify-between md:justify-center gap-6 transition-transform duration-300 translate-y-full">
+        <div class="hidden md:block text-slate-900 font-bold text-lg">Oferta kończy się wkrótce!</div>
+        <div class="md:hidden flex flex-col">
+            <span class="text-xs text-slate-500 line-through">419 zł</span>
+            <div class="flex items-baseline gap-1">
+                <span class="font-black text-slate-900 text-xl">209 zł</span>
+                <span class="text-xs font-bold text-brand-red bg-red-100 px-1 rounded">-50%</span>
+            </div>
+        </div>
+        <button onclick="scrollToForm()" class="bg-brand-green hover:bg-brand-greenDark text-white font-black py-3 px-8 rounded-lg shadow-lg uppercase tracking-wide">ZAMÓW TERAZ</button>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Initialize Icons
+        lucide.createIcons();
+
+        // 2. Marquee Logic (Fill content)
+        const marqueeContainer = document.getElementById('marquee-container');
+        const marqueeContent = `
+            <div class="marquee-content">
+                <span class="flex items-center gap-2 font-bold text-sm sm:text-base uppercase tracking-wide text-white">
+                    <i data-lucide="gift" class="w-5 h-5 text-brand-gold fill-brand-gold animate-pulse"></i> OFERTA ŚWIĄTECZNA: -50% + PAD GRATIS
+                </span>
+                <span class="flex items-center gap-2 font-bold text-sm sm:text-base uppercase tracking-wide text-brand-gold">
+                    <i data-lucide="clock" class="w-5 h-5"></i> PŁATNOŚĆ PRZY ODBIORZE
+                </span>
+                <span class="flex items-center gap-2 font-bold text-sm sm:text-base uppercase tracking-wide text-white">
+                    <i data-lucide="truck" class="w-5 h-5"></i> SZYBKA WYSYŁKA 24/48H
+                </span>
+            </div>
+        `;
+        // Add 10 copies
+        let allContent = '';
+        for(let i=0; i<10; i++) { allContent += marqueeContent; }
+        marqueeContainer.innerHTML = allContent;
+        lucide.createIcons(); // Re-init icons for dynamic content
+
+        // 3. Scroll to Form
+        function scrollToForm() {
+            document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 4. Sticky CTA Visibility & Scroll Animations
+        window.addEventListener('scroll', () => {
+            const sticky = document.getElementById('sticky-cta');
+            if (window.scrollY > 600) {
+                sticky.classList.remove('translate-y-full');
+            } else {
+                sticky.classList.add('translate-y-full');
+            }
+        });
+
+        // 5. Intersection Observer for Fade-In
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+        // 6. FAQ Toggle
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                // Close others (optional, currently independent)
+                // Toggle current
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    content.style.opacity = '0';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.opacity = '1';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // 7. Order Form Submit Simulation
+        document.getElementById('actual-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Przetwarzanie...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                document.getElementById('form-section').classList.add('hidden');
+                document.getElementById('success-message').classList.remove('hidden');
+                document.getElementById('success-message').scrollIntoView({behavior: 'smooth'});
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
