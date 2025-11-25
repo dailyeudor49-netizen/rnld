@@ -17,7 +17,7 @@ export default function ThankYouPage() {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'conversion', {
         'send_to': 'AW-17746256753/H1fTCJyYsMQbEPHGiY5C',
-        'value': 209.0,
+        'value': 1.0,
         'currency': 'PLN',
         'transaction_id': code
       });
