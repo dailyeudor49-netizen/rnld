@@ -16,9 +16,22 @@ html, body {
     width: 100% !important;
 }
 
-img {
+/* Scope image rules to landing page content only, not header/footer */
+.product-section img,
+.why-choose-section img,
+.reviews-section img,
+.tech-specs-section img,
+.order-section img,
+section img {
     max-width: 100%;
     height: auto;
+}
+
+/* Preserve header/footer logo dimensions */
+header img,
+footer img {
+    height: auto !important;
+    max-height: 56px;
 }
 
 /* Colore sfondo alternato per sezioni */
