@@ -234,7 +234,7 @@ export default function LandingPage() {
       });
 
       if (response.ok) {
-        window.location.href = '/ty-hr';
+        window.location.href = '/ty/ty-hr';
       } else {
         alert('Greška pri slanju narudžbe. Molimo pokušajte ponovno.');
         setIsSubmitting(false);

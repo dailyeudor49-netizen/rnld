@@ -113,7 +113,7 @@ export default function AntennaLandingPage() {
       });
 
       if (response.ok) {
-        window.location.href = '/ty-pl';
+        window.location.href = '/ty/ty-pl';
       } else {
         alert('Wystąpił błąd. Spróbuj ponownie.');
       }
