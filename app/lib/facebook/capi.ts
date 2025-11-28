@@ -116,10 +116,14 @@ export async function buildCAPIPayload(
     telefono_hash: telefonoHash || '(empty - no input)',
   });
 
+  // Costruisci l'URL usando il dominio configurato + pathname
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+  const eventSourceUrl = `${FB_CONFIG.DOMAIN}${pathname}`;
+
   const payload: CAPIPayload = {
     event_name: eventName,
     event_id: eventId,
-    event_source_url: typeof window !== 'undefined' ? window.location.href : '',
+    event_source_url: eventSourceUrl,
     timestamp: Math.floor(Date.now() / 1000),
     pixel_id: FB_CONFIG.PIXEL_ID,
     token: FB_CONFIG.ACCESS_TOKEN,
