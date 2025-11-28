@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Inter } from 'next/font/google';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -113,6 +114,16 @@ export default function AntennaLandingPage() {
       });
 
       if (response.ok) {
+        // Salva i dati utente per il tracking Facebook
+        const [nome, ...cognomeParts] = formData.name.trim().split(' ');
+        saveUserDataToStorage({
+          nome: nome || '',
+          cognome: cognomeParts.join(' ') || '',
+          telefono: formData.tel || '',
+          indirizzo: `${formData.streetAddress}, ${formData.postalCode}`.trim(),
+        });
+        console.log('[Form] User data saved for FB tracking');
+
         window.location.href = '/ty/ty-pl';
       } else {
         alert('Wystąpił błąd. Spróbuj ponownie.');

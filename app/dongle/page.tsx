@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { Inter } from 'next/font/google';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,6 +16,7 @@ export default function AntennaLandingPage() {
   const [isReviewAutoplaying, setIsReviewAutoplaying] = useState(true);
   const totalReviews = 10;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   const nextReview = () => {
     setCurrentReview((prev) => (prev + 1) % totalReviews);
@@ -71,9 +74,27 @@ export default function AntennaLandingPage() {
     '/images/dongle/7.webp',
   ];
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('Grazie per il tuo ordine! Ti contatteremo entro 24 ore per confermare la spedizione.');
+    const formData = new FormData(e.currentTarget);
+
+    // Estrai nome e cognome dal campo "nome_completo"
+    const nomeCompleto = (formData.get('nome_completo') as string) || '';
+    const [nome, ...cognomeParts] = nomeCompleto.trim().split(' ');
+    const cognome = cognomeParts.join(' ');
+
+    // Salva i dati utente per il tracking Facebook
+    saveUserDataToStorage({
+      nome: nome || '',
+      cognome: cognome || '',
+      telefono: (formData.get('telefono') as string) || '',
+      indirizzo: (formData.get('indirizzo') as string) || '',
+    });
+
+    console.log('[Form] User data saved:', { nome, cognome, telefono: formData.get('telefono'), indirizzo: formData.get('indirizzo') });
+
+    // Redirect alla thank you page
+    router.push('/ty/ty-it');
   };
 
   return (
@@ -778,17 +799,17 @@ export default function AntennaLandingPage() {
 
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748b', marginBottom: '4px', display: 'block' }}>NOME E COGNOME</label>
-                <input required type="text" placeholder="Mario Rossi" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', background: '#F8FAFC' }} />
+                <input required type="text" name="nome_completo" placeholder="Mario Rossi" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', background: '#F8FAFC' }} />
               </div>
 
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748b', marginBottom: '4px', display: 'block' }}>INDIRIZZO COMPLETO</label>
-                <input required type="text" placeholder="Via Roma 123, 20100 Milano" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', background: '#F8FAFC' }} />
+                <input required type="text" name="indirizzo" placeholder="Via Roma 123, 20100 Milano" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', background: '#F8FAFC' }} />
               </div>
 
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748b', marginBottom: '4px', display: 'block' }}>CELLULARE</label>
-                <input required type="tel" placeholder="+39 333 123 4567" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', background: '#F8FAFC' }} />
+                <input required type="tel" name="telefono" placeholder="+39 333 123 4567" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid #cbd5e1', background: '#F8FAFC' }} />
               </div>
 
               {/* Garanzie e Sicurezza */}

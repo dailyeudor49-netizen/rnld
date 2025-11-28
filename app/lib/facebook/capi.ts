@@ -48,25 +48,34 @@ export interface CAPIPayload {
 export function getUserDataFromStorage(): UserData {
   if (typeof window === 'undefined') return {};
 
+  console.log('[FB CAPI] getUserDataFromStorage() - checking localStorage...');
+
   // Prima prova localStorage
   const storedData = localStorage.getItem('userData');
   if (storedData) {
     try {
-      return JSON.parse(storedData);
+      const parsed = JSON.parse(storedData);
+      console.log('[FB CAPI] Found userData in localStorage:', parsed);
+      return parsed;
     } catch {
-      // Ignora errori di parsing
+      console.log('[FB CAPI] Error parsing localStorage userData');
     }
   }
 
+  console.log('[FB CAPI] No userData in localStorage, checking query string...');
+
   // Poi prova la query string
   const urlParams = new URLSearchParams(window.location.search);
-  return {
+  const fromQuery = {
     nome: urlParams.get('nome') || '',
     cognome: urlParams.get('cognome') || '',
     telefono: urlParams.get('telefono') || '',
     indirizzo: urlParams.get('indirizzo') || '',
     email: urlParams.get('email') || '',
   };
+
+  console.log('[FB CAPI] userData from query string:', fromQuery);
+  return fromQuery;
 }
 
 /**
@@ -88,6 +97,8 @@ export async function buildCAPIPayload(
 ): Promise<CAPIPayload> {
   const utmParams = getUtmParams();
 
+  console.log('[FB CAPI] Building payload with userData:', userData);
+
   // Hash dei dati utente
   const [nomeHash, cognomeHash, telefonoHash, emailHash] = await Promise.all([
     hashNome(userData.nome || ''),
@@ -95,6 +106,15 @@ export async function buildCAPIPayload(
     hashTelefono(userData.telefono || ''),
     hashEmail(userData.email || ''),
   ]);
+
+  console.log('[FB CAPI] Hashed values:', {
+    nome: userData.nome || '(empty)',
+    nome_hash: nomeHash || '(empty - no input)',
+    cognome: userData.cognome || '(empty)',
+    cognome_hash: cognomeHash || '(empty - no input)',
+    telefono: userData.telefono || '(empty)',
+    telefono_hash: telefonoHash || '(empty - no input)',
+  });
 
   const payload: CAPIPayload = {
     event_name: eventName,

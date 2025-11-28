@@ -21,7 +21,10 @@ export function generateEventId(): string {
 export function getFbp(): string {
   if (typeof document === 'undefined') return '';
   const match = document.cookie.match(/_fbp=([^;]+)/);
-  return match ? match[1] : '';
+  const fbp = match ? match[1] : '';
+  console.log('[FB Pixel] getFbp() - cookies:', document.cookie);
+  console.log('[FB Pixel] getFbp() - value:', fbp);
+  return fbp;
 }
 
 /**
@@ -32,17 +35,23 @@ export function getFbc(): string {
 
   // Prima controlla il cookie
   const match = document.cookie.match(/_fbc=([^;]+)/);
-  if (match) return match[1];
+  if (match) {
+    console.log('[FB Pixel] getFbc() - found in cookie:', match[1]);
+    return match[1];
+  }
 
   // Se non c'è, prova a costruirlo dal fbclid nell'URL
   if (typeof window !== 'undefined') {
     const urlParams = new URLSearchParams(window.location.search);
     const fbclid = urlParams.get('fbclid');
     if (fbclid) {
-      return `fb.1.${Date.now()}.${fbclid}`;
+      const fbc = `fb.1.${Date.now()}.${fbclid}`;
+      console.log('[FB Pixel] getFbc() - built from fbclid:', fbc);
+      return fbc;
     }
   }
 
+  console.log('[FB Pixel] getFbc() - no fbc found (no cookie and no fbclid in URL)');
   return '';
 }
 

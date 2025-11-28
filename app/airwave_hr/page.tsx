@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import './airwave.css';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 
 // Hook per animazioni scroll
 function useScrollAnimation() {
@@ -234,6 +235,16 @@ export default function LandingPage() {
       });
 
       if (response.ok) {
+        // Salva i dati utente per il tracking Facebook
+        const [nome, ...cognomeParts] = orderData.name.trim().split(' ');
+        saveUserDataToStorage({
+          nome: nome || '',
+          cognome: cognomeParts.join(' ') || '',
+          telefono: orderData.phone || '',
+          indirizzo: orderData.address || '',
+        });
+        console.log('[Form] User data saved for FB tracking');
+
         window.location.href = '/ty/ty-hr';
       } else {
         alert('Greška pri slanju narudžbe. Molimo pokušajte ponovno.');
