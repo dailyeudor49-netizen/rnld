@@ -14,21 +14,48 @@ import {
 } from '@/app/lib/facebook/pixel';
 import { getUserDataFromStorage, trackLeadCAPI } from '@/app/lib/facebook/capi';
 
+/**
+ * Verifica se il pathname è una pagina Facebook (landing o thank you)
+ * - Landing pages: /fb-* (es: /fb-prodotto1, /fb-offerta2)
+ * - Thank you pages: /ty/ty-fb-* (es: /ty/ty-fb-prodotto1)
+ */
+function isFacebookPage(pathname: string | null): boolean {
+  if (!pathname) return false;
+  return pathname.startsWith('/fb-') || pathname.startsWith('/ty/ty-fb-');
+}
+
+/**
+ * Verifica se il pathname è una thank you page Facebook
+ */
+function isFacebookThankYouPage(pathname: string | null): boolean {
+  if (!pathname) return false;
+  return pathname.startsWith('/ty/ty-fb-');
+}
+
 export default function FacebookPixel() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  // Verifica se siamo su una pagina Facebook
+  const isOnFacebookPage = isFacebookPage(pathname);
+
   useEffect(() => {
     console.log('[FB Pixel] Component mounted, pathname:', pathname);
+    console.log('[FB Pixel] Is Facebook page:', isOnFacebookPage);
 
-    // Traccia PageView ad ogni cambio di pagina
+    // Traccia PageView SOLO su pagine Facebook (/fb-* o /ty/ty-fb-*)
+    if (!isOnFacebookPage) {
+      console.log('[FB Pixel] Skipping tracking - not a Facebook page');
+      return;
+    }
+
     const eventId = generateEventId();
     console.log('[FB Pixel] Tracking PageView with eventId:', eventId);
     trackPageView(eventId);
 
-    // Se siamo su una thank you page (/ty/*), traccia anche Lead/Purchase
-    if (pathname?.startsWith('/ty')) {
-      console.log('[FB Pixel] === THANK YOU PAGE DETECTED ===');
+    // Se siamo su una thank you page Facebook (/ty/ty-fb-*), traccia anche Lead/Purchase
+    if (isFacebookThankYouPage(pathname)) {
+      console.log('[FB Pixel] === FACEBOOK THANK YOU PAGE DETECTED ===');
       console.log('[FB Pixel] Path:', pathname);
 
       const purchaseEventId = generateEventId();
@@ -68,7 +95,12 @@ export default function FacebookPixel() {
         userData,
       });
     }
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams, isOnFacebookPage]);
+
+  // NON renderizzare lo script del pixel se non siamo su una pagina Facebook
+  if (!isOnFacebookPage) {
+    return null;
+  }
 
   return (
     <>
@@ -103,6 +135,11 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-it': 'Antenna Smart TV Premium IT',
     '/ty/ty-hr': 'Antenna Smart TV Premium HR',
     '/ty/ty-pl': 'Antenna Smart TV Premium PL',
+    // Air Wave Smart landing pages
+    '/ty/ty-fb-airwave-pl': 'Air Wave Smart PL',
+    '/ty/ty-fb-airwave-hu': 'Air Wave Smart HU',
+    '/ty/ty-fb-airwave-hr': 'Air Wave Smart HR',
+    '/ty/ty-fb-airwave-cs': 'Air Wave Smart CS',
   };
 
   return pathMap[pathname] || 'Product';
@@ -116,6 +153,11 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-it': 'antenna-tv-it',
     '/ty/ty-hr': 'antenna-tv-hr',
     '/ty/ty-pl': 'antenna-tv-pl',
+    // Air Wave Smart landing pages
+    '/ty/ty-fb-airwave-pl': 'airwave-smart-pl',
+    '/ty/ty-fb-airwave-hu': 'airwave-smart-hu',
+    '/ty/ty-fb-airwave-hr': 'airwave-smart-hr',
+    '/ty/ty-fb-airwave-cs': 'airwave-smart-cs',
   };
 
   return idMap[pathname] || 'product';
