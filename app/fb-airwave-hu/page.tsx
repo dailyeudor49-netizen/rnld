@@ -374,8 +374,8 @@ export default function LandingPage() {
             {/* Price */}
             <div className="product-price">
               <div className="price-row">
-                <span className="price-current">29 900 Ft</span>
-                <span className="price-original">74 900 Ft</span>
+                <span className="price-current">27 999 Ft</span>
+                <span className="price-original">37 999 Ft</span>
                 <span className="price-save">-60%</span>
               </div>
             </div>
@@ -1112,7 +1112,7 @@ export default function LandingPage() {
 
           <div style={{ marginTop: '2rem', textAlign: 'center' }}>
             <button onClick={scrollToForm} style={{ background: '#16a34a', color: 'white', padding: '1rem 2.5rem', border: 'none', borderRadius: '12px', fontSize: '1.125rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.5px', boxShadow: '0 4px 12px rgba(22,163,74,0.3)', transition: 'all 0.3s' }}>
-              Rendeljen Most - 29 900 Ft
+              Rendeljen Most - 27 999 Ft
             </button>
           </div>
         </div>
@@ -1231,16 +1231,16 @@ export default function LandingPage() {
               </div>
               <ul style={{ color: '#cbd5e1', listStyle: 'none', padding: 0, margin: 0 }}>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span>Listaár</span> <span style={{ textDecoration: 'line-through' }}>74 900 Ft</span>
+                  <span>Listaár</span> <span style={{ textDecoration: 'line-through' }}>37 999 Ft</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span>Black Friday kedvezmény</span> <span style={{ color: '#FFB800' }}>-45 000 Ft</span>
+                  <span>Black Friday kedvezmény</span> <span style={{ color: '#FFB800' }}>-10 000 Ft</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   <span>Szállítás</span> <span style={{ color: '#4ADE80' }}>INGYEN</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem 0', fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>
-                  <span>Összesen</span> <span>29 900 Ft</span>
+                  <span>Összesen</span> <span>27 999 Ft</span>
                 </li>
               </ul>
               <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: '#94a3b8', display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -1345,8 +1345,8 @@ export default function LandingPage() {
                 Air Wave Smart™
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16a34a' }}>29 900 Ft</span>
-                <span style={{ fontSize: '0.875rem', textDecoration: 'line-through', color: 'white', opacity: 0.8 }}>74 900 Ft</span>
+                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16a34a' }}>27 999 Ft</span>
+                <span style={{ fontSize: '0.875rem', textDecoration: 'line-through', color: 'white', opacity: 0.8 }}>37 999 Ft</span>
               </div>
             </div>
           </div>

@@ -374,8 +374,8 @@ export default function LandingPage() {
             {/* Price */}
             <div className="product-price">
               <div className="price-row">
-                <span className="price-current">1 699 Kč</span>
-                <span className="price-original">4 249 Kč</span>
+                <span className="price-current">1 799 Kč</span>
+                <span className="price-original">2 399 Kč</span>
                 <span className="price-save">-60%</span>
               </div>
             </div>
@@ -1112,7 +1112,7 @@ export default function LandingPage() {
 
           <div style={{ marginTop: '2rem', textAlign: 'center' }}>
             <button onClick={scrollToForm} style={{ background: '#16a34a', color: 'white', padding: '1rem 2.5rem', border: 'none', borderRadius: '12px', fontSize: '1.125rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.5px', boxShadow: '0 4px 12px rgba(22,163,74,0.3)', transition: 'all 0.3s' }}>
-              Objednat Nyní - 1 699 Kč
+              Objednat Nyní - 1 799 Kč
             </button>
           </div>
         </div>
@@ -1231,16 +1231,16 @@ export default function LandingPage() {
               </div>
               <ul style={{ color: '#cbd5e1', listStyle: 'none', padding: 0, margin: 0 }}>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span>Katalogová cena</span> <span style={{ textDecoration: 'line-through' }}>4 249 Kč</span>
+                  <span>Katalogová cena</span> <span style={{ textDecoration: 'line-through' }}>2 399 Kč</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span>Sleva Black Friday</span> <span style={{ color: '#FFB800' }}>-2 550 Kč</span>
+                  <span>Sleva Black Friday</span> <span style={{ color: '#FFB800' }}>-600 Kč</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   <span>Doprava</span> <span style={{ color: '#4ADE80' }}>ZDARMA</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem 0', fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>
-                  <span>Celkem</span> <span>1 699 Kč</span>
+                  <span>Celkem</span> <span>1 799 Kč</span>
                 </li>
               </ul>
               <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: '#94a3b8', display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -1345,8 +1345,8 @@ export default function LandingPage() {
                 Air Wave Smart™
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16a34a' }}>1 699 Kč</span>
-                <span style={{ fontSize: '0.875rem', textDecoration: 'line-through', color: 'white', opacity: 0.8 }}>4 249 Kč</span>
+                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16a34a' }}>1 799 Kč</span>
+                <span style={{ fontSize: '0.875rem', textDecoration: 'line-through', color: 'white', opacity: 0.8 }}>2 399 Kč</span>
               </div>
             </div>
           </div>
