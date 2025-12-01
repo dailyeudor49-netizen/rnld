@@ -66,13 +66,14 @@ export default function FacebookPixel() {
     if (isFacebookLandingPage(pathname)) {
       console.log('[FB Pixel] === FACEBOOK LANDING PAGE DETECTED ===');
       const viewContentEventId = generateEventId();
+      const priceData = getPriceDataFromLandingPath(pathname);
       const viewContentData = {
         content_name: getContentNameFromLandingPath(pathname),
         content_category: 'landing_page',
         content_ids: getProductIdFromLandingPath(pathname),
         content_type: 'product',
-        currency: 'EUR',
-        value: 0,
+        currency: priceData.currency,
+        value: priceData.value,
       };
       console.log('[FB Pixel] ViewContent event data:', viewContentData);
       trackViewContent(viewContentData, viewContentEventId);
@@ -84,6 +85,7 @@ export default function FacebookPixel() {
       console.log('[FB Pixel] Path:', pathname);
 
       const purchaseEventId = generateEventId();
+      const purchasePriceData = getPriceDataFromPath(pathname);
 
       // Dati dell'evento (puoi personalizzare per ogni prodotto)
       const eventData = {
@@ -91,8 +93,8 @@ export default function FacebookPixel() {
         content_category: 'landing_page',
         content_ids: getProductIdFromPath(pathname),
         content_type: 'product',
-        currency: 'EUR',
-        value: 0,
+        currency: purchasePriceData.currency,
+        value: purchasePriceData.value,
         quantity: 1,
       };
 
@@ -214,4 +216,32 @@ function getProductIdFromLandingPath(pathname: string): string {
   };
 
   return idMap[pathname] || 'product';
+}
+
+/**
+ * Ottiene prezzo e valuta per ogni paese dalla landing page
+ */
+function getPriceDataFromLandingPath(pathname: string): { value: number; currency: string } {
+  const priceMap: Record<string, { value: number; currency: string }> = {
+    '/fb-airwave-pl': { value: 299, currency: 'PLN' },
+    '/fb-airwave-hu': { value: 27999, currency: 'HUF' },
+    '/fb-airwave-hr': { value: 69.99, currency: 'EUR' },
+    '/fb-airwave-cs': { value: 1799, currency: 'CZK' },
+  };
+
+  return priceMap[pathname] || { value: 0, currency: 'EUR' };
+}
+
+/**
+ * Ottiene prezzo e valuta per ogni paese dalla thank you page
+ */
+function getPriceDataFromPath(pathname: string): { value: number; currency: string } {
+  const priceMap: Record<string, { value: number; currency: string }> = {
+    '/ty/ty-fb-airwave-pl': { value: 299, currency: 'PLN' },
+    '/ty/ty-fb-airwave-hu': { value: 27999, currency: 'HUF' },
+    '/ty/ty-fb-airwave-hr': { value: 69.99, currency: 'EUR' },
+    '/ty/ty-fb-airwave-cs': { value: 1799, currency: 'CZK' },
+  };
+
+  return priceMap[pathname] || { value: 0, currency: 'EUR' };
 }
