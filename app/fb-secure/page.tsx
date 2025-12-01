@@ -1062,7 +1062,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
           Black Friday
         </span>
         <h3 className="text-2xl font-bold text-white mb-2">
-          Proteggi la tua Casa
+          Sistema di sicurezza BeSecure Pro
         </h3>
         <div className="flex items-center gap-3 mb-2">
           <p className="text-3xl font-extrabold text-white">69,90€</p>
