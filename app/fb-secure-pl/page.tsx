@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Lock, Smartphone, Clock, Star, Zap, Award, Phone, Camera, Bell, Users, ArrowRight, ChevronDown, Download, Settings, Radar, Battery, Circle, Wifi, ChevronLeft, ChevronRight, Quote, Plus } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 const testimonials = [
   {
@@ -364,7 +363,6 @@ const InstallationGuide = () => {
 };
 
 const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
-  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -432,40 +430,17 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
     { id: 4, name: 'KAM 04 - Sypialnia', status: 'secure', image: 'https://magazine.bimbostore.com/app/uploads/2023/03/Temperatura-della-camera-del-neonato.jpg' },
   ];
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      address: formData.get('address'),
-      phone: formData.get('phone'),
-    };
-
-    try {
-      const response = await fetch('/api/fb-network-lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setIsLoading(false);
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('lead_submitted', 'true');
-        }
-        router.push('/ty/ty-fb-secure-pl');
-      } else {
-        setIsLoading(false);
-        alert('Wystąpił błąd. Spróbuj ponownie.');
-      }
-    } catch (error) {
+    setTimeout(() => {
       setIsLoading(false);
-      alert('Wystąpił błąd. Spróbuj ponownie.');
-    }
+      setIsSubmitted(true);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('lead_submitted', 'true');
+        window.location.href = '/ty/ty-fb-secure-pl';
+      }
+    }, 1500);
   };
 
   if (isSubmitted) {

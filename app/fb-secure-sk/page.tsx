@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Lock, Smartphone, Clock, Star, Zap, Award, Phone, Camera, Bell, Users, ArrowRight, ChevronDown, Download, Settings, Radar, Battery, Circle, Wifi, ChevronLeft, ChevronRight, Quote, Plus } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 const testimonials = [
   {
@@ -364,7 +363,6 @@ const InstallationGuide = () => {
 };
 
 const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
-  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -440,8 +438,8 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
       setIsSubmitted(true);
       if (typeof window !== 'undefined') {
         localStorage.setItem('lead_submitted', 'true');
+        window.location.href = '/ty/ty-fb-secure-sk';
       }
-      router.push('/ty/ty-fb-secure-sk');
     }, 1500);
   };
 
