@@ -375,7 +375,7 @@ export default function LandingPage() {
             <div className="product-price">
               <div className="price-row">
                 <span className="price-current">299 zł</span>
-                <span className="price-original">749 zł</span>
+                <span className="price-original">399 zł</span>
                 <span className="price-save">-60%</span>
               </div>
             </div>
@@ -1231,10 +1231,10 @@ export default function LandingPage() {
               </div>
               <ul style={{ color: '#cbd5e1', listStyle: 'none', padding: 0, margin: 0 }}>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span>Cena katalogowa</span> <span style={{ textDecoration: 'line-through' }}>749 zł</span>
+                  <span>Cena katalogowa</span> <span style={{ textDecoration: 'line-through' }}>399 zł</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                  <span>Rabat Black Friday</span> <span style={{ color: '#FFB800' }}>-450 zł</span>
+                  <span>Rabat Black Friday</span> <span style={{ color: '#FFB800' }}>-100 zł</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   <span>Wysyłka</span> <span style={{ color: '#4ADE80' }}>GRATIS</span>
@@ -1346,7 +1346,7 @@ export default function LandingPage() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16a34a' }}>299 zł</span>
-                <span style={{ fontSize: '0.875rem', textDecoration: 'line-through', color: 'white', opacity: 0.8 }}>749 zł</span>
+                <span style={{ fontSize: '0.875rem', textDecoration: 'line-through', color: 'white', opacity: 0.8 }}>399 zł</span>
               </div>
             </div>
           </div>
