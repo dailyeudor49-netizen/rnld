@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Lock, Smartphone, Clock, Star, Zap, Award, Phone, Camera, Bell, Users, ArrowRight, ChevronDown, Download, Settings, Radar, Battery, Circle, Wifi, ChevronLeft, ChevronRight, Quote, Plus } from 'lucide-react';
 import Image from 'next/image';
+import Script from 'next/script';
 
 const testimonials = [
   {
@@ -430,17 +431,69 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
     { id: 4, name: 'CAM 04 - Ložnice', status: 'secure', image: 'https://magazine.bimbostore.com/app/uploads/2023/03/Temperatura-della-camera-del-neonato.jpg' },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    setTimeout(() => {
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string || '';
+    const phone = formData.get('phone') as string || '';
+    const address = formData.get('address') as string || '';
+
+    try {
+      const tmfpInput = e.currentTarget.querySelector('input[name="tmfp"]') as HTMLInputElement;
+      const tmfp = tmfpInput?.value || '';
+
+      const params = new URLSearchParams({
+        uid: '019a913c-483e-7c52-ba2a-c2435daa4254',
+        key: 'df01e23521627b9519a81f',
+        offer: '582',
+        lp: '582',
+        name: name,
+        tel: phone,
+        'street-address': address,
+        ua: navigator.userAgent,
+        tmfp: tmfp,
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      const utmMedium = urlParams.get('utm_medium');
+      const utmCampaign = urlParams.get('utm_campaign');
+      const utmContent = urlParams.get('utm_content');
+      const utmTerm = urlParams.get('utm_term');
+
+      if (utmSource) params.append('utm_source', utmSource);
+      if (utmMedium) params.append('utm_medium', utmMedium);
+      if (utmCampaign) params.append('utm_campaign', utmCampaign);
+      if (utmContent) params.append('utm_content', utmContent);
+      if (utmTerm) params.append('utm_term', utmTerm);
+
+      const response = await fetch('https://offers.supertrendaffiliateprogram.com/forms/api/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString(),
+      });
+
+      console.log('[Network API] Response status:', response.status);
+
       setIsLoading(false);
       setIsSubmitted(true);
       if (typeof window !== 'undefined') {
         localStorage.setItem('lead_submitted', 'true');
         window.location.href = '/ty/ty-fb-secure-cs';
       }
-    }, 1500);
+    } catch (error) {
+      console.error('[Network API] Error:', error);
+      setIsLoading(false);
+      setIsSubmitted(true);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('lead_submitted', 'true');
+        window.location.href = '/ty/ty-fb-secure-cs';
+      }
+    }
   };
 
   if (isSubmitted) {
@@ -1124,10 +1177,12 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-3">
+            <input type="hidden" name="tmfp" />
             <div>
               <input
                 required
                 type="text"
+                name="name"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
                 placeholder="Jméno a příjmení"
               />
@@ -1136,6 +1191,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <input
                 required
                 type="text"
+                name="address"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
                 placeholder="Adresa pro doručení"
               />
@@ -1144,6 +1200,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <input
                 required
                 type="tel"
+                name="phone"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
                 placeholder="Telefonní číslo"
               />
@@ -1201,6 +1258,10 @@ export default function SecurityLandingPage() {
 
   return (
     <main className="min-h-screen bg-white font-inter text-[#1a2744] overflow-x-hidden">
+      {/* Network tracking */}
+      <Script src="https://offers.supertrendaffiliateprogram.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="https://offers.supertrendaffiliateprogram.com/forms/api/ck/?o=582&uid=019a913c-483e-7c52-ba2a-c2435daa4254&lp=582" style={{width:'1px',height:'1px',display:'none'}} alt="" />
 
       {/* Sticky Order Bar */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-green-600 to-green-700 shadow-2xl rounded-t-2xl">
