@@ -8,6 +8,7 @@ import {
   initPixelScript,
   trackPageView,
   trackPurchase,
+  trackViewContent,
   generateEventId,
   getFbp,
   getFbc,
@@ -32,6 +33,14 @@ function isFacebookThankYouPage(pathname: string | null): boolean {
   return pathname.startsWith('/ty/ty-fb-');
 }
 
+/**
+ * Verifica se il pathname è una landing page Facebook (non thank you)
+ */
+function isFacebookLandingPage(pathname: string | null): boolean {
+  if (!pathname) return false;
+  return pathname.startsWith('/fb-') && !pathname.startsWith('/ty/');
+}
+
 export default function FacebookPixel() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -52,6 +61,22 @@ export default function FacebookPixel() {
     const eventId = generateEventId();
     console.log('[FB Pixel] Tracking PageView with eventId:', eventId);
     trackPageView(eventId);
+
+    // Se siamo su una landing page Facebook (/fb-*), traccia ViewContent
+    if (isFacebookLandingPage(pathname)) {
+      console.log('[FB Pixel] === FACEBOOK LANDING PAGE DETECTED ===');
+      const viewContentEventId = generateEventId();
+      const viewContentData = {
+        content_name: getContentNameFromLandingPath(pathname),
+        content_category: 'landing_page',
+        content_ids: getProductIdFromLandingPath(pathname),
+        content_type: 'product',
+        currency: 'EUR',
+        value: 0,
+      };
+      console.log('[FB Pixel] ViewContent event data:', viewContentData);
+      trackViewContent(viewContentData, viewContentEventId);
+    }
 
     // Se siamo su una thank you page Facebook (/ty/ty-fb-*), traccia anche Lead/Purchase
     if (isFacebookThankYouPage(pathname)) {
@@ -158,6 +183,34 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-fb-airwave-hu': 'airwave-smart-hu',
     '/ty/ty-fb-airwave-hr': 'airwave-smart-hr',
     '/ty/ty-fb-airwave-cs': 'airwave-smart-cs',
+  };
+
+  return idMap[pathname] || 'product';
+}
+
+/**
+ * Estrae il nome del contenuto dal path della landing page Facebook
+ */
+function getContentNameFromLandingPath(pathname: string): string {
+  const pathMap: Record<string, string> = {
+    '/fb-airwave-pl': 'Air Wave Smart PL',
+    '/fb-airwave-hu': 'Air Wave Smart HU',
+    '/fb-airwave-hr': 'Air Wave Smart HR',
+    '/fb-airwave-cs': 'Air Wave Smart CS',
+  };
+
+  return pathMap[pathname] || 'Product';
+}
+
+/**
+ * Estrae l'ID prodotto dal path della landing page Facebook
+ */
+function getProductIdFromLandingPath(pathname: string): string {
+  const idMap: Record<string, string> = {
+    '/fb-airwave-pl': 'airwave-smart-pl',
+    '/fb-airwave-hu': 'airwave-smart-hu',
+    '/fb-airwave-hr': 'airwave-smart-hr',
+    '/fb-airwave-cs': 'airwave-smart-cs',
   };
 
   return idMap[pathname] || 'product';

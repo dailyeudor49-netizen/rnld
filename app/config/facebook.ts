@@ -1,13 +1,13 @@
 export const FB_CONFIG = {
-  PIXEL_ID: '289142670394903',
-  ACCESS_TOKEN: 'EAAT0vHtyOvkBQBzKicdwRzk8iGMatIfkFYxxeDu2ZCVePNNeTuogrP9QOOqZCsHPzgZC8TDzBxSRJSMIgn63ZAXF7lUFbOc6nCRuZAZApyuGKBHj4cvseuBZAnzp97aVNVc5zfu8cdoRZB0SBZCcoPPhCPYUGcbKRdrtIkeNF2ntmYM4HrritpcO5NejH2kT5BgZB2BwZDZD',
+  PIXEL_ID: '1576025786901423',
+  ACCESS_TOKEN: 'EAAT0vHtyOvkBQC02EnPHNYxvPOhoIcPXyVf8kWIQ6iDRfWaBy6y0LoPhrx2RogmtbudugN0S1iR2BBeYHckXDtyyq5WGGvfOj8CzrsZCdBg2XrfwFdzxM5xZBZB5V1K92ZAGCXFQ9cVZBEyGzfinBNCdQ1nLf9ziesOwSTMozgxxk5l0Dp0qfUNW2qVpqd0BeJwZDZD',
   CAPI_WEBHOOK_URL: 'https://primary-production-625c.up.railway.app/webhook/meta-capi',
   DOMAIN: 'https://www.ketronica.com',
   TEST_EVENT_CODE: 'TEST55671', // Commentare o rimuovere in produzione
 } as const;
 
 // Tipi per gli eventi Facebook
-export type FacebookEventName = 'PageView' | 'Purchase' | 'Lead' | 'CompleteRegistration' | 'AddToCart' | 'InitiateCheckout';
+export type FacebookEventName = 'PageView' | 'Purchase' | 'Lead' | 'CompleteRegistration' | 'AddToCart' | 'InitiateCheckout' | 'ViewContent';
 
 export interface FacebookEventData {
   content_name?: string;

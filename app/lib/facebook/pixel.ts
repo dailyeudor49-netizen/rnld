@@ -123,6 +123,13 @@ export function trackLead(eventData?: FacebookEventData, eventId?: string): void
 }
 
 /**
+ * Traccia ViewContent
+ */
+export function trackViewContent(eventData: FacebookEventData, eventId?: string): void {
+  trackPixelEvent('ViewContent', eventData, eventId);
+}
+
+/**
  * Inizializza lo script del Facebook Pixel
  */
 export function initPixelScript(): string {
