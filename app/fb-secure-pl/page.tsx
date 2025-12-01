@@ -4,76 +4,77 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Lock, Smartphone, Clock, Star, Zap, Award, Phone, Camera, Bell, Users, ArrowRight, ChevronDown, Download, Settings, Radar, Battery, Circle, Wifi, ChevronLeft, ChevronRight, Quote, Plus } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const testimonials = [
   {
-    name: 'Marco R.',
+    name: 'Tomasz K.',
     source: 'Trustpilot',
     rating: 5,
-    text: 'Installato in 10 minuti, funziona da dio. L\'app è semplicissima e le notifiche arrivano subito. Consigliatissimo!',
+    text: 'Zainstalowałem w 10 minut, działa znakomicie. Aplikacja jest bardzo prosta, a powiadomienia przychodzą natychmiast. Zdecydowanie polecam!',
     gender: 'M'
   },
   {
-    name: 'Giulia T.',
+    name: 'Anna W.',
     source: 'Facebook',
     rating: 5,
-    text: 'Finalmente dormo tranquilla! Abito da sola e avevo sempre paura. Ora se qualcuno si avvicina alla porta mi arriva subito la notifica con la foto. Top!',
+    text: 'W końcu mogę spać spokojnie! Mieszkam sama i zawsze się bałam. Teraz gdy ktoś zbliża się do drzwi, natychmiast dostaję powiadomienie ze zdjęciem. Super!',
     gender: 'F'
   },
   {
-    name: 'Alessandro P.',
+    name: 'Piotr M.',
     source: 'Google',
     rating: 5,
-    text: 'Rapporto qualità prezzo incredibile. Ho confrontato con altri sistemi da 500€+ e questo fa le stesse cose. Niente abbonamenti poi è un plus enorme.',
+    text: 'Niesamowity stosunek jakości do ceny. Porównywałem z innymi systemami za 2000+ zł i ten robi to samo. Brak abonamentów to ogromny plus.',
     gender: 'M'
   },
   {
-    name: 'Francesca M.',
+    name: 'Katarzyna L.',
     source: 'Trustpilot',
     rating: 4,
-    text: 'Bello e facile da usare. Unica cosa, avrei voluto più sensori nella confezione, ma tanto si possono comprare a parte e costano pochissimo. Per il prezzo va benissimo!',
+    text: 'Ładny i łatwy w użyciu. Jedyna rzecz, chciałabym więcej czujników w zestawie, ale można je dokupić osobno i kosztują niewiele. Za tę cenę świetnie!',
     gender: 'F'
   },
   {
-    name: 'Roberto C.',
+    name: 'Michał B.',
     source: 'Feedaty',
     rating: 5,
-    text: 'Mi hanno provato a entrare in casa 2 anni fa. Mai più senza allarme. Questo sistema è perfetto, la sirena è fortissima e l\'app funziona benissimo anche da lontano.',
+    text: 'Ktoś próbował włamać się do mojego domu 2 lata temu. Nigdy więcej bez alarmu. Ten system jest idealny, syrena jest bardzo głośna, a aplikacja działa doskonale nawet z daleka.',
     gender: 'M'
   },
   {
-    name: 'Sara L.',
+    name: 'Agnieszka D.',
     source: 'Google',
     rating: 5,
-    text: 'Lo uso da 3 mesi, zero problemi. Le telecamere sono piccole ma la qualità video è ottima, anche di notte!',
+    text: 'Używam od 3 miesięcy, zero problemów. Kamery są małe, ale jakość wideo jest doskonała, nawet w nocy!',
     gender: 'F'
   },
   {
-    name: 'Davide B.',
+    name: 'Paweł S.',
     source: 'Facebook',
     rating: 5,
-    text: 'Scettico all\'inizio, ora non posso farne a meno. La cosa che mi piace di più è che si disattiva automaticamente quando arrivo a casa.',
+    text: 'Byłem sceptyczny na początku, teraz nie mogę się bez tego obejść. Najbardziej podoba mi się to, że wyłącza się automatycznie, gdy wracam do domu.',
     gender: 'M'
   },
   {
-    name: 'Valentina G.',
+    name: 'Magdalena R.',
     source: 'Feedaty',
     rating: 5,
-    text: 'Ho preso questo per la casa al mare. Installazione facilissima, lo controllo tutto dall\'app quando sono a casa in città. Ottimo acquisto!',
+    text: 'Kupiłam to do domu nad morzem. Instalacja bardzo łatwa, kontroluję wszystko przez aplikację, gdy jestem w domu w mieście. Świetny zakup!',
     gender: 'F'
   },
   {
-    name: 'Luca F.',
+    name: 'Krzysztof T.',
     source: 'Google',
     rating: 5,
-    text: 'Ottimo prodotto, fa quello che deve fare. L\'assistenza mi ha risposto subito quando avevo un dubbio sulla configurazione.',
+    text: 'Doskonały produkt, robi to, co powinien. Wsparcie odpowiedziało mi natychmiast, gdy miałem pytanie o konfigurację.',
     gender: 'M'
   },
   {
-    name: 'Chiara D.',
+    name: 'Joanna P.',
     source: 'Trustpilot',
     rating: 5,
-    text: 'I miei genitori anziani vivono soli e volevo stare tranquilla. Ora posso vedere cosa succede in casa loro in qualsiasi momento. Li ho convinti a prenderlo ed è stata la decisione migliore!',
+    text: 'Moi starsi rodzice mieszkają sami i chciałam być spokojna. Teraz mogę zobaczyć, co dzieje się w ich domu w każdej chwili. Przekonałam ich do zakupu i to była najlepsza decyzja!',
     gender: 'F'
   }
 ];
@@ -126,7 +127,7 @@ const TestimonialsSlider = () => {
       <div className="max-w-4xl mx-auto px-8 md:px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-            Cosa Dicono i Nostri Clienti
+            Co Mówią Nasi Klienci
           </h2>
           <div className="flex items-center justify-center gap-2">
             <div className="flex items-center gap-0.5">
@@ -136,7 +137,7 @@ const TestimonialsSlider = () => {
             </div>
             <span className="text-base md:text-lg font-bold text-[#1a2744]">4.9</span>
             <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-            <span className="text-base md:text-lg text-gray-600">8.254 recensioni</span>
+            <span className="text-base md:text-lg text-gray-600">8.254 opinii</span>
           </div>
         </div>
 
@@ -166,7 +167,7 @@ const TestimonialsSlider = () => {
                   ))}
                 </div>
                 <p className="font-bold text-[#1a2744]">{testimonials[currentIndex].name}</p>
-                <p className="text-sm text-gray-500 mt-1 italic">Tramite <span className="font-bold">{testimonials[currentIndex].source}</span></p>
+                <p className="text-sm text-gray-500 mt-1 italic">Przez <span className="font-bold">{testimonials[currentIndex].source}</span></p>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -209,24 +210,24 @@ const InstallationGuide = () => {
   const steps = [
     {
       step: 1,
-      title: 'Installa telecamere e sensori',
-      desc: 'Le telecamere e i sensori possono essere installati in diversi modi: con ventose, colla adesiva, viti oppure semplicemente appoggiati su una superficie. Scegli il metodo più adatto alla tua casa e posizionali nei punti strategici.',
+      title: 'Zainstaluj kamery i czujniki',
+      desc: 'Kamery i czujniki można zamontować na różne sposoby: za pomocą przyssawek, taśmy klejącej, wkrętów lub po prostu położyć na powierzchni. Wybierz metodę najlepiej dopasowaną do Twojego domu i umieść je w strategicznych miejscach.',
       image: '/images/secure/conf1.jpg',
-      imageAlt: 'Installazione telecamere e sensori'
+      imageAlt: 'Instalacja kamer i czujników'
     },
     {
       step: 2,
-      title: 'Scarica l\'app e inserisci il codice',
-      desc: 'Scarica l\'app gratuita dal tuo store (App Store o Google Play) e inserisci il codice univoco fornito insieme al prodotto. Lo trovi stampato sulla scatola e sul libretto di istruzioni incluso nella confezione.',
+      title: 'Pobierz aplikację i wprowadź kod',
+      desc: 'Pobierz darmową aplikację ze swojego sklepu (App Store lub Google Play) i wprowadź unikalny kod dostarczony z produktem. Znajdziesz go wydrukowany na pudełku i w instrukcji obsługi dołączonej do zestawu.',
       image: '/images/secure/conf2.jpg',
-      imageAlt: 'Download app e inserimento codice'
+      imageAlt: 'Pobieranie aplikacji i wprowadzanie kodu'
     },
     {
       step: 3,
-      title: 'Configura emergenze e disattivazione',
-      desc: 'Imposta i numeri di emergenza da chiamare in caso di allarme e scegli come disattivare il sistema: automaticamente quando il tuo telefono viene rilevato nelle vicinanze, oppure inserendo un codice sulla centralina all\'ingresso di casa.',
+      title: 'Skonfiguruj numery alarmowe i dezaktywację',
+      desc: 'Ustaw numery alarmowe do wywołania w przypadku alarmu i wybierz sposób dezaktywacji systemu: automatycznie, gdy Twój telefon zostanie wykryty w pobliżu, lub poprzez wprowadzenie kodu w centrali przy wejściu do domu.',
       image: '/images/secure/conf3.jpg',
-      imageAlt: 'Configurazione sistema di sicurezza'
+      imageAlt: 'Konfiguracja systemu bezpieczeństwa'
     }
   ];
 
@@ -239,9 +240,9 @@ const InstallationGuide = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-            Guida all'Installazione
+            Instrukcja Instalacji
           </h2>
-          <p className="text-xl text-gray-600">3 semplici passaggi per proteggere la tua casa in 5 minuti</p>
+          <p className="text-xl text-gray-600">3 proste kroki, aby zabezpieczyć swój dom w 5 minut</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -321,7 +322,7 @@ const InstallationGuide = () => {
             <div className="md:hidden relative h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/secure/conf0.png"
-                alt="Guida installazione sistema di sicurezza"
+                alt="Instrukcja instalacji systemu bezpieczeństwa"
                 fill
                 className="object-cover"
               />
@@ -330,7 +331,7 @@ const InstallationGuide = () => {
             <div className="hidden md:block relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src={activeStep !== null ? steps[activeStep].image : '/images/secure/conf0.png'}
-                alt={activeStep !== null ? steps[activeStep].imageAlt : 'Guida installazione sistema di sicurezza'}
+                alt={activeStep !== null ? steps[activeStep].imageAlt : 'Instrukcja instalacji systemu bezpieczeństwa'}
                 fill
                 className="object-cover transition-all duration-500"
               />
@@ -340,7 +341,7 @@ const InstallationGuide = () => {
               {activeStep !== null && (
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4">
-                    <p className="font-bold text-[#1a2744]">Step {steps[activeStep].step}</p>
+                    <p className="font-bold text-[#1a2744]">Krok {steps[activeStep].step}</p>
                     <p className="text-sm text-gray-600">{steps[activeStep].title}</p>
                   </div>
                 </div>
@@ -354,7 +355,7 @@ const InstallationGuide = () => {
             onClick={scrollToOrderForm}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
           >
-            Inizia Subito
+            Rozpocznij Teraz
           </button>
         </div>
       </div>
@@ -363,6 +364,7 @@ const InstallationGuide = () => {
 };
 
 const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
+  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -408,7 +410,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
   }, [showDemo, showIntervieni, showAppMenu, showTelecamere]);
 
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString('it-IT', {
+    return date.toLocaleDateString('pl-PL', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric'
@@ -416,7 +418,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
   };
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('it-IT', {
+    return date.toLocaleTimeString('pl-PL', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit'
@@ -424,22 +426,46 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
   };
 
   const cameras = [
-    { id: 1, name: 'CAM 01 - Giardino', status: 'secure', image: 'https://media-cdn.tripadvisor.com/media/photo-s/08/b8/33/89/la-casa-del-borgo.jpg' },
-    { id: 2, name: 'CAM 02 - Sala', status: 'alert', image: 'https://www.sectoralarm.it/hs-fs/hubfs/SectorAlarm_December2024/Images/intelligence-and-protection-in-one-glance.webp?width=1157&height=1019&name=intelligence-and-protection-in-one-glance.webp' },
-    { id: 3, name: 'CAM 03 - Garage', status: 'secure', image: 'https://preview.redd.it/what-camera-to-install-in-garage-v0-qm5b9z7mkehe1.png?format=png&auto=webp&s=82ba2f9a2fa8635254c09a2338a134b37fc3098e' },
-    { id: 4, name: 'CAM 04 - Camera da Letto', status: 'secure', image: 'https://magazine.bimbostore.com/app/uploads/2023/03/Temperatura-della-camera-del-neonato.jpg' },
+    { id: 1, name: 'KAM 01 - Ogród', status: 'secure', image: 'https://media-cdn.tripadvisor.com/media/photo-s/08/b8/33/89/la-casa-del-borgo.jpg' },
+    { id: 2, name: 'KAM 02 - Salon', status: 'alert', image: 'https://www.sectoralarm.it/hs-fs/hubfs/SectorAlarm_December2024/Images/intelligence-and-protection-in-one-glance.webp?width=1157&height=1019&name=intelligence-and-protection-in-one-glance.webp' },
+    { id: 3, name: 'KAM 03 - Garaż', status: 'secure', image: 'https://preview.redd.it/what-camera-to-install-in-garage-v0-qm5b9z7mkehe1.png?format=png&auto=webp&s=82ba2f9a2fa8635254c09a2338a134b37fc3098e' },
+    { id: 4, name: 'KAM 04 - Sypialnia', status: 'secure', image: 'https://magazine.bimbostore.com/app/uploads/2023/03/Temperatura-della-camera-del-neonato.jpg' },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSubmitted(true);
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('lead_submitted', 'true');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      address: formData.get('address'),
+      phone: formData.get('phone'),
+    };
+
+    try {
+      const response = await fetch('/api/fb-network-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsLoading(false);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('lead_submitted', 'true');
+        }
+        router.push('/ty/ty-fb-secure-pl');
+      } else {
+        setIsLoading(false);
+        alert('Wystąpił błąd. Spróbuj ponownie.');
       }
-    }, 1500);
+    } catch (error) {
+      setIsLoading(false);
+      alert('Wystąpił błąd. Spróbuj ponownie.');
+    }
   };
 
   if (isSubmitted) {
@@ -452,8 +478,8 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
         <div className="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
           <CheckCircle size={32} />
         </div>
-        <h3 className="text-2xl font-bold text-[#1a2744] mb-2">Preventivo Richiesto!</h3>
-        <p className="text-gray-600">Ti ricontatteremo entro 60 secondi per il tuo preventivo personalizzato gratuito.</p>
+        <h3 className="text-2xl font-bold text-[#1a2744] mb-2">Wycena Zlecona!</h3>
+        <p className="text-gray-600">Skontaktujemy się z Tobą w ciągu 60 sekund w sprawie Twojej bezpłatnej, spersonalizowanej wyceny.</p>
       </motion.div>
     );
   }
@@ -502,7 +528,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <div className="p-4">
                 <div className="bg-white/20 border border-white/30 rounded-xl p-3 flex items-center gap-3 mb-4">
                   <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                  <span className="text-white font-semibold">Sistema Attivo - Casa Protetta</span>
+                  <span className="text-white font-semibold">System Aktywny - Dom Chroniony</span>
                 </div>
 
                 {/* Menu opzioni */}
@@ -518,9 +544,9 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                       <Camera className="w-6 h-6 text-white" />
                     </div>
-                    <span className="text-blue-900 font-semibold text-sm">Telecamere</span>
-                    <span className="text-blue-600 text-xs">4 attive</span>
-                    <span className="text-red-500 text-[10px] font-semibold bg-red-50 border border-red-200 px-2 py-0.5 rounded-full animate-pulse">Movimento rilevato</span>
+                    <span className="text-blue-900 font-semibold text-sm">Kamery</span>
+                    <span className="text-blue-600 text-xs">4 aktywne</span>
+                    <span className="text-red-500 text-[10px] font-semibold bg-red-50 border border-red-200 px-2 py-0.5 rounded-full animate-pulse">Wykryto ruch</span>
                   </button>
 
                   <button
@@ -534,7 +560,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                       <Lock className="w-6 h-6 text-white" />
                     </div>
                     <span className="text-blue-900 font-semibold text-sm">Smartlock</span>
-                    <span className={`text-xs ${smartlockOpen ? 'text-red-500' : 'text-emerald-500'}`}>{smartlockOpen ? 'Aperto' : 'Chiuso'}</span>
+                    <span className={`text-xs ${smartlockOpen ? 'text-red-500' : 'text-emerald-500'}`}>{smartlockOpen ? 'Otwarte' : 'Zamknięte'}</span>
                   </button>
 
                   <button
@@ -549,8 +575,8 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <span className="text-blue-900 font-semibold text-sm">Video Registrati</span>
-                    <span className="text-blue-600 text-xs">4 video</span>
+                    <span className="text-blue-900 font-semibold text-sm">Nagrane Wideo</span>
+                    <span className="text-blue-600 text-xs">4 wideo</span>
                   </button>
 
                   <button
@@ -563,8 +589,8 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                       <Settings className="w-6 h-6 text-white" />
                     </div>
-                    <span className="text-blue-900 font-semibold text-sm">Impostazioni</span>
-                    <span className="text-blue-600 text-xs">Configura</span>
+                    <span className="text-blue-900 font-semibold text-sm">Ustawienia</span>
+                    <span className="text-blue-600 text-xs">Konfiguruj</span>
                   </button>
                 </div>
               </div>
@@ -578,7 +604,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
-                  Chiudi App
+                  Zamknij Aplikację
                 </button>
               </div>
             </motion.div>
@@ -612,16 +638,16 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <Lock className={`w-12 h-12 ${smartlockOpen ? 'text-red-400' : 'text-emerald-400'}`} />
                 </div>
 
-                <h3 className="text-white text-xl font-bold mb-2">Porta di Casa</h3>
+                <h3 className="text-white text-xl font-bold mb-2">Drzwi Wejściowe</h3>
                 <p className={`text-lg font-semibold mb-6 ${smartlockOpen ? 'text-red-400' : 'text-emerald-400'}`}>
-                  {smartlockOpen ? 'Aperta' : 'Chiusa'}
+                  {smartlockOpen ? 'Otwarte' : 'Zamknięte'}
                 </p>
 
                 <button
                   onClick={() => setSmartlockOpen(!smartlockOpen)}
                   className={`px-8 py-3 rounded-xl font-bold text-white transition-all cursor-pointer ${smartlockOpen ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-red-600 hover:bg-red-700'}`}
                 >
-                  {smartlockOpen ? 'Chiudi Porta' : 'Apri Porta'}
+                  {smartlockOpen ? 'Zamknij Drzwi' : 'Otwórz Drzwi'}
                 </button>
               </div>
 
@@ -637,7 +663,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Powrót do Menu
                 </button>
               </div>
             </motion.div>
@@ -658,7 +684,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-white font-bold text-lg">Video Registrati</span>
+                    <span className="text-white font-bold text-lg">Nagrane Wideo</span>
                   </div>
                   <div className="text-right text-xs text-blue-300">
                     <div>{formatDate(currentTime)}</div>
@@ -671,10 +697,10 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <div className="p-4">
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { cam: 'CAM 01', time: '14:32', image: cameras[0].image },
-                    { cam: 'CAM 02', time: '12:15', image: cameras[1].image },
-                    { cam: 'CAM 03', time: '09:45', image: cameras[2].image },
-                    { cam: 'CAM 04', time: '08:20', image: cameras[3].image },
+                    { cam: 'KAM 01', time: '14:32', image: cameras[0].image },
+                    { cam: 'KAM 02', time: '12:15', image: cameras[1].image },
+                    { cam: 'KAM 03', time: '09:45', image: cameras[2].image },
+                    { cam: 'KAM 04', time: '08:20', image: cameras[3].image },
                   ].map((video, i) => (
                     <div key={i} className="relative aspect-video rounded-xl overflow-hidden bg-gray-800 cursor-pointer group">
                       <Image
@@ -711,7 +737,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Powrót do Menu
                 </button>
               </div>
             </motion.div>
@@ -730,7 +756,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Settings className="w-6 h-6 text-blue-400" />
-                    <span className="text-white font-bold text-lg">Impostazioni</span>
+                    <span className="text-white font-bold text-lg">Ustawienia</span>
                   </div>
                 </div>
               </div>
@@ -738,16 +764,16 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               {/* Opzioni */}
               <div className="p-4 space-y-3 max-h-[300px] overflow-y-auto">
                 {[
-                  { icon: <Bell className="w-5 h-5" />, title: 'Notifiche', desc: 'Gestisci avvisi e suoni', toggle: true, toggleKey: 'notifiche' as const },
-                  { icon: <Camera className="w-5 h-5" />, title: 'Qualità Video', desc: 'HD 1080p', toggle: false },
-                  { icon: <Wifi className="w-5 h-5" />, title: 'Connessione', desc: 'WiFi: Casa_5G', toggle: false },
-                  { icon: <Phone className="w-5 h-5" />, title: 'Numeri Emergenza', desc: 'Polizia, Contatti...', toggle: false },
-                  { icon: <Users className="w-5 h-5" />, title: 'Utenti Autorizzati', desc: '3 membri famiglia', toggle: false },
-                  { icon: <Clock className="w-5 h-5" />, title: 'Programmazione', desc: 'Attivo 22:00 - 07:00', toggle: true, toggleKey: 'programmazione' as const },
-                  { icon: <Shield className="w-5 h-5" />, title: 'Modalità Vacanza', desc: 'Protezione extra', toggle: true, toggleKey: 'vacanza' as const },
-                  { icon: <Radar className="w-5 h-5" />, title: 'Sensibilità Sensori', desc: 'Media', toggle: false },
-                  { icon: <Plus className="w-5 h-5" />, title: 'Nuovo Dispositivo', desc: 'Configura sensore/telecamera', toggle: false },
-                  { icon: <Settings className="w-5 h-5" />, title: 'Impostazioni Avanzate', desc: 'Configurazione sistema', toggle: false },
+                  { icon: <Bell className="w-5 h-5" />, title: 'Powiadomienia', desc: 'Zarządzaj alertami i dźwiękami', toggle: true, toggleKey: 'notifiche' as const },
+                  { icon: <Camera className="w-5 h-5" />, title: 'Jakość Wideo', desc: 'HD 1080p', toggle: false },
+                  { icon: <Wifi className="w-5 h-5" />, title: 'Połączenie', desc: 'WiFi: Dom_5G', toggle: false },
+                  { icon: <Phone className="w-5 h-5" />, title: 'Numery Alarmowe', desc: 'Policja, Kontakty...', toggle: false },
+                  { icon: <Users className="w-5 h-5" />, title: 'Autoryzowani Użytkownicy', desc: '3 członków rodziny', toggle: false },
+                  { icon: <Clock className="w-5 h-5" />, title: 'Harmonogram', desc: 'Aktywny 22:00 - 07:00', toggle: true, toggleKey: 'programmazione' as const },
+                  { icon: <Shield className="w-5 h-5" />, title: 'Tryb Wakacyjny', desc: 'Dodatkowa ochrona', toggle: true, toggleKey: 'vacanza' as const },
+                  { icon: <Radar className="w-5 h-5" />, title: 'Czułość Czujników', desc: 'Średnia', toggle: false },
+                  { icon: <Plus className="w-5 h-5" />, title: 'Nowe Urządzenie', desc: 'Konfiguruj czujnik/kamerę', toggle: false },
+                  { icon: <Settings className="w-5 h-5" />, title: 'Ustawienia Zaawansowane', desc: 'Konfiguracja systemu', toggle: false },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between bg-blue-800/30 rounded-xl p-3 border border-blue-700/50">
                     <div className="flex items-center gap-3">
@@ -785,7 +811,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Powrót do Menu
                 </button>
               </div>
             </motion.div>
@@ -821,7 +847,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                           <div className="text-[8px] md:text-xs">{camera.name}</div>
                           <div className="flex items-center gap-1 text-red-500 text-[8px] md:text-xs mt-0.5">
                             <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full animate-pulse"></span>
-                            REC
+                            NAG
                           </div>
                         </div>
                         <div className="text-right bg-black/50 px-1.5 py-0.5 rounded">
@@ -836,13 +862,13 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                       {camera.status === 'secure' ? (
                         <div className="flex items-center gap-1.5 bg-emerald-500/90 text-white px-2 py-1 rounded-lg text-[10px] md:text-sm font-semibold">
                           <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full animate-pulse"></span>
-                          SICURO
+                          BEZPIECZNIE
                         </div>
                       ) : (
                         <div className="flex items-center justify-between gap-2">
                           <div className="flex items-center gap-1.5 bg-red-500/90 text-white px-2 py-1 rounded-lg text-[10px] md:text-sm font-semibold animate-pulse">
                             <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full"></span>
-                            ALLERTA MOVIMENTO
+                            WYKRYTO RUCH
                           </div>
                           <button
                             onClick={() => {
@@ -851,7 +877,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                             }}
                             className="bg-white text-red-600 px-2 py-1 rounded-lg text-[10px] md:text-sm font-bold hover:bg-red-100 transition-colors cursor-pointer shadow-lg"
                           >
-                            INTERVIENI
+                            INTERWENIUJ
                           </button>
                         </div>
                       )}
@@ -872,7 +898,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Powrót do Menu
                 </button>
               </div>
             </motion.div>
@@ -890,7 +916,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <div className="relative aspect-[4/3]">
                 <Image
                   src={cameras.find(c => c.status === 'alert')?.image || ''}
-                  alt="Camera con allerta"
+                  alt="Kamera z alertem"
                   fill
                   className="object-cover brightness-110"
                 />
@@ -910,7 +936,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                       <div className="text-sm md:text-base">{cameras.find(c => c.status === 'alert')?.name}</div>
                       <div className="flex items-center gap-1 text-red-500 text-xs md:text-sm mt-0.5">
                         <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                        REC
+                        NAG
                       </div>
                     </div>
                     <div className="text-right bg-black/50 px-2 py-1 rounded">
@@ -924,7 +950,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 <div className="absolute bottom-3 left-3 right-3">
                   <div className="flex items-center gap-2 bg-red-500/90 text-white px-3 py-2 rounded-lg text-sm md:text-base font-semibold animate-pulse">
                     <span className="w-2 h-2 bg-white rounded-full"></span>
-                    ALLERTA MOVIMENTO RILEVATO
+                    WYKRYTO RUCH
                   </div>
                 </div>
               </div>
@@ -939,7 +965,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 ${alarmActive ? 'bg-red-600' : 'bg-emerald-600'} text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3`}
                   >
                     <Bell className={`w-8 h-8 ${alarmActive ? 'animate-bounce' : ''}`} />
-                    <span className="text-lg font-bold">{alarmActive ? 'Allarme sonoro attivato!' : 'Allarme sonoro disattivato!'}</span>
+                    <span className="text-lg font-bold">{alarmActive ? 'Alarm dźwiękowy aktywowany!' : 'Alarm dźwiękowy dezaktywowany!'}</span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -955,9 +981,9 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   >
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-yellow-400 text-[#1a2744] font-bold text-xs px-4 py-1 rounded-b-lg z-10">DEMO</div>
                     <div className="text-center">
-                      <p className="text-gray-400 text-sm mb-2">Chiamata in corso...</p>
-                      <h2 className="text-white text-4xl md:text-5xl font-bold mb-2">Polizia</h2>
-                      <p className="text-gray-400 text-lg mb-8">Emergenza</p>
+                      <p className="text-gray-400 text-sm mb-2">Połączenie w toku...</p>
+                      <h2 className="text-white text-4xl md:text-5xl font-bold mb-2">Policja</h2>
+                      <p className="text-gray-400 text-lg mb-8">Alarm</p>
 
                       {/* Animazione onde */}
                       <div className="relative w-20 h-20 mx-auto mb-8">
@@ -966,7 +992,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                         <div className="absolute inset-4 border-2 border-gray-300 rounded-full animate-ping opacity-10" style={{ animationDelay: '1s' }}></div>
                       </div>
 
-                      <p className="text-gray-400 text-sm mb-8 animate-pulse">Connessione in corso...</p>
+                      <p className="text-gray-400 text-sm mb-8 animate-pulse">Łączenie...</p>
 
                       {/* Pulsante termina */}
                       <button
@@ -975,7 +1001,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                       >
                         <Phone className="w-8 h-8 text-white rotate-[135deg]" />
                       </button>
-                      <p className="text-gray-400 text-sm mt-3">Termina</p>
+                      <p className="text-gray-400 text-sm mt-3">Zakończ</p>
                     </div>
                   </motion.div>
                 )}
@@ -989,7 +1015,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg cursor-pointer text-sm md:text-base"
                   >
                     <Phone className="w-5 h-5" />
-                    Chiama Polizia
+                    Zadzwoń na Policję
                   </button>
                   <button
                     onClick={() => {
@@ -1002,7 +1028,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     className={`flex items-center justify-center gap-2 ${alarmActive ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-red-600 hover:bg-red-700'} text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg cursor-pointer text-sm md:text-base`}
                   >
                     <Bell className="w-5 h-5" />
-                    {alarmActive ? 'Disattiva Allarme' : 'Attiva Allarme'}
+                    {alarmActive ? 'Wyłącz Alarm' : 'Włącz Alarm'}
                   </button>
                 </div>
                 <button
@@ -1015,7 +1041,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna alle Telecamere
+                  Powrót do Kamer
                 </button>
               </div>
             </motion.div>
@@ -1030,7 +1056,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
             >
               <Image
                 src="/images/secure/princ.png"
-                alt="Sistema di sicurezza"
+                alt="System bezpieczeństwa"
                 width={800}
                 height={450}
                 quality={100}
@@ -1040,7 +1066,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
 
               {isHero && (
                 <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
-                  Offerta fino al 23/12/2025
+                  Oferta do 23/12/2025
                 </div>
               )}
 
@@ -1050,7 +1076,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 className="absolute bottom-3 left-1/2 -translate-x-1/2 px-5 py-2.5 bg-yellow-400 hover:bg-yellow-500 text-[#1a2744] font-bold rounded-lg transition-all shadow-lg shadow-yellow-400/40 hover:shadow-xl hover:shadow-yellow-400/50 hover:scale-110 flex items-center justify-center gap-2 text-sm cursor-pointer whitespace-nowrap animate-bounce"
               >
                 <Camera className="w-4 h-4 flex-shrink-0" />
-                <span>Visualizza DEMO App</span>
+                <span>Zobacz DEMO Aplikacji</span>
               </button>
             </motion.div>
           )}
@@ -1062,25 +1088,25 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
           Black Friday
         </span>
         <h3 className="text-2xl font-bold text-white mb-2">
-          Sistema di sicurezza <span className="font-extrabold">BeSecure Pro</span>
+          System bezpieczeństwa <span className="font-extrabold">BeSecure Pro</span>
         </h3>
         <div className="flex items-center gap-3 mb-2">
-          <p className="text-3xl font-extrabold text-white">69,90€</p>
-          <p className="text-lg text-blue-200 line-through">233,00€</p>
-          <span className="bg-white text-red-600 border-2 border-red-600 text-xs font-bold px-2 py-1 rounded">-70%</span>
+          <p className="text-3xl font-extrabold text-white">429 zł</p>
+          <p className="text-lg text-blue-200 line-through">599 zł</p>
+          <span className="bg-white text-red-600 border-2 border-red-600 text-xs font-bold px-2 py-1 rounded">-28%</span>
         </div>
         <div className="space-y-1 mb-4">
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> Pagamento in Contanti alla Consegna
+            <CheckCircle className="w-4 h-4 text-green-400" /> Płatność Gotówką przy Odbiorze
           </p>
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> Spedizione Rapida Gratuita
+            <CheckCircle className="w-4 h-4 text-green-400" /> Szybka Wysyłka Gratis
           </p>
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> 30 Giorni di Reso
+            <CheckCircle className="w-4 h-4 text-green-400" /> 30 Dni na Zwrot
           </p>
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> 2 Anni di Garanzia
+            <CheckCircle className="w-4 h-4 text-green-400" /> 2 Lata Gwarancji
           </p>
         </div>
         <button
@@ -1099,7 +1125,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
           }}
           className="w-full bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
         >
-          {showForm ? 'CHIUDI' : 'ORDINA ORA - PAGHI ALLA CONSEGNA'}
+          {showForm ? 'ZAMKNIJ' : 'ZAMÓW TERAZ - PŁAĆ PRZY ODBIORZE'}
         </button>
       </div>
 
@@ -1117,9 +1143,9 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
         <div className={`${isHero ? 'p-8' : 'p-6'} bg-white`}>
           <div className="mb-6 text-center">
             <h3 className={`${isHero ? 'text-2xl' : 'text-xl'} font-bold text-[#1a2744] mb-1`}>
-              Ordina Ora
+              Zamów Teraz
             </h3>
-            <p className="text-gray-600">Paghi in Contanti alla Consegna</p>
+            <p className="text-gray-600">Płać Gotówką przy Odbiorze</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-3">
@@ -1127,24 +1153,27 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <input
                 required
                 type="text"
+                name="name"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
-                placeholder="Nome e Cognome"
+                placeholder="Imię i Nazwisko"
               />
             </div>
             <div>
               <input
                 required
                 type="text"
+                name="address"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
-                placeholder="Indirizzo per la spedizione"
+                placeholder="Adres wysyłki"
               />
             </div>
             <div>
               <input
                 required
                 type="tel"
+                name="phone"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
-                placeholder="Numero di Telefono"
+                placeholder="Numer Telefonu"
               />
             </div>
 
@@ -1156,11 +1185,11 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               {isLoading ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  Invio...
+                  Wysyłanie...
                 </>
               ) : (
                 <>
-                  PROCEDI CON L'ORDINE
+                  PRZEJDŹ DO ZAMÓWIENIA
                 </>
               )}
             </button>
@@ -1168,7 +1197,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
 
           <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-400">
             <Lock size={10} />
-            <span>Dati protetti SSL</span>
+            <span>Dane chronione SSL</span>
           </div>
         </div>
       </motion.div>
@@ -1205,15 +1234,15 @@ export default function SecurityLandingPage() {
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-green-600 to-green-700 shadow-2xl rounded-t-2xl">
         <div className="max-w-7xl mx-auto w-full px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2 md:gap-3">
-            <p className="text-white font-bold text-xl md:text-2xl">69,90€</p>
-            <p className="text-green-200 text-sm md:text-sm line-through">233,00€</p>
-            <span className="bg-yellow-400 text-[#1a2744] text-xs font-bold px-2 md:px-2 py-0.5 rounded">-70%</span>
+            <p className="text-white font-bold text-xl md:text-2xl">429 zł</p>
+            <p className="text-green-200 text-sm md:text-sm line-through">599 zł</p>
+            <span className="bg-yellow-400 text-[#1a2744] text-xs font-bold px-2 md:px-2 py-0.5 rounded">-28%</span>
           </div>
           <button
             onClick={scrollToOrderForm}
             className="bg-white hover:bg-gray-100 text-green-700 font-bold py-3 px-5 md:px-6 rounded-full text-sm md:text-base shadow-lg transition-all cursor-pointer whitespace-nowrap"
           >
-            Ordina Ora
+            Zamów Teraz
           </button>
         </div>
       </div>
@@ -1245,7 +1274,7 @@ export default function SecurityLandingPage() {
                 </div>
 
                 <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 md:mb-4 leading-tight text-[#1a2744]">
-                  Non aspettare che sia <span className="text-blue-600">troppo tardi</span>: Proteggi chi ami oggi stesso
+                  Nie czekaj, aż będzie <span className="text-blue-600">za późno</span>: Chroń swoich bliskich już dziś
                 </h1>
 
                 <a
@@ -1261,40 +1290,40 @@ export default function SecurityLandingPage() {
                   </div>
                   <span className="text-sm md:text-base font-bold text-[#1a2744]">4.9</span>
                   <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                  <span className="text-sm md:text-base text-gray-600">8.254 recensioni</span>
+                  <span className="text-sm md:text-base text-gray-600">8.254 opinii</span>
                 </a>
 
                 <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
-                  5 microtelecamere HD, sensori, rilevatori di fumo, allarme assordante e notifiche istantanee sul tuo cellulare. Una volta confermata l'intrusione dall'app, viene chiamata la polizia. Tutto senza abbonamenti mensili.
+                  5 mikrokamer HD, czujniki, detektory dymu, ogłuszający alarm i natychmiastowe powiadomienia na Twoim telefonie. Po potwierdzeniu włamania z aplikacji, automatycznie wzywana jest policja. Wszystko bez miesięcznych abonamentów.
                 </p>
 
                 <div className="space-y-2 mb-4 md:mb-6">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Allarme sonoro assordante + notifica</span>
+                    <span className="text-sm md:text-base text-gray-700">Ogłuszający alarm dźwiękowy + powiadomienie</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Non si attiva con animali domestici</span>
+                    <span className="text-sm md:text-base text-gray-700">Nie reaguje na zwierzęta domowe</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Videocamere in tempo reale con audio</span>
+                    <span className="text-sm md:text-base text-gray-700">Kamery na żywo z dźwiękiem</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Rilevatore di fumo per incendi</span>
+                    <span className="text-sm md:text-base text-gray-700">Detektor dymu do wykrywania pożarów</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-6 md:mb-8">
                   <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg border border-blue-200">
                     <CheckCircle className="text-blue-600" size={18} />
-                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Zero abbonamenti mensili</span>
+                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Zero miesięcznych abonamentów</span>
                   </div>
                   <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg border border-blue-200">
                     <CheckCircle className="text-blue-600" size={18} />
-                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Installazione in 5 minuti</span>
+                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Instalacja w 5 minut</span>
                   </div>
                 </div>
 
@@ -1308,33 +1337,33 @@ export default function SecurityLandingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2744] mb-3 md:mb-4">
-              Cosa succede quando un estraneo entra in casa tua?
+              Co się dzieje, gdy intruz wchodzi do Twojego domu?
             </h2>
-            <p className="text-base md:text-xl text-gray-600">3 livelli di protezione automatica che si attivano istantaneamente</p>
+            <p className="text-base md:text-xl text-gray-600">3 poziomy automatycznej ochrony, które aktywują się natychmiast</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 step: '1',
-                title: 'Allarme Assordante + Luci',
-                desc: 'La <strong>sirena da 110dB</strong> si attiva insieme a luci stroboscopiche visibili da centinaia di metri. I ladri scappano immediatamente perché sanno di essere stati scoperti. La maggior parte abbandona il tentativo entro <strong>7 secondi</strong>.',
+                title: 'Ogłuszający Alarm + Światła',
+                desc: '<strong>Syrena o mocy 110dB</strong> aktywuje się wraz ze światłami stroboskopowymi widocznymi z setek metrów. Złodzieje uciekają natychmiast, ponieważ wiedzą, że zostali wykryci. Większość porzuca próbę w ciągu <strong>7 sekund</strong>.',
                 image: '/images/secure/cosa_succede1.jpg',
-                imageAlt: 'Allarme sonoro e visivo'
+                imageAlt: 'Alarm dźwiękowy i wizualny'
               },
               {
                 step: '2',
-                title: 'Notifica Istantanea',
-                desc: 'Ricevi una <strong>chiamata automatica sul cellulare</strong> con le immagini live dalle 5 microcamere. Puoi vedere esattamente cosa sta succedendo in casa tua, ovunque tu sia. Nessun ritardo, nessuna attesa.',
+                title: 'Natychmiastowe Powiadomienie',
+                desc: 'Otrzymujesz <strong>automatyczne połączenie na telefon</strong> z obrazami na żywo z 5 mikrokamer. Możesz dokładnie zobaczyć, co dzieje się w Twoim domu, gdziekolwiek jesteś. Bez opóźnień, bez czekania.',
                 image: '/images/secure/cosa_succede2.jpg',
-                imageAlt: 'Notifica sul cellulare'
+                imageAlt: 'Powiadomienie na telefon'
               },
               {
                 step: '3',
-                title: 'Chiamata alla Polizia',
-                desc: 'Una volta <strong>confermata l\'intrusione dall\'app</strong>, il sistema chiama automaticamente la polizia e invia loro le registrazioni video. Mentre tu sei al sicuro, l\'aiuto è già in arrivo per proteggere la tua casa e i tuoi cari.',
+                title: 'Połączenie z Policją',
+                desc: 'Po <strong>potwierdzeniu włamania z aplikacji</strong>, system automatycznie dzwoni na policję i wysyła im nagrania wideo. Podczas gdy Ty jesteś bezpieczny, pomoc jest już w drodze, aby chronić Twój dom i Twoich bliskich.',
                 image: '/images/secure/cosa_succede3.jpg',
-                imageAlt: 'Intervento polizia'
+                imageAlt: 'Interwencja policji'
               }
             ].map((item, i) => (
               <motion.div
@@ -1369,8 +1398,8 @@ export default function SecurityLandingPage() {
 
           <div className="text-center mt-8 md:mt-16">
             <div className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg md:rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-lg">
-              <p className="font-bold text-xs md:text-sm mb-1">⚠️ I ladri abbandonano il tentativo in media dopo</p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold">7 secondi</p>
+              <p className="font-bold text-xs md:text-sm mb-1">⚠️ Złodzieje porzucają próbę średnio po</p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold">7 sekundach</p>
             </div>
           </div>
         </div>
@@ -1380,9 +1409,9 @@ export default function SecurityLandingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-              Il Sistema Completo
+              Kompletny System
             </h2>
-            <p className="text-lg md:text-xl text-gray-600">Telecamere, sensori di movimento, rilevatori di fumo, allarmi e chiamate automatiche.</p>
+            <p className="text-lg md:text-xl text-gray-600">Kamery, czujniki ruchu, detektory dymu, alarmy i automatyczne połączenia.</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
@@ -1390,49 +1419,49 @@ export default function SecurityLandingPage() {
               {
                 icon: <Lock />,
                 title: 'Smartlock',
-                desc: 'Serratura intelligente con controllo remoto. Apri e chiudi la porta dal tuo smartphone ovunque tu sia.',
+                desc: 'Inteligentny zamek ze zdalnym sterowaniem. Otwieraj i zamykaj drzwi ze swojego smartfona z dowolnego miejsca.',
                 image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=400&q=80'
               },
               {
                 icon: <Camera />,
-                title: 'Telecamere HD',
-                desc: 'Videosorveglianza ad alta risoluzione con visione notturna. Guarda cosa succede in tempo reale.',
+                title: 'Kamery HD',
+                desc: 'Monitoring w wysokiej rozdzielczości z noktowizorem. Zobacz, co się dzieje w czasie rzeczywistym.',
                 image: 'https://img.joomcdn.net/811f1d4330e279c0ae4aae1b93aed28278c714cf_original.jpeg'
               },
               {
                 icon: <Radar />,
-                title: 'Sensori di Movimento',
-                desc: 'Rilevamento intelligente con fotocamera integrata. Distingue persone da animali domestici.',
+                title: 'Czujniki Ruchu',
+                desc: 'Inteligentne wykrywanie ze zintegrowaną kamerą. Rozróżnia ludzi od zwierząt domowych.',
                 image: 'https://www.sevenitalia.it/data_files/product/PG8934.jpg'
               },
               {
                 icon: <Phone />,
-                title: 'Chiamata Automatica',
-                desc: 'In caso di intrusione confermata dall\'app, il sistema chiama automaticamente le forze dell\'ordine.',
+                title: 'Automatyczne Połączenie',
+                desc: 'W przypadku potwierdzonego włamania z aplikacji, system automatycznie dzwoni na numer alarmowy.',
                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTBY0jitNFt6lvBJXK174yUyu0QBUBCj0EzA&s'
               },
               {
                 icon: <Smartphone />,
-                title: 'App Mobile',
-                desc: 'Controllo totale dal tuo smartphone. Attiva, disattiva e monitora in tempo reale.',
+                title: 'Aplikacja Mobilna',
+                desc: 'Pełna kontrola ze smartfona. Aktywuj, dezaktywuj i monitoruj w czasie rzeczywistym.',
                 image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80'
               },
               {
                 icon: <Wifi />,
-                title: 'Sirena 110dB',
-                desc: 'Sirena ad alta intensità per scoraggiare i malintenzionati. Funziona anche senza corrente.',
+                title: 'Syrena 110dB',
+                desc: 'Syrena o dużej mocy odstraszająca włamywaczy. Działa nawet bez prądu.',
                 image: 'https://www.lookathome.it/media/catalog/product/cache/1/thumbnail/585x585/9df78eab33525d08d6e5fb8d27136e95/l/k/lkm1_1_1.jpg'
               },
               {
                 icon: <Users />,
-                title: 'Sensori Porta/Finestra',
-                desc: 'Protezione perimetrale completa. Rileva aperture non autorizzate istantaneamente.',
+                title: 'Czujniki Drzwi/Okien',
+                desc: 'Kompletna ochrona obwodowa. Wykrywa nieautoryzowane otwarcia natychmiast.',
                 image: 'https://i0.wp.com/www.blogbisacchi.it/wp-content/uploads/2023/10/sensore-allarme-wireless.png?resize=300%2C293&ssl=1'
               },
               {
                 icon: <div className="relative w-6 h-6"><Circle className="absolute inset-0 w-6 h-6" /><Circle className="absolute inset-1.5 w-3 h-3" /></div>,
-                title: 'Rilevatore di Fumo',
-                desc: 'Rileva fumo e incendi in tempo reale. Chiama automaticamente i pompieri.',
+                title: 'Detektor Dymu',
+                desc: 'Wykrywa dym i pożary w czasie rzeczywistym. Automatycznie dzwoni do straży pożarnej.',
                 image: 'https://www.elettronsicurezza.it/wp-content/uploads/2019/10/Rivelazione-Incendi-Fumo-400x400.jpg'
               }
             ].map((device, i) => (
@@ -1470,7 +1499,7 @@ export default function SecurityLandingPage() {
               onClick={scrollToOrderForm}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
             >
-              Ordina adesso
+              Zamów teraz
             </button>
           </div>
         </div>
@@ -1486,10 +1515,10 @@ export default function SecurityLandingPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-6">
-              Cosa Include la Promozione
+              Co Zawiera Promocja
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Nessun abbonamento mensile. Zero costi nascosti. Paghi una volta sola.
+              Brak miesięcznego abonamentu. Zero ukrytych kosztów. Płacisz tylko raz.
             </p>
           </motion.div>
 
@@ -1504,7 +1533,7 @@ export default function SecurityLandingPage() {
               <div className="absolute inset-0">
                 <Image
                   src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80"
-                  alt="Casa moderna protetta"
+                  alt="Nowoczesny chroniony dom"
                   fill
                   className="object-cover opacity-50"
                 />
@@ -1512,14 +1541,14 @@ export default function SecurityLandingPage() {
               </div>
               <div className="relative grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 mb-8">
                 {[
-                  { icon: <Camera />, title: '5 Microcamere HD', desc: 'Nascoste ovunque in casa. Videosorveglianza 24/7 con registrazione continua' },
-                  { icon: <Radar />, title: '10 Sensori di Movimento', desc: 'Rilevano intrusi ma ignorano animali domestici. Zero falsi allarmi' },
-                  { icon: <div className="relative w-6 h-6"><Circle className="absolute inset-0 w-6 h-6" /><Circle className="absolute inset-1.5 w-3 h-3" /></div>, title: '5 Rilevatori di Fumo', desc: 'Rilevano incendi e chiamano automaticamente i pompieri.' },
-                  { icon: <Smartphone />, title: 'Notifiche Istantanee', desc: 'Vedi tutto sul tuo cellulare in tempo reale, ovunque tu sia' },
-                  { icon: <Phone />, title: 'Chiamata alla Polizia', desc: 'Una volta confermata l\'intrusione dall\'app, viene chiamata la polizia' },
-                  { icon: <Battery />, title: 'Batterie e SIM Incluse', desc: 'Funziona anche senza corrente e senza WiFi. Sempre operativo.' },
-                  { icon: <Lock />, title: 'Disattivazione Smart', desc: 'Si disattiva automaticamente quando rileva il tuo telefono o con codice' },
-                  { icon: <CheckCircle />, title: 'Zero Abbonamenti', desc: 'Paghi solo una volta. Nessun costo mensile nascosto.' }
+                  { icon: <Camera />, title: '5 Mikrokamer HD', desc: 'Ukryte w całym domu. Monitoring 24/7 z ciągłym nagrywaniem' },
+                  { icon: <Radar />, title: '10 Czujników Ruchu', desc: 'Wykrywają intruzów, ale ignorują zwierzęta domowe. Zero fałszywych alarmów' },
+                  { icon: <div className="relative w-6 h-6"><Circle className="absolute inset-0 w-6 h-6" /><Circle className="absolute inset-1.5 w-3 h-3" /></div>, title: '5 Detektorów Dymu', desc: 'Wykrywają pożary i automatycznie wzywają straż pożarną.' },
+                  { icon: <Smartphone />, title: 'Natychmiastowe Powiadomienia', desc: 'Zobacz wszystko na swoim telefonie w czasie rzeczywistym, gdziekolwiek jesteś' },
+                  { icon: <Phone />, title: 'Połączenie z Policją', desc: 'Po potwierdzeniu włamania z aplikacji, automatycznie wzywana jest policja' },
+                  { icon: <Battery />, title: 'Baterie i SIM w Zestawie', desc: 'Działa nawet bez prądu i bez WiFi. Zawsze operacyjny.' },
+                  { icon: <Lock />, title: 'Inteligentna Dezaktywacja', desc: 'Wyłącza się automatycznie, gdy wykryje Twój telefon lub po wpisaniu kodu' },
+                  { icon: <CheckCircle />, title: 'Zero Abonamentów', desc: 'Płacisz tylko raz. Brak ukrytych miesięcznych kosztów.' }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -1544,7 +1573,7 @@ export default function SecurityLandingPage() {
                   onClick={scrollToOrderForm}
                   className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
                 >
-                  Richiedi la promozione oggi stesso
+                  Skorzystaj z promocji już dziś
                 </button>
               </div>
             </div>
@@ -1564,7 +1593,7 @@ export default function SecurityLandingPage() {
             transition={{ duration: 0.4 }}
             className="text-2xl md:text-3xl font-bold text-white text-center mb-10"
           >
-            Come Ordinare
+            Jak Zamówić
           </motion.h2>
           <div className="grid grid-cols-[1fr_0.3fr_1fr_0.3fr_1fr] md:grid-cols-5 items-center gap-1 md:gap-4">
             <motion.div
@@ -1577,7 +1606,7 @@ export default function SecurityLandingPage() {
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white text-[#1a2744] rounded-full flex items-center justify-center text-lg md:text-xl font-bold mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-125">
                 1
               </div>
-              <p className="text-white font-medium text-xs md:text-sm">Inserisci i dati<br />di spedizione</p>
+              <p className="text-white font-medium text-xs md:text-sm">Wprowadź dane<br />wysyłkowe</p>
             </motion.div>
             <div className="h-0.5 bg-white/30 self-center"></div>
             <motion.div
@@ -1590,7 +1619,7 @@ export default function SecurityLandingPage() {
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white text-[#1a2744] rounded-full flex items-center justify-center text-lg md:text-xl font-bold mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-125">
                 2
               </div>
-              <p className="text-white font-medium text-xs md:text-sm">Paga in contanti<br />alla consegna</p>
+              <p className="text-white font-medium text-xs md:text-sm">Płać gotówką<br />przy odbiorze</p>
             </motion.div>
             <div className="h-0.5 bg-white/30 self-center"></div>
             <motion.div
@@ -1603,7 +1632,7 @@ export default function SecurityLandingPage() {
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white text-[#1a2744] rounded-full flex items-center justify-center text-lg md:text-xl font-bold mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-125">
                 3
               </div>
-              <p className="text-white font-medium text-xs md:text-sm">Installa in<br />5 minuti</p>
+              <p className="text-white font-medium text-xs md:text-sm">Zainstaluj w<br />5 minut</p>
             </motion.div>
           </div>
           <div className="text-center mt-10">
@@ -1611,7 +1640,7 @@ export default function SecurityLandingPage() {
               onClick={scrollToOrderForm}
               className="bg-white hover:bg-gray-100 text-gray-900 font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
             >
-              Ordina Ora
+              Zamów Teraz
             </button>
           </div>
         </div>

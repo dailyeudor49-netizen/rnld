@@ -4,76 +4,77 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Lock, Smartphone, Clock, Star, Zap, Award, Phone, Camera, Bell, Users, ArrowRight, ChevronDown, Download, Settings, Radar, Battery, Circle, Wifi, ChevronLeft, ChevronRight, Quote, Plus } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const testimonials = [
   {
-    name: 'Marco R.',
+    name: 'Martin K.',
     source: 'Trustpilot',
     rating: 5,
-    text: 'Installato in 10 minuti, funziona da dio. L\'app è semplicissima e le notifiche arrivano subito. Consigliatissimo!',
+    text: 'Inštaloval som to za 10 minút, funguje to perfektne. Aplikácia je veľmi jednoduchá a upozornenia prichádzajú okamžite. Vrelo odporúčam!',
     gender: 'M'
   },
   {
-    name: 'Giulia T.',
+    name: 'Eva Š.',
     source: 'Facebook',
     rating: 5,
-    text: 'Finalmente dormo tranquilla! Abito da sola e avevo sempre paura. Ora se qualcuno si avvicina alla porta mi arriva subito la notifica con la foto. Top!',
+    text: 'Konečne pokojne spím! Bývam sama a vždy som sa bála. Teraz, keď sa niekto priblíži k dverám, okamžite dostanem notifikáciu s fotkou. Super!',
     gender: 'F'
   },
   {
-    name: 'Alessandro P.',
+    name: 'Peter N.',
     source: 'Google',
     rating: 5,
-    text: 'Rapporto qualità prezzo incredibile. Ho confrontato con altri sistemi da 500€+ e questo fa le stesse cose. Niente abbonamenti poi è un plus enorme.',
+    text: 'Neuveriteľný pomer ceny a kvality. Porovnával som to s inými systémami za 500€+ a toto robí to isté. Žiadne mesačné poplatky, čo je obrovská výhoda.',
     gender: 'M'
   },
   {
-    name: 'Francesca M.',
+    name: 'Lucia T.',
     source: 'Trustpilot',
     rating: 4,
-    text: 'Bello e facile da usare. Unica cosa, avrei voluto più sensori nella confezione, ma tanto si possono comprare a parte e costano pochissimo. Per il prezzo va benissimo!',
+    text: 'Pekné a jednoduché na používanie. Jediné, čo by som chcela, je viac senzorov v balení, ale dajú sa dokúpiť a stoja veľmi málo. Za tú cenu je to perfektné!',
     gender: 'F'
   },
   {
-    name: 'Roberto C.',
+    name: 'Ján V.',
     source: 'Feedaty',
     rating: 5,
-    text: 'Mi hanno provato a entrare in casa 2 anni fa. Mai più senza allarme. Questo sistema è perfetto, la sirena è fortissima e l\'app funziona benissimo anche da lontano.',
+    text: 'Pred 2 rokmi sa mi niekto pokúsil vlámať do domu. Nikdy viac bez alarmu. Tento systém je perfektný, siréna je veľmi silná a aplikácia funguje skvele aj na diaľku.',
     gender: 'M'
   },
   {
-    name: 'Sara L.',
+    name: 'Zuzana M.',
     source: 'Google',
     rating: 5,
-    text: 'Lo uso da 3 mesi, zero problemi. Le telecamere sono piccole ma la qualità video è ottima, anche di notte!',
+    text: 'Používam to už 3 mesiace, žiadne problémy. Kamery sú malé, ale kvalita videa je vynikajúca, aj v noci!',
     gender: 'F'
   },
   {
-    name: 'Davide B.',
+    name: 'Tomáš B.',
     source: 'Facebook',
     rating: 5,
-    text: 'Scettico all\'inizio, ora non posso farne a meno. La cosa che mi piace di più è che si disattiva automaticamente quando arrivo a casa.',
+    text: 'Najprv som bol skeptický, teraz sa bez toho nezaobídem. Najviac sa mi páči, že sa automaticky deaktivuje, keď prídem domov.',
     gender: 'M'
   },
   {
-    name: 'Valentina G.',
+    name: 'Anna H.',
     source: 'Feedaty',
     rating: 5,
-    text: 'Ho preso questo per la casa al mare. Installazione facilissima, lo controllo tutto dall\'app quando sono a casa in città. Ottimo acquisto!',
+    text: 'Kúpila som to pre chatu. Inštalácia bola veľmi jednoduchá, všetko ovládam cez aplikáciu, keď som doma v meste. Skvelý nákup!',
     gender: 'F'
   },
   {
-    name: 'Luca F.',
+    name: 'Pavol D.',
     source: 'Google',
     rating: 5,
-    text: 'Ottimo prodotto, fa quello che deve fare. L\'assistenza mi ha risposto subito quando avevo un dubbio sulla configurazione.',
+    text: 'Výborný produkt, robí to, čo má. Podpora mi okamžite odpovedala, keď som mal otázku ohľadom nastavenia.',
     gender: 'M'
   },
   {
-    name: 'Chiara D.',
+    name: 'Mária K.',
     source: 'Trustpilot',
     rating: 5,
-    text: 'I miei genitori anziani vivono soli e volevo stare tranquilla. Ora posso vedere cosa succede in casa loro in qualsiasi momento. Li ho convinti a prenderlo ed è stata la decisione migliore!',
+    text: 'Moji starší rodičia bývajú sami a chcela som byť v pokoji. Teraz môžem kedykoľvek vidieť, co sa u nich doma deje. Presvedčila som ich, aby si to kúpili a bolo to najlepšie rozhodnutie!',
     gender: 'F'
   }
 ];
@@ -126,7 +127,7 @@ const TestimonialsSlider = () => {
       <div className="max-w-4xl mx-auto px-8 md:px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-            Cosa Dicono i Nostri Clienti
+            Čo hovoria naši zákazníci
           </h2>
           <div className="flex items-center justify-center gap-2">
             <div className="flex items-center gap-0.5">
@@ -136,7 +137,7 @@ const TestimonialsSlider = () => {
             </div>
             <span className="text-base md:text-lg font-bold text-[#1a2744]">4.9</span>
             <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-            <span className="text-base md:text-lg text-gray-600">8.254 recensioni</span>
+            <span className="text-base md:text-lg text-gray-600">8.254 recenzií</span>
           </div>
         </div>
 
@@ -166,7 +167,7 @@ const TestimonialsSlider = () => {
                   ))}
                 </div>
                 <p className="font-bold text-[#1a2744]">{testimonials[currentIndex].name}</p>
-                <p className="text-sm text-gray-500 mt-1 italic">Tramite <span className="font-bold">{testimonials[currentIndex].source}</span></p>
+                <p className="text-sm text-gray-500 mt-1 italic">Prostredníctvom <span className="font-bold">{testimonials[currentIndex].source}</span></p>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -209,24 +210,24 @@ const InstallationGuide = () => {
   const steps = [
     {
       step: 1,
-      title: 'Installa telecamere e sensori',
-      desc: 'Le telecamere e i sensori possono essere installati in diversi modi: con ventose, colla adesiva, viti oppure semplicemente appoggiati su una superficie. Scegli il metodo più adatto alla tua casa e posizionali nei punti strategici.',
+      title: 'Nainštalujte kamery a senzory',
+      desc: 'Kamery a senzory možno inštalovať rôznymi spôsobmi: prísavkami, lepiacou páskou, skrutkami alebo jednoducho položením na povrch. Vyberte si metódu, ktorá najlepšie vyhovuje vášmu domu, a umiestnite ich na strategické miesta.',
       image: '/images/secure/conf1.jpg',
-      imageAlt: 'Installazione telecamere e sensori'
+      imageAlt: 'Inštalácia kamier a senzorov'
     },
     {
       step: 2,
-      title: 'Scarica l\'app e inserisci il codice',
-      desc: 'Scarica l\'app gratuita dal tuo store (App Store o Google Play) e inserisci il codice univoco fornito insieme al prodotto. Lo trovi stampato sulla scatola e sul libretto di istruzioni incluso nella confezione.',
+      title: 'Stiahnite si aplikáciu a zadajte kód',
+      desc: 'Stiahnite si bezplatnú aplikáciu zo svojho obchodu (App Store alebo Google Play) a zadajte jedinečný kód dodaný s produktom. Nájdete ho vytlačený na krabici a v návode dodanom v balení.',
       image: '/images/secure/conf2.jpg',
-      imageAlt: 'Download app e inserimento codice'
+      imageAlt: 'Stiahnutie aplikácie a zadanie kódu'
     },
     {
       step: 3,
-      title: 'Configura emergenze e disattivazione',
-      desc: 'Imposta i numeri di emergenza da chiamare in caso di allarme e scegli come disattivare il sistema: automaticamente quando il tuo telefono viene rilevato nelle vicinanze, oppure inserendo un codice sulla centralina all\'ingresso di casa.',
+      title: 'Nakonfigurujte tiesňové volania a deaktiváciu',
+      desc: 'Nastavte tiesňové čísla na zavolanie v prípade alarmu a vyberte spôsob deaktivácie systému: automaticky, keď je váš telefón zistený v blízkosti, alebo zadaním kódu na centrálnom paneli pri vchode do domu.',
       image: '/images/secure/conf3.jpg',
-      imageAlt: 'Configurazione sistema di sicurezza'
+      imageAlt: 'Konfigurácia bezpečnostného systému'
     }
   ];
 
@@ -239,9 +240,9 @@ const InstallationGuide = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-            Guida all'Installazione
+            Návod na inštaláciu
           </h2>
-          <p className="text-xl text-gray-600">3 semplici passaggi per proteggere la tua casa in 5 minuti</p>
+          <p className="text-xl text-gray-600">3 jednoduché kroky na ochranu vášho domova za 5 minút</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -321,7 +322,7 @@ const InstallationGuide = () => {
             <div className="md:hidden relative h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/secure/conf0.png"
-                alt="Guida installazione sistema di sicurezza"
+                alt="Návod na inštaláciu bezpečnostného systému"
                 fill
                 className="object-cover"
               />
@@ -330,7 +331,7 @@ const InstallationGuide = () => {
             <div className="hidden md:block relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src={activeStep !== null ? steps[activeStep].image : '/images/secure/conf0.png'}
-                alt={activeStep !== null ? steps[activeStep].imageAlt : 'Guida installazione sistema di sicurezza'}
+                alt={activeStep !== null ? steps[activeStep].imageAlt : 'Návod na inštaláciu bezpečnostného systému'}
                 fill
                 className="object-cover transition-all duration-500"
               />
@@ -340,7 +341,7 @@ const InstallationGuide = () => {
               {activeStep !== null && (
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4">
-                    <p className="font-bold text-[#1a2744]">Step {steps[activeStep].step}</p>
+                    <p className="font-bold text-[#1a2744]">Krok {steps[activeStep].step}</p>
                     <p className="text-sm text-gray-600">{steps[activeStep].title}</p>
                   </div>
                 </div>
@@ -354,7 +355,7 @@ const InstallationGuide = () => {
             onClick={scrollToOrderForm}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
           >
-            Inizia Subito
+            Začať hneď
           </button>
         </div>
       </div>
@@ -363,6 +364,7 @@ const InstallationGuide = () => {
 };
 
 const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
+  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -408,7 +410,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
   }, [showDemo, showIntervieni, showAppMenu, showTelecamere]);
 
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString('it-IT', {
+    return date.toLocaleDateString('sk-SK', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric'
@@ -416,7 +418,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
   };
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('it-IT', {
+    return date.toLocaleTimeString('sk-SK', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit'
@@ -424,10 +426,10 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
   };
 
   const cameras = [
-    { id: 1, name: 'CAM 01 - Giardino', status: 'secure', image: 'https://media-cdn.tripadvisor.com/media/photo-s/08/b8/33/89/la-casa-del-borgo.jpg' },
-    { id: 2, name: 'CAM 02 - Sala', status: 'alert', image: 'https://www.sectoralarm.it/hs-fs/hubfs/SectorAlarm_December2024/Images/intelligence-and-protection-in-one-glance.webp?width=1157&height=1019&name=intelligence-and-protection-in-one-glance.webp' },
-    { id: 3, name: 'CAM 03 - Garage', status: 'secure', image: 'https://preview.redd.it/what-camera-to-install-in-garage-v0-qm5b9z7mkehe1.png?format=png&auto=webp&s=82ba2f9a2fa8635254c09a2338a134b37fc3098e' },
-    { id: 4, name: 'CAM 04 - Camera da Letto', status: 'secure', image: 'https://magazine.bimbostore.com/app/uploads/2023/03/Temperatura-della-camera-del-neonato.jpg' },
+    { id: 1, name: 'CAM 01 - Záhrada', status: 'secure', image: 'https://media-cdn.tripadvisor.com/media/photo-s/08/b8/33/89/la-casa-del-borgo.jpg' },
+    { id: 2, name: 'CAM 02 - Obývačka', status: 'alert', image: 'https://www.sectoralarm.it/hs-fs/hubfs/SectorAlarm_December2024/Images/intelligence-and-protection-in-one-glance.webp?width=1157&height=1019&name=intelligence-and-protection-in-one-glance.webp' },
+    { id: 3, name: 'CAM 03 - Garáž', status: 'secure', image: 'https://preview.redd.it/what-camera-to-install-in-garage-v0-qm5b9z7mkehe1.png?format=png&auto=webp&s=82ba2f9a2fa8635254c09a2338a134b37fc3098e' },
+    { id: 4, name: 'CAM 04 - Spálňa', status: 'secure', image: 'https://magazine.bimbostore.com/app/uploads/2023/03/Temperatura-della-camera-del-neonato.jpg' },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -439,6 +441,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
       if (typeof window !== 'undefined') {
         localStorage.setItem('lead_submitted', 'true');
       }
+      router.push('/ty/ty-fb-secure-sk');
     }, 1500);
   };
 
@@ -452,8 +455,8 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
         <div className="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
           <CheckCircle size={32} />
         </div>
-        <h3 className="text-2xl font-bold text-[#1a2744] mb-2">Preventivo Richiesto!</h3>
-        <p className="text-gray-600">Ti ricontatteremo entro 60 secondi per il tuo preventivo personalizzato gratuito.</p>
+        <h3 className="text-2xl font-bold text-[#1a2744] mb-2">Cenová ponuka bola požiadaná!</h3>
+        <p className="text-gray-600">Skontaktujeme vás do 60 sekúnd pre vašu bezplatnú cenovú ponuku na mieru.</p>
       </motion.div>
     );
   }
@@ -502,7 +505,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <div className="p-4">
                 <div className="bg-white/20 border border-white/30 rounded-xl p-3 flex items-center gap-3 mb-4">
                   <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                  <span className="text-white font-semibold">Sistema Attivo - Casa Protetta</span>
+                  <span className="text-white font-semibold">Systém aktívny - Dom chránený</span>
                 </div>
 
                 {/* Menu opzioni */}
@@ -518,9 +521,9 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                       <Camera className="w-6 h-6 text-white" />
                     </div>
-                    <span className="text-blue-900 font-semibold text-sm">Telecamere</span>
-                    <span className="text-blue-600 text-xs">4 attive</span>
-                    <span className="text-red-500 text-[10px] font-semibold bg-red-50 border border-red-200 px-2 py-0.5 rounded-full animate-pulse">Movimento rilevato</span>
+                    <span className="text-blue-900 font-semibold text-sm">Kamery</span>
+                    <span className="text-blue-600 text-xs">4 aktívne</span>
+                    <span className="text-red-500 text-[10px] font-semibold bg-red-50 border border-red-200 px-2 py-0.5 rounded-full animate-pulse">Zistený pohyb</span>
                   </button>
 
                   <button
@@ -534,7 +537,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                       <Lock className="w-6 h-6 text-white" />
                     </div>
                     <span className="text-blue-900 font-semibold text-sm">Smartlock</span>
-                    <span className={`text-xs ${smartlockOpen ? 'text-red-500' : 'text-emerald-500'}`}>{smartlockOpen ? 'Aperto' : 'Chiuso'}</span>
+                    <span className={`text-xs ${smartlockOpen ? 'text-red-500' : 'text-emerald-500'}`}>{smartlockOpen ? 'Otvorené' : 'Zatvorené'}</span>
                   </button>
 
                   <button
@@ -549,8 +552,8 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <span className="text-blue-900 font-semibold text-sm">Video Registrati</span>
-                    <span className="text-blue-600 text-xs">4 video</span>
+                    <span className="text-blue-900 font-semibold text-sm">Nahrané videá</span>
+                    <span className="text-blue-600 text-xs">4 videá</span>
                   </button>
 
                   <button
@@ -563,8 +566,8 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                       <Settings className="w-6 h-6 text-white" />
                     </div>
-                    <span className="text-blue-900 font-semibold text-sm">Impostazioni</span>
-                    <span className="text-blue-600 text-xs">Configura</span>
+                    <span className="text-blue-900 font-semibold text-sm">Nastavenia</span>
+                    <span className="text-blue-600 text-xs">Konfigurovať</span>
                   </button>
                 </div>
               </div>
@@ -578,7 +581,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
-                  Chiudi App
+                  Zavrieť aplikáciu
                 </button>
               </div>
             </motion.div>
@@ -612,16 +615,16 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <Lock className={`w-12 h-12 ${smartlockOpen ? 'text-red-400' : 'text-emerald-400'}`} />
                 </div>
 
-                <h3 className="text-white text-xl font-bold mb-2">Porta di Casa</h3>
+                <h3 className="text-white text-xl font-bold mb-2">Domové dvere</h3>
                 <p className={`text-lg font-semibold mb-6 ${smartlockOpen ? 'text-red-400' : 'text-emerald-400'}`}>
-                  {smartlockOpen ? 'Aperta' : 'Chiusa'}
+                  {smartlockOpen ? 'Otvorené' : 'Zatvorené'}
                 </p>
 
                 <button
                   onClick={() => setSmartlockOpen(!smartlockOpen)}
                   className={`px-8 py-3 rounded-xl font-bold text-white transition-all cursor-pointer ${smartlockOpen ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-red-600 hover:bg-red-700'}`}
                 >
-                  {smartlockOpen ? 'Chiudi Porta' : 'Apri Porta'}
+                  {smartlockOpen ? 'Zatvoriť dvere' : 'Otvoriť dvere'}
                 </button>
               </div>
 
@@ -637,7 +640,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Späť do ponuky
                 </button>
               </div>
             </motion.div>
@@ -658,7 +661,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-white font-bold text-lg">Video Registrati</span>
+                    <span className="text-white font-bold text-lg">Nahrané videá</span>
                   </div>
                   <div className="text-right text-xs text-blue-300">
                     <div>{formatDate(currentTime)}</div>
@@ -711,7 +714,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Späť do ponuky
                 </button>
               </div>
             </motion.div>
@@ -730,7 +733,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Settings className="w-6 h-6 text-blue-400" />
-                    <span className="text-white font-bold text-lg">Impostazioni</span>
+                    <span className="text-white font-bold text-lg">Nastavenia</span>
                   </div>
                 </div>
               </div>
@@ -738,16 +741,16 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               {/* Opzioni */}
               <div className="p-4 space-y-3 max-h-[300px] overflow-y-auto">
                 {[
-                  { icon: <Bell className="w-5 h-5" />, title: 'Notifiche', desc: 'Gestisci avvisi e suoni', toggle: true, toggleKey: 'notifiche' as const },
-                  { icon: <Camera className="w-5 h-5" />, title: 'Qualità Video', desc: 'HD 1080p', toggle: false },
-                  { icon: <Wifi className="w-5 h-5" />, title: 'Connessione', desc: 'WiFi: Casa_5G', toggle: false },
-                  { icon: <Phone className="w-5 h-5" />, title: 'Numeri Emergenza', desc: 'Polizia, Contatti...', toggle: false },
-                  { icon: <Users className="w-5 h-5" />, title: 'Utenti Autorizzati', desc: '3 membri famiglia', toggle: false },
-                  { icon: <Clock className="w-5 h-5" />, title: 'Programmazione', desc: 'Attivo 22:00 - 07:00', toggle: true, toggleKey: 'programmazione' as const },
-                  { icon: <Shield className="w-5 h-5" />, title: 'Modalità Vacanza', desc: 'Protezione extra', toggle: true, toggleKey: 'vacanza' as const },
-                  { icon: <Radar className="w-5 h-5" />, title: 'Sensibilità Sensori', desc: 'Media', toggle: false },
-                  { icon: <Plus className="w-5 h-5" />, title: 'Nuovo Dispositivo', desc: 'Configura sensore/telecamera', toggle: false },
-                  { icon: <Settings className="w-5 h-5" />, title: 'Impostazioni Avanzate', desc: 'Configurazione sistema', toggle: false },
+                  { icon: <Bell className="w-5 h-5" />, title: 'Upozornenia', desc: 'Spravovať upozornenia a zvuky', toggle: true, toggleKey: 'notifiche' as const },
+                  { icon: <Camera className="w-5 h-5" />, title: 'Kvalita videa', desc: 'HD 1080p', toggle: false },
+                  { icon: <Wifi className="w-5 h-5" />, title: 'Pripojenie', desc: 'WiFi: Dom_5G', toggle: false },
+                  { icon: <Phone className="w-5 h-5" />, title: 'Tiesňové čísla', desc: 'Polícia, Kontakty...', toggle: false },
+                  { icon: <Users className="w-5 h-5" />, title: 'Autorizovaní užívatelia', desc: '3 členovia rodiny', toggle: false },
+                  { icon: <Clock className="w-5 h-5" />, title: 'Plánovanie', desc: 'Aktívne 22:00 - 07:00', toggle: true, toggleKey: 'programmazione' as const },
+                  { icon: <Shield className="w-5 h-5" />, title: 'Režim dovolenky', desc: 'Extra ochrana', toggle: true, toggleKey: 'vacanza' as const },
+                  { icon: <Radar className="w-5 h-5" />, title: 'Citlivosť senzorov', desc: 'Stredná', toggle: false },
+                  { icon: <Plus className="w-5 h-5" />, title: 'Nové zariadenie', desc: 'Konfigurovať senzor/kameru', toggle: false },
+                  { icon: <Settings className="w-5 h-5" />, title: 'Pokročilé nastavenia', desc: 'Konfigurácia systému', toggle: false },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between bg-blue-800/30 rounded-xl p-3 border border-blue-700/50">
                     <div className="flex items-center gap-3">
@@ -785,7 +788,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Späť do ponuky
                 </button>
               </div>
             </motion.div>
@@ -836,13 +839,13 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                       {camera.status === 'secure' ? (
                         <div className="flex items-center gap-1.5 bg-emerald-500/90 text-white px-2 py-1 rounded-lg text-[10px] md:text-sm font-semibold">
                           <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full animate-pulse"></span>
-                          SICURO
+                          BEZPEČNÉ
                         </div>
                       ) : (
                         <div className="flex items-center justify-between gap-2">
                           <div className="flex items-center gap-1.5 bg-red-500/90 text-white px-2 py-1 rounded-lg text-[10px] md:text-sm font-semibold animate-pulse">
                             <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full"></span>
-                            ALLERTA MOVIMENTO
+                            VÝSTRAHA POHYB
                           </div>
                           <button
                             onClick={() => {
@@ -851,7 +854,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                             }}
                             className="bg-white text-red-600 px-2 py-1 rounded-lg text-[10px] md:text-sm font-bold hover:bg-red-100 transition-colors cursor-pointer shadow-lg"
                           >
-                            INTERVIENI
+                            ZASIAHNUŤ
                           </button>
                         </div>
                       )}
@@ -872,7 +875,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna al Menu
+                  Späť do ponuky
                 </button>
               </div>
             </motion.div>
@@ -890,7 +893,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               <div className="relative aspect-[4/3]">
                 <Image
                   src={cameras.find(c => c.status === 'alert')?.image || ''}
-                  alt="Camera con allerta"
+                  alt="Kamera s výstrahou"
                   fill
                   className="object-cover brightness-110"
                 />
@@ -924,7 +927,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 <div className="absolute bottom-3 left-3 right-3">
                   <div className="flex items-center gap-2 bg-red-500/90 text-white px-3 py-2 rounded-lg text-sm md:text-base font-semibold animate-pulse">
                     <span className="w-2 h-2 bg-white rounded-full"></span>
-                    ALLERTA MOVIMENTO RILEVATO
+                    VÝSTRAHA ZISTENÝ POHYB
                   </div>
                 </div>
               </div>
@@ -939,7 +942,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 ${alarmActive ? 'bg-red-600' : 'bg-emerald-600'} text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3`}
                   >
                     <Bell className={`w-8 h-8 ${alarmActive ? 'animate-bounce' : ''}`} />
-                    <span className="text-lg font-bold">{alarmActive ? 'Allarme sonoro attivato!' : 'Allarme sonoro disattivato!'}</span>
+                    <span className="text-lg font-bold">{alarmActive ? 'Zvukový alarm aktivovaný!' : 'Zvukový alarm deaktivovaný!'}</span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -955,9 +958,9 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   >
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-yellow-400 text-[#1a2744] font-bold text-xs px-4 py-1 rounded-b-lg z-10">DEMO</div>
                     <div className="text-center">
-                      <p className="text-gray-400 text-sm mb-2">Chiamata in corso...</p>
-                      <h2 className="text-white text-4xl md:text-5xl font-bold mb-2">Polizia</h2>
-                      <p className="text-gray-400 text-lg mb-8">Emergenza</p>
+                      <p className="text-gray-400 text-sm mb-2">Prebieha hovor...</p>
+                      <h2 className="text-white text-4xl md:text-5xl font-bold mb-2">Polícia</h2>
+                      <p className="text-gray-400 text-lg mb-8">Tiesňové volanie</p>
 
                       {/* Animazione onde */}
                       <div className="relative w-20 h-20 mx-auto mb-8">
@@ -966,7 +969,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                         <div className="absolute inset-4 border-2 border-gray-300 rounded-full animate-ping opacity-10" style={{ animationDelay: '1s' }}></div>
                       </div>
 
-                      <p className="text-gray-400 text-sm mb-8 animate-pulse">Connessione in corso...</p>
+                      <p className="text-gray-400 text-sm mb-8 animate-pulse">Pripájanie...</p>
 
                       {/* Pulsante termina */}
                       <button
@@ -975,7 +978,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                       >
                         <Phone className="w-8 h-8 text-white rotate-[135deg]" />
                       </button>
-                      <p className="text-gray-400 text-sm mt-3">Termina</p>
+                      <p className="text-gray-400 text-sm mt-3">Ukončiť</p>
                     </div>
                   </motion.div>
                 )}
@@ -989,7 +992,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg cursor-pointer text-sm md:text-base"
                   >
                     <Phone className="w-5 h-5" />
-                    Chiama Polizia
+                    Volať políciu
                   </button>
                   <button
                     onClick={() => {
@@ -1002,7 +1005,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                     className={`flex items-center justify-center gap-2 ${alarmActive ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-red-600 hover:bg-red-700'} text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg cursor-pointer text-sm md:text-base`}
                   >
                     <Bell className="w-5 h-5" />
-                    {alarmActive ? 'Disattiva Allarme' : 'Attiva Allarme'}
+                    {alarmActive ? 'Vypnúť alarm' : 'Zapnúť alarm'}
                   </button>
                 </div>
                 <button
@@ -1015,7 +1018,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
-                  Torna alle Telecamere
+                  Späť na kamery
                 </button>
               </div>
             </motion.div>
@@ -1030,7 +1033,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
             >
               <Image
                 src="/images/secure/princ.png"
-                alt="Sistema di sicurezza"
+                alt="Bezpečnostný systém"
                 width={800}
                 height={450}
                 quality={100}
@@ -1040,7 +1043,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
 
               {isHero && (
                 <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
-                  Offerta fino al 23/12/2025
+                  Ponuka do 23/12/2025
                 </div>
               )}
 
@@ -1050,7 +1053,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 className="absolute bottom-3 left-1/2 -translate-x-1/2 px-5 py-2.5 bg-yellow-400 hover:bg-yellow-500 text-[#1a2744] font-bold rounded-lg transition-all shadow-lg shadow-yellow-400/40 hover:shadow-xl hover:shadow-yellow-400/50 hover:scale-110 flex items-center justify-center gap-2 text-sm cursor-pointer whitespace-nowrap animate-bounce"
               >
                 <Camera className="w-4 h-4 flex-shrink-0" />
-                <span>Visualizza DEMO App</span>
+                <span>Zobraziť DEMO aplikáciu</span>
               </button>
             </motion.div>
           )}
@@ -1062,25 +1065,25 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
           Black Friday
         </span>
         <h3 className="text-2xl font-bold text-white mb-2">
-          Sistema di sicurezza <span className="font-extrabold">BeSecure Pro</span>
+          Bezpečnostný systém <span className="font-extrabold">BeSecure Pro</span>
         </h3>
         <div className="flex items-center gap-3 mb-2">
-          <p className="text-3xl font-extrabold text-white">69,90€</p>
-          <p className="text-lg text-blue-200 line-through">233,00€</p>
-          <span className="bg-white text-red-600 border-2 border-red-600 text-xs font-bold px-2 py-1 rounded">-70%</span>
+          <p className="text-3xl font-extrabold text-white">99,99€</p>
+          <p className="text-lg text-blue-200 line-through">149,99€</p>
+          <span className="bg-white text-red-600 border-2 border-red-600 text-xs font-bold px-2 py-1 rounded">-33%</span>
         </div>
         <div className="space-y-1 mb-4">
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> Pagamento in Contanti alla Consegna
+            <CheckCircle className="w-4 h-4 text-green-400" /> Platba v hotovosti pri doručení
           </p>
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> Spedizione Rapida Gratuita
+            <CheckCircle className="w-4 h-4 text-green-400" /> Rýchla doprava zadarmo
           </p>
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> 30 Giorni di Reso
+            <CheckCircle className="w-4 h-4 text-green-400" /> 30 dní na vrátenie
           </p>
           <p className="text-blue-100 text-sm flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-400" /> 2 Anni di Garanzia
+            <CheckCircle className="w-4 h-4 text-green-400" /> 2 roky záruky
           </p>
         </div>
         <button
@@ -1099,7 +1102,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
           }}
           className="w-full bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
         >
-          {showForm ? 'CHIUDI' : 'ORDINA ORA - PAGHI ALLA CONSEGNA'}
+          {showForm ? 'ZAVRIEŤ' : 'OBJEDNAŤ TERAZ - PLATÍTE PRI DORUČENÍ'}
         </button>
       </div>
 
@@ -1117,9 +1120,9 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
         <div className={`${isHero ? 'p-8' : 'p-6'} bg-white`}>
           <div className="mb-6 text-center">
             <h3 className={`${isHero ? 'text-2xl' : 'text-xl'} font-bold text-[#1a2744] mb-1`}>
-              Ordina Ora
+              Objednať teraz
             </h3>
-            <p className="text-gray-600">Paghi in Contanti alla Consegna</p>
+            <p className="text-gray-600">Platíte v hotovosti pri doručení</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-3">
@@ -1128,7 +1131,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 required
                 type="text"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
-                placeholder="Nome e Cognome"
+                placeholder="Meno a priezvisko"
               />
             </div>
             <div>
@@ -1136,7 +1139,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 required
                 type="text"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
-                placeholder="Indirizzo per la spedizione"
+                placeholder="Adresa na doručenie"
               />
             </div>
             <div>
@@ -1144,7 +1147,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
                 required
                 type="tel"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-[#1a2744] placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
-                placeholder="Numero di Telefono"
+                placeholder="Telefónne číslo"
               />
             </div>
 
@@ -1156,11 +1159,11 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               {isLoading ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  Invio...
+                  Odosielanie...
                 </>
               ) : (
                 <>
-                  PROCEDI CON L'ORDINE
+                  POKRAČOVAŤ V OBJEDNÁVKE
                 </>
               )}
             </button>
@@ -1168,7 +1171,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
 
           <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-400">
             <Lock size={10} />
-            <span>Dati protetti SSL</span>
+            <span>Údaje chránené SSL</span>
           </div>
         </div>
       </motion.div>
@@ -1205,15 +1208,15 @@ export default function SecurityLandingPage() {
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-green-600 to-green-700 shadow-2xl rounded-t-2xl">
         <div className="max-w-7xl mx-auto w-full px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2 md:gap-3">
-            <p className="text-white font-bold text-xl md:text-2xl">69,90€</p>
-            <p className="text-green-200 text-sm md:text-sm line-through">233,00€</p>
-            <span className="bg-yellow-400 text-[#1a2744] text-xs font-bold px-2 md:px-2 py-0.5 rounded">-70%</span>
+            <p className="text-white font-bold text-xl md:text-2xl">99,99€</p>
+            <p className="text-green-200 text-sm md:text-sm line-through">149,99€</p>
+            <span className="bg-yellow-400 text-[#1a2744] text-xs font-bold px-2 md:px-2 py-0.5 rounded">-33%</span>
           </div>
           <button
             onClick={scrollToOrderForm}
             className="bg-white hover:bg-gray-100 text-green-700 font-bold py-3 px-5 md:px-6 rounded-full text-sm md:text-base shadow-lg transition-all cursor-pointer whitespace-nowrap"
           >
-            Ordina Ora
+            Objednať teraz
           </button>
         </div>
       </div>
@@ -1245,7 +1248,7 @@ export default function SecurityLandingPage() {
                 </div>
 
                 <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 md:mb-4 leading-tight text-[#1a2744]">
-                  Non aspettare che sia <span className="text-blue-600">troppo tardi</span>: Proteggi chi ami oggi stesso
+                  Nečakajte, kým bude <span className="text-blue-600">príliš neskoro</span>: Chráňte svojich blízkych už dnes
                 </h1>
 
                 <a
@@ -1261,40 +1264,40 @@ export default function SecurityLandingPage() {
                   </div>
                   <span className="text-sm md:text-base font-bold text-[#1a2744]">4.9</span>
                   <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                  <span className="text-sm md:text-base text-gray-600">8.254 recensioni</span>
+                  <span className="text-sm md:text-base text-gray-600">8.254 recenzií</span>
                 </a>
 
                 <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
-                  5 microtelecamere HD, sensori, rilevatori di fumo, allarme assordante e notifiche istantanee sul tuo cellulare. Una volta confermata l'intrusione dall'app, viene chiamata la polizia. Tutto senza abbonamenti mensili.
+                  5 mikrokamier HD, senzory, detektory dymu, ohlušujúci alarm a okamžité upozornenia na váš mobilný telefón. Po potvrdení vlámania z aplikácie sa automaticky zavolá polícia. Všetko bez mesačných poplatkov.
                 </p>
 
                 <div className="space-y-2 mb-4 md:mb-6">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Allarme sonoro assordante + notifica</span>
+                    <span className="text-sm md:text-base text-gray-700">Ohlušujúci zvukový alarm + upozornenie</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Non si attiva con animali domestici</span>
+                    <span className="text-sm md:text-base text-gray-700">Neaktivuje sa pri domácich zvieratách</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Videocamere in tempo reale con audio</span>
+                    <span className="text-sm md:text-base text-gray-700">Videokamery v reálnom čase so zvukom</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="text-green-500" size={18} />
-                    <span className="text-sm md:text-base text-gray-700">Rilevatore di fumo per incendi</span>
+                    <span className="text-sm md:text-base text-gray-700">Detektor dymu pre požiare</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-6 md:mb-8">
                   <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg border border-blue-200">
                     <CheckCircle className="text-blue-600" size={18} />
-                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Zero abbonamenti mensili</span>
+                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Žiadne mesačné poplatky</span>
                   </div>
                   <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg border border-blue-200">
                     <CheckCircle className="text-blue-600" size={18} />
-                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Installazione in 5 minuti</span>
+                    <span className="text-xs md:text-sm font-medium text-[#1a2744]">Inštalácia za 5 minút</span>
                   </div>
                 </div>
 
@@ -1308,33 +1311,33 @@ export default function SecurityLandingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2744] mb-3 md:mb-4">
-              Cosa succede quando un estraneo entra in casa tua?
+              Čo sa stane, keď cudzí človek vojde do vášho domu?
             </h2>
-            <p className="text-base md:text-xl text-gray-600">3 livelli di protezione automatica che si attivano istantaneamente</p>
+            <p className="text-base md:text-xl text-gray-600">3 úrovne automatickej ochrany, ktoré sa aktivujú okamžite</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 step: '1',
-                title: 'Allarme Assordante + Luci',
-                desc: 'La <strong>sirena da 110dB</strong> si attiva insieme a luci stroboscopiche visibili da centinaia di metri. I ladri scappano immediatamente perché sanno di essere stati scoperti. La maggior parte abbandona il tentativo entro <strong>7 secondi</strong>.',
+                title: 'Ohlušujúci alarm + svetlá',
+                desc: '<strong>Siréna s intenzitou 110dB</strong> sa aktivuje spolu so stroboskopickými svetlami viditeľnými zo stoviek metrov. Zlodeji okamžite utečú, pretože vedia, že boli odhalení. Väčšina opúšťa pokus do <strong>7 sekúnd</strong>.',
                 image: '/images/secure/cosa_succede1.jpg',
-                imageAlt: 'Allarme sonoro e visivo'
+                imageAlt: 'Zvukový a vizuálny alarm'
               },
               {
                 step: '2',
-                title: 'Notifica Istantanea',
-                desc: 'Ricevi una <strong>chiamata automatica sul cellulare</strong> con le immagini live dalle 5 microcamere. Puoi vedere esattamente cosa sta succedendo in casa tua, ovunque tu sia. Nessun ritardo, nessuna attesa.',
+                title: 'Okamžité upozornenie',
+                desc: 'Dostanete <strong>automatický hovor na mobilný telefón</strong> s živými obrázkami z 5 mikrokamier. Môžete vidieť presne, čo sa deje vo vašom dome, nech ste kdekoľvek. Žiadne oneskorenie, žiadne čakanie.',
                 image: '/images/secure/cosa_succede2.jpg',
-                imageAlt: 'Notifica sul cellulare'
+                imageAlt: 'Upozornenie na mobilnom telefóne'
               },
               {
                 step: '3',
-                title: 'Chiamata alla Polizia',
-                desc: 'Una volta <strong>confermata l\'intrusione dall\'app</strong>, il sistema chiama automaticamente la polizia e invia loro le registrazioni video. Mentre tu sei al sicuro, l\'aiuto è già in arrivo per proteggere la tua casa e i tuoi cari.',
+                title: 'Volanie polícii',
+                desc: 'Po <strong>potvrdení vlámania z aplikácie</strong> systém automaticky zavolá políciu a pošle im videozáznamy. Kým ste vy v bezpečí, pomoc je už na ceste, aby ochránila váš dom a vašich blízkych.',
                 image: '/images/secure/cosa_succede3.jpg',
-                imageAlt: 'Intervento polizia'
+                imageAlt: 'Zásah polície'
               }
             ].map((item, i) => (
               <motion.div
@@ -1369,8 +1372,8 @@ export default function SecurityLandingPage() {
 
           <div className="text-center mt-8 md:mt-16">
             <div className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg md:rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-lg">
-              <p className="font-bold text-xs md:text-sm mb-1">⚠️ I ladri abbandonano il tentativo in media dopo</p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold">7 secondi</p>
+              <p className="font-bold text-xs md:text-sm mb-1">⚠️ Zlodeji opúšťajú pokus v priemere po</p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold">7 sekundách</p>
             </div>
           </div>
         </div>
@@ -1380,9 +1383,9 @@ export default function SecurityLandingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-              Il Sistema Completo
+              Kompletný systém
             </h2>
-            <p className="text-lg md:text-xl text-gray-600">Telecamere, sensori di movimento, rilevatori di fumo, allarmi e chiamate automatiche.</p>
+            <p className="text-lg md:text-xl text-gray-600">Kamery, senzory pohybu, detektory dymu, alarmy a automatické volania.</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
@@ -1390,49 +1393,49 @@ export default function SecurityLandingPage() {
               {
                 icon: <Lock />,
                 title: 'Smartlock',
-                desc: 'Serratura intelligente con controllo remoto. Apri e chiudi la porta dal tuo smartphone ovunque tu sia.',
+                desc: 'Inteligentný zámok s diaľkovým ovládaním. Otvorte a zatvorte dvere zo smartfónu kdekoľvek ste.',
                 image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=400&q=80'
               },
               {
                 icon: <Camera />,
-                title: 'Telecamere HD',
-                desc: 'Videosorveglianza ad alta risoluzione con visione notturna. Guarda cosa succede in tempo reale.',
+                title: 'HD kamery',
+                desc: 'Videodohľad vo vysokom rozlíšení s nočným videním. Sledujte, čo sa deje v reálnom čase.',
                 image: 'https://img.joomcdn.net/811f1d4330e279c0ae4aae1b93aed28278c714cf_original.jpeg'
               },
               {
                 icon: <Radar />,
-                title: 'Sensori di Movimento',
-                desc: 'Rilevamento intelligente con fotocamera integrata. Distingue persone da animali domestici.',
+                title: 'Senzory pohybu',
+                desc: 'Inteligentné snímanie s integrovanou kamerou. Rozlišuje ľudí od domácich zvierat.',
                 image: 'https://www.sevenitalia.it/data_files/product/PG8934.jpg'
               },
               {
                 icon: <Phone />,
-                title: 'Chiamata Automatica',
-                desc: 'In caso di intrusione confermata dall\'app, il sistema chiama automaticamente le forze dell\'ordine.',
+                title: 'Automatické volanie',
+                desc: 'V prípade potvrdeného vlámania z aplikácie systém automaticky zavolá políciu.',
                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTBY0jitNFt6lvBJXK174yUyu0QBUBCj0EzA&s'
               },
               {
                 icon: <Smartphone />,
-                title: 'App Mobile',
-                desc: 'Controllo totale dal tuo smartphone. Attiva, disattiva e monitora in tempo reale.',
+                title: 'Mobilná aplikácia',
+                desc: 'Úplná kontrola zo smartfónu. Aktivujte, deaktivujte a monitorujte v reálnom čase.',
                 image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80'
               },
               {
                 icon: <Wifi />,
-                title: 'Sirena 110dB',
-                desc: 'Sirena ad alta intensità per scoraggiare i malintenzionati. Funziona anche senza corrente.',
+                title: 'Siréna 110dB',
+                desc: 'Siréna s vysokou intenzitou na odradenie zlodejov. Funguje aj bez elektriny.',
                 image: 'https://www.lookathome.it/media/catalog/product/cache/1/thumbnail/585x585/9df78eab33525d08d6e5fb8d27136e95/l/k/lkm1_1_1.jpg'
               },
               {
                 icon: <Users />,
-                title: 'Sensori Porta/Finestra',
-                desc: 'Protezione perimetrale completa. Rileva aperture non autorizzate istantaneamente.',
+                title: 'Senzory dverí/okien',
+                desc: 'Kompletná obvodová ochrana. Okamžite zistí neautorizované otvorenie.',
                 image: 'https://i0.wp.com/www.blogbisacchi.it/wp-content/uploads/2023/10/sensore-allarme-wireless.png?resize=300%2C293&ssl=1'
               },
               {
                 icon: <div className="relative w-6 h-6"><Circle className="absolute inset-0 w-6 h-6" /><Circle className="absolute inset-1.5 w-3 h-3" /></div>,
-                title: 'Rilevatore di Fumo',
-                desc: 'Rileva fumo e incendi in tempo reale. Chiama automaticamente i pompieri.',
+                title: 'Detektor dymu',
+                desc: 'Zistí dym a požiare v reálnom čase. Automaticky zavolá hasičov.',
                 image: 'https://www.elettronsicurezza.it/wp-content/uploads/2019/10/Rivelazione-Incendi-Fumo-400x400.jpg'
               }
             ].map((device, i) => (
@@ -1470,7 +1473,7 @@ export default function SecurityLandingPage() {
               onClick={scrollToOrderForm}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
             >
-              Ordina adesso
+              Objednať teraz
             </button>
           </div>
         </div>
@@ -1486,10 +1489,10 @@ export default function SecurityLandingPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-6">
-              Cosa Include la Promozione
+              Čo zahŕňa ponuka
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Nessun abbonamento mensile. Zero costi nascosti. Paghi una volta sola.
+              Žiadne mesačné poplatky. Žiadne skryté náklady. Platíte len raz.
             </p>
           </motion.div>
 
@@ -1504,7 +1507,7 @@ export default function SecurityLandingPage() {
               <div className="absolute inset-0">
                 <Image
                   src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80"
-                  alt="Casa moderna protetta"
+                  alt="Moderný chránený dom"
                   fill
                   className="object-cover opacity-50"
                 />
@@ -1512,14 +1515,14 @@ export default function SecurityLandingPage() {
               </div>
               <div className="relative grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 mb-8">
                 {[
-                  { icon: <Camera />, title: '5 Microcamere HD', desc: 'Nascoste ovunque in casa. Videosorveglianza 24/7 con registrazione continua' },
-                  { icon: <Radar />, title: '10 Sensori di Movimento', desc: 'Rilevano intrusi ma ignorano animali domestici. Zero falsi allarmi' },
-                  { icon: <div className="relative w-6 h-6"><Circle className="absolute inset-0 w-6 h-6" /><Circle className="absolute inset-1.5 w-3 h-3" /></div>, title: '5 Rilevatori di Fumo', desc: 'Rilevano incendi e chiamano automaticamente i pompieri.' },
-                  { icon: <Smartphone />, title: 'Notifiche Istantanee', desc: 'Vedi tutto sul tuo cellulare in tempo reale, ovunque tu sia' },
-                  { icon: <Phone />, title: 'Chiamata alla Polizia', desc: 'Una volta confermata l\'intrusione dall\'app, viene chiamata la polizia' },
-                  { icon: <Battery />, title: 'Batterie e SIM Incluse', desc: 'Funziona anche senza corrente e senza WiFi. Sempre operativo.' },
-                  { icon: <Lock />, title: 'Disattivazione Smart', desc: 'Si disattiva automaticamente quando rileva il tuo telefono o con codice' },
-                  { icon: <CheckCircle />, title: 'Zero Abbonamenti', desc: 'Paghi solo una volta. Nessun costo mensile nascosto.' }
+                  { icon: <Camera />, title: '5 mikrokamier HD', desc: 'Skryté kdekoľvek v dome. Videodohľad 24/7 s nepretržitým záznamom' },
+                  { icon: <Radar />, title: '10 senzorov pohybu', desc: 'Zisťujú votrelcov, ale ignorujú domáce zvieratá. Žiadne falošné poplachy' },
+                  { icon: <div className="relative w-6 h-6"><Circle className="absolute inset-0 w-6 h-6" /><Circle className="absolute inset-1.5 w-3 h-3" /></div>, title: '5 detektorov dymu', desc: 'Zisťujú požiare a automaticky volajú hasičov.' },
+                  { icon: <Smartphone />, title: 'Okamžité upozornenia', desc: 'Vidíte všetko na mobilnom telefóne v reálnom čase, nech ste kdekoľvek' },
+                  { icon: <Phone />, title: 'Volanie polícii', desc: 'Po potvrdení vlámania z aplikácie sa automaticky zavolá polícia' },
+                  { icon: <Battery />, title: 'Batérie a SIM karty v cene', desc: 'Funguje aj bez elektriny a bez WiFi. Vždy v prevádzke.' },
+                  { icon: <Lock />, title: 'Inteligentná deaktivácia', desc: 'Automaticky sa deaktivuje pri zistení vášho telefónu alebo zadaním kódu' },
+                  { icon: <CheckCircle />, title: 'Žiadne poplatky', desc: 'Platíte len raz. Žiadne skryté mesačné náklady.' }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -1544,7 +1547,7 @@ export default function SecurityLandingPage() {
                   onClick={scrollToOrderForm}
                   className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
                 >
-                  Richiedi la promozione oggi stesso
+                  Požiadať o ponuku ešte dnes
                 </button>
               </div>
             </div>
@@ -1564,7 +1567,7 @@ export default function SecurityLandingPage() {
             transition={{ duration: 0.4 }}
             className="text-2xl md:text-3xl font-bold text-white text-center mb-10"
           >
-            Come Ordinare
+            Ako objednať
           </motion.h2>
           <div className="grid grid-cols-[1fr_0.3fr_1fr_0.3fr_1fr] md:grid-cols-5 items-center gap-1 md:gap-4">
             <motion.div
@@ -1577,7 +1580,7 @@ export default function SecurityLandingPage() {
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white text-[#1a2744] rounded-full flex items-center justify-center text-lg md:text-xl font-bold mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-125">
                 1
               </div>
-              <p className="text-white font-medium text-xs md:text-sm">Inserisci i dati<br />di spedizione</p>
+              <p className="text-white font-medium text-xs md:text-sm">Zadajte údaje<br />na doručenie</p>
             </motion.div>
             <div className="h-0.5 bg-white/30 self-center"></div>
             <motion.div
@@ -1590,7 +1593,7 @@ export default function SecurityLandingPage() {
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white text-[#1a2744] rounded-full flex items-center justify-center text-lg md:text-xl font-bold mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-125">
                 2
               </div>
-              <p className="text-white font-medium text-xs md:text-sm">Paga in contanti<br />alla consegna</p>
+              <p className="text-white font-medium text-xs md:text-sm">Plaťte v hotovosti<br />pri doručení</p>
             </motion.div>
             <div className="h-0.5 bg-white/30 self-center"></div>
             <motion.div
@@ -1603,7 +1606,7 @@ export default function SecurityLandingPage() {
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white text-[#1a2744] rounded-full flex items-center justify-center text-lg md:text-xl font-bold mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-125">
                 3
               </div>
-              <p className="text-white font-medium text-xs md:text-sm">Installa in<br />5 minuti</p>
+              <p className="text-white font-medium text-xs md:text-sm">Nainštalujte za<br />5 minút</p>
             </motion.div>
           </div>
           <div className="text-center mt-10">
@@ -1611,7 +1614,7 @@ export default function SecurityLandingPage() {
               onClick={scrollToOrderForm}
               className="bg-white hover:bg-gray-100 text-gray-900 font-bold py-4 px-12 rounded-full text-lg transition-all uppercase shadow-lg cursor-pointer"
             >
-              Ordina Ora
+              Objednať teraz
             </button>
           </div>
         </div>
