@@ -316,7 +316,7 @@ export default function OmniClimaPage() {
                           <p className="text-xs font-bold text-zinc-400 uppercase mb-1">Cena Premierowa</p>
                           <div className="flex items-baseline gap-3">
                               <span className="text-6xl font-black text-zinc-900 tracking-tighter">299 zł</span>
-                              <span className="text-xl text-zinc-400 line-through font-bold">599 zł</span>
+                              <span className="text-xl text-zinc-400 line-through font-bold">399 zł</span>
                           </div>
                        </div>
                        <div className="bg-red-600 text-white text-sm font-black px-3 py-1 rounded-lg transform rotate-3 shadow-lg">

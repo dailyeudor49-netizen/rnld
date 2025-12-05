@@ -315,8 +315,8 @@ export default function OmniClimaPage() {
                        <div>
                           <p className="text-xs font-bold text-zinc-400 uppercase mb-1">Úvodní Cena</p>
                           <div className="flex items-baseline gap-3">
-                              <span className="text-6xl font-black text-zinc-900 tracking-tighter">1 990 Kč</span>
-                              <span className="text-xl text-zinc-400 line-through font-bold">3 990 Kč</span>
+                              <span className="text-6xl font-black text-zinc-900 tracking-tighter">1 749 Kč</span>
+                              <span className="text-xl text-zinc-400 line-through font-bold">2 499 Kč</span>
                           </div>
                        </div>
                        <div className="bg-red-600 text-white text-sm font-black px-3 py-1 rounded-lg transform rotate-3 shadow-lg">
@@ -479,7 +479,7 @@ export default function OmniClimaPage() {
           <div className="text-center mb-10">
              <span className="bg-orange-600 text-white text-xs font-bold px-4 py-1.5 rounded-full animate-pulse">LIMITOVANÁ NABÍDKA</span>
              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mt-4 mb-2">Objednejte OmniClima 360</h2>
-             <p className="text-zinc-400">Vyplňte formulář pro nabídku za 1 990 Kč</p>
+             <p className="text-zinc-400">Vyplňte formulář pro nabídku za 1 749 Kč</p>
           </div>
 
           <div className="glass-panel p-6 md:p-10 rounded-3xl shadow-2xl">
@@ -503,7 +503,7 @@ export default function OmniClimaPage() {
                   <div className="bg-white/5 rounded-xl p-4 border border-white/10 mb-6">
                      <div className="flex justify-between items-center mb-2">
                         <span className="text-white font-bold">OmniClima 360™ (Model 2025)</span>
-                        <span className="text-orange-500 font-bold text-xl">1 990 Kč</span>
+                        <span className="text-orange-500 font-bold text-xl">1 749 Kč</span>
                      </div>
                      <div className="text-xs text-zinc-500 flex flex-col gap-1">
                         <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-green-500"/> Pojištěná Doprava v Ceně</span>
@@ -551,7 +551,7 @@ export default function OmniClimaPage() {
                <span className="text-sm">OBJEDNAT NYNÍ</span>
                <span className="text-[10px] text-zinc-500">Platíte při převzetí</span>
             </span>
-            <span className="bg-black text-white px-3 py-1 rounded text-lg font-bold">1 990 Kč</span>
+            <span className="bg-black text-white px-3 py-1 rounded text-lg font-bold">1 749 Kč</span>
          </button>
       </div>
     </div>
