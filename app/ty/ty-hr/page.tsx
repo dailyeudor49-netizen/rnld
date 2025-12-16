@@ -2,13 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-    dataLayer?: unknown[];
-  }
-}
-
 export default function ThankYouPage() {
   const [orderCode, setOrderCode] = useState('');
 
@@ -20,33 +13,6 @@ export default function ThankYouPage() {
       const newCode = Math.floor(100000 + Math.random() * 900000).toString();
       sessionStorage.setItem('orderCode', newCode);
       setOrderCode(newCode);
-    }
-
-    // Google Ads Conversion Tracking
-    const alreadyTracked = sessionStorage.getItem('conversionTracked');
-    if (typeof window !== 'undefined' && !alreadyTracked) {
-      const transactionId = sessionStorage.getItem('orderCode') || Math.floor(100000 + Math.random() * 900000).toString();
-
-      // Load gtag script
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17746789099';
-      document.head.appendChild(script);
-
-      script.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function() { window.dataLayer!.push(arguments); };
-        window.gtag('js', new Date());
-        window.gtag('config', 'AW-17746789099');
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-17746789099/Qc-RCO-plcQbEOuFqo5C',
-          'value': 69.99,
-          'currency': 'EUR',
-          'transaction_id': transactionId
-        });
-        sessionStorage.setItem('conversionTracked', 'true');
-        console.log('✅ Google Ads conversion tracked, transaction_id:', transactionId);
-      };
     }
   }, []);
 

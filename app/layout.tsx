@@ -4,7 +4,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { GTMHead, GTMBody } from "./components/GoogleTagManager";
 import FacebookPixel from "./components/FacebookPixel";
 
 const geistSans = Geist({
@@ -30,12 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GTMHead />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <GTMBody />
         <Suspense fallback={null}>
           <FacebookPixel />
         </Suspense>

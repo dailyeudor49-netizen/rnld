@@ -2,21 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Star, Award, CheckCircle, Shield, Zap, Battery, ChevronDown, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Dichiarazioni TypeScript per Google Ads - CORRETTE
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-    dataLayer?: any[];
-  }
-}
-
 export default function CesoiaElettricaLanding() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showOrderPopup, setShowOrderPopup] = useState<boolean>(false);
   const [timeLeft, setTimeLeft] = useState<number>(57 * 60); // 57 minuti in secondi
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<string>('');
-  const [conversionTracked, setConversionTracked] = useState<boolean>(false);
+
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState<number>(0);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState<boolean>(true);
   const [reviewsAutoScroll, setReviewsAutoScroll] = useState<boolean>(true);
@@ -40,47 +32,6 @@ export default function CesoiaElettricaLanding() {
     '/images/cesoia/carosello_7.jpg',
     '/images/cesoia/carosello_8.jpg',
   ];
-
-  // Carica Google Ads script quando il componente si monta
-  useEffect(() => {
-    // Evita doppio caricamento in sviluppo
-    if (typeof window === 'undefined') return;
-    
-    // Verifica se lo script è già caricato
-    const existingScript = document.querySelector('script[src*="googletagmanager.com/gtag/js"]');
-    if (existingScript && window.gtag) return;
-
-    // Carica Google Ads Global Site Tag
-    const gtagScript = document.createElement('script');
-    gtagScript.async = true;
-    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17104994752';
-    document.head.appendChild(gtagScript);
-
-    // Inizializza gtag
-    gtagScript.onload = () => {
-      if (typeof window !== 'undefined') {
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function gtag(...args: any[]) {
-          if (window.dataLayer) {
-            window.dataLayer.push(args);
-          }
-        };
-        
-        if (window.gtag) {
-          window.gtag('js', new Date());
-          window.gtag('config', 'AW-17104994752');
-        }
-      }
-    };
-
-    return () => {
-      // Cleanup script quando il componente si smonta
-      const scriptToRemove = document.querySelector('script[src*="googletagmanager.com/gtag/js"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
-  }, []);
 
   // Auto-scroll del carosello
   useEffect(() => {
@@ -120,29 +71,6 @@ export default function CesoiaElettricaLanding() {
 
     return () => clearInterval(interval);
   }, [reviewsAutoScroll]);
-
-  // Funzione per tracciare la conversione
-  const trackConversion = () => {
-    if (conversionTracked) {
-      return;
-    }
-
-    if (typeof window !== 'undefined' && window.gtag) {
-      try {
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-17104994752/jZlCPqKod4aEMCDptw',
-          'value': 66.99,
-          'currency': 'EUR',
-          'transaction_id': `ORDER_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`,
-        });
-        
-        setConversionTracked(true);
-        console.log('✅ Conversione tracciata con successo');
-      } catch (error) {
-        console.error('❌ Errore nel tracciamento conversione:', error);
-      }
-    }
-  };
 
   // Gestore del conto alla rovescia
   useEffect(() => {
@@ -271,19 +199,13 @@ export default function CesoiaElettricaLanding() {
         console.log('Response body:', responseText);
 
         if (response.ok || response.status === 200) {
-          console.log('✅ API SUCCESS - Tracciamento conversione e redirect');
-          
-          // 🎯 TRACCIA LA CONVERSIONE PRIMA DEL REDIRECT
-          trackConversion();
-          
-          // Attendi un momento per essere sicuri che il tracciamento venga inviato
-          await new Promise(resolve => setTimeout(resolve, 500));
-          
+          console.log('✅ API SUCCESS - Redirect');
+
           // Reset form
           setOrderData({ name: '', phone: '', address: '' });
           setShowOrderPopup(false);
-          
-          // Redirect con parametro per evitare re-tracciamento
+
+          // Redirect
           const timestamp = Date.now();
           if (typeof window !== 'undefined') {
             window.location.href = `/ty-cesoia?converted=1&t=${timestamp}`;
@@ -291,20 +213,14 @@ export default function CesoiaElettricaLanding() {
           return;
         }
 
-        // MODALITÀ TEST: Per testare il tracciamento anche senza API funzionante
+        // MODALITÀ TEST: Per testare anche senza API funzionante
         if (response.status === 404 || !response.ok) {
-          console.warn('⚠️ API Error - Attivo MODALITÀ TEST per testare il tracciamento');
-          
-          // 🧪 MODALITÀ TEST: Traccia la conversione anche in caso di errore API
-          trackConversion();
-          
-          // Attendi per il tracciamento
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          
+          console.warn('⚠️ API Error - MODALITÀ TEST');
+
           // Reset form e redirect per test
           setOrderData({ name: '', phone: '', address: '' });
           setShowOrderPopup(false);
-          
+
           const timestamp = Date.now();
           if (typeof window !== 'undefined') {
             window.location.href = `/ty-cesoia?converted=1&test=1&t=${timestamp}`;
