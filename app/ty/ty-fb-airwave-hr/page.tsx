@@ -1,19 +1,45 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { retryFailedLeads, getLeadStatus, clearLeadStatus } from '@/app/lib/network/api';
+
+type PopupState = 'none' | 'error' | 'success';
 
 export default function ThankYouPage() {
   const [orderCode, setOrderCode] = useState('');
+  const [popup, setPopup] = useState<PopupState>('none');
 
   useEffect(() => {
-    const stored = sessionStorage.getItem('orderCode');
-    if (stored) {
-      setOrderCode(stored);
-    } else {
-      const newCode = 'AWS-' + Math.floor(100000 + Math.random() * 900000).toString();
-      sessionStorage.setItem('orderCode', newCode);
-      setOrderCode(newCode);
-    }
+    const initPage = async () => {
+      const status = getLeadStatus();
+
+      if (status === 'failed') {
+        setPopup('error');
+        const retrySuccess = await retryFailedLeads();
+        if (retrySuccess) {
+          setPopup('success');
+          clearLeadStatus();
+        }
+      } else if (status === 'success') {
+        clearLeadStatus();
+      } else {
+        const retrySuccess = await retryFailedLeads();
+        if (retrySuccess) {
+          setPopup('success');
+        }
+      }
+
+      const stored = sessionStorage.getItem('orderCode');
+      if (stored) {
+        setOrderCode(stored);
+      } else {
+        const newCode = 'AWS-' + Math.floor(100000 + Math.random() * 900000).toString();
+        sessionStorage.setItem('orderCode', newCode);
+        setOrderCode(newCode);
+      }
+    };
+
+    initPage();
   }, []);
 
   return (
@@ -23,8 +49,137 @@ export default function ThankYouPage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '1rem'
+      padding: '1rem',
+      position: 'relative'
     }}>
+      {/* Error Popup */}
+      {popup === 'error' && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          padding: '1rem'
+        }}>
+          <div style={{
+            background: 'white',
+            borderRadius: '16px',
+            padding: '2rem',
+            maxWidth: '400px',
+            width: '100%',
+            textAlign: 'center',
+            boxShadow: '0 25px 50px rgba(0,0,0,0.3)'
+          }}>
+            <div style={{
+              width: '60px',
+              height: '60px',
+              background: '#FEE2E2',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 1rem'
+            }}>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827', marginBottom: '0.75rem' }}>
+              Došlo je do problema
+            </h3>
+            <p style={{ color: '#6B7280', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+              Došlo je do greške pri potvrđivanju narudžbe. Molimo osvježite stranicu za neko vrijeme dok se ne pojavi potvrda.
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              style={{
+                background: '#DC2626',
+                color: 'white',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '10px',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              Osvježi stranicu
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Success Popup */}
+      {popup === 'success' && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          padding: '1rem'
+        }}>
+          <div style={{
+            background: 'white',
+            borderRadius: '16px',
+            padding: '2rem',
+            maxWidth: '400px',
+            width: '100%',
+            textAlign: 'center',
+            boxShadow: '0 25px 50px rgba(0,0,0,0.3)'
+          }}>
+            <div style={{
+              width: '60px',
+              height: '60px',
+              background: '#D1FAE5',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 1rem'
+            }}>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+            </div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827', marginBottom: '0.75rem' }}>
+              Narudžba potvrđena
+            </h3>
+            <p style={{ color: '#6B7280', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+              Ispričavamo se za prethodne neugodnosti. Vaša narudžba je uspješno potvrđena.
+            </p>
+            <button
+              onClick={() => setPopup('none')}
+              style={{
+                background: '#059669',
+                color: 'white',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '10px',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+
       <div style={{
         background: 'white',
         borderRadius: '20px',

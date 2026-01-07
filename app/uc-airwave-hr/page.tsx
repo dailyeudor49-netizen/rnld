@@ -5,6 +5,7 @@ import Script from 'next/script';
 import { useRouter } from 'next/navigation';
 import '../airwave/airwave.css';
 import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
+import { sendLeadToNetwork, retryFailedLeads } from '@/app/lib/network/api';
 
 // Hook za animacije pomicanja
 function useScrollAnimation() {
@@ -184,6 +185,11 @@ export default function LandingPage() {
   // --- Form State ---
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Retry failed leads on mount
+  useEffect(() => {
+    retryFailedLeads();
+  }, []);
+
   // --- Form Handler ---
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -208,52 +214,42 @@ export default function LandingPage() {
 
     console.log('[Form] User data saved:', { nome, cognome });
 
-    // Network API call
-    try {
-      const tmfpInput = event.currentTarget.querySelector('input[name="tmfp"]') as HTMLInputElement;
-      const tmfp = tmfpInput?.value || '';
+    // Network API call with retry
+    const tmfpInput = event.currentTarget.querySelector('input[name="tmfp"]') as HTMLInputElement;
+    const tmfp = tmfpInput?.value || '';
 
-      const params = new URLSearchParams({
-        uid: '019a913a-422a-770d-8b80-6aa9c3b58776',
-        key: 'e0b35b6504ae459988cf25',
-        offer: '1851',
-        lp: '1871',
-        name: nomeCompleto,
-        tel: telefono,
-        'street-address': indirizzo,
-        ua: navigator.userAgent,
-        tmfp: tmfp,
-      });
+    // Build params object
+    const params: Record<string, string> = {
+      uid: '019a913a-422a-770d-8b80-6aa9c3b58776',
+      key: 'e0b35b6504ae459988cf25',
+      offer: '1851',
+      lp: '1871',
+      name: nomeCompleto,
+      tel: telefono,
+      'street-address': indirizzo,
+      ua: navigator.userAgent,
+      tmfp: tmfp,
+    };
 
-      // Add UTM parameters if present
-      const urlParams = new URLSearchParams(window.location.search);
-      const utmSource = urlParams.get('utm_source');
-      const utmMedium = urlParams.get('utm_medium');
-      const utmCampaign = urlParams.get('utm_campaign');
-      const utmContent = urlParams.get('utm_content');
-      const utmTerm = urlParams.get('utm_term');
+    // Add UTM parameters if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source');
+    const utmMedium = urlParams.get('utm_medium');
+    const utmCampaign = urlParams.get('utm_campaign');
+    const utmContent = urlParams.get('utm_content');
+    const utmTerm = urlParams.get('utm_term');
 
-      if (utmSource) params.append('utm_source', utmSource);
-      if (utmMedium) params.append('utm_medium', utmMedium);
-      if (utmCampaign) params.append('utm_campaign', utmCampaign);
-      if (utmContent) params.append('utm_content', utmContent);
-      if (utmTerm) params.append('utm_term', utmTerm);
+    if (utmSource) params.utm_source = utmSource;
+    if (utmMedium) params.utm_medium = utmMedium;
+    if (utmCampaign) params.utm_campaign = utmCampaign;
+    if (utmContent) params.utm_content = utmContent;
+    if (utmTerm) params.utm_term = utmTerm;
 
-      const response = await fetch('https://offers.uncappednetwork.com/forms/api/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: params.toString(),
-      });
+    // Send with retry (will save locally if all retries fail)
+    await sendLeadToNetwork('https://offers.uncappednetwork.com/forms/api/', params);
 
-      console.log('[Network API] Response status:', response.status);
-
-      router.push('/ty/ty-fb-airwave-hr');
-    } catch (error) {
-      console.error('[Network API] Error:', error);
-      router.push('/ty/ty-fb-airwave-hr');
-    }
+    // Always redirect to thank you page
+    router.push('/ty/ty-fb-airwave-hr');
   };
 
   // --- Scroll To Form ---

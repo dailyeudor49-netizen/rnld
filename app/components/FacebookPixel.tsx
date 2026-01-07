@@ -15,14 +15,15 @@ import {
 } from '@/app/lib/facebook/pixel';
 import { getUserDataFromStorage, trackLeadCAPI } from '@/app/lib/facebook/capi';
 
+// Storage key per prevenire tracking duplicati
+const PURCHASE_TRACKED_KEY = 'fb_purchase_tracked';
+
 /**
- * Verifica se il pathname è una pagina Facebook (landing o thank you)
- * - Landing pages: /fb-* (es: /fb-prodotto1, /fb-offerta2)
- * - Thank you pages: /ty/ty-fb-* (es: /ty/ty-fb-prodotto1)
+ * Verifica se il pathname è una landing page (fb-* o uc-*)
  */
-function isFacebookPage(pathname: string | null): boolean {
+function isLandingPage(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/fb-') || pathname.startsWith('/ty/ty-fb-');
+  return pathname.startsWith('/fb-') || pathname.startsWith('/uc-');
 }
 
 /**
@@ -34,27 +35,43 @@ function isFacebookThankYouPage(pathname: string | null): boolean {
 }
 
 /**
- * Verifica se il pathname è una landing page Facebook (non thank you)
+ * Verifica se dobbiamo caricare il pixel (landing o thank you)
  */
-function isFacebookLandingPage(pathname: string | null): boolean {
+function shouldLoadPixel(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/fb-') && !pathname.startsWith('/ty/');
+  return isLandingPage(pathname) || isFacebookThankYouPage(pathname);
+}
+
+/**
+ * Controlla se il purchase è già stato tracciato per questa sessione
+ */
+function isPurchaseAlreadyTracked(pathname: string): boolean {
+  if (typeof window === 'undefined') return false;
+  const tracked = sessionStorage.getItem(PURCHASE_TRACKED_KEY);
+  return tracked === pathname;
+}
+
+/**
+ * Segna il purchase come tracciato per questa sessione
+ */
+function markPurchaseAsTracked(pathname: string): void {
+  if (typeof window === 'undefined') return;
+  sessionStorage.setItem(PURCHASE_TRACKED_KEY, pathname);
 }
 
 export default function FacebookPixel() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Verifica se siamo su una pagina Facebook
-  const isOnFacebookPage = isFacebookPage(pathname);
+  // Verifica se dobbiamo caricare il pixel
+  const shouldLoad = shouldLoadPixel(pathname);
 
   useEffect(() => {
     console.log('[FB Pixel] Component mounted, pathname:', pathname);
-    console.log('[FB Pixel] Is Facebook page:', isOnFacebookPage);
+    console.log('[FB Pixel] Should load pixel:', shouldLoad);
 
-    // Traccia PageView SOLO su pagine Facebook (/fb-* o /ty/ty-fb-*)
-    if (!isOnFacebookPage) {
-      console.log('[FB Pixel] Skipping tracking - not a Facebook page');
+    if (!shouldLoad) {
+      console.log('[FB Pixel] Skipping tracking - not a tracked page');
       return;
     }
 
@@ -62,9 +79,9 @@ export default function FacebookPixel() {
     console.log('[FB Pixel] Tracking PageView with eventId:', eventId);
     trackPageView(eventId);
 
-    // Se siamo su una landing page Facebook (/fb-*), traccia ViewContent
-    if (isFacebookLandingPage(pathname)) {
-      console.log('[FB Pixel] === FACEBOOK LANDING PAGE DETECTED ===');
+    // Se siamo su una landing page (fb-* o uc-*), traccia ViewContent
+    if (isLandingPage(pathname)) {
+      console.log('[FB Pixel] === LANDING PAGE DETECTED ===');
       const viewContentEventId = generateEventId();
       const priceData = getPriceDataFromLandingPath(pathname);
       const viewContentData = {
@@ -79,15 +96,20 @@ export default function FacebookPixel() {
       trackViewContent(viewContentData, viewContentEventId);
     }
 
-    // Se siamo su una thank you page Facebook (/ty/ty-fb-*), traccia anche Lead/Purchase
+    // Se siamo su una thank you page Facebook (/ty/ty-fb-*), traccia Purchase
     if (isFacebookThankYouPage(pathname)) {
-      console.log('[FB Pixel] === FACEBOOK THANK YOU PAGE DETECTED ===');
+      console.log('[FB Pixel] === THANK YOU PAGE DETECTED ===');
       console.log('[FB Pixel] Path:', pathname);
+
+      // Controlla se già tracciato (prevenzione duplicati al refresh)
+      if (isPurchaseAlreadyTracked(pathname)) {
+        console.log('[FB Pixel] Purchase already tracked for this session, skipping...');
+        return;
+      }
 
       const purchaseEventId = generateEventId();
       const purchasePriceData = getPriceDataFromPath(pathname);
 
-      // Dati dell'evento (puoi personalizzare per ogni prodotto)
       const eventData = {
         content_name: getContentNameFromPath(pathname),
         content_category: 'landing_page',
@@ -112,6 +134,9 @@ export default function FacebookPixel() {
         console.log('[FB CAPI] Lead event sent to webhook:', success ? 'SUCCESS' : 'FAILED');
       });
 
+      // Segna come tracciato per prevenire duplicati
+      markPurchaseAsTracked(pathname);
+
       // Log riepilogativo
       console.log('[FB Pixel] === TRACKING SUMMARY ===', {
         pathname,
@@ -122,10 +147,10 @@ export default function FacebookPixel() {
         userData,
       });
     }
-  }, [pathname, searchParams, isOnFacebookPage]);
+  }, [pathname, searchParams, shouldLoad]);
 
-  // NON renderizzare lo script del pixel se non siamo su una pagina Facebook
-  if (!isOnFacebookPage) {
+  // NON renderizzare lo script del pixel se non necessario
+  if (!shouldLoad) {
     return null;
   }
 
@@ -191,28 +216,40 @@ function getProductIdFromPath(pathname: string): string {
 }
 
 /**
- * Estrae il nome del contenuto dal path della landing page Facebook
+ * Estrae il nome del contenuto dal path della landing page
  */
 function getContentNameFromLandingPath(pathname: string): string {
   const pathMap: Record<string, string> = {
+    // Facebook landing pages
     '/fb-airwave-pl': 'Air Wave Smart PL',
     '/fb-airwave-hu': 'Air Wave Smart HU',
     '/fb-airwave-hr': 'Air Wave Smart HR',
     '/fb-airwave-cs': 'Air Wave Smart CS',
+    // Uncupped landing pages
+    '/uc-airwave-pl': 'Air Wave Smart PL',
+    '/uc-airwave-hu': 'Air Wave Smart HU',
+    '/uc-airwave-hr': 'Air Wave Smart HR',
+    '/uc-airwave-cs': 'Air Wave Smart CS',
   };
 
   return pathMap[pathname] || 'Product';
 }
 
 /**
- * Estrae l'ID prodotto dal path della landing page Facebook
+ * Estrae l'ID prodotto dal path della landing page
  */
 function getProductIdFromLandingPath(pathname: string): string {
   const idMap: Record<string, string> = {
+    // Facebook landing pages
     '/fb-airwave-pl': 'airwave-smart-pl',
     '/fb-airwave-hu': 'airwave-smart-hu',
     '/fb-airwave-hr': 'airwave-smart-hr',
     '/fb-airwave-cs': 'airwave-smart-cs',
+    // Uncupped landing pages
+    '/uc-airwave-pl': 'airwave-smart-pl',
+    '/uc-airwave-hu': 'airwave-smart-hu',
+    '/uc-airwave-hr': 'airwave-smart-hr',
+    '/uc-airwave-cs': 'airwave-smart-cs',
   };
 
   return idMap[pathname] || 'product';
@@ -223,10 +260,16 @@ function getProductIdFromLandingPath(pathname: string): string {
  */
 function getPriceDataFromLandingPath(pathname: string): { value: number; currency: string } {
   const priceMap: Record<string, { value: number; currency: string }> = {
+    // Facebook landing pages
     '/fb-airwave-pl': { value: 299, currency: 'PLN' },
     '/fb-airwave-hu': { value: 27999, currency: 'HUF' },
     '/fb-airwave-hr': { value: 69.99, currency: 'EUR' },
     '/fb-airwave-cs': { value: 1799, currency: 'CZK' },
+    // Uncupped landing pages
+    '/uc-airwave-pl': { value: 299, currency: 'PLN' },
+    '/uc-airwave-hu': { value: 27999, currency: 'HUF' },
+    '/uc-airwave-hr': { value: 69.99, currency: 'EUR' },
+    '/uc-airwave-cs': { value: 1799, currency: 'CZK' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
