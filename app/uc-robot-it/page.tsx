@@ -112,16 +112,19 @@ export default function RobotAspirapolvereProLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.supertrendaffiliateprogram.com/forms/api/', {
+      console.log('[Network API] Sending params:', params.toString());
+
+      const response = await fetch('https://offers.supertrendaffiliateprogram.com/forms/api/', {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
 
+      console.log('[Network API] Response status:', response.status);
+
       router.push('/ty/ty-robot-asp');
     } catch (error) {
-      console.error(error);
+      console.error('[Network API] Error:', error);
       router.push('/ty/ty-robot-asp');
     } finally {
       setIsSubmitting(false);
