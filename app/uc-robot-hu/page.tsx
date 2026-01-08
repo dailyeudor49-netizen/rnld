@@ -540,7 +540,7 @@ export default function RobotPorszivoproLanding() {
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 1 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
                     <div className="flex items-center justify-between">
-                      <p className="font-black text-xl leading-tight">MOP MINDIG TISZTA</p>
+                      <p className="font-black text-xl leading-tight">A ROBOT MOPJA MINDIG TISZTA</p>
                       <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${openFeature === 1 ? 'rotate-180' : ''}`} />
                     </div>
                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFeature === 1 ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
@@ -555,7 +555,7 @@ export default function RobotPorszivoproLanding() {
               {/* Mobile text outside */}
               <div className="md:hidden p-3 bg-gradient-to-r from-blue-600 to-indigo-700">
                 <div className="flex items-center justify-between">
-                  <p className="font-black text-sm text-white leading-tight">MOP MINDIG TISZTA</p>
+                  <p className="font-black text-sm text-white leading-tight">A ROBOT MOPJA MINDIG TISZTA</p>
                   <ChevronDown className={`w-4 h-4 text-white transition-transform duration-300 ${openFeature === 1 ? 'rotate-180' : ''}`} />
                 </div>
                 <p className={`text-sm text-blue-100 transition-all duration-300 ${openFeature === 1 ? 'hidden' : 'mt-1'}`}>Az állomás kimossa Ön helyett</p>
