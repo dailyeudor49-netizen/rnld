@@ -37,9 +37,6 @@ export default function RobotAspirapolvereProLanding() {
     '/images/robot-asp/4.png',
     '/images/robot-asp/5.png',
     '/images/robot-asp/6.png',
-    '/images/robot-asp/7.png',
-    '/images/robot-asp/8.png',
-    '/images/robot-asp/9.png',
   ];
 
   // Countdown timer
