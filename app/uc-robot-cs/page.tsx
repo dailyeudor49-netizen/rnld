@@ -289,7 +289,7 @@ export default function RobotAspirapolvereProLanding() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Trash2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span><strong className="text-gray-800">Vyprazdňuje se sám</strong> — Sáček měníte každé 2 měsíce.</span>
+                  <span><strong className="text-gray-800">Robot se sám vyprazdňuje do základny</strong> — Sáček měníte každé 2 měsíce.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Dog className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
@@ -399,7 +399,7 @@ export default function RobotAspirapolvereProLanding() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Trash2 className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span><strong className="text-gray-800">Vyprazdňuje se sám</strong> — Sáček měníte každé 2 měsíce.</span>
+                  <span><strong className="text-gray-800">Robot se sám vyprazdňuje do základny</strong> — Sáček měníte každé 2 měsíce.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Dog className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
@@ -435,7 +435,7 @@ export default function RobotAspirapolvereProLanding() {
             <div className="bg-white rounded-2xl p-5 shadow-md text-center">
               <div className="text-3xl mb-2">🧹</div>
               <h4 className="font-black text-gray-900 mb-1">Ruce stále čisté</h4>
-              <p className="text-gray-500 text-sm">Vyprazdňuje se sám. Nikdy se nedotknete prachu.</p>
+              <p className="text-gray-500 text-sm">Robot se sám vyprazdňuje do základny. Nikdy se nedotknete prachu.</p>
             </div>
             <div className="bg-white rounded-2xl p-5 shadow-md text-center">
               <div className="text-3xl mb-2">🐕</div>
@@ -502,7 +502,7 @@ export default function RobotAspirapolvereProLanding() {
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 0 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
                     <div className="flex items-center justify-between">
-                      <p className="font-black text-xl leading-tight">VYPRAZDŇUJE SE SÁM</p>
+                      <p className="font-black text-xl leading-tight">ROBOT SE SÁM VYPRAZDŇUJE DO ZÁKLADNY</p>
                       <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${openFeature === 0 ? 'rotate-180' : ''}`} />
                     </div>
                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFeature === 0 ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
@@ -517,7 +517,7 @@ export default function RobotAspirapolvereProLanding() {
               {/* Mobile text outside */}
               <div className="md:hidden p-3 bg-gradient-to-r from-blue-600 to-indigo-700">
                 <div className="flex items-center justify-between">
-                  <p className="font-black text-sm text-white leading-tight">VYPRAZDŇUJE SE SÁM</p>
+                  <p className="font-black text-sm text-white leading-tight">ROBOT SE SÁM VYPRAZDŇUJE DO ZÁKLADNY</p>
                   <ChevronDown className={`w-4 h-4 text-white transition-transform duration-300 ${openFeature === 0 ? 'rotate-180' : ''}`} />
                 </div>
                 <p className={`text-sm text-blue-100 transition-all duration-300 ${openFeature === 0 ? 'hidden' : 'mt-1'}`}>Sáček měníte každé 2 měsíce</p>
