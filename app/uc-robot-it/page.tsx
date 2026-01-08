@@ -494,7 +494,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 0 ? null : 0); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/3.png" alt="Auto-svuotamento" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/svuota.png" alt="Auto-svuotamento" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 0 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -532,7 +532,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 1 ? null : 1); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/4.png" alt="Lavaggio automatico" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/mocio.png" alt="Lavaggio automatico" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 1 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -570,7 +570,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 2 ? null : 2); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/5.png" alt="Asciugatura a caldo" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/muffa.png" alt="Asciugatura a caldo" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 2 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -608,7 +608,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 3 ? null : 3); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/7.png" alt="Navigazione LiDAR" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/laser.png" alt="Navigazione LiDAR" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 3 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -684,7 +684,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 5 ? null : 5); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/8.png" alt="Controllo App" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/divano.png" alt="Controllo App" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 5 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
