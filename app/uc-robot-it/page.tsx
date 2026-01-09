@@ -114,7 +114,7 @@ export default function RobotAspirapolvereProLanding() {
 
       console.log('[Network API] Sending params:', params.toString());
 
-      const response = await fetch('https://offers.supertrendaffiliateprogram.com/forms/api/', {
+      const response = await fetch('https://offers.uncappednetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -176,14 +176,14 @@ export default function RobotAspirapolvereProLanding() {
     <div className="min-h-screen bg-white overflow-x-hidden font-sans leading-relaxed">
       {/* Fingerprint Script */}
       <Script
-        src="https://offers.supertrendaffiliateprogram.com/forms/tmfp/"
+        src="https://offers.uncappednetwork.com/forms/tmfp/"
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
 
       {/* Click Pixel */}
       <img
-        src="https://offers.supertrendaffiliateprogram.com/forms/api/ck/?o=66&uid=0198088f-a4bc-7ed8-89aa-83089fe0180e&lp=66"
+        src="https://offers.uncappednetwork.com/forms/api/ck/?o=66&uid=0198088f-a4bc-7ed8-89aa-83089fe0180e&lp=66"
         style={{ width: '1px', height: '1px', display: 'none' }}
         alt=""
       />

@@ -115,7 +115,7 @@ export default function RobotSesalnikProLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.supertrendaffiliateprogram.com/forms/api/', {
+      await fetch('https://offers.uncappednetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -175,14 +175,14 @@ export default function RobotSesalnikProLanding() {
     <div className="min-h-screen bg-white overflow-x-hidden font-sans leading-relaxed">
       {/* Fingerprint Script */}
       <Script
-        src="https://offers.supertrendaffiliateprogram.com/forms/tmfp/"
+        src="https://offers.uncappednetwork.com/forms/tmfp/"
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
 
       {/* Click Pixel */}
       <img
-        src="https://offers.supertrendaffiliateprogram.com/forms/api/ck/?o=1258&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=1277"
+        src="https://offers.uncappednetwork.com/forms/api/ck/?o=1258&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=1277"
         style={{ width: '1px', height: '1px', display: 'none' }}
         alt=""
       />
