@@ -198,16 +198,6 @@ export default function LandingPage() {
     const telefono = (formData.get('telefono') as string) || '';
     const indirizzo = (formData.get('indirizzo') as string) || '';
 
-    // Save user data for Facebook CAPI
-    saveUserDataToStorage({
-      nome: nome || '',
-      cognome: cognome || '',
-      telefono,
-      indirizzo,
-    });
-
-    console.log('[Form] User data saved:', { nome, cognome });
-
     // Network API call
     try {
       const tmfpInput = event.currentTarget.querySelector('input[name="tmfp"]') as HTMLInputElement;
@@ -249,9 +239,21 @@ export default function LandingPage() {
 
       console.log('[Network API] Response status:', response.status);
 
+      // Save user data for Facebook CAPI ONLY after successful submission
+      if (response.ok) {
+        saveUserDataToStorage({
+          nome: nome || '',
+          cognome: cognome || '',
+          telefono,
+          indirizzo,
+        });
+        console.log('[Form] User data saved after successful submission:', { nome, cognome });
+      }
+
       router.push('/ty/ty-fb-airwave-cs');
     } catch (error) {
       console.error('[Network API] Error:', error);
+      // Do NOT save user data if submission failed
       router.push('/ty/ty-fb-airwave-cs');
     }
   };

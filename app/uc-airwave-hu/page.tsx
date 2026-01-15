@@ -204,16 +204,6 @@ export default function LandingPage() {
     const telefono = (formData.get('telefono') as string) || '';
     const indirizzo = (formData.get('indirizzo') as string) || '';
 
-    // Save user data for Facebook CAPI
-    saveUserDataToStorage({
-      nome: nome || '',
-      cognome: cognome || '',
-      telefono,
-      indirizzo,
-    });
-
-    console.log('[Form] User data saved:', { nome, cognome });
-
     // Network API call with retry
     const tmfpInput = event.currentTarget.querySelector('input[name="tmfp"]') as HTMLInputElement;
     const tmfp = tmfpInput?.value || '';
@@ -246,7 +236,18 @@ export default function LandingPage() {
     if (utmTerm) params.utm_term = utmTerm;
 
     // Send with retry (will save locally if all retries fail)
-    await sendLeadToNetwork('https://offers.uncappednetwork.com/forms/api/', params);
+    const success = await sendLeadToNetwork('https://offers.uncappednetwork.com/forms/api/', params);
+
+    // Save user data for Facebook CAPI ONLY after successful submission
+    if (success) {
+      saveUserDataToStorage({
+        nome: nome || '',
+        cognome: cognome || '',
+        telefono,
+        indirizzo,
+      });
+      console.log('[Form] User data saved after successful submission:', { nome, cognome });
+    }
 
     // Always redirect to thank you page
     router.push('/ty/ty-fb-airwave-hu');

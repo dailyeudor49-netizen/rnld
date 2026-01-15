@@ -1,185 +1,30 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { retryFailedLeads, getLeadStatus, clearLeadStatus } from '@/app/lib/network/api';
-
-type PopupState = 'none' | 'error' | 'success';
+import React, { useState, useEffect } from 'react';
 
 export default function ThankYouPage() {
   const [orderCode, setOrderCode] = useState('');
-  const [popup, setPopup] = useState<PopupState>('none');
 
   useEffect(() => {
-    const initPage = async () => {
-      const status = getLeadStatus();
-
-      if (status === 'failed') {
-        setPopup('error');
-        const retrySuccess = await retryFailedLeads();
-        if (retrySuccess) {
-          setPopup('success');
-          clearLeadStatus();
-        }
-      } else if (status === 'success') {
-        clearLeadStatus();
-      } else {
-        const retrySuccess = await retryFailedLeads();
-        if (retrySuccess) {
-          setPopup('success');
-        }
-      }
-
-      const stored = sessionStorage.getItem('orderCode');
-      if (stored) {
-        setOrderCode(stored);
-      } else {
-        const newCode = 'AWS-' + Math.floor(100000 + Math.random() * 900000).toString();
-        sessionStorage.setItem('orderCode', newCode);
-        setOrderCode(newCode);
-      }
-    };
-
-    initPage();
+    const stored = sessionStorage.getItem('orderCode');
+    if (stored) {
+      setOrderCode(stored);
+    } else {
+      const newCode = 'AWS-' + Danasth.floor(100000 + Math.random() * 900000).toString();
+      sessionStorage.setItem('orderCode', newCode);
+      setOrderCode(newCode);
+    }
   }, []);
 
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(180deg, #16a34a 0%, #15803d 50%, #166534 100%)',
+      background: 'linear-gradient(180deg, #10b981 0%, #059669 50%, #047857 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '1rem',
-      position: 'relative'
+      padding: '1rem'
     }}>
-      {/* Error Popup */}
-      {popup === 'error' && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0,0,0,0.5)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: '1rem'
-        }}>
-          <div style={{
-            background: 'white',
-            borderRadius: '16px',
-            padding: '2rem',
-            maxWidth: '400px',
-            width: '100%',
-            textAlign: 'center',
-            boxShadow: '0 25px 50px rgba(0,0,0,0.3)'
-          }}>
-            <div style={{
-              width: '60px',
-              height: '60px',
-              background: '#FEE2E2',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 1rem'
-            }}>
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="8" x2="12" y2="12"/>
-                <line x1="12" y1="16" x2="12.01" y2="16"/>
-              </svg>
-            </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827', marginBottom: '0.75rem' }}>
-              Došlo je do problema
-            </h3>
-            <p style={{ color: '#6B7280', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-              Došlo je do greške pri potvrđivanju narudžbe. Molimo osvježite stranicu za neko vrijeme dok se ne pojavi potvrda.
-            </p>
-            <button
-              onClick={() => window.location.reload()}
-              style={{
-                background: '#DC2626',
-                color: 'white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '10px',
-                fontSize: '0.95rem',
-                fontWeight: 600,
-                border: 'none',
-                cursor: 'pointer'
-              }}
-            >
-              Osvježi stranicu
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Success Popup */}
-      {popup === 'success' && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0,0,0,0.5)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: '1rem'
-        }}>
-          <div style={{
-            background: 'white',
-            borderRadius: '16px',
-            padding: '2rem',
-            maxWidth: '400px',
-            width: '100%',
-            textAlign: 'center',
-            boxShadow: '0 25px 50px rgba(0,0,0,0.3)'
-          }}>
-            <div style={{
-              width: '60px',
-              height: '60px',
-              background: '#D1FAE5',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 1rem'
-            }}>
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5"/>
-              </svg>
-            </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827', marginBottom: '0.75rem' }}>
-              Narudžba potvrđena
-            </h3>
-            <p style={{ color: '#6B7280', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-              Ispričavamo se za prethodne neugodnosti. Vaša narudžba je uspješno potvrđena.
-            </p>
-            <button
-              onClick={() => setPopup('none')}
-              style={{
-                background: '#059669',
-                color: 'white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '10px',
-                fontSize: '0.95rem',
-                fontWeight: 600,
-                border: 'none',
-                cursor: 'pointer'
-              }}
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      )}
-
       <div style={{
         background: 'white',
         borderRadius: '20px',
@@ -193,13 +38,13 @@ export default function ThankYouPage() {
         <div style={{
           width: '90px',
           height: '90px',
-          background: '#16a34a',
+          background: '#10b981',
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           margin: '0 auto 1.5rem',
-          boxShadow: '0 10px 30px rgba(22, 163, 74, 0.4)'
+          boxShadow: '0 10px 30px rgba(16, 185, 129, 0.4)'
         }}>
           <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20 6L9 17l-5-5"/>
@@ -212,7 +57,7 @@ export default function ThankYouPage() {
           color: '#111827',
           marginBottom: '0.5rem'
         }}>
-          Narudžba Potvrđena!
+          Narudžba potvrđena!
         </h1>
 
         <p style={{
@@ -221,19 +66,19 @@ export default function ThankYouPage() {
           marginBottom: '1.5rem',
           lineHeight: 1.5
         }}>
-          Vaš Air Wave Smart™ klima uređaj se priprema i uskoro će biti poslan.
+          Az Ön Air Wave Smart™ készül és hamarosan kiszállítjuk.
         </p>
 
         {/* Order code */}
         <div style={{
-          background: '#F0FDF4',
+          background: '#ECFDF5',
           borderRadius: '12px',
           padding: '1rem',
           marginBottom: '1.5rem',
-          border: '2px solid #16a34a'
+          border: '2px solid #10b981'
         }}>
-          <div style={{ fontSize: '0.8rem', color: '#166534', fontWeight: 600, marginBottom: '0.25rem' }}>BROJ NARUDŽBE</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#16a34a', letterSpacing: '1px', fontFamily: 'monospace' }}>{orderCode}</div>
+          <div style={{ fontSize: '0.8rem', color: '#047857', fontWeight: 600, marginBottom: '0.25rem' }}>BROJ NARUDŽBE</div>
+          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#10b981', letterSpacing: '1px', fontFamily: 'monospace' }}>{orderCode}</div>
         </div>
 
         {/* Timeline */}
@@ -247,7 +92,7 @@ export default function ThankYouPage() {
           <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1E293B', marginBottom: '1rem' }}>📦 Sljedeći koraci:</div>
 
           <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
-            <div style={{ width: '24px', height: '24px', background: '#16a34a', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>1</div>
+            <div style={{ width: '24px', height: '24px', background: '#10b981', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>1</div>
             <div>
               <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Priprema narudžbe</div>
               <div style={{ color: '#64748b', fontSize: '0.8rem' }}>Danas</div>
@@ -257,8 +102,8 @@ export default function ThankYouPage() {
           <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ width: '24px', height: '24px', background: '#94a3b8', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.7rem', fontWeight: 700, flexShrink: 0 }}>2</div>
             <div>
-              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Slanje</div>
-              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>Unutar 24 sata</div>
+              <div style={{ fontWeight: 600, color: '#1E293B', fontSize: '0.9rem' }}>Otprema</div>
+              <div style={{ color: '#64748b', fontSize: '0.8rem' }}>U roku 24 sata</div>
             </div>
           </div>
 
@@ -284,7 +129,7 @@ export default function ThankYouPage() {
         }}>
           <span style={{ fontSize: '1.5rem' }}>💰</span>
           <div>
-            <div style={{ fontWeight: 600, color: '#92400e', fontSize: '0.9rem' }}>Plaćanje pouzećem</div>
+            <div style={{ fontWeight: 600, color: '#92400e', fontSize: '0.9rem' }}>Plaćanje po primitku</div>
             <div style={{ color: '#a16207', fontSize: '0.8rem' }}>Pripremite točan iznos za kurira</div>
           </div>
         </div>
@@ -295,12 +140,12 @@ export default function ThankYouPage() {
           color: '#64748b',
           marginBottom: '1.5rem'
         }}>
-          Imate pitanja? Kontaktirajte nas: <a href="mailto:info@ketronica.com" style={{ color: '#16a34a', fontWeight: 600, textDecoration: 'none' }}>info@ketronica.com</a>
+          Imate pitanja? Kontaktirajte nas: <a href="mailto:info@ketronica.com" style={{ color: '#10b981', fontWeight: 600, textDecoration: 'none' }}>info@ketronica.com</a>
         </div>
 
         <a href="/" style={{
           display: 'inline-block',
-          background: '#16a34a',
+          background: '#10b981',
           color: 'white',
           padding: '0.875rem 2rem',
           borderRadius: '10px',
@@ -308,7 +153,7 @@ export default function ThankYouPage() {
           fontWeight: 600,
           textDecoration: 'none'
         }}>
-          Natrag na Početnu
+          Povratak na početnu stranicu
         </a>
       </div>
     </div>
