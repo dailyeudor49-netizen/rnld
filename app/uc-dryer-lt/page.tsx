@@ -138,8 +138,8 @@ const styles = `
   .radio-group { display: flex; align-items: center; font-weight: 700; color: #14532d; font-size: 1.05rem; }
   .radio-circle { width: 24px; height: 24px; border: 2px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; background: white; }
   .radio-inner { width: 12px; height: 12px; background: #22c55e; border-radius: 50%; }
-  .blue-btn { background-color: #2563eb; color: white; width: 100%; padding: 20px; border-radius: 10px; font-weight: 800; font-size: 1.1rem; border: none; cursor: pointer; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 12px; transition: transform 0.1s, background 0.2s; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
-  .blue-btn:hover { background-color: #1d4ed8; transform: translateY(-2px); }
+  .red-btn { background-color: #d32f2f; color: white; width: 100%; padding: 20px; border-radius: 10px; font-weight: 800; font-size: 1.1rem; border: none; cursor: pointer; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 12px; transition: transform 0.1s, background 0.2s; box-shadow: 0 10px 20px rgba(211, 47, 47, 0.3); }
+  .red-btn:hover { background-color: #b71c1c; transform: translateY(-2px); }
   .secure-note { text-align: center; font-size: 0.8rem; color: #9ca3af; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
   @media (min-width: 768px) {
@@ -582,8 +582,8 @@ export default function LandingPage() {
                     <div style={{fontSize: '1.5rem'}}>💶</div>
                 </div>
 
-                <button type="submit" className="blue-btn">
-                    UŽSAKYTI DABAR — MOKĖTI PRISTATYMO METU <span style={{fontSize:'1.3rem'}}>🚚</span>
+                <button type="submit" className="red-btn">
+                    PATVIRTINTI UŽSAKYMĄ — MOKĖTI KURJERIUI <span style={{fontSize:'1.3rem'}}>🚚</span>
                 </button>
 
                 <div className="secure-note">
