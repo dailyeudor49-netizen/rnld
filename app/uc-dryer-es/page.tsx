@@ -51,7 +51,7 @@ const styles = `
   }
 
   /* SECTIONS */
-  .top-strip { background: #111; color: white; text-align: center; padding: 6px 10px; font-size: 0.75rem; }
+  .top-strip { background: #111; color: white; text-align: center; padding: 6px 10px; font-size: 0.75rem; margin-top: 50px; }
   .promo-strip { background: #fff3cd; color: #856404; text-align: center; padding: 10px 0; font-weight: 600; font-size: 1rem; border-bottom: 1px solid #ffeeba; }
   .countdown-box { background: #d32f2f; color: white; padding: 5px 10px; font-weight: bold; margin-top: 5px; display: inline-block; border-radius: 4px; }
 
