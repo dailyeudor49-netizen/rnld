@@ -93,6 +93,8 @@ const styles = `
   .comp-table th, .comp-table td { border: 1px solid #ddd; padding: 12px 8px; text-align: center; vertical-align: middle; }
   .comp-table th { background: #f4f4f4; font-size: 0.9rem; }
   .comp-table .highlight-col { background: #fffbe6; border-color: #ffeeba; font-weight: bold; }
+  .table-scroll-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -15px; padding: 0 15px; }
+  .table-scroll-wrapper .comp-table { min-width: 500px; }
   .load-box { background: #e3f2fd; border: 1px solid #bbdefb; padding: 18px; border-radius: 6px; font-size: 1rem; color: #0d47a1; margin-top: 20px; }
 
   .urgency-box { background: #fff0f0; border: 2px solid #ffcdd2; padding: 30px 20px; border-radius: 8px; margin: 50px 0; text-align: center; }
@@ -422,42 +424,44 @@ export default function LandingPage() {
       {/* 8. COMPARISON */}
       <section className="container" style={{marginTop: '40px'}}>
         <h2 className="text-center">PORQUE VALE A PENA?</h2>
-        <table className="comp-table">
-            <thead>
-                <tr>
-                    <th>Característica</th>
-                    <th className="highlight-col">ESTA COMPACTA</th>
-                    <th>Secadores XXL</th>
-                    <th>Estendal em casa</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Investimento</td>
-                    <td className="highlight-col">✅ 260€ (Baixo)</td>
-                    <td>❌ 500€ - 900€</td>
-                    <td>✅ 30€</td>
-                </tr>
-                <tr>
-                    <td>Auto-Stop (Desperdícios)</td>
-                    <td className="highlight-col">✅ Sim (Sensor NTC)</td>
-                    <td>✅ Sim</td>
-                    <td>❌ Não (Humidade em casa)</td>
-                </tr>
-                <tr>
-                    <td>Espaço</td>
-                    <td className="highlight-col">✅ Mínimo</td>
-                    <td>❌ Enorme</td>
-                    <td>❌ Ocupa uma divisão</td>
-                </tr>
-                <tr>
-                    <td><strong>Preço Final</strong></td>
-                    <td className="highlight-col text-red"><strong>79€</strong></td>
-                    <td>Alto</td>
-                    <td>Baixo (mas inconveniente)</td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="table-scroll-wrapper">
+          <table className="comp-table">
+              <thead>
+                  <tr>
+                      <th>Característica</th>
+                      <th className="highlight-col">ESTA COMPACTA</th>
+                      <th>Secadores XXL</th>
+                      <th>Estendal em casa</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Investimento</td>
+                      <td className="highlight-col">✅ 79€ (Baixo)</td>
+                      <td>❌ 500€ - 900€</td>
+                      <td>✅ 30€</td>
+                  </tr>
+                  <tr>
+                      <td>Auto-Stop (Desperdícios)</td>
+                      <td className="highlight-col">✅ Sim (Sensor NTC)</td>
+                      <td>✅ Sim</td>
+                      <td>❌ Não (Humidade em casa)</td>
+                  </tr>
+                  <tr>
+                      <td>Espaço</td>
+                      <td className="highlight-col">✅ Mínimo</td>
+                      <td>❌ Enorme</td>
+                      <td>❌ Ocupa uma divisão</td>
+                  </tr>
+                  <tr>
+                      <td><strong>Preço Final</strong></td>
+                      <td className="highlight-col text-red"><strong>79€</strong></td>
+                      <td>Alto</td>
+                      <td>Baixo (mas inconveniente)</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
       </section>
 
       {/* 9. URGENCY */}

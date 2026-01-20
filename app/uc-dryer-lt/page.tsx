@@ -93,6 +93,8 @@ const styles = `
   .comp-table th, .comp-table td { border: 1px solid #ddd; padding: 12px 8px; text-align: center; vertical-align: middle; }
   .comp-table th { background: #f4f4f4; font-size: 0.9rem; }
   .comp-table .highlight-col { background: #fffbe6; border-color: #ffeeba; font-weight: bold; }
+  .table-scroll-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -15px; padding: 0 15px; }
+  .table-scroll-wrapper .comp-table { min-width: 500px; }
   .load-box { background: #e3f2fd; border: 1px solid #bbdefb; padding: 18px; border-radius: 6px; font-size: 1rem; color: #0d47a1; margin-top: 20px; }
 
   .urgency-box { background: #fff0f0; border: 2px solid #ffcdd2; padding: 30px 20px; border-radius: 8px; margin: 50px 0; text-align: center; }
@@ -422,42 +424,44 @@ export default function LandingPage() {
       {/* 8. COMPARISON */}
       <section className="container" style={{marginTop: '40px'}}>
         <h2 className="text-center">KODĖL VERTA?</h2>
-        <table className="comp-table">
-            <thead>
-                <tr>
-                    <th>Savybė</th>
-                    <th className="highlight-col">ŠI KOMPAKTIŠKA</th>
-                    <th>XXL Džiovyklės</th>
-                    <th>Džiovintuvas namuose</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Investicija</td>
-                    <td className="highlight-col">✅ 260€ (Žema)</td>
-                    <td>❌ 500€ - 900€</td>
-                    <td>✅ 30€</td>
-                </tr>
-                <tr>
-                    <td>Auto-Stop (Švaistymas)</td>
-                    <td className="highlight-col">✅ Taip (NTC jutiklis)</td>
-                    <td>✅ Taip</td>
-                    <td>❌ Ne (Drėgmė namuose)</td>
-                </tr>
-                <tr>
-                    <td>Vieta</td>
-                    <td className="highlight-col">✅ Minimali</td>
-                    <td>❌ Didžiulė</td>
-                    <td>❌ Užima kambarį</td>
-                </tr>
-                <tr>
-                    <td><strong>Galutinė kaina</strong></td>
-                    <td className="highlight-col text-red"><strong>69€</strong></td>
-                    <td>Aukšta</td>
-                    <td>Žema (bet nepatogu)</td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="table-scroll-wrapper">
+          <table className="comp-table">
+              <thead>
+                  <tr>
+                      <th>Savybė</th>
+                      <th className="highlight-col">ŠI KOMPAKTIŠKA</th>
+                      <th>XXL Džiovyklės</th>
+                      <th>Džiovintuvas namuose</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Investicija</td>
+                      <td className="highlight-col">✅ 69€ (Žema)</td>
+                      <td>❌ 500€ - 900€</td>
+                      <td>✅ 30€</td>
+                  </tr>
+                  <tr>
+                      <td>Auto-Stop (Švaistymas)</td>
+                      <td className="highlight-col">✅ Taip (NTC jutiklis)</td>
+                      <td>✅ Taip</td>
+                      <td>❌ Ne (Drėgmė namuose)</td>
+                  </tr>
+                  <tr>
+                      <td>Vieta</td>
+                      <td className="highlight-col">✅ Minimali</td>
+                      <td>❌ Didžiulė</td>
+                      <td>❌ Užima kambarį</td>
+                  </tr>
+                  <tr>
+                      <td><strong>Galutinė kaina</strong></td>
+                      <td className="highlight-col text-red"><strong>69€</strong></td>
+                      <td>Aukšta</td>
+                      <td>Žema (bet nepatogu)</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
       </section>
 
       {/* 9. URGENCY */}
