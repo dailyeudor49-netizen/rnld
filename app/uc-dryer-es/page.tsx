@@ -196,9 +196,9 @@ export default function LandingPage() {
   };
 
   const scrollToOrder = () => {
-    const el = document.getElementById('order-form');
+    const el = document.getElementById('form-fields');
     if (el) {
-      const yOffset = -20;
+      const yOffset = -100;
       const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -556,7 +556,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* Form Fields */}
-                <div className="form-group">
+                <div id="form-fields" className="form-group">
                     <label className="input-label">Nombre y Apellidos *</label>
                     <input type="text" className="input-field" required placeholder="Juan García" />
                 </div>
