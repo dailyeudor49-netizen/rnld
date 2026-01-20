@@ -19,19 +19,19 @@ import { getUserDataFromStorage, trackLeadCAPI } from '@/app/lib/facebook/capi';
 const PURCHASE_TRACKED_KEY = 'fb_purchase_tracked';
 
 /**
- * Verifica se il pathname è una landing page (fb-* o uc-*)
+ * Verifica se il pathname è una landing page (fb-*, uc-*, dongle, dongle_pl)
  */
 function isLandingPage(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/fb-') || pathname.startsWith('/uc-');
+  return pathname.startsWith('/fb-') || pathname.startsWith('/uc-') || pathname === '/dongle' || pathname === '/dongle_pl';
 }
 
 /**
- * Verifica se il pathname è una thank you page tracciata (fb-* o uc-*)
+ * Verifica se il pathname è una thank you page tracciata (fb-*, uc-*, ty-it, ty-pl)
  */
 function isFacebookThankYouPage(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/ty/ty-fb-') || pathname.startsWith('/ty/ty-uc-');
+  return pathname.startsWith('/ty/ty-fb-') || pathname.startsWith('/ty/ty-uc-') || pathname === '/ty/ty-it' || pathname === '/ty/ty-pl';
 }
 
 /**
@@ -184,9 +184,10 @@ export default function FacebookPixel() {
  */
 function getContentNameFromPath(pathname: string): string {
   const pathMap: Record<string, string> = {
+    // Dongle landing pages thank you
     '/ty/ty-it': 'Antenna Smart TV Premium IT',
-    '/ty/ty-hr': 'Antenna Smart TV Premium HR',
     '/ty/ty-pl': 'Antenna Smart TV Premium PL',
+    '/ty/ty-hr': 'Antenna Smart TV Premium HR',
     // Air Wave Smart landing pages
     '/ty/ty-fb-airwave-pl': 'Air Wave Smart PL',
     '/ty/ty-fb-airwave-hu': 'Air Wave Smart HU',
@@ -211,9 +212,10 @@ function getContentNameFromPath(pathname: string): string {
  */
 function getProductIdFromPath(pathname: string): string {
   const idMap: Record<string, string> = {
+    // Dongle landing pages thank you
     '/ty/ty-it': 'antenna-tv-it',
-    '/ty/ty-hr': 'antenna-tv-hr',
     '/ty/ty-pl': 'antenna-tv-pl',
+    '/ty/ty-hr': 'antenna-tv-hr',
     // Air Wave Smart landing pages
     '/ty/ty-fb-airwave-pl': 'airwave-smart-pl',
     '/ty/ty-fb-airwave-hu': 'airwave-smart-hu',
@@ -238,6 +240,9 @@ function getProductIdFromPath(pathname: string): string {
  */
 function getContentNameFromLandingPath(pathname: string): string {
   const pathMap: Record<string, string> = {
+    // Dongle landing pages
+    '/dongle': 'Antenna Smart TV Premium IT',
+    '/dongle_pl': 'Antenna Smart TV Premium PL',
     // Facebook landing pages
     '/fb-airwave-pl': 'Air Wave Smart PL',
     '/fb-airwave-hu': 'Air Wave Smart HU',
@@ -267,6 +272,9 @@ function getContentNameFromLandingPath(pathname: string): string {
  */
 function getProductIdFromLandingPath(pathname: string): string {
   const idMap: Record<string, string> = {
+    // Dongle landing pages
+    '/dongle': 'antenna-tv-it',
+    '/dongle_pl': 'antenna-tv-pl',
     // Facebook landing pages
     '/fb-airwave-pl': 'airwave-smart-pl',
     '/fb-airwave-hu': 'airwave-smart-hu',
@@ -296,6 +304,9 @@ function getProductIdFromLandingPath(pathname: string): string {
  */
 function getPriceDataFromLandingPath(pathname: string): { value: number; currency: string } {
   const priceMap: Record<string, { value: number; currency: string }> = {
+    // Dongle landing pages
+    '/dongle': { value: 39.99, currency: 'EUR' },
+    '/dongle_pl': { value: 209, currency: 'PLN' },
     // Facebook landing pages
     '/fb-airwave-pl': { value: 299, currency: 'PLN' },
     '/fb-airwave-hu': { value: 27999, currency: 'HUF' },
@@ -325,6 +336,10 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
  */
 function getPriceDataFromPath(pathname: string): { value: number; currency: string } {
   const priceMap: Record<string, { value: number; currency: string }> = {
+    // Dongle thank you pages
+    '/ty/ty-it': { value: 39.99, currency: 'EUR' },
+    '/ty/ty-pl': { value: 209, currency: 'PLN' },
+    // Air Wave Smart thank you pages
     '/ty/ty-fb-airwave-pl': { value: 299, currency: 'PLN' },
     '/ty/ty-fb-airwave-hu': { value: 27999, currency: 'HUF' },
     '/ty/ty-fb-airwave-hr': { value: 69.99, currency: 'EUR' },
