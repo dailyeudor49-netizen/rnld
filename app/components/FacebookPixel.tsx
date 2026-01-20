@@ -197,6 +197,10 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-uc-robot-cs': 'NovaClean X1 PRO CS',
     '/ty/ty-uc-robot-si': 'NovaClean X1 PRO SI',
     '/ty/ty-uc-robot-it': 'NovaClean X1 PRO IT',
+    // Dryer landing pages
+    '/ty/ty-uc-dryer-es': 'Costway Dryer 800W ES',
+    '/ty/ty-uc-dryer-pt': 'Costway Dryer 800W PT',
+    '/ty/ty-uc-dryer-lt': 'Costway Dryer 800W LT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -220,6 +224,10 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-uc-robot-cs': 'novaclean-x1-pro-cs',
     '/ty/ty-uc-robot-si': 'novaclean-x1-pro-si',
     '/ty/ty-uc-robot-it': 'novaclean-x1-pro-it',
+    // Dryer landing pages
+    '/ty/ty-uc-dryer-es': 'costway-dryer-800w-es',
+    '/ty/ty-uc-dryer-pt': 'costway-dryer-800w-pt',
+    '/ty/ty-uc-dryer-lt': 'costway-dryer-800w-lt',
   };
 
   return idMap[pathname] || 'product';
@@ -245,6 +253,10 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/uc-robot-cs': 'NovaClean X1 PRO CS',
     '/uc-robot-si': 'NovaClean X1 PRO SI',
     '/uc-robot-it': 'NovaClean X1 PRO IT',
+    // Uncapped Dryer landing pages
+    '/uc-dryer-es': 'Costway Dryer 800W ES',
+    '/uc-dryer-pt': 'Costway Dryer 800W PT',
+    '/uc-dryer-lt': 'Costway Dryer 800W LT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -270,6 +282,10 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/uc-robot-cs': 'novaclean-x1-pro-cs',
     '/uc-robot-si': 'novaclean-x1-pro-si',
     '/uc-robot-it': 'novaclean-x1-pro-it',
+    // Uncapped Dryer landing pages
+    '/uc-dryer-es': 'costway-dryer-800w-es',
+    '/uc-dryer-pt': 'costway-dryer-800w-pt',
+    '/uc-dryer-lt': 'costway-dryer-800w-lt',
   };
 
   return idMap[pathname] || 'product';
@@ -295,6 +311,10 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/uc-robot-cs': { value: 1970, currency: 'CZK' },
     '/uc-robot-si': { value: 79, currency: 'EUR' },
     '/uc-robot-it': { value: 79, currency: 'EUR' },
+    // Uncapped Dryer landing pages
+    '/uc-dryer-es': { value: 79, currency: 'EUR' },
+    '/uc-dryer-pt': { value: 79, currency: 'EUR' },
+    '/uc-dryer-lt': { value: 69, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
@@ -314,6 +334,10 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-uc-robot-cs': { value: 1970, currency: 'CZK' },
     '/ty/ty-uc-robot-si': { value: 79, currency: 'EUR' },
     '/ty/ty-uc-robot-it': { value: 79, currency: 'EUR' },
+    // Dryer landing pages
+    '/ty/ty-uc-dryer-es': { value: 79, currency: 'EUR' },
+    '/ty/ty-uc-dryer-pt': { value: 79, currency: 'EUR' },
+    '/ty/ty-uc-dryer-lt': { value: 69, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
