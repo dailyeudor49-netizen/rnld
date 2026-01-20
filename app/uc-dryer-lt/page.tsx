@@ -220,10 +220,6 @@ export default function LandingPage() {
     <>
       <style>{styles}</style>
 
-      {/* 1. TOP STRIP */}
-      <div className="top-strip">
-        Nemokamas pristatymas visoje Lietuvoje • Mokėjimas pristatymo metu
-      </div>
       <div className="promo-strip">
         🔥 <strong>ATSARGŲ IŠPARDAVIMAS:</strong> Liko tik <span id="stock-count">{stock}</span> vienetų
         <div style={{marginLeft: '10px'}} className="countdown-box">BLYKSNIS PASIŪLYMAS: {formatTime(timeLeft)}</div>

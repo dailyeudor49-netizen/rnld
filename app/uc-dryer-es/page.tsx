@@ -220,10 +220,6 @@ export default function LandingPage() {
     <>
       <style>{styles}</style>
 
-      {/* 1. TOP STRIP */}
-      <div className="top-strip">
-        Envío Gratuito en toda España • Pago Contra Reembolso
-      </div>
       <div className="promo-strip">
         🔥 <strong>LIQUIDACIÓN DE STOCK:</strong> Solo quedan <span id="stock-count">{stock}</span> unidades
         <div style={{marginLeft: '10px'}} className="countdown-box">OFERTA FLASH: {formatTime(timeLeft)}</div>

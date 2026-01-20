@@ -220,10 +220,6 @@ export default function LandingPage() {
     <>
       <style>{styles}</style>
 
-      {/* 1. TOP STRIP */}
-      <div className="top-strip">
-        Envio Gratuito em todo Portugal • Pagamento à Cobrança
-      </div>
       <div className="promo-strip">
         🔥 <strong>LIQUIDAÇÃO DE STOCK:</strong> Restam apenas <span id="stock-count">{stock}</span> unidades
         <div style={{marginLeft: '10px'}} className="countdown-box">OFERTA FLASH: {formatTime(timeLeft)}</div>
