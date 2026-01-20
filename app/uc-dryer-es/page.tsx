@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 const styles = `
   /* RESET & BASE STYLES */
   * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; color: #333; background-color: #fff; padding-bottom: 80px; padding-top: 64px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; color: #333; background-color: #fff; padding-bottom: 80px; }
   img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
   ul { list-style: none; }
   a { text-decoration: none; color: inherit; }
@@ -51,7 +51,7 @@ const styles = `
   }
 
   /* SECTIONS */
-  .top-strip { background: #111; color: white; text-align: center; padding: 6px 10px; font-size: 0.75rem; }
+  .top-strip { background: #111; color: white; text-align: center; padding: 6px 10px; font-size: 0.75rem; margin-top: -8px; }
   .promo-strip { background: #fff3cd; color: #856404; text-align: center; padding: 10px 0; font-weight: 600; font-size: 1rem; border-bottom: 1px solid #ffeeba; }
   .countdown-box { background: #d32f2f; color: white; padding: 5px 10px; font-weight: bold; margin-top: 5px; display: inline-block; border-radius: 4px; }
 
