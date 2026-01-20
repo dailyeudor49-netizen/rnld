@@ -35,8 +35,8 @@ const styles = `
   h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 15px; }
   h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
   p { margin-bottom: 1rem; font-size: 1.1rem; color: #555; }
-  .price-old { text-decoration: line-through; color: #777; font-size: 1rem; }
-  .price-new { font-size: 2rem; font-weight: 800; color: #d32f2f; }
+  .price-old { text-decoration: line-through; color: #777; font-size: 1.2rem; }
+  .price-new { font-size: 2.4rem; font-weight: 800; color: #d32f2f; }
   .saving-badge { background: #d32f2f; color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.9rem; font-weight: bold; display: inline-block; vertical-align: middle; margin-left: 5px; }
 
   /* BUTTONS */
@@ -127,7 +127,7 @@ const styles = `
   .red-pill { background-color: #dc2626; color: white; text-align: center; padding: 12px 20px; font-weight: bold; font-size: 1.1rem; border-radius: 30px; margin: 0 auto 20px; max-width: 500px; box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3); }
   .form-card { background: white; border-radius: 16px; padding: 25px; color: #333; max-width: 600px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
   .product-highlight { border: 1px solid #f3f4f6; border-radius: 12px; padding: 15px; margin-bottom: 20px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-  .price-tag-green { color: #16a34a; font-weight: 800; font-size: 1.8rem; float: right; }
+  .price-tag-red { color: #d32f2f; font-weight: 800; font-size: 2.2rem; float: right; }
   .tag-badge { display: inline-block; background: #dcfce7; color: #166534; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; margin-right: 5px; text-transform: uppercase; margin-top: 5px; }
   .tag-badge-blue { background: #dbeafe; color: #1e40af; }
   .timer-red-box { background: #fef2f2; border: 1px solid #fee2e2; color: #b91c1c; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
@@ -541,7 +541,7 @@ export default function LandingPage() {
                         </div>
                         <div style={{textAlign: 'right'}}>
                             <div className="price-old" style={{fontSize: '0.9rem'}}>€199,99</div>
-                            <div className="price-tag-green">€{totalPrice.toFixed(2).replace('.', ',')}</div>
+                            <div className="price-tag-red">€{totalPrice.toFixed(2).replace('.', ',')}</div>
                         </div>
                     </div>
                     <div style={{marginTop: '10px'}}>
