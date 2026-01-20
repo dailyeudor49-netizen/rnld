@@ -10,7 +10,7 @@ export default function ThankYouPage() {
     if (stored) {
       setOrderCode(stored);
     } else {
-      const newCode = 'AWS-' + Danasth.floor(100000 + Math.random() * 900000).toString();
+      const newCode = 'AWS-' + Math.floor(100000 + Math.random() * 900000).toString();
       sessionStorage.setItem('orderCode', newCode);
       setOrderCode(newCode);
     }
