@@ -197,7 +197,11 @@ export default function LandingPage() {
 
   const scrollToOrder = () => {
     const el = document.getElementById('order-form');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      const yOffset = -20;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   const handleOrderSubmit = (e: React.FormEvent) => {
@@ -208,13 +212,12 @@ export default function LandingPage() {
       btn.disabled = true;
     }
     setTimeout(() => {
-      alert("OBRIGADO! O seu pedido foi recebido corretamente.\n\nReceberá uma chamada de confirmação ou uma mensagem em breve para o envio.\n\nPrepare o valor exato para o estafeta.");
-      window.location.reload();
+      window.location.href = '/ty/ty-uc-dryer-pt';
     }, 1500);
   };
 
-  const basePrice = 260.99;
-  const totalPrice = qty === 1 ? basePrice : (basePrice * 2) - 20;
+  const basePrice = 79;
+  const totalPrice = qty === 1 ? basePrice : (basePrice * 2) - 10;
 
   return (
     <>
@@ -537,7 +540,7 @@ export default function LandingPage() {
                             <div style={{color: '#6b7280', fontSize: '0.9rem'}}>+ Kit Escape + Manual</div>
                         </div>
                         <div style={{textAlign: 'right'}}>
-                            <div className="price-old" style={{fontSize: '0.9rem'}}>€339,99</div>
+                            <div className="price-old" style={{fontSize: '0.9rem'}}>€199,99</div>
                             <div className="price-tag-green">€{totalPrice.toFixed(2).replace('.', ',')}</div>
                         </div>
                     </div>
