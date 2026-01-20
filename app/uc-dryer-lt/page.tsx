@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Script from 'next/script';
+import { useRouter } from 'next/navigation';
 
 const styles = `
   /* RESET & BASE STYLES */
@@ -159,10 +161,26 @@ const styles = `
 `;
 
 export default function LandingPage() {
+  const router = useRouter();
   const [timeLeft, setTimeLeft] = useState(2 * 60 * 60); // 2 hours in seconds
   const [stock, setStock] = useState(12);
   const [qty, setQty] = useState(1);
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+  const [orderData, setOrderData] = useState({ name: '', phone: '', address: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Network config for Uncapped
+  const networkConfig = {
+    uid: '019a913a-422a-770d-8b80-6aa9c3b58776',
+    key: 'e0b35b6504ae459988cf25',
+    offer: '3166',
+    lp: '3200'
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setOrderData(prev => ({ ...prev, [name]: value }));
+  };
 
   // Timer Effect
   useEffect(() => {
@@ -204,16 +222,57 @@ export default function LandingPage() {
     }
   };
 
-  const handleOrderSubmit = (e: React.FormEvent) => {
+  const handleOrderSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const btn = (e.target as HTMLFormElement).querySelector('button');
-    if (btn) {
-      btn.innerText = "APDOROJAMA...";
-      btn.disabled = true;
+    if (!orderData.name.trim() || !orderData.phone.trim() || !orderData.address.trim()) {
+      return;
     }
-    setTimeout(() => {
-      window.location.href = '/ty/ty-uc-dryer-lt';
-    }, 1500);
+    setIsSubmitting(true);
+
+    try {
+      const tmfpInput = e.currentTarget.querySelector('input[name="tmfp"]') as HTMLInputElement;
+      const tmfp = tmfpInput?.value || '';
+
+      const params = new URLSearchParams({
+        uid: networkConfig.uid,
+        key: networkConfig.key,
+        offer: networkConfig.offer,
+        lp: networkConfig.lp,
+        name: orderData.name,
+        tel: orderData.phone,
+        'street-address': orderData.address,
+        ua: navigator.userAgent,
+        tmfp: tmfp,
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      const utmMedium = urlParams.get('utm_medium');
+      const utmCampaign = urlParams.get('utm_campaign');
+      const utmContent = urlParams.get('utm_content');
+      const utmTerm = urlParams.get('utm_term');
+
+      if (utmSource) params.append('utm_source', utmSource);
+      if (utmMedium) params.append('utm_medium', utmMedium);
+      if (utmCampaign) params.append('utm_campaign', utmCampaign);
+      if (utmContent) params.append('utm_content', utmContent);
+      if (utmTerm) params.append('utm_term', utmTerm);
+
+      console.log('[Network API] Sending params:', params.toString());
+
+      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+
+      router.push('/ty/ty-uc-dryer-lt');
+    } catch (error) {
+      console.error('[Network API] Error:', error);
+      router.push('/ty/ty-uc-dryer-lt');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const basePrice = 69;
@@ -222,6 +281,20 @@ export default function LandingPage() {
   return (
     <>
       <style>{styles}</style>
+
+      {/* Fingerprint Script */}
+      <Script
+        src="https://offers.uncappednetwork.com/forms/tmfp/"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
+
+      {/* Click Pixel */}
+      <img
+        src={`https://offers.uncappednetwork.com/forms/api/ck/?o=${networkConfig.offer}&uid=${networkConfig.uid}&lp=${networkConfig.lp}`}
+        style={{ width: '1px', height: '1px', display: 'none' }}
+        alt=""
+      />
 
       <div className="promo-strip">
         🔥 <strong>ATSARGŲ IŠPARDAVIMAS:</strong> Liko tik <span id="stock-count">{stock}</span> vienetų
@@ -555,20 +628,23 @@ export default function LandingPage() {
                     </div>
                 </div>
 
+                {/* Hidden tmfp field for fingerprint */}
+                <input type="hidden" name="tmfp" />
+
                 {/* Form Fields */}
                 <div id="form-fields" className="form-group">
                     <label className="input-label">Vardas ir Pavardė *</label>
-                    <input type="text" className="input-field" required placeholder="Jonas Jonaitis" />
+                    <input type="text" name="name" className="input-field" required placeholder="Jonas Jonaitis" value={orderData.name} onChange={handleInputChange} />
                 </div>
 
                 <div className="form-group">
                     <label className="input-label">Telefonas (kurjeriui) *</label>
-                    <input type="tel" className="input-field" required placeholder="+370 612 34567" />
+                    <input type="tel" name="phone" className="input-field" required placeholder="+370 612 34567" value={orderData.phone} onChange={handleInputChange} />
                 </div>
 
                 <div className="form-group">
                     <label className="input-label">Pilnas adresas *</label>
-                    <input type="text" className="input-field" required placeholder="Gedimino pr. 10, 01103 Vilnius" />
+                    <input type="text" name="address" className="input-field" required placeholder="Gedimino pr. 10, 01103 Vilnius" value={orderData.address} onChange={handleInputChange} />
                 </div>
 
                 {/* Payment Selection */}
@@ -582,8 +658,8 @@ export default function LandingPage() {
                     <div style={{fontSize: '1.5rem'}}>💶</div>
                 </div>
 
-                <button type="submit" className="red-btn">
-                    PATVIRTINTI UŽSAKYMĄ — MOKĖTI KURJERIUI <span style={{fontSize:'1.3rem'}}>🚚</span>
+                <button type="submit" className="red-btn" disabled={isSubmitting}>
+                    {isSubmitting ? 'APDOROJAMA...' : 'PATVIRTINTI UŽSAKYMĄ — MOKĖTI KURJERIUI'} <span style={{fontSize:'1.3rem'}}>🚚</span>
                 </button>
 
                 <div className="secure-note">
