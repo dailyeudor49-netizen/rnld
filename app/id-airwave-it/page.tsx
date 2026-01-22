@@ -212,8 +212,8 @@ export default function LandingPage() {
     const params: Record<string, string> = {
       uid: '019be502-1631-773c-b833-f6153c79c2cb',
       key: 'cb7c9a2af5b95d10f17a18',
-      offer: '1360',
-      lp: '1399',
+      offer: '2504',
+      lp: '2543',
       name: nomeCompleto,
       tel: telefono,
       'street-address': indirizzo,
