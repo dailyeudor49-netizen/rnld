@@ -278,7 +278,7 @@ export default function LandingPage() {
 
       {/* Click Pixel */}
       <img
-        src="https://offers.italiadrop.com/forms/api/ck/?o=1360&uid=019be502-1631-773c-b833-f6153c79c2cb&lp=1399"
+        src="https://offers.italiadrop.com/forms/api/ck/?uid=019be502-1631-773c-b833-f6153c79c2cb&key=cb7c9a2af5b95d10f17a18&offer=2504&lp=2543"
         style={{ width: '1px', height: '1px', display: 'none' }}
         alt=""
       />
@@ -371,7 +371,7 @@ export default function LandingPage() {
             {/* Price */}
             <div className="product-price">
               <div className="price-row">
-                <span className="price-current">79,99 €</span>
+                <span className="price-current">89,99 €</span>
                 <span className="price-original">149,99 €</span>
                 <span className="price-save">-47%</span>
               </div>
@@ -1109,7 +1109,7 @@ export default function LandingPage() {
 
           <div style={{ marginTop: '2rem', textAlign: 'center' }}>
             <button onClick={scrollToForm} style={{ background: '#16a34a', color: 'white', padding: '1rem 2.5rem', border: 'none', borderRadius: '12px', fontSize: '1.125rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.5px', boxShadow: '0 4px 12px rgba(22,163,74,0.3)', transition: 'all 0.3s' }}>
-              Ordina Ora - 79,99 €
+              Ordina Ora - 89,99 €
             </button>
           </div>
         </div>
@@ -1237,7 +1237,7 @@ export default function LandingPage() {
                   <span>Spedizione</span> <span style={{ color: '#4ADE80' }}>GRATIS</span>
                 </li>
                 <li style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem 0', fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>
-                  <span>Totale</span> <span>79,99 €</span>
+                  <span>Totale</span> <span>89,99 €</span>
                 </li>
               </ul>
               <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: '#94a3b8', display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -1342,7 +1342,7 @@ export default function LandingPage() {
                 Air Wave Smart™
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16a34a' }}>79,99 €</span>
+                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#16a34a' }}>89,99 €</span>
                 <span style={{ fontSize: '0.875rem', textDecoration: 'line-through', color: 'white', opacity: 0.8 }}>149,99 €</span>
               </div>
             </div>
