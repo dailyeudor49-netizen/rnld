@@ -23,7 +23,7 @@ const PURCHASE_TRACKED_KEY = 'fb_purchase_tracked';
  */
 function isLandingPage(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/fb-') || pathname.startsWith('/uc-') || pathname === '/dongle' || pathname === '/dongle_pl';
+  return pathname.startsWith('/fb-') || pathname.startsWith('/uc-') || pathname.startsWith('/id-') || pathname === '/dongle' || pathname === '/dongle_pl';
 }
 
 /**
@@ -31,7 +31,7 @@ function isLandingPage(pathname: string | null): boolean {
  */
 function isFacebookThankYouPage(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/ty/ty-fb-') || pathname.startsWith('/ty/ty-uc-') || pathname === '/ty/ty-it' || pathname === '/ty/ty-pl';
+  return pathname.startsWith('/ty/ty-fb-') || pathname.startsWith('/ty/ty-uc-') || pathname.startsWith('/ty/ty-id-') || pathname === '/ty/ty-it' || pathname === '/ty/ty-pl';
 }
 
 /**
@@ -202,6 +202,10 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-uc-dryer-es': 'Costway Dryer 800W ES',
     '/ty/ty-uc-dryer-pt': 'Costway Dryer 800W PT',
     '/ty/ty-uc-dryer-lt': 'Costway Dryer 800W LT',
+    // ID Airwave landing pages
+    '/ty/ty-id-airwave-it': 'Air Wave Smart IT',
+    '/ty/ty-id-airwave-pl': 'Air Wave Smart PL',
+    '/ty/ty-id-airwave-lt': 'Air Wave Smart LT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -230,6 +234,10 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-uc-dryer-es': 'costway-dryer-800w-es',
     '/ty/ty-uc-dryer-pt': 'costway-dryer-800w-pt',
     '/ty/ty-uc-dryer-lt': 'costway-dryer-800w-lt',
+    // ID Airwave landing pages
+    '/ty/ty-id-airwave-it': 'airwave-smart-it',
+    '/ty/ty-id-airwave-pl': 'airwave-smart-pl',
+    '/ty/ty-id-airwave-lt': 'airwave-smart-lt',
   };
 
   return idMap[pathname] || 'product';
@@ -262,6 +270,10 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/uc-dryer-es': 'Costway Dryer 800W ES',
     '/uc-dryer-pt': 'Costway Dryer 800W PT',
     '/uc-dryer-lt': 'Costway Dryer 800W LT',
+    // ID Airwave landing pages
+    '/id-airwave-it': 'Air Wave Smart IT',
+    '/id-airwave-pl': 'Air Wave Smart PL',
+    '/id-airwave-lt': 'Air Wave Smart LT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -294,6 +306,10 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/uc-dryer-es': 'costway-dryer-800w-es',
     '/uc-dryer-pt': 'costway-dryer-800w-pt',
     '/uc-dryer-lt': 'costway-dryer-800w-lt',
+    // ID Airwave landing pages
+    '/id-airwave-it': 'airwave-smart-it',
+    '/id-airwave-pl': 'airwave-smart-pl',
+    '/id-airwave-lt': 'airwave-smart-lt',
   };
 
   return idMap[pathname] || 'product';
@@ -326,6 +342,10 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/uc-dryer-es': { value: 79, currency: 'EUR' },
     '/uc-dryer-pt': { value: 79, currency: 'EUR' },
     '/uc-dryer-lt': { value: 69, currency: 'EUR' },
+    // ID Airwave landing pages
+    '/id-airwave-it': { value: 89.99, currency: 'EUR' },
+    '/id-airwave-pl': { value: 299, currency: 'PLN' },
+    '/id-airwave-lt': { value: 59.99, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
@@ -353,6 +373,10 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-uc-dryer-es': { value: 79, currency: 'EUR' },
     '/ty/ty-uc-dryer-pt': { value: 79, currency: 'EUR' },
     '/ty/ty-uc-dryer-lt': { value: 69, currency: 'EUR' },
+    // ID Airwave thank you pages
+    '/ty/ty-id-airwave-it': { value: 89.99, currency: 'EUR' },
+    '/ty/ty-id-airwave-pl': { value: 299, currency: 'PLN' },
+    '/ty/ty-id-airwave-lt': { value: 59.99, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
