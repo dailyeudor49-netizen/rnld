@@ -126,7 +126,7 @@ export default function FacebookPixel() {
       // Traccia Purchase con il pixel (client-side)
       trackPurchase(eventData, purchaseEventId);
 
-      // Traccia Lead via CAPI (server-side via webhook)
+      // Traccia Purchase via CAPI (server-side via webhook) - stesso evento del client per deduplicazione
       const userData = getUserDataFromStorage();
       console.log('[FB Pixel] User data from storage:', userData);
 
