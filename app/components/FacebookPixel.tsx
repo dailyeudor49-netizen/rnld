@@ -206,6 +206,10 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-id-airwave-it': 'Air Wave Smart IT',
     '/ty/ty-id-airwave-pl': 'Air Wave Smart PL',
     '/ty/ty-id-airwave-lt': 'Air Wave Smart LT',
+    // ID Robot landing pages
+    '/ty/ty-id-robot-bg': 'NovaClean X1 PRO BG',
+    '/ty/ty-id-robot-gr': 'NovaClean X1 PRO GR',
+    '/ty/ty-id-robot-hr': 'NovaClean X1 PRO HR',
   };
 
   return pathMap[pathname] || 'Product';
@@ -238,6 +242,10 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-id-airwave-it': 'airwave-smart-it',
     '/ty/ty-id-airwave-pl': 'airwave-smart-pl',
     '/ty/ty-id-airwave-lt': 'airwave-smart-lt',
+    // ID Robot landing pages
+    '/ty/ty-id-robot-bg': 'novaclean-x1-pro-bg',
+    '/ty/ty-id-robot-gr': 'novaclean-x1-pro-gr',
+    '/ty/ty-id-robot-hr': 'novaclean-x1-pro-hr',
   };
 
   return idMap[pathname] || 'product';
@@ -274,6 +282,10 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/id-airwave-it': 'Air Wave Smart IT',
     '/id-airwave-pl': 'Air Wave Smart PL',
     '/id-airwave-lt': 'Air Wave Smart LT',
+    // ID Robot landing pages
+    '/id-robot-bg': 'NovaClean X1 PRO BG',
+    '/id-robot-gr': 'NovaClean X1 PRO GR',
+    '/id-robot-hr': 'NovaClean X1 PRO HR',
   };
 
   return pathMap[pathname] || 'Product';
@@ -310,6 +322,10 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/id-airwave-it': 'airwave-smart-it',
     '/id-airwave-pl': 'airwave-smart-pl',
     '/id-airwave-lt': 'airwave-smart-lt',
+    // ID Robot landing pages
+    '/id-robot-bg': 'novaclean-x1-pro-bg',
+    '/id-robot-gr': 'novaclean-x1-pro-gr',
+    '/id-robot-hr': 'novaclean-x1-pro-hr',
   };
 
   return idMap[pathname] || 'product';
@@ -346,6 +362,10 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/id-airwave-it': { value: 89.99, currency: 'EUR' },
     '/id-airwave-pl': { value: 299, currency: 'PLN' },
     '/id-airwave-lt': { value: 59.99, currency: 'EUR' },
+    // ID Robot landing pages
+    '/id-robot-bg': { value: 79, currency: 'EUR' },
+    '/id-robot-gr': { value: 79, currency: 'EUR' },
+    '/id-robot-hr': { value: 87, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
@@ -377,6 +397,10 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-id-airwave-it': { value: 89.99, currency: 'EUR' },
     '/ty/ty-id-airwave-pl': { value: 299, currency: 'PLN' },
     '/ty/ty-id-airwave-lt': { value: 59.99, currency: 'EUR' },
+    // ID Robot thank you pages
+    '/ty/ty-id-robot-bg': { value: 79, currency: 'EUR' },
+    '/ty/ty-id-robot-gr': { value: 79, currency: 'EUR' },
+    '/ty/ty-id-robot-hr': { value: 87, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };

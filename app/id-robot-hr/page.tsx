@@ -338,7 +338,7 @@ export default function RobotAspirapolvereProLanding() {
               {/* Price */}
               <div className="bg-gray-50 rounded-xl p-4 mb-4 border border-gray-100">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-gray-400 line-through text-xl">€249,90,00</span>
+                  <span className="text-gray-400 line-through text-xl">€249,90</span>
                   <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">UŠTEDITE €162,90</span>
                 </div>
                 <div className="text-center">
