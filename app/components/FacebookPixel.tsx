@@ -13,7 +13,7 @@ import {
   getFbp,
   getFbc,
 } from '@/app/lib/facebook/pixel';
-import { getUserDataFromStorage, trackLeadCAPI } from '@/app/lib/facebook/capi';
+import { getUserDataFromStorage, trackPurchaseCAPI } from '@/app/lib/facebook/capi';
 
 // Storage key per prevenire tracking duplicati
 const PURCHASE_TRACKED_KEY = 'fb_purchase_tracked';
@@ -130,8 +130,8 @@ export default function FacebookPixel() {
       const userData = getUserDataFromStorage();
       console.log('[FB Pixel] User data from storage:', userData);
 
-      trackLeadCAPI(purchaseEventId, userData, eventData).then((success) => {
-        console.log('[FB CAPI] Lead event sent to webhook:', success ? 'SUCCESS' : 'FAILED');
+      trackPurchaseCAPI(purchaseEventId, userData, eventData).then((success: boolean) => {
+        console.log('[FB CAPI] Purchase event sent to webhook:', success ? 'SUCCESS' : 'FAILED');
       });
 
       // Segna come tracciato per prevenire duplicati
