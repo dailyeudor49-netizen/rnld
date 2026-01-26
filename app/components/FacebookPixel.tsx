@@ -210,6 +210,9 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-id-robot-bg': 'NovaClean X1 PRO BG',
     '/ty/ty-id-robot-gr': 'NovaClean X1 PRO GR',
     '/ty/ty-id-robot-hr': 'NovaClean X1 PRO HR',
+    '/ty/ty-id-robot-si': 'NovaClean X1 PRO SI',
+    '/ty/ty-id-robot-sk': 'NovaClean X1 PRO SK',
+    '/ty/ty-id-robot-cs': 'NovaClean X1 PRO CS',
   };
 
   return pathMap[pathname] || 'Product';
@@ -246,6 +249,9 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-id-robot-bg': 'novaclean-x1-pro-bg',
     '/ty/ty-id-robot-gr': 'novaclean-x1-pro-gr',
     '/ty/ty-id-robot-hr': 'novaclean-x1-pro-hr',
+    '/ty/ty-id-robot-si': 'novaclean-x1-pro-si',
+    '/ty/ty-id-robot-sk': 'novaclean-x1-pro-sk',
+    '/ty/ty-id-robot-cs': 'novaclean-x1-pro-cs',
   };
 
   return idMap[pathname] || 'product';
@@ -286,6 +292,9 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/id-robot-bg': 'NovaClean X1 PRO BG',
     '/id-robot-gr': 'NovaClean X1 PRO GR',
     '/id-robot-hr': 'NovaClean X1 PRO HR',
+    '/id-robot-si': 'NovaClean X1 PRO SI',
+    '/id-robot-sk': 'NovaClean X1 PRO SK',
+    '/id-robot-cs': 'NovaClean X1 PRO CS',
   };
 
   return pathMap[pathname] || 'Product';
@@ -326,6 +335,9 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/id-robot-bg': 'novaclean-x1-pro-bg',
     '/id-robot-gr': 'novaclean-x1-pro-gr',
     '/id-robot-hr': 'novaclean-x1-pro-hr',
+    '/id-robot-si': 'novaclean-x1-pro-si',
+    '/id-robot-sk': 'novaclean-x1-pro-sk',
+    '/id-robot-cs': 'novaclean-x1-pro-cs',
   };
 
   return idMap[pathname] || 'product';
@@ -366,6 +378,9 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/id-robot-bg': { value: 79, currency: 'EUR' },
     '/id-robot-gr': { value: 79, currency: 'EUR' },
     '/id-robot-hr': { value: 87, currency: 'EUR' },
+    '/id-robot-si': { value: 79, currency: 'EUR' },
+    '/id-robot-sk': { value: 79, currency: 'EUR' },
+    '/id-robot-cs': { value: 1970, currency: 'CZK' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
@@ -401,6 +416,9 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-id-robot-bg': { value: 79, currency: 'EUR' },
     '/ty/ty-id-robot-gr': { value: 79, currency: 'EUR' },
     '/ty/ty-id-robot-hr': { value: 87, currency: 'EUR' },
+    '/ty/ty-id-robot-si': { value: 79, currency: 'EUR' },
+    '/ty/ty-id-robot-sk': { value: 79, currency: 'EUR' },
+    '/ty/ty-id-robot-cs': { value: 1970, currency: 'CZK' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
