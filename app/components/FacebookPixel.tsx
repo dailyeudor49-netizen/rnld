@@ -213,6 +213,10 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-id-robot-si': 'NovaClean X1 PRO SI',
     '/ty/ty-id-robot-sk': 'NovaClean X1 PRO SK',
     '/ty/ty-id-robot-cs': 'NovaClean X1 PRO CS',
+    // ID Cooker landing pages
+    '/ty/ty-id-cooker-pl': 'Multicooker 12in1 PL',
+    '/ty/ty-id-cooker-lt': 'Multicooker 12in1 LT',
+    '/ty/ty-id-cooker-sk': 'Multicooker 12in1 SK',
   };
 
   return pathMap[pathname] || 'Product';
@@ -252,6 +256,10 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-id-robot-si': 'novaclean-x1-pro-si',
     '/ty/ty-id-robot-sk': 'novaclean-x1-pro-sk',
     '/ty/ty-id-robot-cs': 'novaclean-x1-pro-cs',
+    // ID Cooker landing pages
+    '/ty/ty-id-cooker-pl': 'multicooker-12in1-pl',
+    '/ty/ty-id-cooker-lt': 'multicooker-12in1-lt',
+    '/ty/ty-id-cooker-sk': 'multicooker-12in1-sk',
   };
 
   return idMap[pathname] || 'product';
@@ -295,6 +303,10 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/id-robot-si': 'NovaClean X1 PRO SI',
     '/id-robot-sk': 'NovaClean X1 PRO SK',
     '/id-robot-cs': 'NovaClean X1 PRO CS',
+    // ID Cooker landing pages
+    '/id-cooker-pl': 'Multicooker 12in1 PL',
+    '/id-cooker-lt': 'Multicooker 12in1 LT',
+    '/id-cooker-sk': 'Multicooker 12in1 SK',
   };
 
   return pathMap[pathname] || 'Product';
@@ -338,6 +350,10 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/id-robot-si': 'novaclean-x1-pro-si',
     '/id-robot-sk': 'novaclean-x1-pro-sk',
     '/id-robot-cs': 'novaclean-x1-pro-cs',
+    // ID Cooker landing pages
+    '/id-cooker-pl': 'multicooker-12in1-pl',
+    '/id-cooker-lt': 'multicooker-12in1-lt',
+    '/id-cooker-sk': 'multicooker-12in1-sk',
   };
 
   return idMap[pathname] || 'product';
@@ -381,6 +397,10 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/id-robot-si': { value: 79, currency: 'EUR' },
     '/id-robot-sk': { value: 79, currency: 'EUR' },
     '/id-robot-cs': { value: 1970, currency: 'CZK' },
+    // ID Cooker landing pages
+    '/id-cooker-pl': { value: 299, currency: 'PLN' },
+    '/id-cooker-lt': { value: 69, currency: 'EUR' },
+    '/id-cooker-sk': { value: 79, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
@@ -419,6 +439,10 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-id-robot-si': { value: 79, currency: 'EUR' },
     '/ty/ty-id-robot-sk': { value: 79, currency: 'EUR' },
     '/ty/ty-id-robot-cs': { value: 1970, currency: 'CZK' },
+    // ID Cooker thank you pages
+    '/ty/ty-id-cooker-pl': { value: 299, currency: 'PLN' },
+    '/ty/ty-id-cooker-lt': { value: 69, currency: 'EUR' },
+    '/ty/ty-id-cooker-sk': { value: 79, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
