@@ -26,6 +26,46 @@ export default function RobotPorszivoproLanding() {
   const [visibleReviews, setVisibleReviews] = useState(3);
   const [orderData, setOrderData] = useState({ name: '', phone: '', address: '' });
   const [submitError, setSubmitError] = useState('');
+  const [isDuplicate, setIsDuplicate] = useState(false);
+
+  // Check for duplicate submissions (phone number)
+  const checkDuplicatePhone = (phone: string): boolean => {
+    const STORAGE_KEY = 'uc_robot_hu_submissions';
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return false;
+
+    try {
+      const submissions: { phone: string; timestamp: number }[] = JSON.parse(stored);
+      const normalizedPhone = phone.replace(/\D/g, '');
+      return submissions.some(s => s.phone === normalizedPhone);
+    } catch {
+      return false;
+    }
+  };
+
+  // Check if device has already submitted (any phone number)
+  const checkDeviceSubmitted = (): boolean => {
+    const DEVICE_KEY = 'uc_robot_hu_device_submitted';
+    return localStorage.getItem(DEVICE_KEY) === 'true';
+  };
+
+  const saveSubmission = (phone: string) => {
+    const STORAGE_KEY = 'uc_robot_hu_submissions';
+    const DEVICE_KEY = 'uc_robot_hu_device_submitted';
+    const normalizedPhone = phone.replace(/\D/g, '');
+    const stored = localStorage.getItem(STORAGE_KEY);
+    let submissions: { phone: string; timestamp: number }[] = [];
+
+    try {
+      if (stored) submissions = JSON.parse(stored);
+    } catch {
+      submissions = [];
+    }
+
+    submissions.push({ phone: normalizedPhone, timestamp: Date.now() });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
+    localStorage.setItem(DEVICE_KEY, 'true');
+  };
   const [timeLeft, setTimeLeft] = useState(2 * 60 * 60);
   const [stockLeft] = useState(4);
   const [openFeature, setOpenFeature] = useState<number | null>(null);
@@ -80,6 +120,20 @@ export default function RobotPorszivoproLanding() {
       setSubmitError('Kérjük, töltse ki az összes mezőt!');
       return;
     }
+
+    // Check for duplicate submission (phone or device)
+    if (checkDuplicatePhone(orderData.phone)) {
+      setIsDuplicate(true);
+      setSubmitError('Ez a telefonszám már szerepel a rendszerünkben. Hamarosan felvesszük Önnel a kapcsolatot!');
+      return;
+    }
+
+    if (checkDeviceSubmitted()) {
+      setIsDuplicate(true);
+      setSubmitError('Erről az eszközről már érkezett rendelés. Hamarosan felvesszük Önnel a kapcsolatot!');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError('');
 
@@ -117,6 +171,9 @@ export default function RobotPorszivoproLanding() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
+
+      // Save submission to prevent duplicates
+      saveSubmission(orderData.phone);
 
       router.push('/ty/ty-uc-robot-hu');
     } catch (error) {
