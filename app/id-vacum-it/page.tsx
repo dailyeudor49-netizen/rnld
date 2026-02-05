@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { 
+import Script from 'next/script';
+import { useRouter } from 'next/navigation';
+import {
   Check, 
   X, 
   Star, 
@@ -87,9 +89,10 @@ const StickyOrderButton = ({ visible }: { visible: boolean }) => {
 
 // 3. ORDER FORM SECTION
 const OrderFormSection = ({ timeLeft }: { timeLeft: number }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -101,36 +104,19 @@ const OrderFormSection = ({ timeLeft }: { timeLeft: number }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    if (!validate() || isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    router.push('/ty/ty-id-vacum-it');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: '' });
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="py-12 px-4 bg-slate-50 text-center">
-        <div className="max-w-lg mx-auto bg-white rounded-xl shadow-xl p-8 border-4 border-green-500">
-          <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Check size={40} strokeWidth={3} />
-          </div>
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Grazie {formData.name}!</h2>
-          <p className="text-xl text-slate-600 mb-6">
-            Abbiamo ricevuto la tua richiesta.<br/>
-            Un nostro operatore gentile ti chiamerà al numero <strong>{formData.phone}</strong> per confermare i dettagli.
-          </p>
-          <button onClick={() => window.location.reload()} className="text-blue-600 font-bold underline text-lg">Torna alla pagina principale</button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <section id="order" className="py-12 px-4 bg-slate-100">

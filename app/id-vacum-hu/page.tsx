@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
+import { useRouter } from 'next/navigation';
 import { sendLeadToNetwork } from '@/app/lib/network/api';
 import {
   Check,
@@ -83,9 +84,9 @@ const StickyOrderButton = ({ visible }: { visible: boolean }) => {
 
 // 3. ORDER FORM SECTION
 const OrderFormSection = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
@@ -133,33 +134,13 @@ const OrderFormSection = () => {
     // Send to network
     await sendLeadToNetwork('https://offers.italiadrop.com/forms/api/', params);
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    router.push('/ty/ty-id-vacum-hu');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: '' });
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="py-12 px-4 bg-slate-50 text-center">
-        <div className="max-w-lg mx-auto bg-white rounded-xl shadow-xl p-8 border-4 border-green-500">
-          <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Check size={40} strokeWidth={3} />
-          </div>
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Köszönjük {formData.name}!</h2>
-          <p className="text-xl text-slate-600 mb-6">
-            Megkaptuk a kérését.<br/>
-            Munkatársunk felhívja a <strong>{formData.phone}</strong> számon a részletek megerősítéséhez.
-          </p>
-          <button onClick={() => window.location.reload()} className="text-blue-600 font-bold underline text-lg">Vissza a főoldalra</button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <section id="order" className="py-12 px-4 bg-slate-100">
