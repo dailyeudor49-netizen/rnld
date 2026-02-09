@@ -218,6 +218,9 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-id-cooker-pl': 'Multicooker 12in1 PL',
     '/ty/ty-id-cooker-lt': 'Multicooker 12in1 LT',
     '/ty/ty-id-cooker-sk': 'Multicooker 12in1 SK',
+    '/ty/ty-id-cooker-cs': 'Multicooker 12in1 CS',
+    '/ty/ty-id-cooker-hu': 'Multicooker 12in1 HU',
+    '/ty/ty-id-cooker-pt': 'Multicooker 12in1 PT',
     // ID Vacum landing pages
     '/ty/ty-id-vacum-pl': 'Wireless Vacuum PL',
     '/ty/ty-id-vacum-lt': 'Wireless Vacuum LT',
@@ -267,6 +270,9 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-id-cooker-pl': 'multicooker-12in1-pl',
     '/ty/ty-id-cooker-lt': 'multicooker-12in1-lt',
     '/ty/ty-id-cooker-sk': 'multicooker-12in1-sk',
+    '/ty/ty-id-cooker-cs': 'multicooker-12in1-cs',
+    '/ty/ty-id-cooker-hu': 'multicooker-12in1-hu',
+    '/ty/ty-id-cooker-pt': 'multicooker-12in1-pt',
     // ID Vacum landing pages
     '/ty/ty-id-vacum-pl': 'wireless-vacuum-pl',
     '/ty/ty-id-vacum-lt': 'wireless-vacuum-lt',
@@ -320,6 +326,9 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/id-cooker-pl': 'Multicooker 12in1 PL',
     '/id-cooker-lt': 'Multicooker 12in1 LT',
     '/id-cooker-sk': 'Multicooker 12in1 SK',
+    '/id-cooker-cs': 'Multicooker 12in1 CS',
+    '/id-cooker-hu': 'Multicooker 12in1 HU',
+    '/id-cooker-pt': 'Multicooker 12in1 PT',
     // ID Vacum landing pages
     '/id-vacum-pl': 'Wireless Vacuum PL',
     '/id-vacum-lt': 'Wireless Vacuum LT',
@@ -373,6 +382,9 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/id-cooker-pl': 'multicooker-12in1-pl',
     '/id-cooker-lt': 'multicooker-12in1-lt',
     '/id-cooker-sk': 'multicooker-12in1-sk',
+    '/id-cooker-cs': 'multicooker-12in1-cs',
+    '/id-cooker-hu': 'multicooker-12in1-hu',
+    '/id-cooker-pt': 'multicooker-12in1-pt',
     // ID Vacum landing pages
     '/id-vacum-pl': 'wireless-vacuum-pl',
     '/id-vacum-lt': 'wireless-vacuum-lt',
@@ -426,6 +438,9 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/id-cooker-pl': { value: 299, currency: 'PLN' },
     '/id-cooker-lt': { value: 69, currency: 'EUR' },
     '/id-cooker-sk': { value: 79, currency: 'EUR' },
+    '/id-cooker-cs': { value: 2099, currency: 'CZK' },
+    '/id-cooker-hu': { value: 35582, currency: 'HUF' },
+    '/id-cooker-pt': { value: 109, currency: 'EUR' },
     // ID Vacum landing pages
     '/id-vacum-pl': { value: 299, currency: 'PLN' },
     '/id-vacum-lt': { value: 89, currency: 'EUR' },
@@ -474,6 +489,9 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-id-cooker-pl': { value: 299, currency: 'PLN' },
     '/ty/ty-id-cooker-lt': { value: 69, currency: 'EUR' },
     '/ty/ty-id-cooker-sk': { value: 79, currency: 'EUR' },
+    '/ty/ty-id-cooker-cs': { value: 2099, currency: 'CZK' },
+    '/ty/ty-id-cooker-hu': { value: 35582, currency: 'HUF' },
+    '/ty/ty-id-cooker-pt': { value: 109, currency: 'EUR' },
     // ID Vacum thank you pages
     '/ty/ty-id-vacum-pl': { value: 299, currency: 'PLN' },
     '/ty/ty-id-vacum-lt': { value: 89, currency: 'EUR' },
