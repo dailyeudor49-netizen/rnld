@@ -198,6 +198,7 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-uc-robot-cs': 'NovaClean X1 PRO CS',
     '/ty/ty-uc-robot-si': 'NovaClean X1 PRO SI',
     '/ty/ty-uc-robot-it': 'NovaClean X1 PRO IT',
+    '/ty/ty-uc-robot-pl': 'NovaClean X1 PRO PL',
     // Dryer landing pages
     '/ty/ty-uc-dryer-es': 'Costway Dryer 800W ES',
     '/ty/ty-uc-dryer-pt': 'Costway Dryer 800W PT',
@@ -246,6 +247,7 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-uc-robot-cs': 'novaclean-x1-pro-cs',
     '/ty/ty-uc-robot-si': 'novaclean-x1-pro-si',
     '/ty/ty-uc-robot-it': 'novaclean-x1-pro-it',
+    '/ty/ty-uc-robot-pl': 'novaclean-x1-pro-pl',
     // Dryer landing pages
     '/ty/ty-uc-dryer-es': 'costway-dryer-800w-es',
     '/ty/ty-uc-dryer-pt': 'costway-dryer-800w-pt',
@@ -298,6 +300,7 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/uc-robot-cs': 'NovaClean X1 PRO CS',
     '/uc-robot-si': 'NovaClean X1 PRO SI',
     '/uc-robot-it': 'NovaClean X1 PRO IT',
+    '/uc-robot-pl': 'NovaClean X1 PRO PL',
     // Uncapped Dryer landing pages
     '/uc-dryer-es': 'Costway Dryer 800W ES',
     '/uc-dryer-pt': 'Costway Dryer 800W PT',
@@ -350,6 +353,7 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/uc-robot-cs': 'novaclean-x1-pro-cs',
     '/uc-robot-si': 'novaclean-x1-pro-si',
     '/uc-robot-it': 'novaclean-x1-pro-it',
+    '/uc-robot-pl': 'novaclean-x1-pro-pl',
     // Uncapped Dryer landing pages
     '/uc-dryer-es': 'costway-dryer-800w-es',
     '/uc-dryer-pt': 'costway-dryer-800w-pt',
@@ -402,6 +406,7 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/uc-robot-cs': { value: 1970, currency: 'CZK' },
     '/uc-robot-si': { value: 79, currency: 'EUR' },
     '/uc-robot-it': { value: 79, currency: 'EUR' },
+    '/uc-robot-pl': { value: 339, currency: 'PLN' },
     // Uncapped Dryer landing pages
     '/uc-dryer-es': { value: 79, currency: 'EUR' },
     '/uc-dryer-pt': { value: 79, currency: 'EUR' },
@@ -449,6 +454,7 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-uc-robot-cs': { value: 1970, currency: 'CZK' },
     '/ty/ty-uc-robot-si': { value: 79, currency: 'EUR' },
     '/ty/ty-uc-robot-it': { value: 79, currency: 'EUR' },
+    '/ty/ty-uc-robot-pl': { value: 339, currency: 'PLN' },
     // Dryer landing pages
     '/ty/ty-uc-dryer-es': { value: 79, currency: 'EUR' },
     '/ty/ty-uc-dryer-pt': { value: 79, currency: 'EUR' },
