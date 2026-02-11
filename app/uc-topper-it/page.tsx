@@ -132,15 +132,14 @@ export default function TopperOrtopedicoLanding() {
             currency: 'EUR',
           });
         }
-        alert("Grazie! Il tuo ordine è stato ricevuto. Ti chiameremo presto per confermare.");
-        // window.location.href = '/ty/ty-topper'; 
+        window.location.href = '/ty/ty-uc-topper-it';
       } else {
          console.warn("API call failed (expected in preview). Simulating success.");
-         alert("Grazie! Il tuo ordine è stato ricevuto. Ti chiameremo presto per confermare.");
+         window.location.href = '/ty/ty-uc-topper-it';
       }
     } catch (error) {
       console.error(error);
-      alert("Grazie! Il tuo ordine è stato ricevuto. Ti chiameremo presto per confermare.");
+      window.location.href = '/ty/ty-uc-topper-it';
     } finally {
       setIsSubmitting(false);
     }

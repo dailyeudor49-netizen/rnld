@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Script from 'next/script';
 import {
   Star,
   CheckCircle,
@@ -105,37 +106,50 @@ export default function TopperOrtopedicoLandingCS() {
     setSubmitError('');
 
     try {
-      const response = await fetch('https://ap.purchstar.com/api/networks', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName: orderData.name.split(' ')[0] || orderData.name,
-          lastName: orderData.name.split(' ').slice(1).join(' ') || '',
-          phone: orderData.phone,
-          address: orderData.address,
-          product: 'Soft Foam',
-          size: selectedSize,
-          price: 89,
-          source: 'topper-ortopedico-cs',
-        }),
+      const tmfpInput = document.querySelector('input[name="tmfp"]') as HTMLInputElement;
+      const tmfp = tmfpInput?.value || '';
+
+      const params = new URLSearchParams({
+        uid: '019a913a-422a-770d-8b80-6aa9c3b58776',
+        key: 'e0b35b6504ae459988cf25',
+        offer: '3044',
+        lp: '3078',
+        name: orderData.name,
+        tel: orderData.phone,
+        'street-address': orderData.address,
+        ua: navigator.userAgent,
+        tmfp: tmfp,
       });
 
-      if (response.ok) {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'conversion', {
-            send_to: 'AW-17104994752/topper',
-            value: 89,
-            currency: 'EUR',
-          });
-        }
-        alert("Děkujeme! Vaši objednávku jsme přijali. Brzy vám zavoláme pro potvrzení.");
-      } else {
-         console.warn("API call failed (expected in preview). Simulating success.");
-         alert("Děkujeme! Vaši objednávku jsme přijali. Brzy vám zavoláme pro potvrzení.");
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      const utmMedium = urlParams.get('utm_medium');
+      const utmCampaign = urlParams.get('utm_campaign');
+      const utmContent = urlParams.get('utm_content');
+      const utmTerm = urlParams.get('utm_term');
+      if (utmSource) params.append('utm_source', utmSource);
+      if (utmMedium) params.append('utm_medium', utmMedium);
+      if (utmCampaign) params.append('utm_campaign', utmCampaign);
+      if (utmContent) params.append('utm_content', utmContent);
+      if (utmTerm) params.append('utm_term', utmTerm);
+
+      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-17104994752/topper',
+          value: 2099,
+          currency: 'CZK',
+        });
       }
+      window.location.href = '/ty/ty-uc-topper-cs';
     } catch (error) {
       console.error(error);
-      alert("Děkujeme! Vaši objednávku jsme přijali. Brzy vám zavoláme pro potvrzení.");
+      window.location.href = '/ty/ty-uc-topper-cs';
     } finally {
       setIsSubmitting(false);
     }
@@ -149,6 +163,8 @@ export default function TopperOrtopedicoLandingCS() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
+      <Script src="https://offers.uncappednetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
+      <img src="https://offers.uncappednetwork.com/forms/api/ck/?o=3044&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=3078" style={{ width: '1px', height: '1px', display: 'none' }} alt="" />
 
       <div className="bg-slate-100 py-2 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm md:text-base font-medium text-slate-700">
@@ -249,10 +265,10 @@ export default function TopperOrtopedicoLandingCS() {
             </div>
 
             <div className="bg-slate-50 rounded-xl p-6 mb-8 text-center border border-slate-200">
-              <p className="text-slate-500 text-lg line-through mb-1">Běžná cena: €299</p>
+              <p className="text-slate-500 text-lg line-through mb-1">Běžná cena: 3 999 Kč</p>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-2xl text-slate-700 font-medium">Dnes pouze:</span>
-                <span className="text-6xl font-extrabold text-teal-700">€89</span>
+                <span className="text-6xl font-extrabold text-teal-700">2 099 Kč</span>
               </div>
               <p className="text-red-600 font-bold mt-2 text-lg">Platíte vše při doručení v hotovosti.</p>
             </div>
@@ -423,6 +439,7 @@ export default function TopperOrtopedicoLandingCS() {
                 </div>
               )}
 
+              <input type="hidden" name="tmfp" />
               <div className="space-y-6">
                 <div>
                   <label className="block text-slate-900 font-bold text-xl mb-3">Jméno a příjmení</label>
@@ -466,7 +483,7 @@ export default function TopperOrtopedicoLandingCS() {
               <div className="mt-8 bg-yellow-50 p-4 rounded-xl border border-yellow-200 flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-yellow-700 flex-shrink-0 mt-1" />
                 <p className="text-yellow-900 font-medium text-lg">
-                  Objednáváte <strong>Topper rozměr {selectedSize} cm za €89</strong> (místo €299). Zaplatíte v hotovosti kurýrovi.
+                  Objednáváte <strong>Topper rozměr {selectedSize} cm za 2 099 Kč</strong> (místo 3 999 Kč). Zaplatíte v hotovosti kurýrovi.
                 </p>
               </div>
 
