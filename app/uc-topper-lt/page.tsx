@@ -268,7 +268,7 @@ export default function TopperOrtopedicoLandingLT() {
               <p className="text-slate-500 text-lg line-through mb-1">Įprasta kaina: €149,99</p>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-2xl text-slate-700 font-medium">Šiandien tik:</span>
-                <span className="text-6xl font-extrabold text-teal-700">€69,99</span>
+                <span className="text-5xl md:text-6xl font-extrabold text-teal-700">€69,99</span>
               </div>
               <p className="text-red-600 font-bold mt-2 text-lg">Mokate grynaisiais pristatymo metu.</p>
             </div>

@@ -268,7 +268,7 @@ export default function TopperOrtopedicoLandingCS() {
               <p className="text-slate-500 text-lg line-through mb-1">Běžná cena: 3 999 Kč</p>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-2xl text-slate-700 font-medium">Dnes pouze:</span>
-                <span className="text-6xl font-extrabold text-teal-700">2 099 Kč</span>
+                <span className="text-4xl md:text-5xl font-extrabold text-teal-700">2 099 Kč</span>
               </div>
               <p className="text-red-600 font-bold mt-2 text-lg">Platíte vše při doručení v hotovosti.</p>
             </div>

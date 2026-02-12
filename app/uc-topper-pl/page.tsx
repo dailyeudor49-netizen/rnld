@@ -268,7 +268,7 @@ export default function TopperOrtopedicoLandingPL() {
               <p className="text-slate-500 text-lg line-through mb-1">Cena regularna: 399 zł</p>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-2xl text-slate-700 font-medium">Dziś tylko:</span>
-                <span className="text-6xl font-extrabold text-teal-700">299 zł</span>
+                <span className="text-5xl md:text-6xl font-extrabold text-teal-700">299 zł</span>
               </div>
               <p className="text-red-600 font-bold mt-2 text-lg">Płacisz całość przy odbiorze gotówką.</p>
             </div>
