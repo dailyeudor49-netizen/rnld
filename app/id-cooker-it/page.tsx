@@ -18,11 +18,11 @@ export default function RobotCucinaLanding() {
   const [submitError, setSubmitError] = useState('');
 
   const slides = [
-    '/images/multicooker/1.jpg',
-    '/images/multicooker/2.jpg',
-    '/images/multicooker/3.jpg',
-    '/images/multicooker/4.jpg',
-    '/images/multicooker/5.jpg',
+    '/images/multicooker/1.webp',
+    '/images/multicooker/2.webp',
+    '/images/multicooker/3.webp',
+    '/images/multicooker/4.webp',
+    '/images/multicooker/5.webp',
   ];
 
   useEffect(() => {
@@ -150,7 +150,7 @@ export default function RobotCucinaLanding() {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden font-sans leading-relaxed text-slate-800">
+    <div className="min-h-screen bg-white overflow-x-hidden font-sans leading-relaxed text-slate-800 pb-20 md:pb-0">
       {/* Barra superiore fissa per urgenza soft */}
       <div className="bg-slate-900 text-white text-center py-2 text-sm font-medium">
         Offerta speciale per rinnovo magazzino - Disponibilità limitata

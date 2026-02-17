@@ -306,7 +306,7 @@ export default function LandingPage() {
         <div className="container">
           <div className="hero-visual">
             <div className="hero-img-container">
-              <img src="/images/dryer/1.jpg" alt="Džiovyklė" width="600" height="600" />
+              <img src="/images/dryer/1.webp" alt="Džiovyklė" width="600" height="600" />
               <div className="overlay-badge">⭐ 4,8/5</div>
             </div>
             <div className="hero-badges text-center">
@@ -428,7 +428,7 @@ export default function LandingPage() {
       {/* 6. FEATURES */}
       <section className="container" style={{marginTop: '40px'}}>
         <div className="feature-row">
-          <img src="/images/dryer/2.png" alt="NTC jutiklis" className="feature-img" />
+          <img src="/images/dryer/2.webp" alt="NTC jutiklis" className="feature-img" />
           <div className="feature-content">
             <h3>AUTO-STOP NTC: SUSTOJA, KAI PARUOŠTA</h3>
             <p>Užteks energijos švaistymo. Išmanus lustas aptinka drėgmę ir automatiškai sustabdo mašiną, kai drabužiai išdžiūsta.</p>
@@ -440,7 +440,7 @@ export default function LandingPage() {
         </div>
 
         <div className="feature-row">
-          <img src="/images/dryer/3.png" alt="69 laipsnių temperatūra" className="feature-img" />
+          <img src="/images/dryer/3.webp" alt="69 laipsnių temperatūra" className="feature-img" />
           <div className="feature-content">
             <h3>IKI 69°C + PTC KERAMINIS KAITINTUVAS</h3>
             <p>Greitas keraminis kaitinimas pasiekia temperatūras, kurios suteikia didesnį higienos ir minkštumo pojūtį drabužiams.</p>
@@ -452,7 +452,7 @@ export default function LandingPage() {
         </div>
 
         <div className="feature-row">
-            <img src="/images/dryer/4.png" alt="Nerūdijančio plieno būgnas" className="feature-img" />
+            <img src="/images/dryer/4.webp" alt="Nerūdijančio plieno būgnas" className="feature-img" />
             <div className="feature-content">
                 <h3>APSAUGA NUO SUSIVĖLIMO: IŠMANUS SUKIMASIS</h3>
                 <p>Nerūdijančio plieno būgnas sukasi ne tik viena kryptimi. Periodinis atvirkštinis sukimasis išnarplioja drabužius.</p>
@@ -464,7 +464,7 @@ export default function LandingPage() {
         </div>
 
         <div className="feature-row">
-            <img src="/images/dryer/5.png" alt="Vietos taupymas" className="feature-img" />
+            <img src="/images/dryer/5.webp" alt="Vietos taupymas" className="feature-img" />
             <div className="feature-content">
                 <h3>NEUŽIMA VIETOS. IŠSPRENDŽIA SKALBINIŲ PROBLEMĄ.</h3>
                 <p>Jei vienintelė priežastis, kodėl atidėliojate džiovyklę, yra "nenoriu didžiulio daikto", tai yra išmanus sprendimas.</p>

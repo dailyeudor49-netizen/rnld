@@ -21,11 +21,11 @@ export default function RobotCucinaLanding() {
   const [submitError, setSubmitError] = useState('');
 
   const slides = [
-    '/images/multicooker/1.jpg',
-    '/images/multicooker/2.jpg',
-    '/images/multicooker/3.jpg',
-    '/images/multicooker/4.jpg',
-    '/images/multicooker/5.jpg',
+    '/images/multicooker/1.webp',
+    '/images/multicooker/2.webp',
+    '/images/multicooker/3.webp',
+    '/images/multicooker/4.webp',
+    '/images/multicooker/5.webp',
   ];
 
   useEffect(() => {

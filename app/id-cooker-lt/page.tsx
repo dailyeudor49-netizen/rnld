@@ -21,11 +21,11 @@ export default function RobotCucinaLanding() {
   const [submitError, setSubmitError] = useState('');
 
   const slides = [
-    '/images/multicooker/1.jpg',
-    '/images/multicooker/2.jpg',
-    '/images/multicooker/3.jpg',
-    '/images/multicooker/4.jpg',
-    '/images/multicooker/5.jpg',
+    '/images/multicooker/1.webp',
+    '/images/multicooker/2.webp',
+    '/images/multicooker/3.webp',
+    '/images/multicooker/4.webp',
+    '/images/multicooker/5.webp',
   ];
 
   useEffect(() => {
@@ -163,7 +163,7 @@ export default function RobotCucinaLanding() {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden font-sans leading-relaxed text-slate-800">
+    <div className="min-h-screen bg-white overflow-x-hidden font-sans leading-relaxed text-slate-800 pb-20 md:pb-0">
       <Script
         src="https://offers.italiadrop.com/forms/tmfp/"
         crossOrigin="anonymous"

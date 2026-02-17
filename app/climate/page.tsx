@@ -179,7 +179,7 @@ export default function OmniClimaPage() {
             <div className="md:col-span-7 relative">
                 <div className="w-full h-[300px] md:h-[500px] rounded-2xl shadow-2xl bg-white overflow-hidden relative">
                   <Image
-                    src="/images/climate/1.png"
+                    src="/images/climate/1.webp"
                     alt="OmniClima 360 - Design Aerospaziale"
                     fill
                     className="object-contain"
@@ -316,7 +316,7 @@ export default function OmniClimaPage() {
               </div>
               <div className="w-full h-[400px] rounded-2xl bg-zinc-900/50 border border-orange-500/30 overflow-hidden relative">
                   <Image
-                    src="/images/climate/2.png"
+                    src="/images/climate/2.webp"
                     alt="Confronto: 4 Elettrodomestici vs 1 OmniClima"
                     fill
                     className="object-contain"
@@ -331,7 +331,7 @@ export default function OmniClimaPage() {
               <div className="order-2 md:order-1">
                  <div className="w-full h-[400px] rounded-2xl bg-zinc-900/50 border border-blue-500/30 overflow-hidden relative">
                   <Image
-                    src="/images/climate/3.png"
+                    src="/images/climate/3.webp"
                     alt="Grafico Flusso Aria Diffusa"
                     fill
                     className="object-contain"

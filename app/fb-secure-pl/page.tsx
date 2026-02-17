@@ -212,21 +212,21 @@ const InstallationGuide = () => {
       step: 1,
       title: 'Zainstaluj kamery i czujniki',
       desc: 'Kamery i czujniki można zamontować na różne sposoby: za pomocą przyssawek, taśmy klejącej, wkrętów lub po prostu położyć na powierzchni. Wybierz metodę najlepiej dopasowaną do Twojego domu i umieść je w strategicznych miejscach.',
-      image: '/images/secure/conf1.jpg',
+      image: '/images/secure/conf1.webp',
       imageAlt: 'Instalacja kamer i czujników'
     },
     {
       step: 2,
       title: 'Pobierz aplikację i wprowadź kod',
       desc: 'Pobierz darmową aplikację ze swojego sklepu (App Store lub Google Play) i wprowadź unikalny kod dostarczony z produktem. Znajdziesz go wydrukowany na pudełku i w instrukcji obsługi dołączonej do zestawu.',
-      image: '/images/secure/conf2.jpg',
+      image: '/images/secure/conf2.webp',
       imageAlt: 'Pobieranie aplikacji i wprowadzanie kodu'
     },
     {
       step: 3,
       title: 'Skonfiguruj numery alarmowe i dezaktywację',
       desc: 'Ustaw numery alarmowe do wywołania w przypadku alarmu i wybierz sposób dezaktywacji systemu: automatycznie, gdy Twój telefon zostanie wykryty w pobliżu, lub poprzez wprowadzenie kodu w centrali przy wejściu do domu.',
-      image: '/images/secure/conf3.jpg',
+      image: '/images/secure/conf3.webp',
       imageAlt: 'Konfiguracja systemu bezpieczeństwa'
     }
   ];
@@ -321,7 +321,7 @@ const InstallationGuide = () => {
             {/* Mobile: sempre conf0 */}
             <div className="md:hidden relative h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/secure/conf0.png"
+                src="/images/secure/conf0.webp"
                 alt="Instrukcja instalacji systemu bezpieczeństwa"
                 fill
                 className="object-cover"
@@ -330,7 +330,7 @@ const InstallationGuide = () => {
             {/* Desktop: cambia in base allo step */}
             <div className="hidden md:block relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src={activeStep !== null ? steps[activeStep].image : '/images/secure/conf0.png'}
+                src={activeStep !== null ? steps[activeStep].image : '/images/secure/conf0.webp'}
                 alt={activeStep !== null ? steps[activeStep].imageAlt : 'Instrukcja instalacji systemu bezpieczeństwa'}
                 fill
                 className="object-cover transition-all duration-500"
@@ -1083,7 +1083,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               className="relative"
             >
               <Image
-                src="/images/secure/princ.png"
+                src="/images/secure/princ.webp"
                 alt="System bezpieczeństwa"
                 width={800}
                 height={450}
@@ -1381,21 +1381,21 @@ export default function SecurityLandingPage() {
                 step: '1',
                 title: 'Ogłuszający Alarm + Światła',
                 desc: '<strong>Syrena o mocy 110dB</strong> aktywuje się wraz ze światłami stroboskopowymi widocznymi z setek metrów. Złodzieje uciekają natychmiast, ponieważ wiedzą, że zostali wykryci. Większość porzuca próbę w ciągu <strong>7 sekund</strong>.',
-                image: '/images/secure/cosa_succede1.jpg',
+                image: '/images/secure/cosa_succede1.webp',
                 imageAlt: 'Alarm dźwiękowy i wizualny'
               },
               {
                 step: '2',
                 title: 'Natychmiastowe Powiadomienie',
                 desc: 'Otrzymujesz <strong>automatyczne połączenie na telefon</strong> z obrazami na żywo z 5 mikrokamer. Możesz dokładnie zobaczyć, co dzieje się w Twoim domu, gdziekolwiek jesteś. Bez opóźnień, bez czekania.',
-                image: '/images/secure/cosa_succede2.jpg',
+                image: '/images/secure/cosa_succede2.webp',
                 imageAlt: 'Powiadomienie na telefon'
               },
               {
                 step: '3',
                 title: 'Połączenie z Policją',
                 desc: 'Po <strong>potwierdzeniu włamania z aplikacji</strong>, system automatycznie dzwoni na policję i wysyła im nagrania wideo. Podczas gdy Ty jesteś bezpieczny, pomoc jest już w drodze, aby chronić Twój dom i Twoich bliskich.',
-                image: '/images/secure/cosa_succede3.jpg',
+                image: '/images/secure/cosa_succede3.webp',
                 imageAlt: 'Interwencja policji'
               }
             ].map((item, i) => (

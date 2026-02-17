@@ -53,10 +53,10 @@ export default function TopperOrtopedicoLanding() {
   const [showSticky, setShowSticky] = useState(true);
 
   const slides = [
-    '/images/topper/1.jpg',
-    '/images/topper/2.jpg',
-    '/images/topper/3.jpg',
-    '/images/topper/4.png',
+    '/images/topper/1.webp',
+    '/images/topper/2.webp',
+    '/images/topper/3.webp',
+    '/images/topper/4.webp',
   ];
 
   // Timer countdown

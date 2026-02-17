@@ -31,12 +31,12 @@ export default function RobotAspirapolvereProLanding() {
   const [openFeature, setOpenFeature] = useState<number | null>(null);
 
   const slides = [
-    '/images/robot-asp/1.png',
-    '/images/robot-asp/2.png',
-    '/images/robot-asp/3.png',
-    '/images/robot-asp/4.png',
-    '/images/robot-asp/5.png',
-    '/images/robot-asp/6.png',
+    '/images/robot-asp/1.webp',
+    '/images/robot-asp/2.webp',
+    '/images/robot-asp/3.webp',
+    '/images/robot-asp/4.webp',
+    '/images/robot-asp/5.webp',
+    '/images/robot-asp/6.webp',
   ];
 
   // Countdown timer
@@ -494,7 +494,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 0 ? null : 0); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/svuota.png" alt="Automatické vyprazdňování" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/svuota.webp" alt="Automatické vyprazdňování" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 0 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -532,7 +532,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 1 ? null : 1); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/mocio.png" alt="Automatické mytí mopu" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/mocio.webp" alt="Automatické mytí mopu" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 1 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -570,7 +570,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 2 ? null : 2); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/muffa.png" alt="Sušení horkým vzduchem" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/muffa.webp" alt="Sušení horkým vzduchem" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 2 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -608,7 +608,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 3 ? null : 3); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/laser.png" alt="LiDAR navigace" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/laser.webp" alt="LiDAR navigace" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 3 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -646,7 +646,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 4 ? null : 4); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/6.png" alt="Chlupy a vlasy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/6.webp" alt="Chlupy a vlasy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 4 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">
@@ -684,7 +684,7 @@ export default function RobotAspirapolvereProLanding() {
               onClick={(e) => { e.stopPropagation(); setOpenFeature(openFeature === 5 ? null : 5); }}
             >
               <div className="relative aspect-square overflow-hidden">
-                <img src="/images/robot-asp/divano.png" alt="Ovládání aplikací" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/images/robot-asp/divano.webp" alt="Ovládání aplikací" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 {/* Desktop overlay */}
                 <div className={`hidden md:flex absolute inset-0 items-end transition-all duration-500 ${openFeature === 5 ? 'bg-black/85' : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'}`}>
                   <div className="p-4 text-white w-full">

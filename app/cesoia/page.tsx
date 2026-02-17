@@ -22,15 +22,15 @@ export default function CesoiaElettricaLanding() {
 
   // Array delle immagini del carosello
   const carouselImages = [
-    '/images/cesoia/img_princ.png',
-    '/images/cesoia/carosello_1.jpg',
-    '/images/cesoia/carosello_2.jpg',
-    '/images/cesoia/carosello_3.jpg',
-    '/images/cesoia/carosello_4.jpg',
-    '/images/cesoia/carosello_5.jpg',
-    '/images/cesoia/carosello_6.jpg',
-    '/images/cesoia/carosello_7.jpg',
-    '/images/cesoia/carosello_8.jpg',
+    '/images/cesoia/img_princ.webp',
+    '/images/cesoia/carosello_1.webp',
+    '/images/cesoia/carosello_2.webp',
+    '/images/cesoia/carosello_3.webp',
+    '/images/cesoia/carosello_4.webp',
+    '/images/cesoia/carosello_5.webp',
+    '/images/cesoia/carosello_6.webp',
+    '/images/cesoia/carosello_7.webp',
+    '/images/cesoia/carosello_8.webp',
   ];
 
   // Auto-scroll del carosello
@@ -292,22 +292,22 @@ export default function CesoiaElettricaLanding() {
 
   const benefits = [
     {
-      image: "/images/cesoia/carosello_2.jpg",
+      image: "/images/cesoia/carosello_2.webp",
       title: "18 ore senza ricaricare",
       description: "2 batterie potentissime da 40V incluse nel prezzo. Lavori tutto il giorno senza fermarti. Quando una si scarica, metti l'altra e continui il lavoro."
     },
     {
-      image: "/images/cesoia/carosello_4.jpg",
+      image: "/images/cesoia/carosello_4.webp",
       title: "1.050W di pura potenza",
       description: "Un motore che non si ferma davanti a nulla. Taglia rami di 8cm come fossero grissini. Velocità regolabile per ogni tipo di lavoro."
     },
     {
-      image: "/images/cesoia/carosello_5.jpg",
+      image: "/images/cesoia/carosello_5.webp",
       title: "Leggera ma indistruttibile",
       description: "Pesa pochissimo ma è robustissima. Blocco di sicurezza per non farti mai male. La usi per ore senza stancarti, perfetta anche per chi è alle prime armi."
     },
     {
-      image: "/images/cesoia/carosello_7.jpg",
+      image: "/images/cesoia/carosello_7.webp",
       title: "Lame giapponesi che durano anni",
       description: "Acciaio SKS come i coltelli dei migliori chef. Restano affilate a lungo. E nel kit trovi anche 2 lame di ricambio gratis."
     }
@@ -800,7 +800,7 @@ export default function CesoiaElettricaLanding() {
             <div className="order-1 lg:order-1">
               <div className="rounded-2xl overflow-hidden">
                 <img
-                  src="images/cesoia/carosello_3.jpg"
+                  src="images/cesoia/carosello_3.webp"
                   alt="Cesoia Elettrica"
                   className="w-full h-auto object-cover"
                 />
@@ -1201,7 +1201,7 @@ export default function CesoiaElettricaLanding() {
             {/* Left: Product Image */}
             <div className="order-1">
               <img
-                src="images/cesoia/img_princ.png"
+                src="images/cesoia/img_princ.webp"
                 alt="Instant Cut Pro"
                 className="w-full h-auto rounded-lg shadow-md max-w-sm mx-auto lg:mx-0"
               />

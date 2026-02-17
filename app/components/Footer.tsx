@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Ketronica"
                 width={180}
                 height={50}

@@ -306,7 +306,7 @@ export default function LandingPage() {
         <div className="container">
           <div className="hero-visual">
             <div className="hero-img-container">
-              <img src="/images/dryer/1.jpg" alt="Secadora" width="600" height="600" />
+              <img src="/images/dryer/1.webp" alt="Secadora" width="600" height="600" />
               <div className="overlay-badge">⭐ 4,8/5</div>
             </div>
             <div className="hero-badges text-center">
@@ -428,7 +428,7 @@ export default function LandingPage() {
       {/* 6. FEATURES */}
       <section className="container" style={{marginTop: '40px'}}>
         <div className="feature-row">
-          <img src="/images/dryer/2.png" alt="Sensor NTC" className="feature-img" />
+          <img src="/images/dryer/2.webp" alt="Sensor NTC" className="feature-img" />
           <div className="feature-content">
             <h3>AUTO-STOP NTC: SE DETIENE CUANDO ESTÁ LISTO</h3>
             <p>Basta de desperdicios de energía. El chip inteligente detecta la humedad y detiene la máquina automáticamente cuando la ropa está seca.</p>
@@ -440,7 +440,7 @@ export default function LandingPage() {
         </div>
 
         <div className="feature-row">
-          <img src="/images/dryer/3.png" alt="Temperatura 69 Grados" className="feature-img" />
+          <img src="/images/dryer/3.webp" alt="Temperatura 69 Grados" className="feature-img" />
           <div className="feature-content">
             <h3>HASTA 69°C + PTC CERÁMICO</h3>
             <p>El calentamiento cerámico rápido alcanza temperaturas que ofrecen una mayor sensación de higiene y suavidad en la ropa.</p>
@@ -452,7 +452,7 @@ export default function LandingPage() {
         </div>
 
         <div className="feature-row">
-            <img src="/images/dryer/4.png" alt="Tambor Inox" className="feature-img" />
+            <img src="/images/dryer/4.webp" alt="Tambor Inox" className="feature-img" />
             <div className="feature-content">
                 <h3>ANTI-ENREDOS: ROTACIÓN INTELIGENTE</h3>
                 <p>El tambor de acero inoxidable no gira solo en un sentido. La rotación inversa periódica desenreda la ropa.</p>
@@ -464,7 +464,7 @@ export default function LandingPage() {
         </div>
 
         <div className="feature-row">
-            <img src="/images/dryer/5.png" alt="Ahorro Espacio" className="feature-img" />
+            <img src="/images/dryer/5.webp" alt="Ahorro Espacio" className="feature-img" />
             <div className="feature-content">
                 <h3>NO TE QUITA ESPACIO. TE RESUELVE LA COLADA.</h3>
                 <p>Si la única razón por la que aplazas la secadora es "no quiero un trasto enorme", esta es la solución inteligente.</p>

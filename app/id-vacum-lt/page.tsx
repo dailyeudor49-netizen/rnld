@@ -32,10 +32,10 @@ const formatTime = (seconds: number) => {
 
 // --- DATA ---
 const PRODUCT_IMAGES = [
-  "/images/vacum/1.jpg",
-  "/images/vacum/2.jpg",
-  "/images/vacum/3.jpg",
-  "/images/vacum/4.jpg"
+  "/images/vacum/1.webp",
+  "/images/vacum/2.webp",
+  "/images/vacum/3.webp",
+  "/images/vacum/4.webp"
 ];
 
 // --- COMPONENTS ---

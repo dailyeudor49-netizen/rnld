@@ -212,21 +212,21 @@ const InstallationGuide = () => {
       step: 1,
       title: 'Nainštalujte kamery a senzory',
       desc: 'Kamery a senzory možno inštalovať rôznymi spôsobmi: prísavkami, lepiacou páskou, skrutkami alebo jednoducho položením na povrch. Vyberte si metódu, ktorá najlepšie vyhovuje vášmu domu, a umiestnite ich na strategické miesta.',
-      image: '/images/secure/conf1.jpg',
+      image: '/images/secure/conf1.webp',
       imageAlt: 'Inštalácia kamier a senzorov'
     },
     {
       step: 2,
       title: 'Stiahnite si aplikáciu a zadajte kód',
       desc: 'Stiahnite si bezplatnú aplikáciu zo svojho obchodu (App Store alebo Google Play) a zadajte jedinečný kód dodaný s produktom. Nájdete ho vytlačený na krabici a v návode dodanom v balení.',
-      image: '/images/secure/conf2.jpg',
+      image: '/images/secure/conf2.webp',
       imageAlt: 'Stiahnutie aplikácie a zadanie kódu'
     },
     {
       step: 3,
       title: 'Nakonfigurujte tiesňové volania a deaktiváciu',
       desc: 'Nastavte tiesňové čísla na zavolanie v prípade alarmu a vyberte spôsob deaktivácie systému: automaticky, keď je váš telefón zistený v blízkosti, alebo zadaním kódu na centrálnom paneli pri vchode do domu.',
-      image: '/images/secure/conf3.jpg',
+      image: '/images/secure/conf3.webp',
       imageAlt: 'Konfigurácia bezpečnostného systému'
     }
   ];
@@ -321,7 +321,7 @@ const InstallationGuide = () => {
             {/* Mobile: sempre conf0 */}
             <div className="md:hidden relative h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/secure/conf0.png"
+                src="/images/secure/conf0.webp"
                 alt="Návod na inštaláciu bezpečnostného systému"
                 fill
                 className="object-cover"
@@ -330,7 +330,7 @@ const InstallationGuide = () => {
             {/* Desktop: cambia in base allo step */}
             <div className="hidden md:block relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src={activeStep !== null ? steps[activeStep].image : '/images/secure/conf0.png'}
+                src={activeStep !== null ? steps[activeStep].image : '/images/secure/conf0.webp'}
                 alt={activeStep !== null ? steps[activeStep].imageAlt : 'Návod na inštaláciu bezpečnostného systému'}
                 fill
                 className="object-cover transition-all duration-500"
@@ -1083,7 +1083,7 @@ const LeadForm = ({ variant = 'hero' }: { variant?: 'hero' | 'inline' }) => {
               className="relative"
             >
               <Image
-                src="/images/secure/princ.png"
+                src="/images/secure/princ.webp"
                 alt="Bezpečnostný systém"
                 width={800}
                 height={450}
@@ -1381,21 +1381,21 @@ export default function SecurityLandingPage() {
                 step: '1',
                 title: 'Ohlušujúci alarm + svetlá',
                 desc: '<strong>Siréna s intenzitou 110dB</strong> sa aktivuje spolu so stroboskopickými svetlami viditeľnými zo stoviek metrov. Zlodeji okamžite utečú, pretože vedia, že boli odhalení. Väčšina opúšťa pokus do <strong>7 sekúnd</strong>.',
-                image: '/images/secure/cosa_succede1.jpg',
+                image: '/images/secure/cosa_succede1.webp',
                 imageAlt: 'Zvukový a vizuálny alarm'
               },
               {
                 step: '2',
                 title: 'Okamžité upozornenie',
                 desc: 'Dostanete <strong>automatický hovor na mobilný telefón</strong> s živými obrázkami z 5 mikrokamier. Môžete vidieť presne, čo sa deje vo vašom dome, nech ste kdekoľvek. Žiadne oneskorenie, žiadne čakanie.',
-                image: '/images/secure/cosa_succede2.jpg',
+                image: '/images/secure/cosa_succede2.webp',
                 imageAlt: 'Upozornenie na mobilnom telefóne'
               },
               {
                 step: '3',
                 title: 'Volanie polícii',
                 desc: 'Po <strong>potvrdení vlámania z aplikácie</strong> systém automaticky zavolá políciu a pošle im videozáznamy. Kým ste vy v bezpečí, pomoc je už na ceste, aby ochránila váš dom a vašich blízkych.',
-                image: '/images/secure/cosa_succede3.jpg',
+                image: '/images/secure/cosa_succede3.webp',
                 imageAlt: 'Zásah polície'
               }
             ].map((item, i) => (
