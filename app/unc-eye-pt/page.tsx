@@ -152,8 +152,7 @@ export default function EyeSpaLandingPT() {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
-    addressFull: '',
-    privacy: false
+    addressFull: ''
   });
   const [formErrors, setFormErrors] = useState<Partial<Record<keyof typeof formData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -216,10 +215,10 @@ export default function EyeSpaLandingPT() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     }));
     if (formErrors[name as keyof typeof formData]) {
       setFormErrors(prev => ({ ...prev, [name]: undefined }));
@@ -233,7 +232,6 @@ export default function EyeSpaLandingPT() {
     if (!formData.fullName) errors.fullName = "Nome completo é obrigatório";
     if (!formData.phone) errors.phone = "Telefone é obrigatório";
     if (!formData.addressFull) errors.addressFull = "Morada completa é obrigatória";
-    if (!formData.privacy) errors.privacy = "Deve aceitar a política de privacidade";
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
@@ -279,7 +277,7 @@ export default function EyeSpaLandingPT() {
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
           send_to: 'AW-17104994752/eyespa',
-          value: 49.99,
+          value: 59.99,
           currency: 'EUR',
         });
       }
@@ -344,11 +342,11 @@ export default function EyeSpaLandingPT() {
 
             <div className="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-100 shadow-sm max-w-sm">
               <div className="flex flex-col">
-                <span className="text-slate-400 text-sm line-through">€99.90</span>
-                <span className="text-3xl font-bold text-slate-900">€49.99</span>
+                <span className="text-slate-400 text-sm line-through">€149.99</span>
+                <span className="text-3xl font-bold text-slate-900">€59.99</span>
               </div>
               <div className="flex flex-col">
-                 <span className="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded">-50% HOJE</span>
+                 <span className="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded">-60% HOJE</span>
                  <span className="text-xs text-slate-500 mt-1">Unidades restantes: <b className="text-red-600">{stock}</b></span>
               </div>
             </div>
@@ -655,18 +653,6 @@ export default function EyeSpaLandingPT() {
                      </span>
                   </div>
 
-                  <label className="flex items-start gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      name="privacy"
-                      checked={formData.privacy}
-                      onChange={handleInputChange}
-                      className="mt-1 w-5 h-5 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500"
-                    />
-                    <span className={`text-sm ${formErrors.privacy ? 'text-red-500' : 'text-slate-600'}`}>
-                      Li e aceito a Política de Privacidade e os Termos de Venda.
-                    </span>
-                  </label>
 
                   <div>
                     <Button fullWidth type="submit" className="text-lg py-4 shadow-xl uppercase">
@@ -704,7 +690,7 @@ export default function EyeSpaLandingPT() {
         <div className="flex justify-between items-center gap-4">
            <div className="flex flex-col">
               <span className="text-xs text-slate-500">Só hoje</span>
-              <span className="font-bold text-xl text-slate-900">€49.99</span>
+              <span className="font-bold text-xl text-slate-900">€59.99</span>
            </div>
            <Button onClick={scrollToForm} className="flex-1 py-3 text-sm shadow-none">
              ENCOMENDAR AGORA
