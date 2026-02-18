@@ -142,7 +142,7 @@ export default function TopperOrtopedicoLandingLT() {
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
           send_to: 'AW-17104994752/topper',
-          value: 69.99,
+          value: 89.99,
           currency: 'EUR',
         });
       }
@@ -268,7 +268,7 @@ export default function TopperOrtopedicoLandingLT() {
               <p className="text-slate-500 text-lg line-through mb-1">Įprasta kaina: €149,99</p>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-2xl text-slate-700 font-medium">Šiandien tik:</span>
-                <span className="text-5xl md:text-6xl font-extrabold text-teal-700">€69,99</span>
+                <span className="text-5xl md:text-6xl font-extrabold text-teal-700">€89,99</span>
               </div>
               <p className="text-red-600 font-bold mt-2 text-lg">Mokate grynaisiais pristatymo metu.</p>
             </div>
@@ -483,7 +483,7 @@ export default function TopperOrtopedicoLandingLT() {
               <div className="mt-8 bg-yellow-50 p-4 rounded-xl border border-yellow-200 flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-yellow-700 flex-shrink-0 mt-1" />
                 <p className="text-yellow-900 font-medium text-lg">
-                  Užsakote <strong>užtiesalą {selectedSize} cm už €69,99</strong> (vietoj €149,99). Mokėsite grynaisiais kurjeriui.
+                  Užsakote <strong>užtiesalą {selectedSize} cm už €89,99</strong> (vietoj €149,99). Mokėsite grynaisiais kurjeriui.
                 </p>
               </div>
 
