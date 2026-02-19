@@ -23,7 +23,7 @@ const PURCHASE_TRACKED_KEY = 'fb_purchase_tracked';
  */
 function isLandingPage(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/fb-') || pathname.startsWith('/uc-') || pathname.startsWith('/id-') || pathname === '/dongle' || pathname === '/dongle_pl';
+  return pathname.startsWith('/fb-') || pathname.startsWith('/uc-') || pathname.startsWith('/unc-') || pathname.startsWith('/id-') || pathname === '/dongle' || pathname === '/dongle_pl';
 }
 
 /**
@@ -31,7 +31,7 @@ function isLandingPage(pathname: string | null): boolean {
  */
 function isFacebookThankYouPage(pathname: string | null): boolean {
   if (!pathname) return false;
-  return pathname.startsWith('/ty/ty-fb-') || pathname.startsWith('/ty/ty-uc-') || pathname.startsWith('/ty/ty-id-') || pathname === '/ty/ty-it' || pathname === '/ty/ty-pl';
+  return pathname.startsWith('/ty/ty-fb-') || pathname.startsWith('/ty/ty-uc-') || pathname.startsWith('/ty/ty-unc-') || pathname.startsWith('/ty/ty-id-') || pathname === '/ty/ty-it' || pathname === '/ty/ty-pl';
 }
 
 /**
@@ -226,6 +226,10 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-id-vacum-lt': 'Wireless Vacuum LT',
     '/ty/ty-id-vacum-hu': 'Wireless Vacuum HU',
     '/ty/ty-id-vacum-it': 'Wireless Vacuum IT',
+    // EyeSpa Pro thank you pages
+    '/ty/ty-unc-eye-pl': 'EyeSpa Pro PL',
+    '/ty/ty-unc-eye-lt': 'EyeSpa Pro LT',
+    '/ty/ty-unc-eye-pt': 'EyeSpa Pro PT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -278,6 +282,10 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-id-vacum-lt': 'wireless-vacuum-lt',
     '/ty/ty-id-vacum-hu': 'wireless-vacuum-hu',
     '/ty/ty-id-vacum-it': 'wireless-vacuum-it',
+    // EyeSpa Pro thank you pages
+    '/ty/ty-unc-eye-pl': 'eyespa-pro-pl',
+    '/ty/ty-unc-eye-lt': 'eyespa-pro-lt',
+    '/ty/ty-unc-eye-pt': 'eyespa-pro-pt',
   };
 
   return idMap[pathname] || 'product';
@@ -334,6 +342,10 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/id-vacum-lt': 'Wireless Vacuum LT',
     '/id-vacum-hu': 'Wireless Vacuum HU',
     '/id-vacum-it': 'Wireless Vacuum IT',
+    // EyeSpa Pro landing pages
+    '/unc-eye-pl': 'EyeSpa Pro PL',
+    '/unc-eye-lt': 'EyeSpa Pro LT',
+    '/unc-eye-pt': 'EyeSpa Pro PT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -390,6 +402,10 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/id-vacum-lt': 'wireless-vacuum-lt',
     '/id-vacum-hu': 'wireless-vacuum-hu',
     '/id-vacum-it': 'wireless-vacuum-it',
+    // EyeSpa Pro landing pages
+    '/unc-eye-pl': 'eyespa-pro-pl',
+    '/unc-eye-lt': 'eyespa-pro-lt',
+    '/unc-eye-pt': 'eyespa-pro-pt',
   };
 
   return idMap[pathname] || 'product';
@@ -446,6 +462,10 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/id-vacum-lt': { value: 89, currency: 'EUR' },
     '/id-vacum-hu': { value: 26500, currency: 'HUF' },
     '/id-vacum-it': { value: 129, currency: 'EUR' },
+    // EyeSpa Pro landing pages
+    '/unc-eye-pl': { value: 179, currency: 'PLN' },
+    '/unc-eye-lt': { value: 49.99, currency: 'EUR' },
+    '/unc-eye-pt': { value: 59.99, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
@@ -497,6 +517,10 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-id-vacum-lt': { value: 89, currency: 'EUR' },
     '/ty/ty-id-vacum-hu': { value: 26500, currency: 'HUF' },
     '/ty/ty-id-vacum-it': { value: 129, currency: 'EUR' },
+    // EyeSpa Pro thank you pages
+    '/ty/ty-unc-eye-pl': { value: 179, currency: 'PLN' },
+    '/ty/ty-unc-eye-lt': { value: 49.99, currency: 'EUR' },
+    '/ty/ty-unc-eye-pt': { value: 59.99, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
