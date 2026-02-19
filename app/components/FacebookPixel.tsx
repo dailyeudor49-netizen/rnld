@@ -226,6 +226,8 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-id-vacum-lt': 'Wireless Vacuum LT',
     '/ty/ty-id-vacum-hu': 'Wireless Vacuum HU',
     '/ty/ty-id-vacum-it': 'Wireless Vacuum IT',
+    '/ty/ty-id-vacum-sk': 'Wireless Vacuum SK',
+    '/ty/ty-id-vacum-cs': 'Wireless Vacuum CS',
     // EyeSpa Pro thank you pages
     '/ty/ty-unc-eye-pl': 'EyeSpa Pro PL',
     '/ty/ty-unc-eye-lt': 'EyeSpa Pro LT',
@@ -282,6 +284,8 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-id-vacum-lt': 'wireless-vacuum-lt',
     '/ty/ty-id-vacum-hu': 'wireless-vacuum-hu',
     '/ty/ty-id-vacum-it': 'wireless-vacuum-it',
+    '/ty/ty-id-vacum-sk': 'wireless-vacuum-sk',
+    '/ty/ty-id-vacum-cs': 'wireless-vacuum-cs',
     // EyeSpa Pro thank you pages
     '/ty/ty-unc-eye-pl': 'eyespa-pro-pl',
     '/ty/ty-unc-eye-lt': 'eyespa-pro-lt',
@@ -342,6 +346,8 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/id-vacum-lt': 'Wireless Vacuum LT',
     '/id-vacum-hu': 'Wireless Vacuum HU',
     '/id-vacum-it': 'Wireless Vacuum IT',
+    '/id-vacum-sk': 'Wireless Vacuum SK',
+    '/id-vacum-cs': 'Wireless Vacuum CS',
     // EyeSpa Pro landing pages
     '/unc-eye-pl': 'EyeSpa Pro PL',
     '/unc-eye-lt': 'EyeSpa Pro LT',
@@ -402,6 +408,8 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/id-vacum-lt': 'wireless-vacuum-lt',
     '/id-vacum-hu': 'wireless-vacuum-hu',
     '/id-vacum-it': 'wireless-vacuum-it',
+    '/id-vacum-sk': 'wireless-vacuum-sk',
+    '/id-vacum-cs': 'wireless-vacuum-cs',
     // EyeSpa Pro landing pages
     '/unc-eye-pl': 'eyespa-pro-pl',
     '/unc-eye-lt': 'eyespa-pro-lt',
@@ -462,6 +470,8 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/id-vacum-lt': { value: 89, currency: 'EUR' },
     '/id-vacum-hu': { value: 26500, currency: 'HUF' },
     '/id-vacum-it': { value: 129, currency: 'EUR' },
+    '/id-vacum-sk': { value: 69.99, currency: 'EUR' },
+    '/id-vacum-cs': { value: 1699, currency: 'CZK' },
     // EyeSpa Pro landing pages
     '/unc-eye-pl': { value: 179, currency: 'PLN' },
     '/unc-eye-lt': { value: 49.99, currency: 'EUR' },
@@ -517,6 +527,8 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-id-vacum-lt': { value: 89, currency: 'EUR' },
     '/ty/ty-id-vacum-hu': { value: 26500, currency: 'HUF' },
     '/ty/ty-id-vacum-it': { value: 129, currency: 'EUR' },
+    '/ty/ty-id-vacum-sk': { value: 69.99, currency: 'EUR' },
+    '/ty/ty-id-vacum-cs': { value: 1699, currency: 'CZK' },
     // EyeSpa Pro thank you pages
     '/ty/ty-unc-eye-pl': { value: 179, currency: 'PLN' },
     '/ty/ty-unc-eye-lt': { value: 49.99, currency: 'EUR' },

@@ -44,9 +44,9 @@ const PRODUCT_IMAGES = [
 const TopStrip = ({ timeLeft }: { timeLeft: number }) => (
   <div className="bg-red-700 text-white py-3 px-4 text-center sticky top-0 z-40 shadow-md">
     <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-4 text-sm sm:text-base font-bold uppercase tracking-wide">
-      <span className="animate-pulse text-yellow-300">OGRANICZONA DOSTĘPNOŚĆ</span>
+      <span className="animate-pulse text-yellow-300">OBMEDZENÁ DOSTUPNOSŤ</span>
       <span className="hidden sm:inline">|</span>
-      <span>OFERTA SPECJALNA KOŃCZY SIĘ ZA: {formatTime(timeLeft)}</span>
+      <span>ŠPECIÁLNA PONUKA KONČÍ ZA: {formatTime(timeLeft)}</span>
     </div>
   </div>
 );
@@ -73,8 +73,8 @@ const StickyOrderButton = ({ visible }: { visible: boolean }) => {
             onClick={handleClick}
             className="w-full bg-green-600 hover:bg-green-700 text-white font-extrabold text-xl py-3 rounded-lg shadow-lg uppercase tracking-wide flex flex-col items-center justify-center leading-none"
           >
-            <span>CHCĘ TO WYPRÓBOWAĆ (ZAMÓW)</span>
-            <span className="text-[11px] mt-1 font-medium bg-green-800 px-3 py-0.5 rounded text-green-100">Płacisz gotówką kurierowi - Bez ryzyka</span>
+            <span>CHCEM TO VYSKÚŠAŤ (OBJEDNAŤ)</span>
+            <span className="text-[11px] mt-1 font-medium bg-green-800 px-3 py-0.5 rounded text-green-100">Platíte hotovosťou kuriérovi - Bez rizika</span>
           </button>
         </div>
       </div>
@@ -91,10 +91,10 @@ const OrderFormSection = () => {
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
-    if (!formData.name.trim()) newErrors.name = "Proszę wpisać swoje imię";
-    if (!formData.address.trim()) newErrors.address = "Potrzebujemy adresu do wysyłki";
+    if (!formData.name.trim()) newErrors.name = "Prosím, zadajte svoje meno";
+    if (!formData.address.trim()) newErrors.address = "Potrebujeme adresu na doručenie";
     const phoneRegex = /^[\d\s+\-]{8,}$/;
-    if (!formData.phone.match(phoneRegex)) newErrors.phone = "Wpisz prawidłowy numer telefonu";
+    if (!formData.phone.match(phoneRegex)) newErrors.phone = "Zadajte platné telefónne číslo";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -117,8 +117,8 @@ const OrderFormSection = () => {
     const params: Record<string, string> = {
       uid: '019a913c-483e-7c52-ba2a-c2435daa4254',
       key: 'df01e23521627b9519a81f',
-      offer: '420',
-      lp: '420',
+      offer: '89',
+      lp: '89',
       name: formData.name,
       tel: formData.phone,
       'street-address': formData.address,
@@ -134,7 +134,7 @@ const OrderFormSection = () => {
     // Send to network
     await sendLeadToNetwork('https://offers.supertrendaffiliateprogram.com/forms/api/', params);
 
-    router.push('/ty/ty-id-vacum-pl');
+    router.push('/ty/ty-id-vacum-sk');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,14 +147,14 @@ const OrderFormSection = () => {
       <div className="max-w-lg mx-auto">
         <div className="bg-white rounded-xl shadow-xl overflow-hidden border-2 border-slate-300">
           <div className="bg-orange-600 text-white p-4 text-center font-bold text-xl uppercase">
-            Zablokuj cenę promocyjną
+            Zablokujte si akčnú cenu
           </div>
 
           <div className="p-6">
-            <h3 className="text-2xl font-black text-center text-slate-900 mb-2">Wypełnij formularz poniżej</h3>
+            <h3 className="text-2xl font-black text-center text-slate-900 mb-2">Vyplňte formulár nižšie</h3>
             <p className="text-center text-slate-600 mb-6 font-medium text-lg">
-              Nie pobieramy teraz pieniędzy. <br/>
-              Zapłacisz gotówką bezpośrednio kurierowi przy odbiorze paczki.
+              Teraz od vás nepýtame žiadne peniaze. <br/>
+              Zaplatíte hotovosťou priamo kuriérovi pri prevzatí balíka.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -162,13 +162,13 @@ const OrderFormSection = () => {
               <div id="order-form-start" className="h-0 w-0 opacity-0 pointer-events-none scroll-mt-24"></div>
 
               <div>
-                <label className="font-bold text-slate-800 ml-1">Imię i Nazwisko</label>
+                <label className="font-bold text-slate-800 ml-1">Meno a Priezvisko</label>
                 <div className="relative mt-1">
                   <User className="absolute left-3 top-3.5 text-slate-400" size={20} />
                   <input
                     type="text"
                     name="name"
-                    placeholder="Np. Jan Kowalski"
+                    placeholder="Napr. Ján Novák"
                     value={formData.name}
                     onChange={handleChange}
                     className={`w-full pl-10 p-3 bg-slate-50 border-2 rounded-lg text-lg outline-none focus:border-blue-500 ${errors.name ? 'border-red-500' : 'border-slate-300'}`}
@@ -178,13 +178,13 @@ const OrderFormSection = () => {
               </div>
 
               <div>
-                <label className="font-bold text-slate-800 ml-1">Telefon (do potwierdzenia)</label>
+                <label className="font-bold text-slate-800 ml-1">Telefón (na potvrdenie)</label>
                 <div className="relative mt-1">
                   <Smartphone className="absolute left-3 top-3.5 text-slate-400" size={20} />
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="Np. 500 123 456"
+                    placeholder="Napr. 0900 123 456"
                     value={formData.phone}
                     onChange={handleChange}
                     className={`w-full pl-10 p-3 bg-slate-50 border-2 rounded-lg text-lg outline-none focus:border-blue-500 ${errors.phone ? 'border-red-500' : 'border-slate-300'}`}
@@ -194,13 +194,13 @@ const OrderFormSection = () => {
               </div>
 
               <div>
-                <label className="font-bold text-slate-800 ml-1">Adres Dostawy</label>
+                <label className="font-bold text-slate-800 ml-1">Adresa doručenia</label>
                 <div className="relative mt-1">
                   <MapPin className="absolute left-3 top-3.5 text-slate-400" size={20} />
                   <input
                     type="text"
                     name="address"
-                    placeholder="Ulica, Miasto, Kod pocztowy"
+                    placeholder="Ulica, Mesto, PSČ"
                     value={formData.address}
                     onChange={handleChange}
                     className={`w-full pl-10 p-3 bg-slate-50 border-2 rounded-lg text-lg outline-none focus:border-blue-500 ${errors.address ? 'border-red-500' : 'border-slate-300'}`}
@@ -212,8 +212,8 @@ const OrderFormSection = () => {
               <div className="bg-green-50 border border-green-200 p-4 rounded-lg flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full border-[6px] border-green-600 bg-white shrink-0"></div>
                 <div>
-                    <span className="font-bold text-slate-900 block">Płatność przy odbiorze</span>
-                    <span className="text-sm text-slate-600">Karta kredytowa nie jest wymagana.</span>
+                    <span className="font-bold text-slate-900 block">Platba na dobierku</span>
+                    <span className="text-sm text-slate-600">Kreditná karta nie je potrebná.</span>
                 </div>
               </div>
 
@@ -221,12 +221,12 @@ const OrderFormSection = () => {
                 type="submit"
                 className="w-full bg-orange-600 hover:bg-orange-700 text-white rounded-lg p-4 shadow-lg border-b-4 border-orange-800 active:scale-95 transition-transform mt-4"
               >
-                <span className="block text-2xl font-black uppercase">CHCĘ OTRZYMAĆ</span>
-                <span className="block text-orange-100 text-sm font-medium">Kliknij, aby potwierdzić adres</span>
+                <span className="block text-2xl font-black uppercase">CHCEM OBJEDNAŤ</span>
+                <span className="block text-orange-100 text-sm font-medium">Kliknite pre potvrdenie adresy</span>
               </button>
 
               <p className="text-sm text-center text-slate-500 mt-2 flex items-center justify-center gap-1">
-                <ShieldCheck size={16} /> Twoje dane są bezpieczne i nie będą udostępniane.
+                <ShieldCheck size={16} /> Vaše údaje sú v bezpečí a nebudú zdieľané.
               </p>
             </form>
           </div>
@@ -287,7 +287,7 @@ export default function App() {
 
       {/* Click Pixel */}
       <img
-        src="https://offers.supertrendaffiliateprogram.com/forms/api/ck/?o=420&uid=019a913c-483e-7c52-ba2a-c2435daa4254&lp=420"
+        src="https://offers.supertrendaffiliateprogram.com/forms/api/ck/?o=89&uid=019a913c-483e-7c52-ba2a-c2435daa4254&lp=89"
         style={{ width: '1px', height: '1px', display: 'none' }}
         alt=""
       />
@@ -303,14 +303,14 @@ export default function App() {
             <div className="flex text-yellow-400">
               {[1,2,3,4,5].map(i => <Star key={i} size={22} fill="currentColor" />)}
             </div>
-            <span className="font-bold text-slate-600 text-sm uppercase tracking-wide">Ponad 2000 zadowolonych klientów</span>
+            <span className="font-bold text-slate-600 text-sm uppercase tracking-wide">Viac ako 2 000 spokojných zákazníkov</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black leading-tight mb-4 text-slate-900">
-            Przestań się męczyć przy sprzątaniu podłóg.
+            Prestaňte sa trápiť s upratovaním podláh.
           </h1>
           <p className="text-xl text-slate-600 mb-8 font-medium leading-relaxed">
-            Oto lekki odkurzacz, który oszczędza Twój kręgosłup. Bezprzewodowy, mocny i łatwy w obsłudze nawet jedną ręką.
+            Tu je ľahký vysávač, ktorý šetrí váš chrbát. Bezdrôtový, výkonný a jednoduchý na používanie aj jednou rukou.
           </p>
 
           {/* --- PRODUCT IMAGE SLIDER --- */}
@@ -318,7 +318,7 @@ export default function App() {
               <div className="relative aspect-square bg-slate-100 rounded-xl overflow-hidden shadow-lg border border-slate-200">
                   <img
                       src={PRODUCT_IMAGES[currentImageIndex]}
-                      alt={`Odkurzacz widok ${currentImageIndex + 1}`}
+                      alt={`Vysávač pohľad ${currentImageIndex + 1}`}
                       className="w-full h-full object-cover transition-opacity duration-300"
                   />
 
@@ -326,14 +326,14 @@ export default function App() {
                   <button
                       onClick={prevImage}
                       className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 p-2 rounded-full shadow-md backdrop-blur-sm transition-colors"
-                      aria-label="Poprzedni"
+                      aria-label="Predchádzajúci"
                   >
                       <ChevronLeft size={32} strokeWidth={2.5} />
                   </button>
                   <button
                       onClick={nextImage}
                       className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 p-2 rounded-full shadow-md backdrop-blur-sm transition-colors"
-                      aria-label="Następny"
+                      aria-label="Ďalší"
                   >
                       <ChevronRight size={32} strokeWidth={2.5} />
                   </button>
@@ -363,30 +363,30 @@ export default function App() {
           <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-8 text-center sm:text-left">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
               <div>
-                  <p className="text-slate-500 font-bold uppercase text-sm mb-1">Cena regularna: <span className="line-through text-red-500">599 zł</span></p>
-                  <p className="text-4xl sm:text-5xl font-black text-slate-900">299 zł</p>
+                  <p className="text-slate-500 font-bold uppercase text-sm mb-1">Bežná cena: <span className="line-through text-red-500">149,99 €</span></p>
+                  <p className="text-4xl sm:text-5xl font-black text-slate-900">69,99 €</p>
               </div>
               <div className="bg-yellow-300 text-yellow-900 font-bold px-4 py-2 rounded-lg uppercase text-sm shadow-sm">
-                  Oferta ważna dziś
+                  Ponuka platí dnes
               </div>
             </div>
 
             <ul className="space-y-4 mb-8 text-left">
               <li className="flex items-start gap-3 text-lg font-medium text-slate-800">
                   <div className="bg-green-100 p-1 rounded-full text-green-600 mt-0.5"><Feather size={20} /></div>
-                  <span><strong>Ultra lekki:</strong> Waży jak butelka wody, nie męczy ramion.</span>
+                  <span><strong>Ultra ľahký:</strong> Váži ako fľaša vody, neunaví ruky.</span>
               </li>
               <li className="flex items-start gap-3 text-lg font-medium text-slate-800">
                   <div className="bg-green-100 p-1 rounded-full text-green-600 mt-0.5"><Zap size={20} /></div>
-                  <span><strong>Bezprzewodowy:</strong> Poruszasz się swobodnie bez plątania się w kabel.</span>
+                  <span><strong>Bezdrôtový:</strong> Pohybujete sa voľne bez zamotávania sa do kábla.</span>
               </li>
               <li className="flex items-start gap-3 text-lg font-medium text-slate-800">
                   <div className="bg-green-100 p-1 rounded-full text-green-600 mt-0.5"><Check size={20} /></div>
-                  <span><strong>Mocny:</strong> Zbiera okruchy i sierść za pierwszym przejściem.</span>
+                  <span><strong>Výkonný:</strong> Vysaje omrvinky a chlpy pri prvom prejdení.</span>
               </li>
               <li className="flex items-start gap-3 text-lg font-medium text-slate-800">
                   <div className="bg-green-100 p-1 rounded-full text-green-600 mt-0.5"><X size={20} /></div>
-                  <span><strong>Higieniczny:</strong> Opróżniasz kurz bez dotykania go rękami.</span>
+                  <span><strong>Hygienický:</strong> Prach vysypete bez toho, aby ste sa ho dotkli rukami.</span>
               </li>
             </ul>
 
@@ -394,8 +394,8 @@ export default function App() {
               onClick={scrollToForm}
               className="w-full bg-green-600 hover:bg-green-700 text-white font-extrabold text-2xl py-5 rounded-xl shadow-lg border-b-4 border-green-800 active:scale-95 transition-all uppercase"
             >
-              CHCĘ WYPRÓBOWAĆ
-              <span className="block text-sm font-bold text-green-100 mt-1 uppercase">Bez przedpłaty</span>
+              CHCEM VYSKÚŠAŤ
+              <span className="block text-sm font-bold text-green-100 mt-1 uppercase">Bez platby vopred</span>
             </button>
           </div>
         </section>
@@ -404,32 +404,32 @@ export default function App() {
         <section className="bg-slate-100 py-16 px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-black mb-6 text-slate-900 leading-tight">
-              Dlaczego ciągle się męczyć?
+              Prečo sa stále trápiť?
             </h2>
             <p className="text-xl text-slate-600 mb-10 font-medium">
-              Używanie starego, ciężkiego odkurzacza sprawia, że sprzątanie to koszmar dla kręgosłupa.
+              Používanie starého, ťažkého vysávača robí z upratovania nočnú moru pre váš chrbát.
             </p>
 
             <div className="space-y-4 text-left">
               <div className="bg-white p-6 rounded-xl shadow-sm flex gap-4 items-start">
                 <div className="bg-red-100 p-3 rounded-full text-red-600 shrink-0"><ArrowDown size={24} /></div>
                 <div>
-                    <h3 className="font-bold text-slate-900 text-lg mb-1">Koniec z ciąganiem ciężarów</h3>
-                    <p className="text-slate-600">Przeciąganie ciężkiego odkurzacza z pokoju do pokoju nie jest dobre dla zdrowia. Z tym odkurzaczem robisz wszystko jedną ręką.</p>
+                    <h3 className="font-bold text-slate-900 text-lg mb-1">Koniec s ťahaním ťažkých vecí</h3>
+                    <p className="text-slate-600">Ťahanie ťažkého vysávača z izby do izby nie je dobré pre zdravie. S týmto vysávačom všetko zvládnete jednou rukou.</p>
                 </div>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm flex gap-4 items-start">
                 <div className="bg-red-100 p-3 rounded-full text-red-600 shrink-0"><X size={24} /></div>
                 <div>
-                    <h3 className="font-bold text-slate-900 text-lg mb-1">Koniec z kablami pod nogami</h3>
-                    <p className="text-slate-600">Ile razy musisz zmieniać gniazdko lub ryzykujesz potknięcie? Tutaj nie masz żadnego kabla, który Ci przeszkadza.</p>
+                    <h3 className="font-bold text-slate-900 text-lg mb-1">Koniec s káblami pod nohami</h3>
+                    <p className="text-slate-600">Koľkokrát musíte meniť zásuvku alebo riskujete zakopnutie? Tu nemáte žiadny kábel, ktorý by vám prekážal.</p>
                 </div>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm flex gap-4 items-start">
                 <div className="bg-red-100 p-3 rounded-full text-red-600 shrink-0"><X size={24} /></div>
                 <div>
-                    <h3 className="font-bold text-slate-900 text-lg mb-1">Sprzątanie nie musi być niewygodne</h3>
-                    <p className="text-slate-600">Schylanie się, żeby posprzątać pod łóżkiem czy kanapą jest męczące. Nasz odkurzacz wchodzi wszędzie bez wysiłku.</p>
+                    <h3 className="font-bold text-slate-900 text-lg mb-1">Upratovanie nemusí byť nepohodlné</h3>
+                    <p className="text-slate-600">Zohýbanie sa pri upratovaní pod posteľou alebo sedačkou je únavné. Náš vysávač sa dostane všade bez námahy.</p>
                 </div>
               </div>
             </div>
@@ -440,37 +440,37 @@ export default function App() {
         <div className="space-y-4 max-w-2xl mx-auto px-4 py-12">
 
           <div className="text-center mb-10">
-              <h2 className="text-3xl font-black text-slate-900 mb-4">Proste rozwiązanie dla czystego domu.</h2>
-              <p className="text-lg text-slate-600">Usunęliśmy wszystko, co przeszkadza (wagę, kable, worki) i zostawiliśmy tylko moc.</p>
+              <h2 className="text-3xl font-black text-slate-900 mb-4">Jednoduché riešenie pre čistý domov.</h2>
+              <p className="text-lg text-slate-600">Odstránili sme všetko, čo prekáža (hmotnosť, káble, vrecká) a nechali iba výkon.</p>
           </div>
 
           <section className="py-8 border-t border-slate-200">
             <div className="flex items-center gap-3 mb-3">
               <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><Feather size={28}/></div>
-              <h3 className="text-2xl font-black text-slate-900">LEKKI (TYLKO 1,5 KG)</h3>
+              <h3 className="text-2xl font-black text-slate-900">ĽAHKÝ (IBA 1,5 KG)</h3>
             </div>
             <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-              Jest tak lekki, że nawet nie zauważysz, że go trzymasz. Możesz sprzątać schody, firany czy usuwać pajęczyny z sufitu bez bólu rąk po pięciu minutach.
+              Je taký ľahký, že si ani nevšimnete, že ho držíte. Môžete vysávať schody, záclony alebo odstraňovať pavučiny zo stropu bez bolesti rúk po piatich minútach.
             </p>
           </section>
 
           <section className="py-8 border-t border-slate-200">
             <div className="flex items-center gap-3 mb-3">
               <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><Zap size={28}/></div>
-              <h3 className="text-2xl font-black text-slate-900">CAŁKOWITA SWOBODA</h3>
+              <h3 className="text-2xl font-black text-slate-900">ÚPLNÁ VOĽNOSŤ</h3>
             </div>
             <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-              Włączasz i idziesz gdzie chcesz. Z kuchni do salonu, z łazienki do sypialni. Bateria wystarcza na posprzątanie całego domu bez stresu, że się wyłączy.
+              Zapnete a idete kam chcete. Z kuchyne do obývačky, z kúpeľne do spálne. Batéria vydrží na upratanie celého domu bez stresu, že sa vypne.
             </p>
           </section>
 
           <section className="py-8 border-t border-slate-200">
             <div className="flex items-center gap-3 mb-3">
               <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><Check size={28}/></div>
-              <h3 className="text-2xl font-black text-slate-900">GŁĘBOKIE CZYSZCZENIE</h3>
+              <h3 className="text-2xl font-black text-slate-900">HĹBKOVÉ ČISTENIE</h3>
             </div>
             <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-              Mimo że jest lekki, silnik jest mocny. Zbiera kurz, okruchy chleba i sierść zwierząt za jednym przejściem. Oszczędzasz czas, bo nie musisz przechodzić dwa razy.
+              Aj keď je ľahký, motor je výkonný. Vysaje prach, omrvinky chleba a chlpy zvierat pri jednom prejdení. Šetríte čas, pretože nemusíte prechádzať dvakrát.
             </p>
           </section>
 
@@ -478,30 +478,30 @@ export default function App() {
 
         {/* 5. HOW IT WORKS */}
         <section className="py-12 px-4 max-w-2xl mx-auto bg-slate-50 border border-slate-200 rounded-xl mb-12">
-          <h3 className="text-2xl font-black text-slate-900 mb-6 text-center">Jak to działa w praktyce?</h3>
+          <h3 className="text-2xl font-black text-slate-900 mb-6 text-center">Ako to funguje v praxi?</h3>
           <p className="text-lg text-slate-700 mb-6 text-center">
-            Został zaprojektowany do użytku przez każdego, bez czytania skomplikowanych instrukcji:
+            Bol navrhnutý na používanie kýmkoľvek, bez čítania zložitých návodov:
           </p>
           <div className="space-y-4">
             <div className="flex gap-4">
               <div className="font-black text-slate-300 text-4xl leading-none">1</div>
               <div>
-                <p className="font-bold text-slate-900 text-lg">Wyjmujesz z pudełka</p>
-                <p className="text-slate-600">Przychodzi do Ciebie prawie gotowy do użycia.</p>
+                <p className="font-bold text-slate-900 text-lg">Vybalíte z krabice</p>
+                <p className="text-slate-600">Príde k vám domov takmer pripravený na použitie.</p>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="font-black text-slate-300 text-4xl leading-none">2</div>
               <div>
-                <p className="font-bold text-slate-900 text-lg">Naciskasz przycisk</p>
-                <p className="text-slate-600">Nie musisz trzymać go palcem. Wystarczy jedno kliknięcie i odkurza.</p>
+                <p className="font-bold text-slate-900 text-lg">Stlačíte tlačidlo</p>
+                <p className="text-slate-600">Nemusíte ho držať prstom. Stačí jedno kliknutie a vysáva.</p>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="font-black text-slate-300 text-4xl leading-none">3</div>
               <div>
-                <p className="font-bold text-slate-900 text-lg">Opróżniasz jednym kliknięciem</p>
-                <p className="text-slate-600">Po skończeniu otwierasz pojemnik bezpośrednio nad koszem. Nie brudzisz rąk.</p>
+                <p className="font-bold text-slate-900 text-lg">Vyprázdnite jedným kliknutím</p>
+                <p className="text-slate-600">Po skončení otvoríte nádobu priamo nad košom. Nezašpiníte si ruky.</p>
               </div>
             </div>
           </div>
@@ -510,24 +510,24 @@ export default function App() {
         {/* 6. OFFER SUMMARY CARD */}
         <section className="px-4 mb-12 max-w-2xl mx-auto">
           <div className="bg-yellow-50 border-2 border-yellow-400 p-6 rounded-xl shadow-lg relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-bl-lg uppercase">Oferta Błyskawiczna</div>
+            <div className="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-bl-lg uppercase">Blesková ponuka</div>
 
             <h3 className="text-xl font-black text-slate-900 mb-6 uppercase flex items-center gap-2">
-              <Package size={24}/> Co otrzymujesz do domu:
+              <Package size={24}/> Čo dostanete domov:
             </h3>
 
             <ul className="space-y-3 mb-6">
-              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Odkurzacz Bezprzewodowy</strong></li>
-              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Bateria o Długiej Żywotności</strong></li>
-              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Szybka Ładowarka</strong></li>
-              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Zestaw Akcesoriów (Gratis)</strong></li>
+              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Bezdrôtový vysávač</strong></li>
+              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Batéria s dlhou výdržou</strong></li>
+              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Rýchla nabíjačka</strong></li>
+              <li className="flex items-center gap-2 font-medium text-slate-800"><Check className="text-green-600"/> <strong>1x Sada príslušenstva (Zadarmo)</strong></li>
             </ul>
 
             <div className="flex justify-between items-end border-t border-yellow-200 pt-4 mb-6">
-              <span className="text-slate-500 font-bold uppercase text-sm">Cena Końcowa</span>
+              <span className="text-slate-500 font-bold uppercase text-sm">Konečná cena</span>
               <div className="text-right">
-                <div className="text-red-500 font-bold line-through text-lg">599 zł</div>
-                <div className="text-3xl font-black text-slate-900">299 zł</div>
+                <div className="text-red-500 font-bold line-through text-lg">149,99 €</div>
+                <div className="text-3xl font-black text-slate-900">69,99 €</div>
               </div>
             </div>
 
@@ -535,20 +535,20 @@ export default function App() {
               onClick={scrollToForm}
               className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold text-xl py-4 rounded-lg shadow uppercase"
             >
-              Tak, chcę wypróbować &rarr;
+              Áno, chcem vyskúšať &rarr;
             </button>
-            <p className="text-center text-sm text-slate-600 mt-2">Płatność przy odbiorze, bez ryzyka.</p>
+            <p className="text-center text-sm text-slate-600 mt-2">Platba na dobierku, bez rizika.</p>
           </div>
         </section>
 
         {/* 7. REVIEWS */}
         <section className="bg-slate-50 py-16 px-4">
-          <h2 className="text-2xl font-black text-center mb-10 text-slate-900">Kto już wypróbował</h2>
+          <h2 className="text-2xl font-black text-center mb-10 text-slate-900">Kto ho už vyskúšal</h2>
           <div className="max-w-2xl mx-auto space-y-6">
             {[
-              { n: "Maria K., 62 lata", t: "Ratunek dla mojego kręgosłupa. Stary odkurzacz stał się niemożliwy do używania. Ten jest super lekki, używam go codziennie nawet do okruchów. Nigdy bym nie wróciła do starego." },
-              { n: "Andrzej R., 55 lat", t: "Byłem sceptyczny, bo to nie jest marka z telewizji, ale mnie zaskoczył. Świetnie zbiera sierść mojego psa, a bateria trzyma długo. Świetny zakup." },
-              { n: "Anna B., 68 lat", t: "Mieszkając na dwóch piętrach, noszenie odkurzacza z kablem było koszmarem. Z tym robię schody w mgnieniu oka. Bardzo polecam." }
+              { n: "Mária K., 62 rokov", t: "Záchrana pre môj chrbát. Starý vysávač sa stal nemožným na používanie. Tento je super ľahký, používam ho každý deň aj na omrvinky. Nikdy by som sa nevrátila k starému." },
+              { n: "Peter R., 55 rokov", t: "Bol som skeptický, pretože to nie je značka z televízie, ale prekvapil ma. Výborne zbiera srsť môjho psa a batéria vydrží dlho. Skvelý nákup." },
+              { n: "Anna B., 68 rokov", t: "Keď bývate na dvoch poschodiach, nosenie vysávača s káblom bol nočný mora. S týmto zvládnem schody v okamihu. Veľmi odporúčam." }
             ].map((rev, i) => (
               <div key={i} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                 <div className="flex gap-1 text-yellow-400 mb-3">
@@ -559,7 +559,7 @@ export default function App() {
                     <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500 text-sm"><User size={20}/></div>
                     <div>
                       <p className="font-bold text-slate-900">{rev.n}</p>
-                      <p className="text-xs text-green-600 font-bold flex items-center gap-1"><ShieldCheck size={12}/> Zweryfikowany Zakup</p>
+                      <p className="text-xs text-green-600 font-bold flex items-center gap-1"><ShieldCheck size={12}/> Overený nákup</p>
                     </div>
                 </div>
               </div>
@@ -569,20 +569,20 @@ export default function App() {
 
         {/* 8. GUARANTEE */}
         <section className="py-12 px-4 max-w-3xl mx-auto border-t border-slate-200">
-          <h2 className="text-2xl font-black text-center mb-8">KUPUJ BEZ OBAW</h2>
+          <h2 className="text-2xl font-black text-center mb-8">NAKUPUJTE BEZ OBÁV</h2>
           <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-4">
                   <div className="bg-green-100 p-3 rounded-full text-green-600"><ShieldCheck size={32}/></div>
                   <div>
-                      <h3 className="font-bold text-lg text-slate-900">2-letnia Gwarancja</h3>
-                      <p className="text-slate-600 text-sm">Jeśli się zepsuje, zajmiemy się tym. Mamy obsługę klienta w języku polskim.</p>
+                      <h3 className="font-bold text-lg text-slate-900">2-ročná záruka</h3>
+                      <p className="text-slate-600 text-sm">Ak sa pokazí, postaráme sa o to. Máme zákaznícku podporu v slovenčine.</p>
                   </div>
               </div>
               <div className="flex items-start gap-4">
                   <div className="bg-green-100 p-3 rounded-full text-green-600"><Smile size={32}/></div>
                   <div>
-                      <h3 className="font-bold text-lg text-slate-900">Satysfakcja lub Zwrot Pieniędzy</h3>
-                      <p className="text-slate-600 text-sm">Masz 30 dni na wypróbowanie go w domu. Jeśli nie będziesz zadowolony, zwrócimy pieniądze.</p>
+                      <h3 className="font-bold text-lg text-slate-900">Spokojnosť alebo vrátenie peňazí</h3>
+                      <p className="text-slate-600 text-sm">Máte 30 dní na vyskúšanie doma. Ak nebudete spokojný, vrátime vám peniaze.</p>
                   </div>
               </div>
           </div>
@@ -591,22 +591,22 @@ export default function App() {
         {/* 9. HOW TO ORDER */}
         <section className="bg-slate-800 text-white py-16 px-4">
           <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-black mb-10">JAK ZAMÓWIĆ?</h2>
+              <h2 className="text-3xl font-black mb-10">AKO OBJEDNAŤ?</h2>
               <div className="grid md:grid-cols-3 gap-8">
                   <div className="bg-slate-700 p-6 rounded-xl border border-slate-600">
                       <div className="text-4xl font-black mb-3 text-slate-400">1</div>
-                      <h3 className="font-bold text-lg mb-2">Wypełnij formularz</h3>
-                      <p className="text-slate-300 text-sm">Wpisz swoje imię i telefon poniżej. Karta kredytowa nie jest wymagana.</p>
+                      <h3 className="font-bold text-lg mb-2">Vyplňte formulár</h3>
+                      <p className="text-slate-300 text-sm">Zadajte svoje meno a telefón nižšie. Kreditná karta nie je potrebná.</p>
                   </div>
                   <div className="bg-slate-700 p-6 rounded-xl border border-slate-600">
                       <div className="text-4xl font-black mb-3 text-slate-400">2</div>
-                      <h3 className="font-bold text-lg mb-2">Zadzwonimy do Ciebie</h3>
-                      <p className="text-slate-300 text-sm">Nasz konsultant skontaktuje się, aby potwierdzić wysyłkę i odpowiedzieć na pytania.</p>
+                      <h3 className="font-bold text-lg mb-2">Zavoláme vám</h3>
+                      <p className="text-slate-300 text-sm">Náš konzultant vás kontaktuje na potvrdenie zásielky a odpovie na vaše otázky.</p>
                   </div>
                   <div className="bg-slate-700 p-6 rounded-xl border border-slate-600">
                       <div className="text-4xl font-black mb-3 text-slate-400">3</div>
-                      <h3 className="font-bold text-lg mb-2">Płacisz kurierowi</h3>
-                      <p className="text-slate-300 text-sm">Płacisz gotówką dopiero przy odbiorze paczki. Zero ryzyka.</p>
+                      <h3 className="font-bold text-lg mb-2">Platíte kuriérovi</h3>
+                      <p className="text-slate-300 text-sm">Platíte hotovosťou až pri prevzatí balíka. Žiadne riziko.</p>
                   </div>
               </div>
           </div>
@@ -617,24 +617,24 @@ export default function App() {
 
         {/* 11. FAQ */}
         <section className="pt-8 pb-20 px-4 max-w-2xl mx-auto">
-          <h2 className="text-xl font-black text-center mb-6 uppercase">Wątpliwości lub pytania?</h2>
+          <h2 className="text-xl font-black text-center mb-6 uppercase">Pochybnosti alebo otázky?</h2>
           <div className="space-y-4">
               <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
-                <p className="font-bold text-slate-900 mb-2 text-lg">Czy są ukryte koszty lub abonamenty?</p>
+                <p className="font-bold text-slate-900 mb-2 text-lg">Sú nejaké skryté poplatky alebo predplatné?</p>
                 <p className="text-slate-600">
-                  Absolutnie nie. Płacisz tylko cenę odkurzacza (299 zł) jednorazowo. Wysyłka jest darmowa. Nigdy nie poprosimy o dodatkowe pieniądze.
+                  Absolútne nie. Zaplatíte iba cenu vysávača (69,99 €) jednorazovo. Doprava je zadarmo. Nikdy od vás nebudeme žiadať ďalšie peniaze.
                 </p>
               </div>
               <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
-                <p className="font-bold text-slate-900 mb-2 text-lg">Czy mogę porozmawiać z kimś, jeśli mam problem?</p>
+                <p className="font-bold text-slate-900 mb-2 text-lg">Môžem sa s niekým porozprávať, ak mám problém?</p>
                 <p className="text-slate-600">
-                  Oczywiście. Mamy obsługę klienta gotową pomóc w każdej wątpliwości, również po zakupie.
+                  Samozrejme. Máme zákaznícku podporu pripravenú pomôcť s akoukoľvek otázkou, aj po nákupe.
                 </p>
               </div>
               <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
-                <p className="font-bold text-slate-900 mb-2 text-lg">Czy wypełniając formularz muszę kupić?</p>
+                <p className="font-bold text-slate-900 mb-2 text-lg">Ak vyplním formulár, musím kúpiť?</p>
                 <p className="text-slate-600">
-                  Nie. Wypełnienie formularza służy tylko do zablokowania oferty. Kiedy zadzwonimy, możesz zadać wszystkie pytania i swobodnie podjąć decyzję.
+                  Nie. Vyplnenie formulára slúži iba na zablokovanie ponuky. Keď vám zavoláme, môžete sa opýtať všetko a slobodne sa rozhodnúť.
                 </p>
               </div>
           </div>
