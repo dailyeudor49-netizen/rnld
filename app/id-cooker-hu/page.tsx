@@ -92,17 +92,21 @@ export default function RobotKonyhaLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.italiadrop.com/forms/api/', {
+      const response = await fetch('https://offers.italiadrop.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
 
-      router.push('/ty/ty-id-cooker-hu');
+      if (response.ok) {
+        router.push('/ty/ty-id-cooker-hu');
+      } else {
+        setSubmitError('Hiba történt. Próbálja újra.');
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error(error);
-      router.push('/ty/ty-id-cooker-hu');
-    } finally {
+      setSubmitError('Hiba történt. Próbálja újra.');
       setIsSubmitting(false);
     }
   };

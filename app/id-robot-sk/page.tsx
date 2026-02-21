@@ -120,11 +120,15 @@ export default function RobotAspirapolvereProLanding() {
 
       console.log('[Network API] Response status:', response.status);
 
-      router.push('/ty/ty-id-robot-sk');
+      if (response.ok) {
+        router.push('/ty/ty-id-robot-sk');
+      } else {
+        setSubmitError('Vyskytla sa chyba. Skúste to znova.');
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error('[Network API] Error:', error);
-      router.push('/ty/ty-id-robot-sk');
-    } finally {
+      setSubmitError('Vyskytla sa chyba. Skúste to znova.');
       setIsSubmitting(false);
     }
   };

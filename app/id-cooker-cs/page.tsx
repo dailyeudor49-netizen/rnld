@@ -92,17 +92,21 @@ export default function RobotKuchynskyLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.italiadrop.com/forms/api/', {
+      const response = await fetch('https://offers.italiadrop.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
 
-      router.push('/ty/ty-id-cooker-cs');
+      if (response.ok) {
+        router.push('/ty/ty-id-cooker-cs');
+      } else {
+        setSubmitError('Došlo k chybě. Zkuste to znovu.');
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error(error);
-      router.push('/ty/ty-id-cooker-cs');
-    } finally {
+      setSubmitError('Došlo k chybě. Zkuste to znovu.');
       setIsSubmitting(false);
     }
   };

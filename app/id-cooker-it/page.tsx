@@ -84,12 +84,12 @@ export default function RobotCucinaLanding() {
         }
         window.location.href = '/ty/ty-robot-cucina';
       } else {
-        throw new Error('Network response was not ok');
+        setSubmitError('Si è verificato un errore. Riprova.');
+        setIsSubmitting(false);
       }
     } catch (error) {
       console.error(error);
-      setSubmitError('Si è verificato un piccolo errore. Prova a cliccare di nuovo sul tasto di conferma.');
-    } finally {
+      setSubmitError('Si è verificato un errore. Riprova.');
       setIsSubmitting(false);
     }
   };

@@ -88,6 +88,7 @@ const OrderFormSection = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -104,6 +105,7 @@ const OrderFormSection = () => {
     if (!validate() || isSubmitting) return;
 
     setIsSubmitting(true);
+    setSubmitError('');
 
     // Get UTM params
     const urlParams = new URLSearchParams(window.location.search);
@@ -132,9 +134,19 @@ const OrderFormSection = () => {
     if (utmTerm) params.utm_term = utmTerm;
 
     // Send to network
-    await sendLeadToNetwork('https://offers.italiadrop.com/forms/api/', params);
-
-    router.push('/ty/ty-id-vacum-hu');
+    try {
+      const success = await sendLeadToNetwork('https://offers.italiadrop.com/forms/api/', params);
+      if (success) {
+        router.push('/ty/ty-id-vacum-hu');
+      } else {
+        setSubmitError('Hiba történt. Próbálja újra.');
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error(error);
+      setSubmitError('Hiba történt. Próbálja újra.');
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -216,6 +228,12 @@ const OrderFormSection = () => {
                     <span className="text-sm text-slate-600">Bankkártya nem szükséges.</span>
                 </div>
               </div>
+
+              {submitError && (
+                <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', padding: '12px', marginBottom: '12px' }}>
+                  <p style={{ color: '#DC2626', fontSize: '0.9rem', textAlign: 'center', margin: 0 }}>{submitError}</p>
+                </div>
+              )}
 
               <button
                 type="submit"

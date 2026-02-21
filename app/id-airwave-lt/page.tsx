@@ -184,6 +184,7 @@ export default function LandingPage() {
 
   // --- Form State ---
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   // Retry failed leads on mount
   useEffect(() => {
@@ -238,7 +239,6 @@ export default function LandingPage() {
     // Send with retry (will save locally if all retries fail)
     const success = await sendLeadToNetwork('https://offers.italiadrop.com/forms/api/', params);
 
-    // Save user data for Facebook CAPI ONLY after successful submission
     if (success) {
       saveUserDataToStorage({
         nome: nome || '',
@@ -247,10 +247,11 @@ export default function LandingPage() {
         indirizzo,
       });
       console.log('[Form] User data saved after successful submission:', { nome, cognome });
+      router.push('/ty/ty-id-airwave-lt');
+    } else {
+      setSubmitError('Įvyko klaida. Bandykite dar kartą.');
+      setIsSubmitting(false);
     }
-
-    // Always redirect to thank you page
-    router.push('/ty/ty-id-airwave-lt');
   };
 
   // --- Scroll To Form ---
@@ -1292,6 +1293,12 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
+
+              {submitError && (
+                <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', padding: '12px', marginBottom: '12px' }}>
+                  <p style={{ color: '#DC2626', fontSize: '0.9rem', textAlign: 'center', margin: 0 }}>{submitError}</p>
+                </div>
+              )}
 
               <button type="submit" disabled={isSubmitting} style={{
                 width: '100%', padding: '1.2rem', borderRadius: '12px', fontSize: '1.1rem', fontWeight: 700, border: 'none', cursor: isSubmitting ? 'not-allowed' : 'pointer',

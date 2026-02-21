@@ -93,6 +93,7 @@ const OrderFormSection = ({ timeLeft }: { timeLeft: number }) => {
   const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -109,8 +110,9 @@ const OrderFormSection = ({ timeLeft }: { timeLeft: number }) => {
     if (!validate() || isSubmitting) return;
 
     setIsSubmitting(true);
-
-    router.push('/ty/ty-id-vacum-it');
+    console.warn('[id-vacum-it] No network API configured for this page');
+    setSubmitError('Si è verificato un errore. Riprova.');
+    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -193,7 +195,13 @@ const OrderFormSection = ({ timeLeft }: { timeLeft: number }) => {
                 </div>
               </div>
 
-              <button 
+              {submitError && (
+                <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '8px', padding: '12px', marginBottom: '12px' }}>
+                  <p style={{ color: '#DC2626', fontSize: '0.9rem', textAlign: 'center', margin: 0 }}>{submitError}</p>
+                </div>
+              )}
+
+              <button
                 type="submit"
                 className="w-full bg-orange-600 hover:bg-orange-700 text-white rounded-lg p-4 shadow-lg border-b-4 border-orange-800 active:scale-95 transition-transform mt-4"
               >

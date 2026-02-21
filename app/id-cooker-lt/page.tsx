@@ -92,17 +92,21 @@ export default function RobotCucinaLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.italiadrop.com/forms/api/', {
+      const response = await fetch('https://offers.italiadrop.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
 
-      router.push('/ty/ty-id-cooker-lt');
+      if (response.ok) {
+        router.push('/ty/ty-id-cooker-lt');
+      } else {
+        setSubmitError('Įvyko klaida. Bandykite dar kartą.');
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error(error);
-      router.push('/ty/ty-id-cooker-lt');
-    } finally {
+      setSubmitError('Įvyko klaida. Bandykite dar kartą.');
       setIsSubmitting(false);
     }
   };
