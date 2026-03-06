@@ -1,0 +1,349 @@
+"use client";
+
+import { useState, useEffect } from 'react';
+import { Check, Smartphone, MapPin, AlertTriangle, Settings, Plug, Camera, Moon } from 'lucide-react';
+
+export default function Page() {
+  const [showStickyBar, setShowStickyBar] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [countdown, setCountdown] = useState({ h: 2, m: 47, s: 33 });
+
+  useEffect(() => {
+    const handleScroll = () => setShowStickyBar(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown(prev => {
+        let { h, m, s } = prev;
+        s--;
+        if (s < 0) { s = 59; m--; }
+        if (m < 0) { m = 59; h--; }
+        if (h < 0) { h = 0; m = 0; s = 0; }
+        return { h, m, s };
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const pad = (n: number) => n.toString().padStart(2, '0');
+  const scrollToOffer = () => document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
+
+  const faqs = [
+    { q: "¿Se monta en cualquier coche?", a: "Sí, se engancha al espejo retrovisor original con bandas de goma ajustables. Compatible con la mayoría de vehículos." },
+    { q: "¿Necesito un técnico para la instalación?", a: "No, la instalación es sencilla y tarda unos 15-20 minutos. Solo hay que enganchar, conectar el cable de alimentación y colocar la cámara trasera." },
+    { q: "¿Cómo se alimenta?", a: "Se conecta al encendedor del coche, o por puerto USB o USB-C si está disponible. Para el modo aparcamiento continuo se puede usar un kit de cableado opcional." },
+    { q: "¿La grabación es continua?", a: "Sí, graba en bucle sobrescribiendo los archivos más antiguos cuando la memoria está llena. Los vídeos con impactos se protegen automáticamente mediante el sensor G." },
+    { q: "¿Qué microSD necesito?", a: "Soporta microSD de hasta 128GB. Se recomienda una tarjeta de clase U3 o superior para grabación 4K." },
+    { q: "¿Cómo descargo los vídeos?", a: "A través de la app dedicada por Wi-Fi 5 GHz. También puedes sacar la microSD y leerla con un adaptador." },
+    { q: "¿Tiene garantía?", a: "Sí, garantía legal de 24 meses. Además ofrecemos devolución fácil en 30 días desde la entrega." }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-900 pb-20 md:pb-0">
+
+      <div className="bg-slate-900 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-2 text-center px-4">
+        <span className="mx-2">Envío gratuito en España</span>
+        <span className="mx-2 opacity-50">|</span>
+        <span className="mx-2">Devolución 30 días</span>
+        <span className="mx-2 opacity-50">|</span>
+        <span className="mx-2">Pagos seguros</span>
+      </div>
+
+      <section className="relative pt-6 pb-8 px-4 md:pt-10 md:pb-12 overflow-hidden">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-4 z-10">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 uppercase rounded-sm animate-pulse">Oferta Relámpago</span>
+              <div className="flex items-center gap-1 text-xs font-bold text-red-600">
+                <span className="bg-red-100 px-1.5 py-0.5 rounded">{pad(countdown.h)}</span>:<span className="bg-red-100 px-1.5 py-0.5 rounded">{pad(countdown.m)}</span>:<span className="bg-red-100 px-1.5 py-0.5 rounded">{pad(countdown.s)}</span>
+              </div>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-[0.95] tracking-tight text-slate-900">
+              GRÁBALO TODO.<br/><span className="text-orange-600">DELANTE Y DETRÁS.</span><br/>EN 4K.
+            </h1>
+            <p className="text-base md:text-lg text-slate-600 leading-snug font-medium max-w-sm">
+              Un retrovisor que se convierte en tu seguro: vídeo nítido, asistencia de aparcamiento y control desde el móvil.
+            </p>
+            <div className="bg-white border border-slate-200 p-5 rounded-xl inline-block w-full md:w-auto text-left">
+              <div className="flex flex-col items-start mb-3">
+                <span className="text-slate-400 text-lg font-medium line-through mb-1">€149,90</span>
+                <span className="text-slate-500 text-xs font-bold uppercase tracking-wide mb-1">Hoy solo</span>
+                <span className="text-4xl font-black text-slate-900 tracking-tight mb-2">€59,00</span>
+                <div className="flex items-center gap-3">
+                  <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-1 rounded">Ahorras €90,90</span>
+                  <span className="text-xs text-slate-400">Disponibilidad limitada a este precio.</span>
+                </div>
+              </div>
+              <button onClick={scrollToOffer} className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold uppercase tracking-wide rounded-xl transition-all duration-200 cursor-pointer px-8 text-lg py-3 mb-4">
+                PEDIR AHORA – ENVÍO GRATIS
+              </button>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-600 uppercase tracking-wide"><Check className="w-4 h-4 text-green-500" /><span>Envío 24-48h</span></div>
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-600 uppercase tracking-wide"><Check className="w-4 h-4 text-green-500" /><span>Devolución fácil 30 días</span></div>
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-600 uppercase tracking-wide"><Check className="w-4 h-4 text-green-500" /><span>Atención al cliente España</span></div>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-4 bg-orange-100/50 rounded-full blur-3xl opacity-50"></div>
+            <img src="/images/specchio/hero.webp" alt="MirrorCam 4K Duo instalada en coche" className="relative rounded-2xl shadow-2xl border-4 border-white transform md:rotate-2 hover:rotate-0 transition-transform duration-500" referrerPolicy="no-referrer" />
+            <div className="relative md:absolute mt-4 md:mt-0 md:bottom-10 md:-left-10 bg-white p-3 md:p-4 rounded-xl shadow-xl border border-slate-100 w-full md:w-auto md:max-w-[200px]">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full md:animate-pulse"></div>
+                <span className="text-xs font-bold uppercase text-slate-500">Live Recording</span>
+              </div>
+              <p className="text-sm font-bold leading-tight">&quot;Me salvó de una culpa compartida. Vídeo clarísimo.&quot;</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-orange-50 border-y border-orange-100 py-4 px-4">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+          {['Envío Gratis', 'Devolución 30 Días', 'Garantía 24 Meses', 'Atención España'].map((b, i) => (
+            <div key={i} className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-600 stroke-[3]" /><span className="text-xs font-bold text-slate-700 uppercase tracking-wide">{b}</span></div>
+          ))}
+        </div>
+      </div>
+
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black text-center mb-12 uppercase tracking-tight">Por qué es diferente</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: "4K Delante + 1080p Detrás", desc: "Detalles claros incluso de noche, matrículas legibles." },
+              { title: "Control desde el móvil", desc: "Descarga y comparte vídeos en 1 minuto por Wi-Fi." },
+              { title: "GPS incluido", desc: "Ruta y velocidad registradas automáticamente en el vídeo." },
+              { title: "Gran angular 170°/140°", desc: "Menos ángulos muertos, ves todo lo que pasa." },
+              { title: "Modo aparcamiento", desc: "Vigila tu coche incluso cuando no estás. (Puede requerir kit de cableado opcional)" },
+              { title: "Instalación fácil", desc: "Se engancha al retrovisor existente, no estorba." },
+              { title: "Funciones Smart y App", desc: "No solo una dashcam, sino un retrovisor inteligente." }
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <div className="bg-orange-100 p-2 rounded-lg text-orange-600 flex-shrink-0"><Check className="w-6 h-6 stroke-[3]" /></div>
+                <div><h3 className="font-bold text-lg text-slate-900 mb-1">{item.title}</h3><p className="text-slate-600 text-sm leading-snug">{item.desc}</p></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-black text-center mb-12 uppercase tracking-tight">Instalación en 3 pasos</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { icon: Settings, step: "PASO 1", title: "ENGÁNCHALO AL ESPEJO", desc: "Se fija sobre el retrovisor original con las bandas." },
+              { icon: Plug, step: "PASO 2", title: "CONECTA LA ALIMENTACIÓN", desc: "Por encendedor, USB o USB-C (si disponible). Para modo aparcamiento continuo se puede usar kit de cableado opcional." },
+              { icon: Camera, step: "PASO 3", title: "COLOCA LA CÁMARA TRASERA", desc: "Móntala detrás y ajusta el encuadre." }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
+                <div className="bg-slate-900 text-white p-4 rounded-full mb-4"><item.icon className="w-8 h-8" /></div>
+                <span className="text-xs font-bold text-orange-600 uppercase tracking-widest mb-2">{item.step}</span>
+                <h3 className="font-black text-lg uppercase mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: AlertTriangle, title: "PRUEBAS EN CASO DE ACCIDENTE", text: "Vídeos 4K nítidos: matrículas y detalles legibles cuando realmente importa.", img: "/images/specchio/benefit-incident.webp" },
+            { icon: MapPin, title: "APARCAMIENTO SIN ESTRÉS", text: "Cámara trasera con líneas guía: maniobras más sencillas y precisas.", img: "/images/specchio/benefit-parking.webp" },
+            { icon: Smartphone, title: "TODO EN EL MÓVIL", text: "Abre la app, revisa, guarda y comparte vídeos sin PC.", img: "/images/specchio/benefit-apps.webp" },
+            { icon: Moon, title: "NOCHE Y TÚNELES", text: "WDR + visión nocturna para imágenes más equilibradas y claras.", img: "/images/specchio/benefit-night.webp" }
+          ].map((card, i) => (
+            <div key={i} className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="h-40 overflow-hidden relative">
+                <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors z-10"></div>
+                <img src={card.img} alt={card.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3 text-orange-600"><card.icon className="w-5 h-5" /><span className="text-xs font-black uppercase tracking-widest">Beneficio #{i+1}</span></div>
+                <h3 className="font-black text-xl leading-tight mb-3 uppercase">{card.title}</h3>
+                <p className="text-slate-600 text-sm font-medium leading-relaxed">{card.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-black uppercase mb-4 tracking-tight">App y funciones Smart integradas</h2>
+            <p className="text-xl text-slate-600 font-medium mb-6">Un retrovisor que no solo graba, sino que integra funciones inteligentes para la conducción diaria.</p>
+            <p className="text-slate-600 mb-6 leading-relaxed">Además de la doble dashcam 4K, MirrorCam transforma tu retrovisor en un centro multimedia. Accede a tus apps favoritas como <strong>Google Maps</strong> y <strong>YouTube</strong>, y aprovecha la integración con <strong>Apple CarPlay</strong> y <strong>Android Auto</strong>.</p>
+            <ul className="space-y-3 mb-6">
+              {["Compatible con Apple CarPlay y Android Auto", "Navegación GPS en tiempo real con Google Maps", "Reproducción de vídeo y entretenimiento en YouTube", "Música, podcasts y llamadas en manos libres", "Interfaz táctil fluida y reactiva"].map((item, i) => (
+                <li key={i} className="flex items-start gap-3"><div className="bg-orange-100 p-1 rounded-full text-orange-600 mt-0.5"><Check className="w-4 h-4 stroke-[3]" /></div><span className="font-bold text-slate-800">{item}</span></li>
+              ))}
+            </ul>
+            <p className="text-xs text-slate-400 italic">Disponibilidad y compatibilidad dependen del modelo y smartphone.</p>
+          </div>
+          <div className="bg-slate-100 rounded-2xl p-8 flex items-center justify-center aspect-video shadow-inner">
+            <img src="/images/specchio/smart-display.webp" alt="Interfaz Smart MirrorCam" className="rounded-xl shadow-lg border-4 border-white" referrerPolicy="no-referrer" />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-center text-3xl md:text-4xl font-black uppercase mb-16 tracking-tight">Números que hablan claro</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+            {[
+              { val: "4K", label: "Resolución delantera" },
+              { val: "1080p", label: "Cámara trasera" },
+              { val: "170°", label: "Gran angular frontal" },
+              { val: "5 GHz", label: "Wi-Fi Smartphone" },
+              { val: "GPS", label: "Antena incluida" },
+              { val: "Parking", label: "Modo aparcamiento (kit opc.)" }
+            ].map((stat, i) => (
+              <div key={i} className="flex flex-col items-center gap-2">
+                <span className="text-3xl md:text-4xl font-black text-orange-500 tracking-tighter">{stat.val}</span>
+                <span className="text-xs md:text-sm font-bold uppercase text-slate-400 tracking-widest">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-slate-500 text-xs mt-8">*El modo aparcamiento puede requerir kit de cableado opcional según el vehículo.</p>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-black text-center mb-10 uppercase">MirrorCam 4K vs Dashcams clásicas</h2>
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full text-sm">
+              <thead><tr className="bg-slate-900 text-white">
+                <th className="text-left p-4 font-bold uppercase tracking-wide text-xs">Característica</th>
+                <th className="p-4 font-bold uppercase tracking-wide text-xs text-center"><span className="text-orange-400">MirrorCam 4K</span></th>
+                <th className="p-4 font-bold uppercase tracking-wide text-xs text-center">Dashcam clásica</th>
+              </tr></thead>
+              <tbody>
+                {[
+                  { f: "Resolución delantera", m: "4K Ultra HD", c: "1080p" },
+                  { f: "Cámara trasera incluida", m: true, c: false },
+                  { f: "GPS integrado", m: true, c: false },
+                  { f: "Control por App", m: true, c: false },
+                  { f: "Wi-Fi 5 GHz", m: true, c: false },
+                  { f: "Modo aparcamiento", m: true, c: false },
+                  { f: "Pantalla táctil", m: "12 pulgadas", c: "Sin pantalla" },
+                  { f: "Instalación", m: "Enganchar y listo", c: "Ventosa + cables" },
+                  { f: "Precio medio", m: "€59,00", c: "€80-150" }
+                ].map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                    <td className="p-4 font-medium text-slate-700">{row.f}</td>
+                    <td className="p-4 text-center">{row.m === true ? <Check className="w-5 h-5 text-green-600 mx-auto" /> : row.m === false ? <span className="text-red-400 font-bold">✕</span> : <span className="font-bold text-sm">{row.m}</span>}</td>
+                    <td className="p-4 text-center">{row.c === true ? <Check className="w-5 h-5 text-green-600 mx-auto" /> : row.c === false ? <span className="text-red-400 font-bold">✕</span> : <span className="font-bold text-sm">{row.c}</span>}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-black uppercase mb-8 text-center">Qué incluye la caja</h2>
+          <ul className="space-y-4">
+            {["Retrovisor Dashcam 4K", "Cámara trasera 1080p impermeable", "Antena GPS externa", "Soporta microSD (hasta 128GB)*", "Cable de alimentación con varios conectores (USB – Type-C – encendedor)", "Bandas de fijación de goma", "Manual en español"].map((item, i) => (
+              <li key={i} className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+                <div className="w-6 h-6 bg-slate-900 rounded-full flex items-center justify-center text-white text-xs font-bold">{i + 1}</div>
+                <span className="font-bold text-slate-800">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-slate-400 mt-4 text-center">*microSD incluida solo si está previsto en la oferta actual.</p>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-black text-center mb-12 uppercase">Lo que dicen nuestros clientes</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Carlos R.", loc: "Madrid", text: "Instalada en 20 minutos. La calidad de vídeo es impresionante, se leen las matrículas incluso de noche. La app es rápida.", date: "ene 2026" },
+              { name: "Miguel B.", loc: "Barcelona", text: "Me siento mucho más seguro. La función aparcamiento funciona genial, pillé al que me rayó el parachoques.", date: "feb 2026" },
+              { name: "Laura T.", loc: "Valencia", text: "Gran producto. El retrovisor es grande y se ve genial. La cámara trasera ayuda muchísimo en aparcamientos estrechos.", date: "ene 2026" },
+              { name: "Alejandro M.", loc: "Sevilla", text: "Envío rapidísimo. Llegó al día siguiente. Todo como en la descripción. Recomendado.", date: "feb 2026" },
+              { name: "Roberto F.", loc: "Bilbao", text: "Relación calidad-precio increíble. He probado muchas, esta es la mejor en nitidez.", date: "ene 2026" },
+              { name: "Elena S.", loc: "Málaga", text: "Fácil de usar, no hace falta ser experto. Basta encender el coche y hace todo sola.", date: "feb 2026" }
+            ].map((r, i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <div className="flex items-center gap-1 mb-3">{[...Array(5)].map((_, j) => <span key={j} className="text-orange-400 text-lg">★</span>)}</div>
+                <p className="text-slate-700 text-sm leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
+                <div className="flex items-center justify-between">
+                  <div><p className="font-bold text-slate-900 text-sm">{r.name}</p><p className="text-slate-500 text-xs">{r.loc}</p></div>
+                  <span className="text-xs text-slate-400">{r.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl font-black text-center mb-10 uppercase">Preguntas frecuentes</h2>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border border-slate-200 rounded-xl overflow-hidden">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-4 text-left bg-white hover:bg-slate-50 transition-colors">
+                  <span className="font-bold text-slate-900 text-sm pr-4">{faq.q}</span>
+                  <span className="text-xl text-slate-400 flex-shrink-0">{openFaq === i ? '−' : '+'}</span>
+                </button>
+                {openFaq === i && <div className="px-4 pb-4 text-sm text-slate-600 leading-relaxed">{faq.a}</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="offer" className="py-20 px-4 bg-slate-900 text-white text-center">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight leading-none">Últimas unidades a este precio</h2>
+          <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 inline-block w-full md:w-auto">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-6">
+              <div className="text-center md:text-right">
+                <p className="text-slate-400 text-lg font-bold line-through decoration-red-500 decoration-2">€149,90</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest">Precio de lista</p>
+              </div>
+              <div className="text-6xl font-black text-white tracking-tighter">€59,00</div>
+            </div>
+            <div className="flex justify-center mb-8">
+              <div className="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold uppercase animate-pulse flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4" />Solo quedan 4 unidades
+              </div>
+            </div>
+            <button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold uppercase tracking-wide rounded-xl transition-all duration-200 cursor-pointer px-8 text-xl py-5">
+              PEDIR AHORA – ENVÍO GRATIS
+            </button>
+            <p className="mt-4 text-xs text-slate-400 uppercase tracking-widest font-bold">Garantía legal 24 meses • Devolución fácil en 30 días</p>
+          </div>
+        </div>
+      </section>
+
+      <div className={`fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 p-3 md:p-4 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <span className="font-bold text-slate-900 hidden md:inline text-lg">MirrorCam 4K Duo</span>
+            <div className="flex flex-col md:flex-row md:items-baseline md:gap-2">
+              <span className="text-xs text-slate-500 line-through">€149,90</span>
+              <span className="text-xl font-black text-slate-900">€59,00</span>
+            </div>
+          </div>
+          <button onClick={scrollToOffer} className="bg-orange-600 hover:bg-orange-700 text-white font-bold uppercase tracking-wide rounded-xl transition-all duration-200 cursor-pointer py-2 px-6 text-sm md:text-base">
+            PEDIR AHORA
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

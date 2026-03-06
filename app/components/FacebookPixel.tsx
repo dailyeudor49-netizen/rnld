@@ -234,6 +234,11 @@ function getContentNameFromPath(pathname: string): string {
     '/ty/ty-unc-eye-pt': 'EyeSpa Pro PT',
     '/ty/ty-unc-eye-es': 'EyeSpa Pro ES',
     '/ty/ty-unc-eye-sk': 'EyeSpa Pro SK',
+    // MirrorCam 4K Duo (Specchio) thank you pages
+    '/ty/ty-unc-specchio-sk': 'MirrorCam 4K Duo SK',
+    '/ty/ty-unc-specchio-es': 'MirrorCam 4K Duo ES',
+    '/ty/ty-unc-specchio-cz': 'MirrorCam 4K Duo CZ',
+    '/ty/ty-unc-specchio-lt': 'MirrorCam 4K Duo LT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -294,6 +299,11 @@ function getProductIdFromPath(pathname: string): string {
     '/ty/ty-unc-eye-pt': 'eyespa-pro-pt',
     '/ty/ty-unc-eye-es': 'eyespa-pro-es',
     '/ty/ty-unc-eye-sk': 'eyespa-pro-sk',
+    // MirrorCam 4K Duo (Specchio) thank you pages
+    '/ty/ty-unc-specchio-sk': 'mirrorcam-4k-duo-sk',
+    '/ty/ty-unc-specchio-es': 'mirrorcam-4k-duo-es',
+    '/ty/ty-unc-specchio-cz': 'mirrorcam-4k-duo-cz',
+    '/ty/ty-unc-specchio-lt': 'mirrorcam-4k-duo-lt',
   };
 
   return idMap[pathname] || 'product';
@@ -358,6 +368,11 @@ function getContentNameFromLandingPath(pathname: string): string {
     '/unc-eye-pt': 'EyeSpa Pro PT',
     '/unc-eye-es': 'EyeSpa Pro ES',
     '/unc-eye-sk': 'EyeSpa Pro SK',
+    // MirrorCam 4K Duo (Specchio) landing pages
+    '/unc-specchio-sk': 'MirrorCam 4K Duo SK',
+    '/unc-specchio-es': 'MirrorCam 4K Duo ES',
+    '/unc-specchio-cz': 'MirrorCam 4K Duo CZ',
+    '/unc-specchio-lt': 'MirrorCam 4K Duo LT',
   };
 
   return pathMap[pathname] || 'Product';
@@ -422,6 +437,11 @@ function getProductIdFromLandingPath(pathname: string): string {
     '/unc-eye-pt': 'eyespa-pro-pt',
     '/unc-eye-es': 'eyespa-pro-es',
     '/unc-eye-sk': 'eyespa-pro-sk',
+    // MirrorCam 4K Duo (Specchio) landing pages
+    '/unc-specchio-sk': 'mirrorcam-4k-duo-sk',
+    '/unc-specchio-es': 'mirrorcam-4k-duo-es',
+    '/unc-specchio-cz': 'mirrorcam-4k-duo-cz',
+    '/unc-specchio-lt': 'mirrorcam-4k-duo-lt',
   };
 
   return idMap[pathname] || 'product';
@@ -486,6 +506,11 @@ function getPriceDataFromLandingPath(pathname: string): { value: number; currenc
     '/unc-eye-pt': { value: 59.99, currency: 'EUR' },
     '/unc-eye-es': { value: 59, currency: 'EUR' },
     '/unc-eye-sk': { value: 59, currency: 'EUR' },
+    // MirrorCam 4K Duo (Specchio) landing pages
+    '/unc-specchio-sk': { value: 59, currency: 'EUR' },
+    '/unc-specchio-es': { value: 59, currency: 'EUR' },
+    '/unc-specchio-cz': { value: 1459, currency: 'CZK' },
+    '/unc-specchio-lt': { value: 52, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
@@ -545,6 +570,11 @@ function getPriceDataFromPath(pathname: string): { value: number; currency: stri
     '/ty/ty-unc-eye-pt': { value: 59.99, currency: 'EUR' },
     '/ty/ty-unc-eye-es': { value: 59, currency: 'EUR' },
     '/ty/ty-unc-eye-sk': { value: 59, currency: 'EUR' },
+    // MirrorCam 4K Duo (Specchio) thank you pages
+    '/ty/ty-unc-specchio-sk': { value: 59, currency: 'EUR' },
+    '/ty/ty-unc-specchio-es': { value: 59, currency: 'EUR' },
+    '/ty/ty-unc-specchio-cz': { value: 1459, currency: 'CZK' },
+    '/ty/ty-unc-specchio-lt': { value: 52, currency: 'EUR' },
   };
 
   return priceMap[pathname] || { value: 0, currency: 'EUR' };
