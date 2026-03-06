@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { Check, Smartphone, MapPin, AlertTriangle, Settings, Plug, Camera, Moon } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import Script from 'next/script';
+import { Check, Smartphone, MapPin, AlertTriangle, Settings, Plug, Camera, Moon, Truck, ShieldCheck, Gift } from 'lucide-react';
 
 export default function Page() {
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [countdown, setCountdown] = useState({ h: 2, m: 47, s: 33 });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ fullName: '', phone: '', addressFull: '' });
+  const [formErrors, setFormErrors] = useState<Partial<Record<string, string>>>({});
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setShowStickyBar(window.scrollY > 10);
@@ -31,6 +36,35 @@ export default function Page() {
   const pad = (n: number) => n.toString().padStart(2, '0');
   const scrollToOffer = () => document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (formErrors[name]) setFormErrors(prev => ({ ...prev, [name]: undefined }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const errors: Record<string, string> = {};
+    if (!formData.fullName) errors.fullName = "Meno a priezvisko sú povinné";
+    if (!formData.phone) errors.phone = "Telefón je povinný";
+    if (!formData.addressFull) errors.addressFull = "Adresa je povinná";
+    if (Object.keys(errors).length > 0) { setFormErrors(errors); return; }
+    setIsSubmitting(true);
+    try {
+      const tmfpInput = document.querySelector('input[name="tmfp"]') as HTMLInputElement;
+      const params = new URLSearchParams({
+        uid: '019a913a-422a-770d-8b80-6aa9c3b58776', key: 'e0b35b6504ae459988cf25', offer: '3847', lp: '3887',
+        name: formData.fullName, tel: formData.phone, 'street-address': formData.addressFull,
+        ua: navigator.userAgent, tmfp: tmfpInput?.value || '',
+      });
+      const urlParams = new URLSearchParams(window.location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { const v = urlParams.get(k); if (v) params.append(k, v); });
+      await fetch('https://offers.uncappednetwork.com/forms/api/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
+      window.location.href = '/ty/ty-unc-specchio-sk';
+    } catch { window.location.href = '/ty/ty-unc-specchio-sk'; }
+    finally { setIsSubmitting(false); }
+  };
+
   const faqs = [
     { q: "Dá sa namontovať na akékoľvek auto?", a: "Áno, pripevní sa na pôvodné spätné zrkadlo pomocou nastaviteľných gumových pásov. Kompatibilné s väčšinou vozidiel." },
     { q: "Potrebujem technika na inštaláciu?", a: "Nie, inštalácia je jednoduchá a trvá asi 15-20 minút. Stačí pripevniť, pripojiť napájací kábel a umiestniť zadnú kameru." },
@@ -43,6 +77,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-900 pb-20 md:pb-0">
+      <Script src="https://offers.uncappednetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
 
       <div className="bg-slate-900 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-2 text-center px-4">
         <span className="mx-2">Doprava zadarmo na Slovensko</span>
@@ -306,7 +341,66 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="offer" className="py-20 px-4 bg-slate-900 text-white text-center">
+      {/* ORDER FORM */}
+      <section id="offer" ref={formRef} className="py-16 px-4 bg-gradient-to-b from-slate-50 to-orange-50">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+            <div className="bg-slate-900 p-6 text-center text-white">
+              <h3 className="text-2xl font-bold mb-1">VYPLŇTE ÚDAJE PRE OBJEDNÁVKU</h3>
+              <p className="text-orange-400 text-sm font-medium">Rýchle doručenie + Platba pri prevzatí</p>
+            </div>
+            <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
+              <input type="hidden" name="tmfp" />
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <span className="font-black text-slate-900">MirrorCam 4K Duo</span>
+                    <p className="text-sm text-slate-600">+ Zadná kamera + GPS + Príslušenstvo</p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      <span className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">DOPRAVA ZADARMO</span>
+                      <span className="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded">OBMEDZENÁ PONUKA</span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-slate-400 line-through text-sm block">€149,90</span>
+                    <span className="text-3xl font-black text-green-700">€59<span className="text-lg">,00</span></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Meno a priezvisko *</label>
+                <input name="fullName" type="text" value={formData.fullName} onChange={handleInputChange} className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 outline-none ${formErrors.fullName ? 'border-red-500' : 'border-slate-300'}`} placeholder="Ján Novák" />
+                {formErrors.fullName && <p className="text-red-500 text-xs mt-1">{formErrors.fullName}</p>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Telefón (pre kuriéra) *</label>
+                <input name="phone" type="tel" value={formData.phone} onChange={handleInputChange} className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 outline-none ${formErrors.phone ? 'border-red-500' : 'border-slate-300'}`} placeholder="+421 912 345 678" />
+                {formErrors.phone && <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Plná adresa *</label>
+                <input name="addressFull" type="text" value={formData.addressFull} onChange={handleInputChange} className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 outline-none ${formErrors.addressFull ? 'border-red-500' : 'border-slate-300'}`} placeholder="Hlavná 10, 811 01 Bratislava" />
+                {formErrors.addressFull && <p className="text-red-500 text-xs mt-1">{formErrors.addressFull}</p>}
+              </div>
+              <div className="bg-orange-50 p-4 rounded-lg flex items-center justify-between border border-orange-100">
+                <span className="font-bold text-slate-800">Spôsob platby:</span>
+                <span className="flex items-center gap-2 font-bold text-orange-700"><Truck className="w-5 h-5" /> V hotovosti pri prevzatí</span>
+              </div>
+              <button type="submit" disabled={isSubmitting} className={`w-full py-4 px-4 rounded-xl font-black text-xl transition duration-300 flex items-center justify-center gap-2 ${isSubmitting ? 'bg-gray-400 text-gray-600 cursor-not-allowed' : 'bg-orange-600 hover:bg-orange-700 text-white cursor-pointer shadow-lg transform hover:scale-[1.02]'}`}>
+                {isSubmitting ? 'ODOSIELAM...' : 'OBJEDNAŤ TERAZ — PLATIŤ PRI PREVZATÍ'}
+                {!isSubmitting && <Truck className="w-6 h-6" />}
+              </button>
+              <p className="text-center text-xs text-slate-400 mt-3">Vaše údaje sú chránené a šifrované SSL. Používame ich LEN na doručenie.</p>
+              <div className="flex justify-center gap-6 text-xs text-slate-400 mt-2">
+                <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> SSL ochrana</span>
+                <span className="flex items-center gap-1"><Gift className="w-3 h-3" /> Záruka vrátenia peňazí</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-slate-900 text-white text-center">
         <div className="max-w-3xl mx-auto space-y-8">
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight leading-none">Posledné kusy za túto cenu</h2>
           <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 inline-block w-full md:w-auto">
