@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { useRouter } from 'next/navigation';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 
 const styles = `
   /* RESET & BASE STYLES */
@@ -266,6 +267,12 @@ export default function LandingPage() {
         body: params.toString(),
       });
 
+      saveUserDataToStorage({
+        nome: orderData.name || '',
+        cognome: '',
+        telefono: orderData.phone || '',
+        indirizzo: orderData.address || '',
+      });
       router.push('/ty/ty-uc-dryer-pt');
     } catch (error) {
       console.error('[Network API] Error:', error);

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { useRouter } from 'next/navigation';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 import {
   Star, CheckCircle, Shield, Zap, ChevronDown, ChevronLeft, ChevronRight,
   Timer, Truck, X, Wind, Battery, Navigation, Smartphone, Trash2, Droplets,
@@ -123,6 +124,12 @@ export default function RobotAspirapolvereProLanding() {
       console.log('[Network API] Response status:', response.status);
 
       if (response.ok) {
+        saveUserDataToStorage({
+          nome: orderData.name || '',
+          cognome: '',
+          telefono: orderData.phone || '',
+          indirizzo: orderData.address || '',
+        });
         router.push('/ty/ty-id-robot-si');
       } else {
         setSubmitError('Prišlo je do napake. Poskusite znova.');

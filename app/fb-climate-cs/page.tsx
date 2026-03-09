@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect, ReactNode } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 import Script from 'next/script';
 import {
   ArrowRight, CheckCircle2, Zap, Wind, ShieldCheck, Truck, CreditCard, Star,
@@ -197,6 +198,12 @@ export default function OmniClimaPage() {
 
       console.log('[Network API] Response status:', response.status);
 
+      saveUserDataToStorage({
+        nome: formState.fullName || '',
+        cognome: '',
+        telefono: formState.phone || '',
+        indirizzo: formState.fullAddress || '',
+      });
       router.push('/ty/ty-fb-climate-cs');
     } catch (error) {
       console.error('[Network API] Error:', error);

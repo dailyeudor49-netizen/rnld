@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { useRouter } from 'next/navigation';
 import { sendLeadToNetwork, retryFailedLeads } from '@/app/lib/network/api';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 import {
   Check,
   X,
@@ -137,6 +138,12 @@ const OrderFormSection = () => {
     try {
       const success = await sendLeadToNetwork('https://offers.supertrendaffiliateprogram.com/forms/api/', params);
       if (success) {
+        saveUserDataToStorage({
+          nome: formData.name || '',
+          cognome: '',
+          telefono: formData.phone || '',
+          indirizzo: formData.address || '',
+        });
         router.push('/ty/ty-id-vacum-cs');
       } else {
         setSubmitError('Došlo k chybě. Zkuste to znovu.');

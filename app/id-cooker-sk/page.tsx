@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { useRouter } from 'next/navigation';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 import { Star, CheckCircle, Shield, Zap, ChevronDown, ChevronLeft, ChevronRight, Flame, Timer, Gauge, Utensils, ChefHat, Soup, Truck, PhoneCall, Heart, Scale, RefreshCw, Wind, X, Check, PlayCircle } from 'lucide-react';
 
 declare global {
@@ -99,6 +100,12 @@ export default function RobotCucinaLanding() {
       });
 
       if (response.ok) {
+        saveUserDataToStorage({
+          nome: orderData.name || '',
+          cognome: '',
+          telefono: orderData.phone || '',
+          indirizzo: orderData.address || '',
+        });
         router.push('/ty/ty-id-cooker-sk');
       } else {
         setSubmitError('Vyskytla sa chyba. Skúste to znova.');
