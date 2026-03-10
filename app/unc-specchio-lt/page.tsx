@@ -60,8 +60,9 @@ export default function Page() {
       const urlParams = new URLSearchParams(window.location.search);
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { const v = urlParams.get(k); if (v) params.append(k, v); });
       await fetch('https://offers.uncappednetwork.com/forms/api/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
-    } catch (_) {}
-    window.location.href = '/ty/ty-unc-specchio-lt';
+      window.location.href = '/ty/ty-unc-specchio-lt';
+    } catch { window.location.href = '/ty/ty-unc-specchio-lt'; }
+    finally { setIsSubmitting(false); }
   };
 
   const faqs = [
