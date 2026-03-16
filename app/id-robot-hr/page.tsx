@@ -121,9 +121,20 @@ export default function RobotAspirapolvereProLanding() {
         body: params.toString(),
       });
 
+      const responseText = await response.text();
       console.log('[Network API] Response status:', response.status);
+      console.log('[Network API] Response body:', responseText);
 
-      if (response.ok) {
+      let responseOk = response.ok;
+      try {
+        const responseJson = JSON.parse(responseText);
+        if (responseJson.status === 'error' || responseJson.error || responseJson.duplicate) {
+          console.log('[Network API] Lead rejected by network:', responseJson);
+          responseOk = false;
+        }
+      } catch { /* response is not JSON, use HTTP status */ }
+
+      if (responseOk) {
         saveUserDataToStorage({
           nome: orderData.name || '',
           cognome: '',
