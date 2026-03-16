@@ -113,23 +113,27 @@ export default function RobotSesalnikProLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+      const response = await fetch('https://offers.uncappednetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
 
-      saveUserDataToStorage({
-        nome: orderData.name || '',
-        cognome: '',
-        telefono: orderData.phone || '',
-        indirizzo: orderData.address || '',
-      });
-      router.push('/ty/ty-uc-robot-si');
+      if (response.ok) {
+        saveUserDataToStorage({
+          nome: orderData.name || '',
+          cognome: '',
+          telefono: orderData.phone || '',
+          indirizzo: orderData.address || '',
+        });
+        router.push('/ty/ty-uc-robot-si');
+      } else {
+        setSubmitError('Prišlo je do napake. Poskusite znova.');
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error(error);
-      router.push('/ty/ty-uc-robot-si');
-    } finally {
+      setSubmitError('Prišlo je do napake. Poskusite znova.');
       setIsSubmitting(false);
     }
   };

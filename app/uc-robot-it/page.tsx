@@ -123,17 +123,21 @@ export default function RobotAspirapolvereProLanding() {
 
       console.log('[Network API] Response status:', response.status);
 
-      saveUserDataToStorage({
-        nome: orderData.name || '',
-        cognome: '',
-        telefono: orderData.phone || '',
-        indirizzo: orderData.address || '',
-      });
-      router.push('/ty/ty-robot-asp');
+      if (response.ok) {
+        saveUserDataToStorage({
+          nome: orderData.name || '',
+          cognome: '',
+          telefono: orderData.phone || '',
+          indirizzo: orderData.address || '',
+        });
+        router.push('/ty/ty-robot-asp');
+      } else {
+        setSubmitError('Si è verificato un errore. Riprova.');
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error('[Network API] Error:', error);
-      router.push('/ty/ty-robot-asp');
-    } finally {
+      setSubmitError('Si è verificato un errore. Riprova.');
       setIsSubmitting(false);
     }
   };

@@ -167,26 +167,30 @@ export default function RobotPorszivoproLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+      const response = await fetch('https://offers.uncappednetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
 
-      // Save submission to prevent duplicates
-      saveSubmission(orderData.phone);
+      if (response.ok) {
+        // Save submission to prevent duplicates
+        saveSubmission(orderData.phone);
 
-      saveUserDataToStorage({
-        nome: orderData.name || '',
-        cognome: '',
-        telefono: orderData.phone || '',
-        indirizzo: orderData.address || '',
-      });
-      router.push('/ty/ty-uc-robot-hu');
+        saveUserDataToStorage({
+          nome: orderData.name || '',
+          cognome: '',
+          telefono: orderData.phone || '',
+          indirizzo: orderData.address || '',
+        });
+        router.push('/ty/ty-uc-robot-hu');
+      } else {
+        setSubmitError('Hiba történt. Kérjük, próbálja újra.');
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error(error);
-      router.push('/ty/ty-uc-robot-hu');
-    } finally {
+      setSubmitError('Hiba történt. Kérjük, próbálja újra.');
       setIsSubmitting(false);
     }
   };
