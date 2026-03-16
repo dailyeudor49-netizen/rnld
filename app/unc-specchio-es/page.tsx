@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { Check, Smartphone, MapPin, AlertTriangle, Settings, Plug, Camera, Moon, Truck, ShieldCheck, Gift } from 'lucide-react';
+import { saveUserDataToStorage } from '@/app/lib/facebook/capi';
 
 export default function Page() {
   const [showStickyBar, setShowStickyBar] = useState(false);
@@ -60,8 +61,9 @@ export default function Page() {
       const urlParams = new URLSearchParams(window.location.search);
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { const v = urlParams.get(k); if (v) params.append(k, v); });
       await fetch('https://offers.uncappednetwork.com/forms/api/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
+      saveUserDataToStorage({ nome: formData.fullName, cognome: '', telefono: formData.phone, indirizzo: formData.addressFull });
       window.location.href = '/ty/ty-unc-specchio-es';
-    } catch { window.location.href = '/ty/ty-unc-specchio-es'; }
+    } catch { saveUserDataToStorage({ nome: formData.fullName, cognome: '', telefono: formData.phone, indirizzo: formData.addressFull }); window.location.href = '/ty/ty-unc-specchio-es'; }
     finally { setIsSubmitting(false); }
   };
 
