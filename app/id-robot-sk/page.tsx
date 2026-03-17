@@ -27,6 +27,31 @@ export default function RobotAspirapolvereProLanding() {
   const [visibleReviews, setVisibleReviews] = useState(3);
   const [orderData, setOrderData] = useState({ name: '', phone: '', address: '' });
   const [submitError, setSubmitError] = useState('');
+  const [isDuplicate, setIsDuplicate] = useState(false);
+
+  const checkDuplicatePhone = (phone: string): boolean => {
+    const stored = localStorage.getItem('id_robot_sk_submissions');
+    if (!stored) return false;
+    try {
+      const submissions: { phone: string }[] = JSON.parse(stored);
+      return submissions.some(s => s.phone === phone.replace(/\D/g, ''));
+    } catch { return false; }
+  };
+
+  const checkDeviceSubmitted = (): boolean => {
+    return localStorage.getItem('id_robot_sk_device_submitted') === 'true';
+  };
+
+  const saveSubmission = (phone: string) => {
+    const normalizedPhone = phone.replace(/\D/g, '');
+    const stored = localStorage.getItem('id_robot_sk_submissions');
+    let submissions: { phone: string; timestamp: number }[] = [];
+    try { if (stored) submissions = JSON.parse(stored); } catch { submissions = []; }
+    submissions.push({ phone: normalizedPhone, timestamp: Date.now() });
+    localStorage.setItem('id_robot_sk_submissions', JSON.stringify(submissions));
+    localStorage.setItem('id_robot_sk_device_submitted', 'true');
+  };
+
   const [timeLeft, setTimeLeft] = useState(2 * 60 * 60);
   const [stockLeft] = useState(4);
   const [openFeature, setOpenFeature] = useState<number | null>(null);
@@ -79,6 +104,19 @@ export default function RobotAspirapolvereProLanding() {
       setSubmitError('Prosím, vyplňte všetky polia!');
       return;
     }
+
+    if (checkDuplicatePhone(orderData.phone)) {
+      setIsDuplicate(true);
+      setSubmitError('Toto telefónne číslo je už v našom systéme. Čoskoro vás budeme kontaktovať!');
+      return;
+    }
+
+    if (checkDeviceSubmitted()) {
+      setIsDuplicate(true);
+      setSubmitError('Z tohto zariadenia už bola odoslaná objednávka. Čoskoro vás budeme kontaktovať!');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError('');
 
@@ -133,6 +171,7 @@ export default function RobotAspirapolvereProLanding() {
       } catch { /* response is not JSON, use HTTP status */ }
 
       if (responseOk) {
+        saveSubmission(orderData.phone);
         saveUserDataToStorage({
           nome: orderData.name || '',
           cognome: '',
