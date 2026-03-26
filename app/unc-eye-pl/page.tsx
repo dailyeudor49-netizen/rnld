@@ -268,7 +268,7 @@ export default function EyeSpaLandingPL() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+      await fetch('https://offers.adricenetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -292,8 +292,8 @@ export default function EyeSpaLandingPL() {
 
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
-      <Script src="https://offers.uncappednetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
-      <img src="https://offers.uncappednetwork.com/forms/api/ck/?o=754&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=768" style={{ width: '1px', height: '1px', display: 'none' }} alt="" />
+      <Script src="https://offers.adricenetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
+      <img src="https://offers.adricenetwork.com/forms/api/ck/?o=754&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=768" style={{ width: '1px', height: '1px', display: 'none' }} alt="" />
 
       {/* 1. TOP BAR */}
       <div className="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 sticky top-0 z-50 flex justify-between items-center shadow-md">

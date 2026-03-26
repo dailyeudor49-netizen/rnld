@@ -66,7 +66,7 @@ export default function Page() {
         const v = urlParams.get(k);
         if (v) params.append(k, v);
       });
-      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+      await fetch('https://offers.adricenetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -82,7 +82,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-900 pb-20 md:pb-0">
-      <Script src="https://offers.uncappednetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
+      <Script src="https://offers.adricenetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
 
       {/* 1) TOP BAR */}
       <div className="bg-slate-900 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-2 text-center px-4">

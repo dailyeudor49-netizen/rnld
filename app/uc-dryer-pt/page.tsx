@@ -261,7 +261,7 @@ export default function LandingPage() {
 
       console.log('[Network API] Sending params:', params.toString());
 
-      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+      await fetch('https://offers.adricenetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -291,14 +291,14 @@ export default function LandingPage() {
 
       {/* Fingerprint Script */}
       <Script
-        src="https://offers.uncappednetwork.com/forms/tmfp/"
+        src="https://offers.adricenetwork.com/forms/tmfp/"
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
 
       {/* Click Pixel */}
       <img
-        src={`https://offers.uncappednetwork.com/forms/api/ck/?o=${networkConfig.offer}&uid=${networkConfig.uid}&lp=${networkConfig.lp}`}
+        src={`https://offers.adricenetwork.com/forms/api/ck/?o=${networkConfig.offer}&uid=${networkConfig.uid}&lp=${networkConfig.lp}`}
         style={{ width: '1px', height: '1px', display: 'none' }}
         alt=""
       />

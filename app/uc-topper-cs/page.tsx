@@ -133,7 +133,7 @@ export default function TopperOrtopedicoLandingCS() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      await fetch('https://offers.uncappednetwork.com/forms/api/', {
+      await fetch('https://offers.adricenetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -163,8 +163,8 @@ export default function TopperOrtopedicoLandingCS() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
-      <Script src="https://offers.uncappednetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
-      <img src="https://offers.uncappednetwork.com/forms/api/ck/?o=3044&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=3078" style={{ width: '1px', height: '1px', display: 'none' }} alt="" />
+      <Script src="https://offers.adricenetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
+      <img src="https://offers.adricenetwork.com/forms/api/ck/?o=3044&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=3078" style={{ width: '1px', height: '1px', display: 'none' }} alt="" />
 
       <div className="bg-slate-100 py-2 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm md:text-base font-medium text-slate-700">

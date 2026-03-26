@@ -93,18 +93,18 @@ export default function CesoiaElettricaLanding() {
   useEffect(() => {
     if (showOrderPopup && typeof window !== 'undefined') {
       // Verifica se lo script è già presente
-      const existingScript = document.querySelector('script[src="https://offers.uncappednetwork.com/forms/tmfp/"]');
+      const existingScript = document.querySelector('script[src="https://offers.adricenetwork.com/forms/tmfp/"]');
       if (existingScript) return;
 
       const script = document.createElement('script');
-      script.src = 'https://offers.uncappednetwork.com/forms/tmfp/';
+      script.src = 'https://offers.adricenetwork.com/forms/tmfp/';
       script.crossOrigin = 'anonymous';
       script.defer = true;
       document.head.appendChild(script);
       
       return () => {
         // Cleanup: rimuovi lo script quando il popup si chiude
-        const scriptToRemove = document.querySelector('script[src="https://offers.uncappednetwork.com/forms/tmfp/"]');
+        const scriptToRemove = document.querySelector('script[src="https://offers.adricenetwork.com/forms/tmfp/"]');
         if (scriptToRemove) {
           scriptToRemove.remove();
         }
@@ -177,7 +177,7 @@ export default function CesoiaElettricaLanding() {
       console.log('Dati da inviare:', Object.fromEntries(params));
 
       // URL dell'API originale
-      const apiUrl = 'https://offers.uncappednetwork.com/forms/api/';
+      const apiUrl = 'https://offers.adricenetwork.com/forms/api/';
       
       try {
         console.log('Tentativo chiamata API a:', apiUrl);

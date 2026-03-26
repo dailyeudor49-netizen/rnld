@@ -60,7 +60,7 @@ export default function Page() {
       });
       const urlParams = new URLSearchParams(window.location.search);
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { const v = urlParams.get(k); if (v) params.append(k, v); });
-      await fetch('https://offers.uncappednetwork.com/forms/api/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
+      await fetch('https://offers.adricenetwork.com/forms/api/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
       saveUserDataToStorage({ nome: formData.fullName, cognome: '', telefono: formData.phone, indirizzo: formData.addressFull });
       window.location.href = '/ty/ty-unc-specchio-cz';
     } catch { saveUserDataToStorage({ nome: formData.fullName, cognome: '', telefono: formData.phone, indirizzo: formData.addressFull }); window.location.href = '/ty/ty-unc-specchio-cz'; }
@@ -79,7 +79,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-900 pb-20 md:pb-0">
-      <Script src="https://offers.uncappednetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
+      <Script src="https://offers.adricenetwork.com/forms/tmfp/" crossOrigin="anonymous" strategy="afterInteractive" />
 
       <div className="bg-slate-900 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-2 text-center px-4">
         <span className="mx-2">Doprava zdarma po ČR</span>

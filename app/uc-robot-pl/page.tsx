@@ -167,7 +167,7 @@ export default function RobotOdkurzaczLanding() {
       if (utmContent) params.append('utm_content', utmContent);
       if (utmTerm) params.append('utm_term', utmTerm);
 
-      const response = await fetch('https://offers.uncappednetwork.com/forms/api/', {
+      const response = await fetch('https://offers.adricenetwork.com/forms/api/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -240,14 +240,14 @@ export default function RobotOdkurzaczLanding() {
     <div className="min-h-screen bg-white overflow-x-hidden font-sans leading-relaxed">
       {/* Fingerprint Script */}
       <Script
-        src="https://offers.uncappednetwork.com/forms/tmfp/"
+        src="https://offers.adricenetwork.com/forms/tmfp/"
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
 
       {/* Click Pixel */}
       <img
-        src="https://offers.uncappednetwork.com/forms/api/ck/?o=1257&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=1276"
+        src="https://offers.adricenetwork.com/forms/api/ck/?o=1257&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=1276"
         style={{ width: '1px', height: '1px', display: 'none' }}
         alt=""
       />

@@ -236,7 +236,7 @@ export default function LandingPage() {
     if (utmTerm) params.utm_term = utmTerm;
 
     // Send with retry (will save locally if all retries fail)
-    const success = await sendLeadToNetwork('https://offers.uncappednetwork.com/forms/api/', params);
+    const success = await sendLeadToNetwork('https://offers.adricenetwork.com/forms/api/', params);
 
     // Save user data for Facebook CAPI ONLY after successful submission
     if (success) {
@@ -271,14 +271,14 @@ export default function LandingPage() {
     <>
       {/* Fingerprint Script */}
       <Script
-        src="https://offers.uncappednetwork.com/forms/tmfp/"
+        src="https://offers.adricenetwork.com/forms/tmfp/"
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
 
       {/* Click Pixel */}
       <img
-        src="https://offers.uncappednetwork.com/forms/api/ck/?o=2919&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=2952"
+        src="https://offers.adricenetwork.com/forms/api/ck/?o=2919&uid=019a913a-422a-770d-8b80-6aa9c3b58776&lp=2952"
         style={{ width: '1px', height: '1px', display: 'none' }}
         alt=""
       />
