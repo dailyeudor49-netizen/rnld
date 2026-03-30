@@ -12,7 +12,34 @@ export default function Page() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ fullName: '', phone: '', addressFull: '' });
   const [formErrors, setFormErrors] = useState<Partial<Record<string, string>>>({});
+  const [isDuplicate, setIsDuplicate] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const checkDuplicatePhone = (phone: string): boolean => {
+    const STORAGE_KEY = 'unc_specchio_es_submissions';
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return false;
+    try {
+      const submissions: { phone: string; timestamp: number }[] = JSON.parse(stored);
+      const normalizedPhone = phone.replace(/\D/g, '');
+      return submissions.some(s => s.phone === normalizedPhone);
+    } catch { return false; }
+  };
+
+  const checkDeviceSubmitted = (): boolean => {
+    return localStorage.getItem('unc_specchio_es_device_submitted') === 'true';
+  };
+
+  const saveSubmission = (phone: string) => {
+    const STORAGE_KEY = 'unc_specchio_es_submissions';
+    const normalizedPhone = phone.replace(/\D/g, '');
+    const stored = localStorage.getItem(STORAGE_KEY);
+    let submissions: { phone: string; timestamp: number }[] = [];
+    try { if (stored) submissions = JSON.parse(stored); } catch { submissions = []; }
+    submissions.push({ phone: normalizedPhone, timestamp: Date.now() });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
+    localStorage.setItem('unc_specchio_es_device_submitted', 'true');
+  };
 
   useEffect(() => {
     const handleScroll = () => setShowStickyBar(window.scrollY > 10);
@@ -50,6 +77,16 @@ export default function Page() {
     if (!formData.phone) errors.phone = "Teléfono obligatorio";
     if (!formData.addressFull) errors.addressFull = "Dirección obligatoria";
     if (Object.keys(errors).length > 0) { setFormErrors(errors); return; }
+    if (checkDuplicatePhone(formData.phone)) {
+      setIsDuplicate(true);
+      setFormErrors({ phone: 'Este número de teléfono ya está registrado. ¡Nos pondremos en contacto contigo pronto!' });
+      return;
+    }
+    if (checkDeviceSubmitted()) {
+      setIsDuplicate(true);
+      setFormErrors({ phone: 'Ya se ha realizado un pedido desde este dispositivo.' });
+      return;
+    }
     setIsSubmitting(true);
     try {
       const tmfpInput = document.querySelector('input[name="tmfp"]') as HTMLInputElement;
@@ -61,6 +98,7 @@ export default function Page() {
       const urlParams = new URLSearchParams(window.location.search);
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { const v = urlParams.get(k); if (v) params.append(k, v); });
       await fetch('https://offers.adricenetwork.com/forms/api/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
+      saveSubmission(formData.phone);
       saveUserDataToStorage({ nome: formData.fullName, cognome: '', telefono: formData.phone, indirizzo: formData.addressFull });
       window.location.href = '/ty/ty-unc-specchio-es';
     } catch { saveUserDataToStorage({ nome: formData.fullName, cognome: '', telefono: formData.phone, indirizzo: formData.addressFull }); window.location.href = '/ty/ty-unc-specchio-es'; }

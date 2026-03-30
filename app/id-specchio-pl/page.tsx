@@ -14,7 +14,34 @@ export default function Page() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ fullName: '', phone: '', addressFull: '' });
   const [formErrors, setFormErrors] = useState<Partial<Record<string, string>>>({});
+  const [isDuplicate, setIsDuplicate] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const checkDuplicatePhone = (phone: string): boolean => {
+    const STORAGE_KEY = 'id_specchio_pl_submissions';
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return false;
+    try {
+      const submissions: { phone: string; timestamp: number }[] = JSON.parse(stored);
+      const normalizedPhone = phone.replace(/\D/g, '');
+      return submissions.some(s => s.phone === normalizedPhone);
+    } catch { return false; }
+  };
+
+  const checkDeviceSubmitted = (): boolean => {
+    return localStorage.getItem('id_specchio_pl_device_submitted') === 'true';
+  };
+
+  const saveSubmission = (phone: string) => {
+    const STORAGE_KEY = 'id_specchio_pl_submissions';
+    const normalizedPhone = phone.replace(/\D/g, '');
+    const stored = localStorage.getItem(STORAGE_KEY);
+    let submissions: { phone: string; timestamp: number }[] = [];
+    try { if (stored) submissions = JSON.parse(stored); } catch { submissions = []; }
+    submissions.push({ phone: normalizedPhone, timestamp: Date.now() });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
+    localStorage.setItem('id_specchio_pl_device_submitted', 'true');
+  };
 
   useEffect(() => {
     const handleScroll = () => setShowStickyBar(window.scrollY > 10);
@@ -52,6 +79,16 @@ export default function Page() {
     if (!formData.phone) errors.phone = "Numer telefonu jest wymagany";
     if (!formData.addressFull) errors.addressFull = "Adres jest wymagany";
     if (Object.keys(errors).length > 0) { setFormErrors(errors); return; }
+    if (checkDuplicatePhone(formData.phone)) {
+      setIsDuplicate(true);
+      setFormErrors({ phone: 'Ten numer telefonu jest już zarejestrowany. Wkrótce się z Tobą skontaktujemy!' });
+      return;
+    }
+    if (checkDeviceSubmitted()) {
+      setIsDuplicate(true);
+      setFormErrors({ phone: 'Z tego urządzenia już złożono zamówienie.' });
+      return;
+    }
     setIsSubmitting(true);
     try {
       const tmfpInput = document.querySelector('input[name="tmfp"]') as HTMLInputElement;
@@ -63,6 +100,7 @@ export default function Page() {
       const urlParams = new URLSearchParams(window.location.search);
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k => { const v = urlParams.get(k); if (v) params.append(k, v); });
       await fetch('https://offers.italiadrop.com/forms/api/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
+      saveSubmission(formData.phone);
       saveUserDataToStorage({
         nome: formData.fullName || '',
         cognome: '',

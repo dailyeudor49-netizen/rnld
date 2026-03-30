@@ -17,7 +17,34 @@ export default function Page() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ fullName: '', phone: '', addressFull: '' });
   const [formErrors, setFormErrors] = useState<Partial<Record<string, string>>>({});
+  const [isDuplicate, setIsDuplicate] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const checkDuplicatePhone = (phone: string): boolean => {
+    const STORAGE_KEY = 'specchio_submissions';
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return false;
+    try {
+      const submissions: { phone: string; timestamp: number }[] = JSON.parse(stored);
+      const normalizedPhone = phone.replace(/\D/g, '');
+      return submissions.some(s => s.phone === normalizedPhone);
+    } catch { return false; }
+  };
+
+  const checkDeviceSubmitted = (): boolean => {
+    return localStorage.getItem('specchio_device_submitted') === 'true';
+  };
+
+  const saveSubmission = (phone: string) => {
+    const STORAGE_KEY = 'specchio_submissions';
+    const normalizedPhone = phone.replace(/\D/g, '');
+    const stored = localStorage.getItem(STORAGE_KEY);
+    let submissions: { phone: string; timestamp: number }[] = [];
+    try { if (stored) submissions = JSON.parse(stored); } catch { submissions = []; }
+    submissions.push({ phone: normalizedPhone, timestamp: Date.now() });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
+    localStorage.setItem('specchio_device_submitted', 'true');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,6 +73,16 @@ export default function Page() {
     if (!formData.phone) errors.phone = "Il telefono è obbligatorio";
     if (!formData.addressFull) errors.addressFull = "L'indirizzo è obbligatorio";
     if (Object.keys(errors).length > 0) { setFormErrors(errors); return; }
+    if (checkDuplicatePhone(formData.phone)) {
+      setIsDuplicate(true);
+      setFormErrors({ phone: 'Questo numero di telefono è già registrato. Sarai contattato a breve!' });
+      return;
+    }
+    if (checkDeviceSubmitted()) {
+      setIsDuplicate(true);
+      setFormErrors({ phone: 'Da questo dispositivo è già stato effettuato un ordine.' });
+      return;
+    }
     setIsSubmitting(true);
     try {
       const tmfpInput = document.querySelector('input[name="tmfp"]') as HTMLInputElement;
@@ -71,6 +108,7 @@ export default function Page() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
+      saveSubmission(formData.phone);
       window.location.href = '/ty/ty-unc-specchio-sk';
     } catch (error) {
       console.error(error);
