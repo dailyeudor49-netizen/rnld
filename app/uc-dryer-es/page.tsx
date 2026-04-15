@@ -183,6 +183,32 @@ export default function LandingPage() {
     setOrderData(prev => ({ ...prev, [name]: value }));
   };
 
+  const checkDuplicatePhone = (phone: string): boolean => {
+    const STORAGE_KEY = 'uc_dryer_es_submissions';
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return false;
+    try {
+      const submissions: { phone: string; timestamp: number }[] = JSON.parse(stored);
+      const normalizedPhone = phone.replace(/\D/g, '');
+      return submissions.some(s => s.phone === normalizedPhone);
+    } catch { return false; }
+  };
+
+  const checkDeviceSubmitted = (): boolean => {
+    return localStorage.getItem('uc_dryer_es_device_submitted') === 'true';
+  };
+
+  const saveSubmission = (phone: string) => {
+    const STORAGE_KEY = 'uc_dryer_es_submissions';
+    const normalizedPhone = phone.replace(/\D/g, '');
+    const stored = localStorage.getItem(STORAGE_KEY);
+    let submissions: { phone: string; timestamp: number }[] = [];
+    try { if (stored) submissions = JSON.parse(stored); } catch { submissions = []; }
+    submissions.push({ phone: normalizedPhone, timestamp: Date.now() });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
+    localStorage.setItem('uc_dryer_es_device_submitted', 'true');
+  };
+
   // Timer Effect
   useEffect(() => {
     const timer = setInterval(() => {
@@ -228,6 +254,14 @@ export default function LandingPage() {
     if (!orderData.name.trim() || !orderData.phone.trim() || !orderData.address.trim()) {
       return;
     }
+    if (checkDuplicatePhone(orderData.phone)) {
+      alert('Este número de teléfono ya está registrado. ¡Te contactaremos pronto!');
+      return;
+    }
+    if (checkDeviceSubmitted()) {
+      alert('Ya se ha realizado un pedido desde este dispositivo.');
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -267,6 +301,7 @@ export default function LandingPage() {
         body: params.toString(),
       });
 
+      saveSubmission(orderData.phone);
       saveUserDataToStorage({
         nome: orderData.name || '',
         cognome: '',

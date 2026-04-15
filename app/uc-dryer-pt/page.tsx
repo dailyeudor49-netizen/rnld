@@ -183,6 +183,32 @@ export default function LandingPage() {
     setOrderData(prev => ({ ...prev, [name]: value }));
   };
 
+  const checkDuplicatePhone = (phone: string): boolean => {
+    const STORAGE_KEY = 'uc_dryer_pt_submissions';
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return false;
+    try {
+      const submissions: { phone: string; timestamp: number }[] = JSON.parse(stored);
+      const normalizedPhone = phone.replace(/\D/g, '');
+      return submissions.some(s => s.phone === normalizedPhone);
+    } catch { return false; }
+  };
+
+  const checkDeviceSubmitted = (): boolean => {
+    return localStorage.getItem('uc_dryer_pt_device_submitted') === 'true';
+  };
+
+  const saveSubmission = (phone: string) => {
+    const STORAGE_KEY = 'uc_dryer_pt_submissions';
+    const normalizedPhone = phone.replace(/\D/g, '');
+    const stored = localStorage.getItem(STORAGE_KEY);
+    let submissions: { phone: string; timestamp: number }[] = [];
+    try { if (stored) submissions = JSON.parse(stored); } catch { submissions = []; }
+    submissions.push({ phone: normalizedPhone, timestamp: Date.now() });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
+    localStorage.setItem('uc_dryer_pt_device_submitted', 'true');
+  };
+
   // Timer Effect
   useEffect(() => {
     const timer = setInterval(() => {
@@ -228,6 +254,14 @@ export default function LandingPage() {
     if (!orderData.name.trim() || !orderData.phone.trim() || !orderData.address.trim()) {
       return;
     }
+    if (checkDuplicatePhone(orderData.phone)) {
+      alert('Este número de telefone já está registado. Entraremos em contacto em breve!');
+      return;
+    }
+    if (checkDeviceSubmitted()) {
+      alert('Já foi efetuado um pedido a partir deste dispositivo.');
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -267,6 +301,7 @@ export default function LandingPage() {
         body: params.toString(),
       });
 
+      saveSubmission(orderData.phone);
       saveUserDataToStorage({
         nome: orderData.name || '',
         cognome: '',
@@ -282,7 +317,7 @@ export default function LandingPage() {
     }
   };
 
-  const basePrice = 79;
+  const basePrice = 99;
   const totalPrice = qty === 1 ? basePrice : (basePrice * 2) - 10;
 
   return (
@@ -329,9 +364,9 @@ export default function LandingPage() {
             <p className="mb-2">Potente (800W), Compacta e Inteligente. O secador que cuida da sua roupa e da sua carteira graças ao sensor NTC.</p>
 
             <div className="mb-2">
-              <span className="price-old">199,99€</span>
-              <span className="price-new"> 79€</span>
-              <span className="saving-badge">POUPA 120€</span>
+              <span className="price-old">249,99€</span>
+              <span className="price-new"> 99€</span>
+              <span className="saving-badge">POUPA 150€</span>
               <div style={{fontSize: '0.9rem', color: '#2e7d32', marginTop: '5px'}}>🚚 Envio Gratuito (apenas Portugal continental)</div>
               <div style={{fontSize: '0.9rem', color: '#555'}}>🎁 Bónus: Condutor de escape incluído</div>
             </div>
@@ -366,8 +401,8 @@ export default function LandingPage() {
               <span className="rating-stars">★★★★★</span> <small>(697 avaliações)</small>
             </div>
             <div className="text-right">
-              <div className="price-new" style={{fontSize: '1.6rem'}}>79€</div>
-              <div className="price-old">199,99€</div>
+              <div className="price-new" style={{fontSize: '1.6rem'}}>99€</div>
+              <div className="price-old">249,99€</div>
             </div>
           </div>
           <div style={{fontSize: '1rem', marginBottom: '15px', color: '#555', background: '#f4f6f8', padding: '12px', borderRadius: '4px'}}>
@@ -516,7 +551,7 @@ export default function LandingPage() {
               <tbody>
                   <tr>
                       <td>Investimento</td>
-                      <td className="highlight-col">✅ 79€ (Baixo)</td>
+                      <td className="highlight-col">✅ 99€ (Baixo)</td>
                       <td>❌ 500€ - 900€</td>
                       <td>✅ 30€</td>
                   </tr>
@@ -534,7 +569,7 @@ export default function LandingPage() {
                   </tr>
                   <tr>
                       <td><strong>Preço Final</strong></td>
-                      <td className="highlight-col text-red"><strong>79€</strong></td>
+                      <td className="highlight-col text-red"><strong>99€</strong></td>
                       <td>Alto</td>
                       <td>Baixo (mas inconveniente)</td>
                   </tr>
@@ -548,8 +583,8 @@ export default function LandingPage() {
           <div className="urgency-box">
               <h3>⚠️ ÚLTIMAS UNIDADES EM ARMAZÉM</h3>
               <p>A procura é altíssima. Garanta a sua unidade antes que esgotem.</p>
-              <div className="price-new mb-2">79€ <span className="price-old">199,99€</span></div>
-              <p style={{fontSize: '0.9rem', color: '#555'}}>Quando a promoção terminar, o preço volta a 199,99€</p>
+              <div className="price-new mb-2">99€ <span className="price-old">249,99€</span></div>
+              <p style={{fontSize: '0.9rem', color: '#555'}}>Quando a promoção terminar, o preço volta a 249,99€</p>
               <button onClick={scrollToOrder} className="btn btn-pulse" style={{maxWidth: '400px', margin: '10px auto'}}>GARANTIR O PREÇO AGORA</button>
           </div>
       </section>
@@ -620,7 +655,7 @@ export default function LandingPage() {
                             <div style={{color: '#6b7280', fontSize: '0.9rem'}}>+ Kit Escape + Manual</div>
                         </div>
                         <div style={{textAlign: 'right'}}>
-                            <div className="price-old" style={{fontSize: '0.9rem'}}>€199,99</div>
+                            <div className="price-old" style={{fontSize: '0.9rem'}}>€249,99</div>
                             <div className="price-tag-red">€{totalPrice.toFixed(2).replace('.', ',')}</div>
                         </div>
                     </div>
@@ -710,7 +745,7 @@ export default function LandingPage() {
       {/* STICKY BAR */}
       <div className="sticky-bar hidden-desktop">
         <div>
-            <div className="sticky-price">79€</div>
+            <div className="sticky-price">99€</div>
             <div className="sticky-sub">Pagar na entrega</div>
         </div>
         <button onClick={scrollToOrder} className="btn sticky-btn">ENCOMENDAR AGORA</button>
